@@ -17,6 +17,7 @@ author:
   github: Extravenger # github username
   twitter: twitter_username # twitter username
   facebook: facebook_username # facebook username
+  email: "test.com"
   avatar: /assets/img/anonymous.png # change with your own avatar
 
 # URL settings
