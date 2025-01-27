@@ -10,5 +10,6 @@ comments: false
 As an Adversarial Tactics Expert, I can fully dive into my passion for offensive security. I’ve always been driven by the challenge of uncovering vulnerabilities and strengthening defences. Excited to continue breaking boundaries.
 </div>
 
+
 - {{ site.author.email }}
 - github.com/{{ site.author.github }}
