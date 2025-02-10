@@ -30,8 +30,8 @@ layout: compress
   <div class="wrapper">
     <main aria-label="Content">
       <div class="centered-content">
-        <!-- Image to be displayed above text -->
-        <img src="https://extravenger.github.io/assets/img/anonymous.png" alt="Image" id="profile-image" class="profile-image" />
+        <!-- Image with rounded edges -->
+        <img src="https://extravenger.github.io/assets/img/anonymous.png" alt="Profile Image" id="profile-image" class="profile-image" />
 
         <h1 id="title"></h1>
         <p id="description"></p>
@@ -124,11 +124,13 @@ layout: compress
       margin-bottom: 10px; /* Adds space between title and description */
     }
 
-    /* Add styling for the image */
+    /* Add styling for the image with rounded edges */
     .profile-image {
-      max-width: 150px; /* Adjust as per your image size */
+      max-width: 150px; /* Adjust the size as needed */
       height: auto;
-      margin-bottom: 20px; /* Adds space between image and text */
+      margin-bottom: 20px; /* Adds space between the image and text */
+      border-radius: 50%; /* This makes the image round */
+      border: 2px solid #fff; /* Optional: Adds a border around the image */
     }
   </style>
 
