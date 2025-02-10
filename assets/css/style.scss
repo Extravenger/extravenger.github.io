@@ -4,6 +4,7 @@
 @import "main";
 
 /* Makes the entire card clickable */
+/* Makes the entire card clickable */
 .post-card-link {
   text-decoration: none;
   color: inherit;
@@ -21,7 +22,7 @@
   padding: 0;
   border: 1px solid var(--border-color); /* Adds a border around the card */
   max-width: 350px; /* Keeps the card the same size */
-  height: 220px; /* Adjust the height for uniformity */
+  height: 220px; /* Adjust the height to ensure it's consistent */
   margin: 10px; /* Adds spacing between cards */
 }
 
@@ -34,36 +35,35 @@
 /* Flex container for text and image */
 .post-card-content {
   display: flex;
-  align-items: stretch; /* Stretch the items to fill the card */
-  justify-content: space-between;
-  height: 100%; /* Ensures content fills the card */
-  padding: 15px;
+  height: 100%; /* Ensures the content fills the full height of the card */
+  width: 100%;
 }
 
-/* Text section */
+/* Text section (right half) */
 .post-text {
-  flex: 1;
-  max-width: 50%; /* Ensure text takes half of the card */
+  flex: 1; /* Ensures text takes up the remaining space */
+  max-width: 50%; /* Restricts it to 50% of the card width */
   display: flex;
   flex-direction: column;
   justify-content: space-between; /* Ensures title, date, and excerpt fill space */
+  padding: 15px;
 }
 
-/* Image section */
+/* Image section (left half) */
 .post-card-image {
-  width: 50%; /* Image takes 50% of the card */
-  height: 100%; /* Ensures image takes the full height */
+  width: 50%; /* Ensures the image takes up 50% of the card */
+  height: 100%; /* Ensures the image fills the card height */
   flex-shrink: 0;
   border-radius: 5px;
   overflow: hidden;
   border: 1px solid var(--border-color); /* Border for the image */
 }
 
-/* Ensures image fills its container */
+/* Ensures the image fills its container */
 .post-card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures image covers the container without distortion */
+  object-fit: cover; /* Ensures the image covers the container without distortion */
   display: block;
 }
 
@@ -90,4 +90,5 @@
   font-size: 1rem;
   color: var(--text-color);
 }
+
 
