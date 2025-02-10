@@ -45,6 +45,7 @@ layout: compress
       { title: "$ whoami?", text: "My name is Amit Mor, and I'm working as an Adversarial Tactics Expert at Sygnia." },
       { title: "What's your main focus now?", text: "Mainly exploring offensive security stuff." },
       { title: "How can I contact you?", text: "You can catch me on my Linkedin: https://www.linkedin.com/in/amitmorr/" }
+
     ];
 
     let stepIndex = 0;
@@ -57,9 +58,9 @@ layout: compress
         i++;
         if (i === text.length) {
           clearInterval(interval);
-          setTimeout(callback, 1000); // Added a delay after text is fully typed
+          setTimeout(callback, 1000);
         }
-      }, 100); // Slowed down the typing speed for better visibility
+      }, 70);
     }
 
     function deleteEffect(element, callback) {
@@ -70,25 +71,23 @@ layout: compress
         i--;
         if (i < 0) {
           clearInterval(interval);
-          setTimeout(callback, 500); // Delay before calling the callback
+          setTimeout(callback, 500);
         }
-      }, 50); // Slowed down the delete speed for better visibility
+      }, 30);
     }
 
     function cycleAnimation() {
       const { title, text } = steps[stepIndex];
-      console.log(`Displaying: ${title}`); // Added log to debug step
       typeEffect(titleElement, title, () => {
-        console.log(`Displaying description: ${text}`); // Added log to debug step
         typeEffect(descriptionElement, text, () => {
           setTimeout(() => {
-            deleteEffect(descriptionElement, () => { // Delete description first
-              deleteEffect(titleElement, () => { // Then delete title
+            deleteEffect(titleElement, () => {
+              deleteEffect(descriptionElement, () => {
                 stepIndex = (stepIndex + 1) % steps.length;
                 cycleAnimation();
               });
             });
-          }, 2000); // Wait before starting to delete
+          }, 2000);
         });
       });
     }
