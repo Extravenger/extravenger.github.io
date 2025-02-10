@@ -3,17 +3,16 @@ layout: default
 home: true
 ---
 
-<h3 class="posts-item-note" aria-label="Recent Posts">Recent Posts</h3>
-
-{%- for post in site.posts limit: site.number_of_posts -%}
-<article class="post-item">
-  <a href="{{ post.url }}">
-    <div class="post-image">
-      <img src="{{ post.image | default: '/assets/images/default-image.jpg' }}" alt="{{ post.title }}">
-    </div>
-    <!-- Title is now outside the image container -->
-    <h4 class="post-item-title">{{ post.title | escape }}</h4>
-    <!-- Removed the date display here -->
-  </a>
-</article>
-{%- endfor -%}
+<div class="posts-grid">
+  {% for post in site.posts %}
+  <article class="post-card">
+    <a href="{{ post.url | relative_url }}">
+      <div class="post-card-content">
+        <h2>{{ post.title }}</h2>
+        <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
+        <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+      </div>
+    </a>
+  </article>
+  {% endfor %}
+</div>
