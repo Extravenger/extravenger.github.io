@@ -5,13 +5,14 @@
 /* Container for each post */
 .post-card {
   display: flex;
-  align-items: center; /* Aligns text and image vertically */
+  align-items: center; /* Align text and image in one line */
+  justify-content: space-between; /* Pushes text left, image right */
   background: var(--content-bg);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
-  overflow: hidden; /* Ensures everything stays inside */
-  padding: 15px; /* Adds spacing inside the card */
+  overflow: hidden;
+  padding: 15px;
 }
 
 .post-card:hover {
@@ -19,13 +20,14 @@
 }
 
 .post-card-content {
-  flex: 1; /* Takes up remaining space */
-  padding-right: 15px;
+  flex: 1; /* Takes remaining space */
+  padding-right: 15px; /* Creates space between text and image */
 }
 
 .post-card-image {
-  width: 120px; /* Adjust image size */
+  width: 120px; /* Adjust size as needed */
   height: 80px;
+  flex-shrink: 0; /* Prevents image from resizing */
   overflow: hidden;
   border-radius: 5px;
 }
@@ -39,12 +41,18 @@
 
 .post-card h2 {
   font-size: 1.4rem;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .post-meta {
   font-size: 0.9rem;
   color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.post-excerpt {
+  font-size: 1rem;
+  color: var(--text-color);
 }
 
 .post-excerpt {
