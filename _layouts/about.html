@@ -30,6 +30,9 @@ layout: compress
   <div class="wrapper">
     <main aria-label="Content">
       <div class="centered-content">
+        <!-- Image to be displayed above text -->
+        <img src="https://extravenger.github.io/assets/img/anonymous.png" alt="Image" id="profile-image" class="profile-image" />
+
         <h1 id="title"></h1>
         <p id="description"></p>
       </div>
@@ -45,7 +48,6 @@ layout: compress
       { title: "$ whoami?", text: "My name is Amit Mor, and I'm working as an Adversarial Tactics Expert at Sygnia." },
       { title: "What's your main focus now?", text: "Mainly exploring offensive security stuff." },
       { title: "How can I contact you?", text: "You can catch me on my Linkedin: https://www.linkedin.com/in/amitmorr/" }
-
     ];
 
     let stepIndex = 0;
@@ -120,6 +122,13 @@ layout: compress
 
     #title {
       margin-bottom: 10px; /* Adds space between title and description */
+    }
+
+    /* Add styling for the image */
+    .profile-image {
+      max-width: 150px; /* Adjust as per your image size */
+      height: auto;
+      margin-bottom: 20px; /* Adds space between image and text */
     }
   </style>
 
