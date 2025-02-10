@@ -53,7 +53,7 @@
 
 /* Image section (left half) */
 .post-card-image {
-  width: 50%; /* Ensures the image takes up 50% of the card */
+  width: 100%; /* Ensures the image takes up 50% of the card */
   height: 100%; /* Ensures the image takes the full height */
   flex-shrink: 0;
   border-radius: 5px;
