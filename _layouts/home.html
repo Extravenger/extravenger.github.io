@@ -5,21 +5,21 @@ home: true
 
 <div class="posts-grid">
   {% for post in site.posts %}
-  <a href="{{ post.url | relative_url }}" class="post-card-link"> <!-- Whole card is clickable -->
-    <article class="post-card">
-      <div class="post-card-content">
-        <div class="post-text">
-          <h2>{{ post.title }}</h2>
-          <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
-          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
-        </div>
+  <article class="post-card">
+    <a href="{{ post.url | relative_url }}" class="post-card-link"> <!-- Whole card is clickable -->
+      <div class="post-card-content {% cycle 'image-left', 'image-right' %}">
         {% if post.image %}
         <div class="post-card-image">
           <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
         </div>
         {% endif %}
+        <div class="post-text">
+          <h2>{{ post.title }}</h2>
+          <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
+          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
+        </div>
       </div>
-    </article>
-  </a>
+    </a>
+  </article>
   {% endfor %}
 </div>
