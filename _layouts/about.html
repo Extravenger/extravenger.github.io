@@ -57,9 +57,9 @@ layout: compress
         i++;
         if (i === text.length) {
           clearInterval(interval);
-          setTimeout(callback, 1000);
+          setTimeout(callback, 1000); // Added a delay after text is fully typed
         }
-      }, 70);
+      }, 100); // Slowed down the typing speed for better visibility
     }
 
     function deleteEffect(element, callback) {
@@ -70,14 +70,16 @@ layout: compress
         i--;
         if (i < 0) {
           clearInterval(interval);
-          setTimeout(callback, 500);
+          setTimeout(callback, 500); // Delay before calling the callback
         }
-      }, 30);
+      }, 50); // Slowed down the delete speed for better visibility
     }
 
     function cycleAnimation() {
       const { title, text } = steps[stepIndex];
+      console.log(`Displaying: ${title}`); // Added log to debug step
       typeEffect(titleElement, title, () => {
+        console.log(`Displaying description: ${text}`); // Added log to debug step
         typeEffect(descriptionElement, text, () => {
           setTimeout(() => {
             deleteEffect(descriptionElement, () => { // Delete description first
@@ -86,7 +88,7 @@ layout: compress
                 cycleAnimation();
               });
             });
-          }, 2000);
+          }, 2000); // Wait before starting to delete
         });
       });
     }
