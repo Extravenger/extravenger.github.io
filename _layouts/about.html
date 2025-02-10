@@ -48,7 +48,7 @@ layout: compress
 
     let stepIndex = 0;
 
-    function typeEffect(element, text, callback) {
+    function typeEffect(element, text, callback, speed = 100) {
       let i = 0;
       element.innerHTML = "";
       const interval = setInterval(() => {
@@ -56,12 +56,12 @@ layout: compress
         i++;
         if (i === text.length) {
           clearInterval(interval);
-          setTimeout(callback, 1000);
+          setTimeout(callback, 1000);  // Delay before callback
         }
-      }, 150);
+      }, speed);
     }
 
-    function deleteEffect(element, callback) {
+    function deleteEffect(element, callback, speed = 50) {
       const text = element.innerHTML;
       let i = text.length;
       const interval = setInterval(() => {
@@ -69,9 +69,9 @@ layout: compress
         i--;
         if (i < 0) {
           clearInterval(interval);
-          setTimeout(callback, 500);
+          setTimeout(callback, 500);  // Delay before callback
         }
-      }, 100);
+      }, speed);
     }
 
     function cycleAnimation() {
@@ -79,15 +79,15 @@ layout: compress
       typeEffect(titleElement, title, () => {
         typeEffect(descriptionElement, text, () => {
           setTimeout(() => {
-            deleteEffect(titleElement, () => {
-              deleteEffect(descriptionElement, () => {
+            deleteEffect(descriptionElement, () => {
+              deleteEffect(titleElement, () => {
                 stepIndex = (stepIndex + 1) % steps.length;
                 cycleAnimation();
               });
             });
-          }, 2000);
-        });
-      });
+          }, 2000);  // Time before starting deletion
+        }, 75);  // Faster typing speed for description
+      }, 100);  // Default typing speed for title
     }
 
     cycleAnimation();
