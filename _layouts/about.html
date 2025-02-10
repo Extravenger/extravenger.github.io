@@ -36,10 +36,10 @@ layout: compress
       
       <!-- Section for Image and Links -->
       <div id="social-section" style="display: none; text-align: center;">
-        <img id="profile-image" src="https://media.licdn.com/dms/image/v2/D4D03AQE5EvGTpELXGQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1726679965809?e=1744848000&v=beta&t=GKhFumGVvmgCF_-lKkY9xq7ky4S7O_AE1UKqYCGIbIk" alt="Your Profile Picture" style="width: 150px; border-radius: 50%; margin-top: 20px;" />
+        <img id="profile-image" src="https://i.ibb.co/xSk3YRP6/amit.jpg" alt="Your Profile Picture" style="width: 150px; border-radius: 50%; margin-top: 20px;" />
         <div>
           <a href="https://www.linkedin.com/in/amitmorr/" target="_blank" class="social-link">LinkedIn</a>
-          <a href="https://github.com/ExtraVenger" target="_blank" class="social-link">GitHub</a>
+          <a href="https://github.com/yourusername" target="_blank" class="social-link">GitHub</a>
         </div>
       </div>
     </main>
@@ -100,7 +100,13 @@ layout: compress
       });
     }
 
+    // Start the animation cycle
     cycleAnimation();
+
+    // Once the last cycle is done, display the image and links
+    setTimeout(() => {
+      document.getElementById("social-section").style.display = "block";
+    }, 12000); // Adjust this time to match the time it takes for the animations to complete
   </script>
 
   <style>
