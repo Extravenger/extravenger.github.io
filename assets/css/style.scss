@@ -12,6 +12,7 @@
 
 /* Card styles */
 .post-card {
+  display: flex;
   background: var(--content-bg);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -19,7 +20,7 @@
   overflow: hidden;
   padding: 0;
   border: 1px solid white; /* Change this line to set the border color to white */
-  max-width: 800px;
+  width: 800px;
   height: 220px;
   margin: 10px;
 }
