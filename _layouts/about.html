@@ -28,8 +28,8 @@ layout: compress
 
   {% include navbar.html %}
   <div class="wrapper">
-    <main aria-label="Content" class="center-content">
-      <div class="container">
+    <main aria-label="Content">
+      <div class="centered-content">
         <h1 id="title"></h1>
         <p id="description"></p>
       </div>
@@ -94,32 +94,21 @@ layout: compress
   </script>
 
   <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: Arial, sans-serif;
-    }
-
+    /* Ensures the rest of the page layout remains unaffected */
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    .container {
-      text-align: center;
-    }
-
-    .center-content {
+    /* Center the specific content without affecting the entire layout */
+    .centered-content {
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
       text-align: center;
-      flex-direction: column;
     }
   </style>
 
