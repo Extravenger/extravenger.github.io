@@ -86,3 +86,12 @@
   font-size: 1rem;
   color: var(--text-color);
 }
+
+.image-left {
+  flex-direction: row;
+}
+
+/* Reverse (image right, text left) */
+.image-right {
+  flex-direction: row-reverse;
+}
