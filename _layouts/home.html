@@ -11,8 +11,9 @@ home: true
     <div class="post-image">
       <img src="{{ post.image | default: '/assets/images/default-image.jpg' }}" alt="{{ post.title }}">
     </div>
+    <!-- Title is now outside the image container -->
     <h4 class="post-item-title">{{ post.title | escape }}</h4>
-    <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
+    <!-- Removed the date display here -->
   </a>
 </article>
 {%- endfor -%}
