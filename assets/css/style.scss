@@ -23,7 +23,6 @@
   max-width: 350px; /* Keeps the card a reasonable size */
   height: 220px; /* Set a specific height for the card */
   margin: 10px; /* Adds spacing between cards */
-  display: flex; /* Ensures the card is a flex container */
 }
 
 /* Hover effect */
@@ -43,22 +42,21 @@
 /* Text section (right half) */
 .post-text {
   flex: 1; /* Ensures text section takes up 50% of the width */
-  max-width: 50%; /* Restricts it to 50% of the card width */
+  width: 50%; /* Makes sure text fills half of the card */
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Ensures title, date, and excerpt fill space */
+  justify-content: center; /* Center-align text vertically */
   padding: 15px;
-  height: 100%; /* Makes sure text fills the full height */
+  height: 100%; /* Ensures it fills the full height */
 }
 
 /* Image section (left half) */
 .post-card-image {
-  width: 100%; /* Ensures the image takes up 50% of the card */
-  height: 100%; /* Ensures the image takes the full height */
+  width: 50%; /* Ensures the image takes up half of the card */
+  height: 100%; /* Ensures the image fills the full height */
   flex-shrink: 0;
-  border-radius: 5px;
   overflow: hidden;
-  border: 1px solid var(--border-color); /* Border for the image */
+  border-left: 1px solid var(--border-color); /* Separates image from text */
 }
 
 /* Ensures the image fills its container */
@@ -73,24 +71,18 @@
 .post-card h2 {
   font-size: 1.4rem;
   margin-bottom: 5px;
+  word-wrap: break-word; /* Prevents text from overflowing */
 }
 
-.post-card h2 a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Styles for metadata */
+/* Metadata styling */
 .post-meta {
   font-size: 0.9rem;
   color: var(--text-secondary);
   margin-bottom: 5px;
 }
 
-/* Styles for the post excerpt */
+/* Post excerpt */
 .post-excerpt {
   font-size: 1rem;
   color: var(--text-color);
 }
-
-
