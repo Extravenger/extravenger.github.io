@@ -2,7 +2,6 @@
 ---
 
 @import "main";
-/* Square layout for posts */
 /* Container for each post */
 .post-item {
   width: 250px;   /* Width of the post item */
@@ -23,7 +22,7 @@
   object-fit: cover;  /* Ensure the image fills the square without stretching */
 }
 
-/* Title styling (out of the square) */
+/* Title styling (outside the square) */
 .post-item-title {
   font-size: 16px;
   margin-top: 10px;   /* Space between image and title */
