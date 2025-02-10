@@ -68,30 +68,57 @@
 }
 
 /* Styles for the title */
-.post-card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 5px;
-  word-wrap: break-word; /* Prevents text from overflowing */
+/* Post card container */
+.post-card {
+  display: flex;
+  background: var(--content-bg);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  max-width: 350px;
+  height: 220px;
+  margin: 10px;
+  transition: transform 0.2s ease-in-out;
 }
 
-/* Metadata styling */
-.post-meta {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin-bottom: 5px;
+/* Ensure full height usage */
+.post-card-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
-/* Post excerpt */
-.post-excerpt {
-  font-size: 1rem;
-  color: var(--text-color);
+/* Text section (left) */
+.post-text {
+  flex: 1;
+  max-width: 50%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.image-left {
-  flex-direction: row;
+/* Image section (right) */
+.post-card-image {
+  width: 50%; /* Make image take exactly half of the card */
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-left: 1px solid var(--border-color); /* Separates text & image */
 }
 
+/* Image styling */
+.post-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
 /* Reverse (image right, text left) */
 .image-right {
-  flex-direction: row-reverse;
+  display: flex;
+  flex-direction: row-reverse; /* Image will be on the right */
+  align-items: center;
+  justify-content: space-between;
 }
