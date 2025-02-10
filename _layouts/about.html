@@ -33,7 +33,7 @@ layout: compress
         <h1 id="title"></h1>
         <p id="description"></p>
       </div>
-    </main>  
+    </main>
     {% include footer.html %}
   </div>
 
@@ -94,25 +94,28 @@ layout: compress
   </script>
 
   <style>
-    /* Ensures the rest of the page layout remains unaffected */
+    /* Prevents page from scrolling */
+    html, body {
+      height: 100%;  /* Ensure the body takes full height */
+      margin: 0;  /* Remove default margin */
+      overflow: hidden; /* Prevent scroll */
+    }
+
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      height: 100%;  /* Ensure wrapper takes full height */
+      text-align: center;
     }
 
-    /* Center the specific content horizontally and adjust vertical positiont */
     .centered-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      margin-top: -50px; /* Moves the content up */
     }
 
-    /* Adjusts the title and description spacing */
     #title {
       margin-bottom: 10px; /* Adds space between title and description */
     }
