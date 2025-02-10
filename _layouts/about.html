@@ -48,7 +48,7 @@ layout: compress
 
     let stepIndex = 0;
 
-    function typeEffect(element, text, callback, speed = 100) {
+    function typeEffect(element, text, callback) {
       let i = 0;
       element.innerHTML = "";
       const interval = setInterval(() => {
@@ -58,10 +58,10 @@ layout: compress
           clearInterval(interval);
           setTimeout(callback, 1000);
         }
-      }, speed);
+      }, 150);
     }
 
-    function deleteEffect(element, callback, speed = 50) {
+    function deleteEffect(element, callback) {
       const text = element.innerHTML;
       let i = text.length;
       const interval = setInterval(() => {
@@ -71,7 +71,7 @@ layout: compress
           clearInterval(interval);
           setTimeout(callback, 500);
         }
-      }, speed);
+      }, 100);
     }
 
     function cycleAnimation() {
@@ -86,8 +86,8 @@ layout: compress
               });
             });
           }, 2000);
-        }, 75);  // Faster typing for description
-      }, 100); // Slower typing for title
+        });
+      });
     }
 
     cycleAnimation();
