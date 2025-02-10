@@ -48,7 +48,7 @@ layout: compress
 
     let stepIndex = 0;
 
-    function typeEffect(element, text, callback, speed = 100) {
+    function typeEffect(element, text, callback) {
       let i = 0;
       element.innerHTML = "";
       const interval = setInterval(() => {
@@ -58,10 +58,10 @@ layout: compress
           clearInterval(interval);
           setTimeout(callback, 1000);
         }
-      }, speed);
+      }, 500);
     }
 
-    function deleteEffect(element, callback, speed = 50) {
+    function deleteEffect(element, callback) {
       const text = element.innerHTML;
       let i = text.length;
       const interval = setInterval(() => {
@@ -71,7 +71,7 @@ layout: compress
           clearInterval(interval);
           setTimeout(callback, 500);
         }
-      }, speed);
+      }, 500);
     }
 
     function cycleAnimation() {
@@ -79,15 +79,15 @@ layout: compress
       typeEffect(titleElement, title, () => {
         typeEffect(descriptionElement, text, () => {
           setTimeout(() => {
-            deleteEffect(descriptionElement, () => {
-              deleteEffect(titleElement, () => {
+            deleteEffect(titleElement, () => {
+              deleteEffect(descriptionElement, () => {
                 stepIndex = (stepIndex + 1) % steps.length;
                 cycleAnimation();
               });
             });
           }, 2000);
-        }, 75);  // Faster typing for description
-      }, 100);  // Default typing for title
+        });
+      });
     }
 
     cycleAnimation();
@@ -96,9 +96,9 @@ layout: compress
   <style>
     /* Prevents page from scrolling */
     html, body {
-      height: 100%;  /* Ensures the body and html take full height */
+      height: 100%;  /* Ensure the body takes full height */
       margin: 0;  /* Remove default margin */
-      overflow: hidden;  /* Prevent scrolling */
+      overflow: hidden; /* Prevent scroll */
     }
 
     .wrapper {
@@ -106,7 +106,7 @@ layout: compress
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;  /* Ensure the wrapper takes the full height of the viewport */
+      height: 100%;  /* Ensure wrapper takes full height */
       text-align: center;
     }
 
