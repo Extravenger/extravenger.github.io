@@ -3,49 +3,19 @@
 
 @import "main";
 /* Container for each post */
-.post-item {
-  width: 250px;
-  margin: 20px;
-  text-align: center; /* Center align text below the image */
-  padding: 10px;     /* Optional: Add padding around content */
-  border-radius: 8px; /* Optional: Add rounded corners to the post container */
-}
-
-/* Style for the image within the square */
-.post-image {
+.post-card-image {
   width: 100%;
-  height: 250px;  /* Set square height for the image container */
+  height: 180px; /* Adjust as needed */
   overflow: hidden;
-  border-radius: 15px;  /* Make the image container have rounded corners */
-  background-color: transparent;  /* Remove explicit background color to match Jekyll theme */
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-.post-image img {
+.post-card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;  /* Ensure the image fills the square without stretching */
-  border-radius: 15px;  /* Make the image itself have rounded corners */
-}
-
-/* Title styling (outside the square) */
-.post-item-title {
-  font-size: 16px;
-  margin-top: 10px;   /* Space between image and title */
-  color: #333;
-}
-
-/* Date styling */
-.post-item-date {
-  font-size: 14px;
-  text-align: center;
-  color: #777;
-}
-
-.posts-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-top: 20px;
+  object-fit: cover; /* Ensures the image fills the space */
+  display: block;
 }
 
 .post-card {
@@ -77,5 +47,4 @@
   font-size: 1rem;
   color: var(--text-color);
 }
-
 
