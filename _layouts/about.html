@@ -1,0 +1,94 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        body {
+            background-color: black;
+            color: #00ff00;
+            font-family: monospace;
+            padding: 20px;
+        }
+        .terminal {
+            white-space: pre-wrap;
+            font-size: 1.5em;
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            background: #00ff00;
+            animation: blink 0.8s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="terminal" id="terminal"></div>
+    
+    <script>
+        const terminal = document.getElementById("terminal");
+        const sequences = [
+            { title: "$ whoami?", text: "I'm an Adversarial Tactics Expert. I explore, test, and secure systems through offensive security techniques." },
+            { title: "What's my current job?", text: "Currently, I'm taking the OSEP course, sharpening my skills in offensive security and red teaming." }
+        ];
+        
+        let index = 0;
+        function typeText(element, text, speed = 50, callback) {
+            let i = 0;
+            function typeChar() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typeChar, speed);
+                } else if (callback) {
+                    setTimeout(callback, 1000);
+                }
+            }
+            typeChar();
+        }
+        
+        function deleteText(element, speed = 50, callback) {
+            let text = element.innerHTML;
+            function deleteChar() {
+                if (text.length > 0) {
+                    text = text.slice(0, -1);
+                    element.innerHTML = text;
+                    setTimeout(deleteChar, speed);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            deleteChar();
+        }
+        
+        function runSequence() {
+            if (index >= sequences.length) return;
+            const title = document.createElement("div");
+            const text = document.createElement("div");
+            terminal.appendChild(title);
+            
+            typeText(title, sequences[index].title, 100, () => {
+                terminal.appendChild(text);
+                typeText(text, sequences[index].text, 50, () => {
+                    setTimeout(() => {
+                        deleteText(title, 100, () => {
+                            terminal.innerHTML = "";
+                            index++;
+                            runSequence();
+                        });
+                    }, 2000);
+                });
+            });
+        }
+        
+        runSequence();
+    </script>
+</body>
+</html>
+```
+
