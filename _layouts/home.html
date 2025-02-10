@@ -6,8 +6,8 @@ home: true
 <div class="posts-grid">
   {% for post in site.posts %}
   <article class="post-card">
-    <a href="{{ post.url | relative_url }}" class="post-card-link"> <!-- Whole card is clickable -->
-      <div class="post-card-content image-right">
+    <a href="{{ post.url | relative_url }}" class="post-card-link">
+      <div class="post-card-content {% if forloop.index mod 2 == 0 %}image-right{% else %}image-left{% endif %}">
         <div class="post-text">
           <h2>{{ post.title }}</h2>
           <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
