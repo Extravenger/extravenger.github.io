@@ -93,9 +93,4 @@
 /* Reverse layout (image right, text left) */
 .image-right {
   flex-direction: row-reverse;
-  /* Fix border positioning */
-  .post-card-image {
-    border-left: none;
-    border-right: 1px solid var(--border-color);
-  }
 }
