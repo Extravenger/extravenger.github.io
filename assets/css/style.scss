@@ -17,8 +17,8 @@
   width: 100%;
   height: 250px;  /* Set square height for the image container */
   overflow: hidden;
-  background-color: #f9f9f9; /* Ensure the background matches the page */
   border-radius: 15px;  /* Make the image container have rounded corners */
+  background-color: transparent;  /* Remove explicit background color to match Jekyll theme */
 }
 
 .post-image img {
@@ -41,3 +41,4 @@
   text-align: center;
   color: #777;
 }
+
