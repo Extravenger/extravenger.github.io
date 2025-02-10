@@ -19,10 +19,10 @@
   transition: transform 0.2s ease-in-out;
   overflow: hidden;
   padding: 0;
-  border: 1px solid var(--border-color); /* Adds a border around the card */
-  max-width: 800px; /* Keeps the card a reasonable size */
-  height: 220px; /* Set a specific height for the card */
-  margin: 10px; /* Adds spacing between cards */
+  border: 1px solid white; /* Change this line to set the border color to white */
+  max-width: 800px;
+  height: 220px;
+  margin: 10px;
 }
 
 /* Hover effect */
