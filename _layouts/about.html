@@ -56,7 +56,7 @@ layout: compress
         i++;
         if (i === text.length) {
           clearInterval(interval);
-          setTimeout(callback, 1000);  // Delay before callback
+          setTimeout(callback, 1000);
         }
       }, speed);
     }
@@ -69,7 +69,7 @@ layout: compress
         i--;
         if (i < 0) {
           clearInterval(interval);
-          setTimeout(callback, 500);  // Delay before callback
+          setTimeout(callback, 500);
         }
       }, speed);
     }
@@ -85,9 +85,9 @@ layout: compress
                 cycleAnimation();
               });
             });
-          }, 2000);  // Time before starting deletion
-        }, 75);  // Faster typing speed for description
-      }, 100);  // Default typing speed for title
+          }, 2000);
+        }, 75);  // Faster typing for description
+      }, 100);  // Default typing for title
     }
 
     cycleAnimation();
@@ -96,9 +96,9 @@ layout: compress
   <style>
     /* Prevents page from scrolling */
     html, body {
-      height: 100%;  /* Ensure the body takes full height */
+      height: 100%;  /* Ensures the body and html take full height */
       margin: 0;  /* Remove default margin */
-      overflow: hidden; /* Prevent scroll */
+      overflow: hidden;  /* Prevent scrolling */
     }
 
     .wrapper {
@@ -106,7 +106,7 @@ layout: compress
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;  /* Ensure wrapper takes full height */
+      height: 100vh;  /* Ensure the wrapper takes the full height of the viewport */
       text-align: center;
     }
 
