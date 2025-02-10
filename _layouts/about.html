@@ -45,7 +45,6 @@ layout: compress
       { title: "$ whoami?", text: "My name is Amit Mor, and I'm working as an Adversarial Tactics Expert at Sygnia." },
       { title: "What's your main focus now?", text: "Mainly exploring offensive security stuff." },
       { title: "How can I contact you?", text: "You can catch me on my Linkedin: https://www.linkedin.com/in/amitmorr/" }
-
     ];
 
     let stepIndex = 0;
@@ -81,8 +80,8 @@ layout: compress
       typeEffect(titleElement, title, () => {
         typeEffect(descriptionElement, text, () => {
           setTimeout(() => {
-            deleteEffect(titleElement, () => {
-              deleteEffect(descriptionElement, () => {
+            deleteEffect(descriptionElement, () => { // Delete description first
+              deleteEffect(titleElement, () => { // Then delete title
                 stepIndex = (stepIndex + 1) % steps.length;
                 cycleAnimation();
               });
