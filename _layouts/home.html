@@ -6,9 +6,9 @@ home: true
 <div class="posts-grid">
   {% for post in site.posts %}
   <article class="post-card">
-    <a href="{{ post.url | relative_url }}">
-      <div class="post-card-content">
-        <h2>{{ post.title }}</h2>
+    <div class="post-card-content">
+      <div class="post-text">
+        <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
         <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
         <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
       </div>
@@ -17,7 +17,7 @@ home: true
         <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
       </div>
       {% endif %}
-    </a>
+    </div>
   </article>
   {% endfor %}
 </div>
