@@ -2,6 +2,7 @@
 ---
 
 @import "main";
+
 /* Makes the entire card clickable */
 .post-card-link {
   text-decoration: none;
@@ -18,7 +19,7 @@
   transition: transform 0.2s ease-in-out;
   overflow: hidden;
   padding: 0;
-  border: 1px solid var(--border-color); /* Adds a border around the card */
+  border: 1px solid var(--border-color); /* Border around the card */
   max-width: 350px; /* Keeps the card the same size */
   margin: 10px; /* Adds spacing between cards */
 }
@@ -29,33 +30,36 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
 }
 
-/* Ensures text and image are side by side */
+/* Flex container for text and image */
 .post-card-content {
   display: flex;
-  align-items: center;
+  align-items: stretch; /* Stretch the items to fill the card */
   justify-content: space-between;
   height: 100%; /* Ensures content fills the card */
   padding: 15px;
 }
 
-/* Ensures text takes half of the card */
+/* Text section */
 .post-text {
   flex: 1;
   max-width: 50%;
   padding-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Makes the title, meta, and excerpt fill space */
 }
 
-/* Image now takes half of the card */
+/* Image section */
 .post-card-image {
   width: 50%;
-  height: 100px; /* Adjust height to match your design */
+  height: 100%; /* Adjusts image height to match content */
   flex-shrink: 0;
   border-radius: 5px;
   overflow: hidden;
   border: 1px solid var(--border-color); /* Border for the image */
 }
 
-/* Image fills its container */
+/* Ensures image fills its container */
 .post-card-image img {
   width: 100%;
   height: 100%;
@@ -86,5 +90,4 @@
   font-size: 1rem;
   color: var(--text-color);
 }
-
 
