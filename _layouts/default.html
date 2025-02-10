@@ -1,121 +1,28 @@
 ---
 layout: compress
 ---
-
-<!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
-
+<html lang="{{ page.lang | default: site.lang | default: " en " }}">
 {% include header.html %}
 <body data-theme="{{ site.mode }}" class="notransition">
 
   <script>
-    const body = document.body;
-    const data = body.getAttribute("data-theme");
-
-    const initTheme = (state) => {
-      if (state === "dark") {
-        body.setAttribute("data-theme", "dark");
-      } else if (state === "light") {
-        body.removeAttribute("data-theme");
-      } else {
+@@ -20,19 +21,101 @@
         localStorage.setItem("theme", data);
       }
     };
-
+ 
     initTheme(localStorage.getItem("theme"));
+    
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
   {% include navbar.html %}
   <div class="wrapper">
+    {% include author.html %}
     <main aria-label="Content">
-      <div class="centered-content">
-        <h1 id="title"></h1>
-        <p id="description"></p>
-      </div>
+      {{ content }}
     </main>
     {% include footer.html %}
   </div>
-
-  <script>
-    const titleElement = document.getElementById("title");
-    const descriptionElement = document.getElementById("description");
-
-    const steps = [
-      { title: "$ whoami?", text: "An Adversarial Tactics Expert exploring offensive security." },
-      { title: "What's my current job?", text: "Currently taking the OSEP course to level up in penetration testing." }
-    ];
-
-    let stepIndex = 0;
-
-    function typeEffect(element, text, callback) {
-      let i = 0;
-      element.innerHTML = "";
-      const interval = setInterval(() => {
-        element.innerHTML += text[i];
-        i++;
-        if (i === text.length) {
-          clearInterval(interval);
-          setTimeout(callback, 1000);
-        }
-      }, 100);
-    }
-
-    function deleteEffect(element, callback) {
-      const text = element.innerHTML;
-      let i = text.length;
-      const interval = setInterval(() => {
-        element.innerHTML = text.substring(0, i);
-        i--;
-        if (i < 0) {
-          clearInterval(interval);
-          setTimeout(callback, 500);
-        }
-      }, 50);
-    }
-
-    function cycleAnimation() {
-      const { title, text } = steps[stepIndex];
-      typeEffect(titleElement, title, () => {
-        typeEffect(descriptionElement, text, () => {
-          setTimeout(() => {
-            deleteEffect(titleElement, () => {
-              deleteEffect(descriptionElement, () => {
-                stepIndex = (stepIndex + 1) % steps.length;
-                cycleAnimation();
-              });
-            });
-          }, 2000);
-        });
-      });
-    }
-
-    cycleAnimation();
-  </script>
-
-  <style>
-    /* Ensures the page height stays fixed */
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh; /* Keeps content in a fixed viewport */
-      justify-content: center; /* Centers the content vertically */
-      padding: 0 20px; /* Adds padding to prevent text from touching edges */
-    }
-
-    /* Center the text horizontally and vertically */
-    .centered-content {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-
-    #title {
-      margin-bottom: 10px; /* Adds space between title and description */
-    }
-  </style>
-
 </body>
 </html>
