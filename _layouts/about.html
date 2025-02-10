@@ -79,8 +79,8 @@ layout: compress
       typeEffect(titleElement, title, () => {
         typeEffect(descriptionElement, text, () => {
           setTimeout(() => {
-            deleteEffect(titleElement, () => {
-              deleteEffect(descriptionElement, () => {
+            deleteEffect(descriptionElement, () => {  // Delete description first
+              deleteEffect(titleElement, () => {  // Then delete title
                 stepIndex = (stepIndex + 1) % steps.length;
                 cycleAnimation();
               });
@@ -94,21 +94,21 @@ layout: compress
   </script>
 
   <style>
-    /* Ensures the rest of the page layout remains unaffected */
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Center the specific content without affecting the entire layout */
+    /* Centered content with adjusted positioning */
     .centered-content {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      height: 80vh; /* Reduced the height to bring the content up */
       text-align: center;
+      margin-top: -50px; /* Adjusts the content position up */
     }
   </style>
 
