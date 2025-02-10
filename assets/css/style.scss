@@ -53,9 +53,11 @@
 }
 
 /* Reverse (image right, text left) */
+.image-left {
+  flex-direction: row;
+}
+
+/* Reverse (image right, text left) */
 .image-right {
-  display: flex;
-  flex-direction: row-reverse; /* Image will be on the right */
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: row-reverse;
 }
