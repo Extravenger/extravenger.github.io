@@ -3,40 +3,45 @@
 
 @import "main";
 /* Container for each post */
+/* Style for the entire post card */
 .post-card {
   background: var(--content-bg);
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease-in-out;
   padding: 15px;
+  overflow: hidden;
 }
 
+/* Hover effect */
 .post-card:hover {
   transform: translateY(-5px);
 }
 
-/* Flexbox ensures text and image are in one row */
+/* Flexbox to align text and image side by side */
 .post-card-content {
   display: flex;
-  align-items: center; /* Aligns text and image */
-  justify-content: space-between; /* Pushes text left, image right */
+  align-items: center;  /* Ensures text and image stay aligned */
+  justify-content: space-between;
+  gap: 15px; /* Adds spacing between text and image */
 }
 
-/* Ensures text takes the available space */
+/* Ensures text takes available space */
 .post-text {
   flex: 1;
-  padding-right: 15px;
+  max-width: 70%; /* Prevents text from taking the whole row */
 }
 
 /* Image stays fixed on the right */
 .post-card-image {
-  width: 120px; /* Adjust size */
+  width: 120px; /* Adjust size as needed */
   height: 80px;
-  flex-shrink: 0; /* Prevents image from resizing */
-  overflow: hidden;
+  flex-shrink: 0; /* Prevents shrinking */
   border-radius: 5px;
+  overflow: hidden;
 }
 
+/* Ensures image fills its container */
 .post-card-image img {
   width: 100%;
   height: 100%;
@@ -44,6 +49,7 @@
   display: block;
 }
 
+/* Styles for the title */
 .post-card h2 {
   font-size: 1.4rem;
   margin-bottom: 5px;
@@ -54,12 +60,14 @@
   color: inherit;
 }
 
+/* Styles for metadata */
 .post-meta {
   font-size: 0.9rem;
   color: var(--text-secondary);
   margin-bottom: 5px;
 }
 
+/* Styles for the post excerpt */
 .post-excerpt {
   font-size: 1rem;
   color: var(--text-color);
