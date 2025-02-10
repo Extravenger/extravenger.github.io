@@ -79,8 +79,8 @@ layout: compress
       typeEffect(titleElement, title, () => {
         typeEffect(descriptionElement, text, () => {
           setTimeout(() => {
-            deleteEffect(descriptionElement, () => {  // Delete description first
-              deleteEffect(titleElement, () => {  // Then delete title
+            deleteEffect(titleElement, () => {
+              deleteEffect(descriptionElement, () => {
                 stepIndex = (stepIndex + 1) % steps.length;
                 cycleAnimation();
               });
@@ -94,21 +94,27 @@ layout: compress
   </script>
 
   <style>
+    /* Ensures the rest of the page layout remains unaffected */
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* Center the content and ensure the text is visible */
+    /* Center the specific content horizontally and adjust vertical position */
     .centered-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start; /* Adjust the alignment to start from the top */
-      height: 60vh; /* Adjusted height for better positioning */
+      justify-content: center;
+      height: 100vh;
       text-align: center;
-      padding-top: 30px; /* Added padding to push the content up */
+      margin-top: -50px; /* Moves the content up */
+    }
+
+    /* Adjusts the title and description spacing */
+    #title {
+      margin-bottom: 10px; /* Adds space between title and description */
     }
   </style>
 
