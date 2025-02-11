@@ -190,6 +190,12 @@
   ); /* Fade effect on sides */
 }
 
+/* Wrapper for continuous scrolling */
+.cert-cards-wrapper {
+  display: flex;
+  animation: scrollCards 20s linear infinite; /* Adjust the duration to control the speed */
+}
+
 /* Certification card styles */
 .cert-card {
   display: flex;
@@ -203,8 +209,8 @@
   width: 300px; /* Adjust width as needed */
   height: 200px; /* Adjust height as needed */
   opacity: 1;
-  animation: fadeIn 0.5s ease-in-out forwards, scrollCards 10s linear infinite; /* Combined animations */
   flex-shrink: 0; /* Prevent cards from shrinking */
+  animation: fadeIn 0.5s ease-in-out forwards; /* Fade-in animation */
 }
 
 /* Hover effect for certifications */
@@ -228,44 +234,11 @@
 /* Scroll animation for horizontal movement (left to right) */
 @keyframes scrollCards {
   0% {
-    transform: translateX(-100%); /* Start off-screen to the left */
-    opacity: 1; /* Fully visible */
-  }
-  50% {
-    transform: translateX(0); /* Move to the center of the screen */
-    opacity: 1; /* Fully visible */
+    transform: translateX(0); /* Start at the left */
   }
   100% {
-    transform: translateX(100%); /* Move off-screen to the right */
-    opacity: 1; /* Keep visible */
+    transform: translateX(-100%); /* Move off-screen to the left */
   }
-  100.1% {
-    transform: translateX(-100%); /* Immediately reappear from the left */
-  }
-}
-
-/* Apply the animation to each card */
-.cert-card {
-  animation: scrollCards 10s linear infinite; /* Adjust duration as needed */
-}
-
-/* Delay animations for each card to create a staggered effect */
-.cert-card:nth-child(1) {
-  animation-delay: 0s;
-}
-.cert-card:nth-child(2) {
-  animation-delay: 2s;
-}
-.cert-card:nth-child(3) {
-  animation-delay: 4s;
-}
-.cert-card:nth-child(4) {
-  animation-delay: 6s;
-}
-
-/* Pause animation on hover */
-.cert-cards-container:hover .cert-card {
-  animation-play-state: paused;
 }
 
 /* Image container covering the whole square */
