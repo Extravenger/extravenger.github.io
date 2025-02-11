@@ -187,6 +187,17 @@
   width: max-content;
   animation: scrollInfinite 20s linear infinite;
   will-change: transform; /* Helps smoothen the animation */
+  position: absolute;
+}
+
+/* Duplicate the cards container for seamless scrolling */
+.cert-cards-container:after {
+  content: '';
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  margin-left: 50px; /* Adjust depending on the number of cards and gap */
+  visibility: hidden;
 }
 
 /* Certification card styles */
