@@ -239,13 +239,13 @@
   transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-/* Continuous scroll animation */
+/* Centered scroll animation */
 @keyframes scrollCards {
   0% {
-    transform: translateX(-100%); /* Start off-screen to the left */
+    transform: translateX(calc(-50% - 150px)); /* Start slightly left of the middle */
   }
   100% {
-    transform: translateX(100%); /* Move off-screen to the right */
+    transform: translateX(calc(50% - 150px)); /* End slightly right of the middle */
   }
 }
 
