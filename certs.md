@@ -17,7 +17,7 @@ permalink: /certs/
 <div class="cert-card-link">
   <div class="cert-card">
     <div class="cert-card-image">
-      <img src="/assets/img/amit-OSCP.png" alt="Certification 1">
+      <img src="/assets/img/amit-OSCP.png" alt="Certification 2">
     </div>
   </div>
 </div>
