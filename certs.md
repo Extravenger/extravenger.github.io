@@ -4,8 +4,6 @@ title: Certifications
 permalink: /certs/
 ---
 
-## My Certifications
-
 <div class="cert-cards-container">
   <a href="#" class="cert-card-link">
     <div class="cert-card">
