@@ -6,18 +6,22 @@ permalink: /certs/
 
 ## My Certifications
 
-<div class="cert-card-link">
-  <div class="cert-card">
-    <div class="cert-card-image">
-      <img src="/assets/img/amit-OSEP.png" alt="Certification 1">
+<div class="cert-cards-container">
+  <a href="#" class="cert-card-link">
+    <div class="cert-card">
+      <div class="cert-card-image">
+        <img src="/assets/img/amit-OSEP.png" alt="Cert 1">
+      </div>
     </div>
-  </div>
+  </a>
+
+  <!-- Repeat for other certifications -->
+  <a href="#" class="cert-card-link">
+    <div class="cert-card">
+      <div class="cert-card-image">
+        <img src="/assets/img/amit-OSCP.png" alt="Cert 2">
+      </div>
+    </div>
+  </a>
 </div>
 
-<div class="cert-card-link">
-  <div class="cert-card">
-    <div class="cert-card-image">
-      <img src="/assets/img/amit-OSCP.png" alt="Certification 2">
-    </div>
-  </div>
-</div>
