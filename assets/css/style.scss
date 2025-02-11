@@ -190,8 +190,16 @@
 .cert-cards-container {
   display: flex;
   gap: 20px;
-  width: max-content; /* Allows infinite scrolling */
+  width: max-content;
   animation: scrollInfinite 20s linear infinite;
+}
+
+/* Duplicate content for seamless effect */
+.cert-cards-container::after {
+  content: "";
+  display: flex;
+  width: 100%;
+  min-width: 100%;
 }
 
 /* Certification card styles */
@@ -236,20 +244,14 @@
   transform: scale(1.1);
 }
 
-/* Infinite seamless scrolling animation (Left to Right) */
+/* True Infinite Scrolling (Left to Right) */
 @keyframes scrollInfinite {
   from {
-    transform: translateX(-100%);
+    transform: translateX(-50%);
   }
   to {
     transform: translateX(0%);
   }
-}
-
-/* Duplicate the content for seamless looping */
-.cert-cards-container::after {
-  content: "";
-  display: flex;
 }
 
 /* Pause animation on hover */
