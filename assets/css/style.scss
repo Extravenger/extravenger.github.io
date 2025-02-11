@@ -177,7 +177,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  mask-image: linear-gradient(to left, transparent 5%, black 30%, black 70%, transparent 95%); /* Adjust the gradient to match the left-to-right movement */
+  mask-image: linear-gradient(to left, transparent 5%, black 30%, black 70%, transparent 95%); /* Keeps the left-to-right gradient effect */
   margin: 0 auto; /* Center the container */
 }
 
@@ -186,7 +186,7 @@
   display: flex;
   gap: 25px;
   width: max-content;
-  position: relative; /* Ensures cards move outside container bounds */
+  position: absolute; /* Absolute positioning allows cards to go beyond the container */
   animation: scrollInfinite 20s linear infinite;
 }
 
@@ -236,14 +236,26 @@
 /* Infinite scrolling animation */
 @keyframes scrollInfinite {
   from {
-    transform: translateX(0); /* Start at the far left */
+    transform: translateX(0); /* Start from the leftmost position */
   }
   to {
-    transform: translateX(-100%); /* Move cards to the left until fully out of view */
+    transform: translateX(-50%); /* Scroll to the left, hiding the first set of cards */
   }
 }
 
 /* Pause animation on hover */
 .cert-cards-wrapper:hover .cert-cards-container {
   animation-play-state: paused;
+}
+
+/* Duplicate cards for infinite scroll */
+.cert-cards-container::after {
+  content: "";
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  flex-shrink: 0;
+  animation: inherit; /* Use the same animation as the main container */
+  position: absolute;
+  left: 100%;
 }
