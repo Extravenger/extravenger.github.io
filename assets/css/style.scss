@@ -254,16 +254,12 @@
   }
 }
 
-/* Pause animation on hover over image */
+/* Pause animation on hover over the image */
 .cert-card-image:hover {
-  cursor: pointer; /* Adds pointer cursor on hover */
+  animation-play-state: paused; /* Pause the scrolling animation when hovering the image */
 }
 
-.cert-card-image:hover ~ .cert-cards-container {
-  animation-play-state: paused; /* Pauses the scrolling animation */
-}
-
-/* Pause animation on hover over card */
+/* Pause animation on hover over the card wrapper */
 .cert-cards-wrapper:hover .cert-cards-container {
   animation-play-state: paused;
 }
