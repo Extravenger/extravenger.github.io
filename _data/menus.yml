@@ -12,6 +12,7 @@
 
 - title: Certifications
   url: /certs/
+  external: false
 
 # Example:
 # - title: github
