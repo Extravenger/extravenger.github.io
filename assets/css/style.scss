@@ -239,6 +239,7 @@
   transition: transform 0.5s ease-in-out;
 }
 
+/* Hover effect on image: Scales and rotates the image */
 .cert-card:hover .cert-card-image img {
   transform: scale(1.1) rotate(2deg);
 }
@@ -253,7 +254,16 @@
   }
 }
 
-/* Pause animation on hover */
+/* Pause animation on hover over image */
+.cert-card-image:hover {
+  cursor: pointer; /* Adds pointer cursor on hover */
+}
+
+.cert-card-image:hover ~ .cert-cards-container {
+  animation-play-state: paused; /* Pauses the scrolling animation */
+}
+
+/* Pause animation on hover over card */
 .cert-cards-wrapper:hover .cert-cards-container {
   animation-play-state: paused;
 }
