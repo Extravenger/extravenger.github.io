@@ -170,27 +170,29 @@
   display: block;
 }
 
-/* Container for the cert cards */
+/* Container for cert cards */
 .cert-cards-container {
-  display: flex;          /* Align items horizontally */
-  flex-wrap: wrap;        /* Allow wrapping if needed */
-  gap: 20px;              /* Space between cards */
-  justify-content: flex-start; /* Align to the left */
-  padding: 20px;          /* Padding around the container */
+  display: flex;            /* Align items horizontally */
+  flex-wrap: wrap;          /* Allow wrapping to the next row */
+  gap: 20px;                /* Space between the cards */
+  justify-content: flex-start; /* Align cards to the left */
+  padding: 20px;            /* Padding around the container */
+  width: 100%;              /* Ensures container takes full width */
+  box-sizing: border-box;   /* Include padding in width calculation */
 }
 
 /* Certification card styles */
 .cert-card {
   display: flex;
   background: var(--content-bg);
-  border-radius: 15px; /* Rounded corners */
+  border-radius: 15px;      /* Rounded corners */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Soft shadow */
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   overflow: hidden;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-  width: 400px;  /* Set width for the cards */
-  height: 300px; /* Set height */
+  width: 400px;             /* Set width for the cards */
+  height: 300px;            /* Set height */
   opacity: 0;
   animation: fadeIn 0.5s ease-in-out forwards;
 }
