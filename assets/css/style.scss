@@ -186,18 +186,6 @@
   gap: 25px;
   width: max-content;
   animation: scrollInfinite 20s linear infinite;
-  will-change: transform; /* Helps smoothen the animation */
-  position: absolute;
-}
-
-/* Duplicate the cards container for seamless scrolling */
-.cert-cards-container:after {
-  content: '';
-  display: flex;
-  gap: 25px;
-  width: max-content;
-  margin-left: 50px; /* Adjust depending on the number of cards and gap */
-  visibility: hidden;
 }
 
 /* Certification card styles */
@@ -239,27 +227,21 @@
   transition: transform 0.5s ease-in-out;
 }
 
-/* Hover effect on image: Scales and rotates the image */
 .cert-card:hover .cert-card-image img {
   transform: scale(1.1) rotate(2deg);
 }
 
 /* Infinite scrolling animation */
 @keyframes scrollInfinite {
-  0% {
+  from {
     transform: translateX(0);
   }
-  100% {
-    transform: translateX(-100%);
+  to {
+    transform: translateX(-50%);
   }
 }
 
-/* Pause animation on hover over the image */
-.cert-card-image:hover {
-  animation-play-state: paused; /* Pause the scrolling animation when hovering the image */
-}
-
-/* Pause animation on hover over the card wrapper */
+/* Pause animation on hover */
 .cert-cards-wrapper:hover .cert-cards-container {
   animation-play-state: paused;
 }
