@@ -170,7 +170,7 @@
   display: block;
 }
 
-/* Wrapper to control overflow and create smooth back-and-forth scrolling */
+/* Wrapper to control overflow and create smooth scrolling */
 .cert-cards-wrapper {
   width: 100%;
   overflow: hidden;
@@ -191,7 +191,7 @@
   display: flex;
   gap: 20px;
   width: max-content;
-  animation: scrollPingPong 15s linear infinite alternate;
+  animation: scrollLeftToRight 15s linear infinite;
 }
 
 /* Certification card styles */
@@ -236,13 +236,13 @@
   transform: scale(1.1);
 }
 
-/* Back-and-forth scrolling animation */
-@keyframes scrollPingPong {
+/* Left-to-right scrolling animation */
+@keyframes scrollLeftToRight {
   from {
-    transform: translateX(0%);
+    transform: translateX(-100%);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(100%);
   }
 }
 
