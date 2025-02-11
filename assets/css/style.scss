@@ -203,7 +203,7 @@
   width: 300px; /* Adjust width as needed */
   height: 200px; /* Adjust height as needed */
   opacity: 1;
-  animation: fadeIn 0.5s ease-in-out forwards, scrollCards 10s linear infinite; /* Combined animations */
+  animation: fadeIn 0.5s ease-in-out forwards, scrollCards 20s linear infinite; /* Combined animations */
   flex-shrink: 0; /* Prevent cards from shrinking */
 }
 
@@ -228,10 +228,10 @@
 /* Scroll animation for horizontal movement (left to right) */
 @keyframes scrollCards {
   0% {
-    transform: translateX(-100%); /* Start off-screen to the left */
+    transform: translateX(0); /* Start at the original position */
   }
   100% {
-    transform: translateX(100%); /* Move off-screen to the right */
+    transform: translateX(calc(100% + 20px)); /* Move off-screen to the right (including gap) */
   }
 }
 
