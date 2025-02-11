@@ -186,6 +186,7 @@
   gap: 25px;
   width: max-content;
   animation: scrollInfinite 20s linear infinite;
+  will-change: transform; /* Helps smoothen the animation */
 }
 
 /* Certification card styles */
@@ -233,11 +234,11 @@
 
 /* Infinite scrolling animation */
 @keyframes scrollInfinite {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(-50%);
+  100% {
+    transform: translateX(-100%);
   }
 }
 
