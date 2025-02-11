@@ -239,42 +239,22 @@
   transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-/* Swallow and reappear animation */
-@keyframes swallowAndReappear {
+/* Continuous scroll animation */
+@keyframes scrollCards {
   0% {
     transform: translateX(-100%); /* Start off-screen to the left */
-    opacity: 1; /* Fully visible */
-  }
-  50% {
-    transform: translateX(50%); /* Move to the right */
-    opacity: 1; /* Fully visible */
   }
   100% {
     transform: translateX(100%); /* Move off-screen to the right */
-    opacity: 0; /* Fully transparent */
   }
 }
 
-/* Apply the swallow and reappear animation to each card */
-.cert-card {
-  animation: swallowAndReappear 10s linear infinite; /* Adjust duration as needed */
-}
-
-/* Delay animations for each card to create a staggered effect */
-.cert-card:nth-child(1) {
-  animation-delay: 0s;
-}
-.cert-card:nth-child(2) {
-  animation-delay: 2s;
-}
-.cert-card:nth-child(3) {
-  animation-delay: 4s;
-}
-.cert-card:nth-child(4) {
-  animation-delay: 6s;
+/* Apply the scroll animation to the container */
+.cert-cards-container {
+  animation: scrollCards 20s linear infinite; /* Adjust duration as needed */
 }
 
 /* Pause animation on hover */
-.cert-cards-container:hover .cert-card {
+.cert-cards-container:hover {
   animation-play-state: paused;
 }
