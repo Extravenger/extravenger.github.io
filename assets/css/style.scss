@@ -170,7 +170,7 @@
   display: block;
 }
 
-/* Wrapper to control overflow and create infinite scrolling */
+/* Wrapper to control overflow and create smooth back-and-forth scrolling */
 .cert-cards-wrapper {
   width: 100%;
   overflow: hidden;
@@ -191,15 +191,7 @@
   display: flex;
   gap: 20px;
   width: max-content;
-  animation: scrollInfinite 20s linear infinite;
-}
-
-/* Duplicate content for seamless effect */
-.cert-cards-container::after {
-  content: "";
-  display: flex;
-  width: 100%;
-  min-width: 100%;
+  animation: scrollPingPong 15s linear infinite alternate;
 }
 
 /* Certification card styles */
@@ -215,7 +207,7 @@
   width: 400px;
   height: 300px;
   flex-shrink: 0;
-  opacity: 1; /* Remove fade-in animation restart */
+  opacity: 1;
 }
 
 /* Hover effect */
@@ -244,13 +236,13 @@
   transform: scale(1.1);
 }
 
-/* True Infinite Scrolling (Left to Right) */
-@keyframes scrollInfinite {
+/* Back-and-forth scrolling animation */
+@keyframes scrollPingPong {
   from {
-    transform: translateX(-50%);
+    transform: translateX(0%);
   }
   to {
-    transform: translateX(0%);
+    transform: translateX(-50%);
   }
 }
 
