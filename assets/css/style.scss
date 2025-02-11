@@ -175,13 +175,15 @@
   width: 100%;
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: center; /* Center the animation */
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 20%,
-    black 80%,
+    black 30%,
+    black 70%,
     transparent 100%
-  ); /* Fade effect on edges */
+  ); /* Swallowed effect in the middle */
 }
 
 /* Container that holds all cards */
@@ -257,13 +259,13 @@
 .cert-card:nth-child(7) { animation-delay: 1.4s; }
 .cert-card:nth-child(8) { animation-delay: 1.6s; }
 
-/* Infinite scrolling animation */
+/* Infinite scrolling animation (Left to Right) */
 @keyframes scrollInfinite {
   from {
-    transform: translateX(0);
+    transform: translateX(-50%);
   }
   to {
-    transform: translateX(-50%);
+    transform: translateX(0);
   }
 }
 
