@@ -33,13 +33,25 @@
 
 /* Flex container for text and image */
 .post-card-content {
-  display: flex;
-  flex: 1;
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
 }
 
-/* Text section */
+/* Ensure image is always on the right */
+.post-card-image {
+  width: 50%;
+  height: 100%;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-left: 1px solid var(--border-color);
+  order: 2 !important;  /* Moves image to the right */
+}
+
+/* Ensure text is always on the left */
 .post-text {
   flex: 1;
   display: flex;
@@ -47,17 +59,10 @@
   justify-content: center;
   padding: 15px;
   height: 100%;
+  order: 1 !important;  /* Moves text to the left */
 }
 
-/* Image section */
-.post-card-image {
-  width: 50%;
-  height: 100%;
-  flex-shrink: 0;
-  overflow: hidden;
-  border-left: 1px solid var(--border-color);
-}
-
+/* Image styling */
 .post-card-image img {
   width: 100%;
   height: 100%;
@@ -83,20 +88,4 @@
 .post-excerpt {
   font-size: 1rem;
   color: var(--text-color);
-}
-
-/* ✅ Force the image to always be on the right */
-.image-right {
-  display: flex !important;
-  flex-direction: row-reverse !important;
-  align-items: center; /* Keeps alignment consistent */
-  justify-content: space-between;
-}
-
-.post-card-image {
-  order: 2 !important; /* Image moves to the right */
-}
-
-.post-text {
-  order: 1 !important; /* Text moves to the left */
 }
