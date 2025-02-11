@@ -177,8 +177,9 @@
   position: relative;
   display: flex;
   justify-content: center;
-  mask-image: linear-gradient(to left, transparent 5%, black 30%, black 70%, transparent 95%); /* Keeps the left-to-right gradient effect */
-  margin: 0 auto; /* Center the container */
+  align-items: center; /* Vertically center the content */
+  margin: 0 auto; /* Center the wrapper */
+  height: 400px; /* Fix the height so it doesn't overflow */
 }
 
 /* Container holding all cards */
@@ -186,8 +187,7 @@
   display: flex;
   gap: 25px;
   width: max-content;
-  position: absolute; /* Absolute positioning allows cards to go beyond the container */
-  animation: scrollInfinite 20s linear infinite;
+  animation: bounceUpDown 3s ease-in-out infinite; /* Apply the bouncing animation */
 }
 
 /* Certification card styles */
@@ -233,29 +233,20 @@
   transform: scale(1.1) rotate(2deg);
 }
 
-/* Infinite scrolling animation */
-@keyframes scrollInfinite {
-  from {
-    transform: translateX(0); /* Start from the leftmost position */
+/* Floating animation for cards */
+@keyframes bounceUpDown {
+  0% {
+    transform: translateY(0); /* Start at the normal position */
   }
-  to {
-    transform: translateX(-50%); /* Scroll to the left, hiding the first set of cards */
+  50% {
+    transform: translateY(-15px); /* Move up */
+  }
+  100% {
+    transform: translateY(0); /* Return to normal position */
   }
 }
 
 /* Pause animation on hover */
 .cert-cards-wrapper:hover .cert-cards-container {
   animation-play-state: paused;
-}
-
-/* Duplicate cards for infinite scroll */
-.cert-cards-container::after {
-  content: "";
-  display: flex;
-  gap: 25px;
-  width: max-content;
-  flex-shrink: 0;
-  animation: inherit; /* Use the same animation as the main container */
-  position: absolute;
-  left: 100%;
 }
