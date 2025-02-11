@@ -217,7 +217,6 @@
   height: 100%;
   overflow: hidden;
   position: relative;
-  mask-image: radial-gradient(circle, transparent 50%, black 100%);
 }
 
 .cert-card-image img {
@@ -228,9 +227,9 @@
   transition: transform 1s ease, opacity 1s ease;
 }
 
-/* Swallowed animation on hover */
+/* Swallowed animation on hover: image moves towards the center and fades out */
 .cert-card:hover .cert-card-image img {
-  transform: scale(0.5); /* Image shrinks */
+  transform: scale(1.1) translateX(-50%) translateY(-50%); /* Moves to the center */
   opacity: 0; /* Fades out */
 }
 
