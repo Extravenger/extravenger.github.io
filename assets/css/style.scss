@@ -170,28 +170,22 @@
   display: block;
 }
 
-/* Wrapper to control overflow and create smooth back-and-forth scrolling */
+/* Wrapper to control overflow and create smooth scrolling */
 .cert-cards-wrapper {
   width: 100%;
   overflow: hidden;
   position: relative;
   display: flex;
-  justify-content: center; /* Center the animation */
-  mask-image: linear-gradient(
-    to right,
-    transparent 0%,
-    black 30%,
-    black 70%,
-    transparent 100%
-  ); /* Swallowed effect in the middle */
+  justify-content: center;
+  mask-image: linear-gradient(to right, transparent 5%, black 30%, black 70%, transparent 95%);
 }
 
-/* Container that holds all cards */
+/* Container holding all cards */
 .cert-cards-container {
   display: flex;
-  gap: 20px;
+  gap: 25px;
   width: max-content;
-  animation: scrollPingPong 15s linear infinite alternate;
+  animation: scrollInfinite 20s linear infinite;
 }
 
 /* Certification card styles */
@@ -200,7 +194,7 @@
   background: var(--content-bg);
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
   overflow: hidden;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -208,12 +202,13 @@
   height: 300px;
   flex-shrink: 0;
   opacity: 1;
+  perspective: 1000px;
 }
 
-/* Hover effect */
+/* Hover effect: Adds depth and glow */
 .cert-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px) rotateY(5deg);
+  box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4); /* Cyan glow */
 }
 
 /* Image styling */
@@ -229,17 +224,17 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 
 .cert-card:hover .cert-card-image img {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(2deg);
 }
 
-/* Back-and-forth scrolling animation */
-@keyframes scrollPingPong {
+/* Infinite scrolling animation */
+@keyframes scrollInfinite {
   from {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   to {
     transform: translateX(-50%);
