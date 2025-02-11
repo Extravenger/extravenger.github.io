@@ -242,20 +242,16 @@
 /* Swallow and reappear animation */
 @keyframes swallowAndReappear {
   0% {
-    transform: translateX(0); /* Start from the left */
+    transform: translateX(-100%); /* Start off-screen to the left */
     opacity: 1; /* Fully visible */
   }
   50% {
-    transform: translateX(50%) scale(0.5); /* Move to the center and shrink */
-    opacity: 0; /* Fully transparent */
-  }
-  51% {
-    transform: translateX(-100%) scale(0.5); /* Reset to the left */
-    opacity: 0; /* Still transparent */
+    transform: translateX(50%); /* Move to the right */
+    opacity: 1; /* Fully visible */
   }
   100% {
-    transform: translateX(0) scale(1); /* Move back to the original position */
-    opacity: 1; /* Fully visible */
+    transform: translateX(100%); /* Move off-screen to the right */
+    opacity: 0; /* Fully transparent */
   }
 }
 
