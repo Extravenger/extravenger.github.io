@@ -181,6 +181,13 @@
   box-sizing: border-box; /* Include padding in width calculation */
   overflow: hidden; /* Hide overflow to create a seamless loop */
   position: relative; /* Required for animation */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 20%,
+    black 80%,
+    transparent 100%
+  ); /* Fade effect on sides */
 }
 
 /* Certification card styles */
@@ -242,10 +249,10 @@
 /* Scroll animation */
 @keyframes scrollCards {
   0% {
-    transform: translateX(0); /* Start from the left */
+    transform: translateX(-100%); /* Start off-screen to the left */
   }
   100% {
-    transform: translateX(-100%); /* Move to the right */
+    transform: translateX(100%); /* Move off-screen to the right */
   }
 }
 
