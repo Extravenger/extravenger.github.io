@@ -184,8 +184,8 @@
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 20%,
-    black 80%,
+    black 10%,
+    black 90%,
     transparent 100%
   ); /* Fade effect on sides */
 }
@@ -249,16 +249,21 @@
 /* Scroll animation */
 @keyframes scrollCards {
   0% {
-    transform: translateX(-100%); /* Start off-screen to the left */
+    transform: translateX(calc(-50% - 150px)); /* Start closer to the middle */
   }
   100% {
-    transform: translateX(100%); /* Move off-screen to the right */
+    transform: translateX(calc(50% - 150px)); /* End before the far right */
   }
 }
 
 /* Apply the scroll animation to the container */
 .cert-cards-container {
   animation: scrollCards 20s linear infinite; /* Adjust duration as needed */
+}
+
+/* Pause animation on hover */
+.cert-cards-container:hover {
+  animation-play-state: paused;
 }
 
 /* Pause animation on hover */
