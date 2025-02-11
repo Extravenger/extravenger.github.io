@@ -193,7 +193,7 @@
 /* Wrapper for continuous scrolling */
 .cert-cards-wrapper {
   display: flex;
-  animation: scrollCards 30s linear infinite; /* Adjust duration for smoother/fast motion */
+  animation: scrollCards 20s linear infinite; /* Adjust the duration to control the speed */
 }
 
 /* Certification card styles */
