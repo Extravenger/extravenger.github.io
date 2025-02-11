@@ -14,27 +14,41 @@
 .post-card {
   display: flex;
   background: var(--content-bg);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  border-radius: 15px; /* Increased border radius */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   overflow: hidden;
   padding: 0;
-  border: 1px solid white;
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
   width: 700px;
   height: 220px;
   margin: 10px auto; /* Centers the card horizontally */
+  opacity: 0; /* For fade-in animation */
+  animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 /* Hover effect */
 .post-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Flex container for text and image */
 .post-card-content {
   display: flex !important;
-  flex-direction: row !important;  /* Changed to row */
+  flex-direction: row !important; /* Changed to row */
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -47,7 +61,20 @@
   flex-shrink: 0;
   overflow: hidden;
   border-left: 1px solid var(--border-color);
-  order: 2 !important;  /* Image remains on the right */
+  order: 2 !important; /* Image remains on the right */
+  position: relative;
+}
+
+/* Gradient overlay for the image */
+.post-card-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.3));
+  z-index: 1;
 }
 
 .post-text {
@@ -55,9 +82,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 15px;
+  padding: 20px; /* Increased padding */
   height: 100%;
-  order: 1 !important;  /* Text remains on the left */
+  order: 1 !important; /* Text remains on the left */
+  position: relative; /* For positioning the button */
 }
 
 /* Image styling */
@@ -66,24 +94,71 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for the image */
+.post-card:hover .post-card-image img {
+  transform: scale(1.05); /* Slight zoom on hover */
 }
 
 /* Styles for the title */
 .post-card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 5px;
-  word-wrap: break-word;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  transition: color 0.2s ease-in-out;
+}
+
+/* Hover effect for the title */
+.post-card:hover h2 {
+  color: var(--accent-color); /* Change to your accent color */
 }
 
 /* Metadata styling */
 .post-meta {
   font-size: 0.9rem;
   color: var(--text-secondary);
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  display: flex;
+  gap: 10px; /* Spacing between metadata items */
+}
+
+.post-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 /* Post excerpt */
 .post-excerpt {
   font-size: 1rem;
   color: var(--text-color);
+  line-height: 1.5;
+  transition: color 0.2s ease-in-out;
+}
+
+/* Hover effect for the excerpt */
+.post-card:hover .post-excerpt {
+  color: var(--text-secondary); /* Change color on hover */
+}
+
+/* Read More button */
+.read-more-button {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: var(--accent-color);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: background 0.2s ease-in-out;
+}
+
+/* Hover effect for the button */
+.read-more-button:hover {
+  background: var(--accent-hover-color); /* Darker shade for hover */
 }
