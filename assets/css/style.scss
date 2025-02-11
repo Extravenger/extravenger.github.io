@@ -191,7 +191,7 @@
   display: flex;
   gap: 20px;
   width: max-content; /* Allows infinite scrolling */
-  animation: scrollInfinite 15s linear infinite;
+  animation: scrollInfinite 20s linear infinite;
 }
 
 /* Certification card styles */
@@ -206,9 +206,8 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   width: 400px;
   height: 300px;
-  opacity: 0; /* Hidden initially for fade-in effect */
   flex-shrink: 0;
-  animation: fadeInStagger 1s ease-in-out forwards;
+  opacity: 1; /* Remove fade-in animation restart */
 }
 
 /* Hover effect */
@@ -237,36 +236,20 @@
   transform: scale(1.1);
 }
 
-/* Staggered fade-in effect for initial page load */
-@keyframes fadeInStagger {
+/* Infinite seamless scrolling animation (Left to Right) */
+@keyframes scrollInfinite {
   from {
-    opacity: 0;
-    transform: translateY(20px);
+    transform: translateX(-100%);
   }
   to {
-    opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0%);
   }
 }
 
-/* Apply staggered delay */
-.cert-card:nth-child(1) { animation-delay: 0.2s; }
-.cert-card:nth-child(2) { animation-delay: 0.4s; }
-.cert-card:nth-child(3) { animation-delay: 0.6s; }
-.cert-card:nth-child(4) { animation-delay: 0.8s; }
-.cert-card:nth-child(5) { animation-delay: 1s; }
-.cert-card:nth-child(6) { animation-delay: 1.2s; }
-.cert-card:nth-child(7) { animation-delay: 1.4s; }
-.cert-card:nth-child(8) { animation-delay: 1.6s; }
-
-/* Infinite scrolling animation (Left to Right) */
-@keyframes scrollInfinite {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
+/* Duplicate the content for seamless looping */
+.cert-cards-container::after {
+  content: "";
+  display: flex;
 }
 
 /* Pause animation on hover */
