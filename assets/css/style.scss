@@ -86,8 +86,8 @@
 }
 
 /* Default layout (image left, text right) */
-.image-left {
-  flex-direction: row;
+.image-right {
+  flex-direction: row-reverse;
 }
 
 /* Reverse layout (image right, text left) */
