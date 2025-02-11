@@ -164,11 +164,19 @@
 }
 
 /* Makes the entire cards clickable */
-/* Makes the entire cards clickable */
 .cert-card-link {
   text-decoration: none;
   color: inherit;
   display: block;
+}
+
+/* Container for the cert cards */
+.cert-cards-container {
+  display: flex;          /* Align items horizontally */
+  flex-wrap: wrap;        /* Allow wrapping if needed */
+  gap: 20px;              /* Space between cards */
+  justify-content: flex-start; /* Align to the left */
+  padding: 20px;          /* Padding around the container */
 }
 
 /* Certification card styles */
@@ -181,9 +189,8 @@
   overflow: hidden;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
-  width: 400px;  /* Set width to ensure a square layout */
-  height: 300px; /* Set height equal to width */
-  margin: 10px;
+  width: 400px;  /* Set width for the cards */
+  height: 300px; /* Set height */
   opacity: 0;
   animation: fadeIn 0.5s ease-in-out forwards;
 }
@@ -227,7 +234,3 @@
   transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
-/* Hover effect for the image */
-.cert-card:hover .cert-card-image img {
-  transform: scale(1.05); /* Slight zoom on hover */
-}
