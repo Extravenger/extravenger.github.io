@@ -1,12 +1,23 @@
 ---
 layout: page
 title: Certifications
-permalink: /certs/
+permalink: /cert/
 ---
 
-## My Certifications 🏆
+## My Certifications
 
-Here are some of the certifications I've earned:
+<div class="cert-card-link">
+  <div class="cert-card">
+    <div class="cert-card-content">
+      <div class="cert-card-text">
+        <h2>Certification Name</h2>
+        <p>Description of the certification...</p>
+      </div>
+      <div class="cert-card-image">
+        <img src="/assets/img/amit-OSEP.png" alt="Certification Image">
+      </div>
+    </div>
+  </div>
+</div>
 
-- Offensive Security Experienced Penetration Tester (OSEP)
-- Other cool certs...
+<!-- Repeat the above structure for more certifications -->
