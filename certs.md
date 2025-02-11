@@ -21,8 +21,7 @@ permalink: /certs/
       </div>
     </div>
   </a>
-</div>
-
+  
   <a href="#" class="cert-card-link">
     <div class="cert-card">
       <div class="cert-card-image">
@@ -30,5 +29,6 @@ permalink: /certs/
       </div>
     </div>
   </a>
+  
 </div>
 
