@@ -177,7 +177,7 @@
   gap: 20px; /* Space between the cards */
   justify-content: flex-start; /* Align cards to the left */
   padding: 20px; /* Padding around the container */
-  width: max-content; /* Allow the container to expand to fit all cards */
+  width: 100%; /* Ensures container takes full width */
   box-sizing: border-box; /* Include padding in width calculation */
   overflow: hidden; /* Hide overflow to create a seamless loop */
   position: relative; /* Required for animation */
@@ -188,7 +188,6 @@
     black 80%,
     transparent 100%
   ); /* Fade effect on sides */
-  animation: scrollCards 20s linear infinite; /* Animate the entire container */
 }
 
 /* Certification card styles */
@@ -204,6 +203,7 @@
   width: 300px; /* Adjust width as needed */
   height: 200px; /* Adjust height as needed */
   opacity: 1;
+  animation: fadeIn 0.5s ease-in-out forwards, scrollCards 10s linear infinite; /* Combined animations */
   flex-shrink: 0; /* Prevent cards from shrinking */
 }
 
@@ -228,15 +228,43 @@
 /* Scroll animation for horizontal movement (left to right) */
 @keyframes scrollCards {
   0% {
-    transform: translateX(0); /* Start at the original position */
+    transform: translateX(-100%); /* Start off-screen to the left */
+    opacity: 1; /* Fully visible */
+  }
+  50% {
+    transform: translateX(0); /* Move to the center of the screen */
+    opacity: 1; /* Fully visible */
   }
   100% {
-    transform: translateX(calc(-100% - 20px)); /* Move off-screen to the left (including gap) */
+    transform: translateX(100%); /* Move off-screen to the right */
+    opacity: 1; /* Keep visible */
+  }
+  100.1% {
+    transform: translateX(-100%); /* Immediately reappear from the left */
   }
 }
 
+/* Apply the animation to each card */
+.cert-card {
+  animation: scrollCards 10s linear infinite; /* Adjust duration as needed */
+}
+
+/* Delay animations for each card to create a staggered effect */
+.cert-card:nth-child(1) {
+  animation-delay: 0s;
+}
+.cert-card:nth-child(2) {
+  animation-delay: 2s;
+}
+.cert-card:nth-child(3) {
+  animation-delay: 4s;
+}
+.cert-card:nth-child(4) {
+  animation-delay: 6s;
+}
+
 /* Pause animation on hover */
-.cert-cards-container:hover {
+.cert-cards-container:hover .cert-card {
   animation-play-state: paused;
 }
 
@@ -254,11 +282,6 @@
   object-fit: fill; /* Ensures the image fully fills the square */
   display: block;
   transition: transform 0.3s ease-in-out;
-}
-
-/* Hover effect for the image */
-.cert-card:hover .cert-card-image img {
-  transform: scale(1.05); /* Slight zoom effect on hover */
 }
 
 /* Hover effect for the image */
