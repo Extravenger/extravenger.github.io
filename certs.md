@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Certifications
-permalink: /cert/
+permalink: /certs/
 ---
 
 ## My Certifications
