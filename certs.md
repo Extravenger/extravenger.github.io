@@ -29,6 +29,14 @@ permalink: /certs/
       </div>
     </div>
   </a>
+
+  <a href="#" class="cert-card-link">
+  <div class="cert-card">
+    <div class="cert-card-image">
+      <img src="/assets/img/certs/amit-EJPT.png" alt="Cert 3">
+    </div>
+  </div>
+  </a>
   
 </div>
 
