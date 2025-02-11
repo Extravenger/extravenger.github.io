@@ -164,6 +164,7 @@
 }
 
 /* Makes the entire cards clickable */
+/* Makes the entire cards clickable */
 .cert-card-link {
   text-decoration: none;
   color: inherit;
@@ -216,7 +217,7 @@
 .cert-card-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image covers the square */
+  object-fit: fill; /* Ensures the image fully fills the square */
   display: block;
   transition: transform 0.3s ease-in-out;
 }
