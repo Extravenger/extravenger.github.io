@@ -19,7 +19,7 @@
   transition: transform 0.2s ease-in-out;
   overflow: hidden;
   padding: 0;
-  border: 1px solid white; /* Change this line to set the border color to white */
+  border: 1px solid white;
   width: 700px;
   height: 220px;
   margin: 10px;
@@ -85,7 +85,18 @@
   color: var(--text-color);
 }
 
-/* Default layout (image left, text right) */
+/* ✅ Force the image to always be on the right */
 .image-right {
-  flex-direction: row-reverse;
+  display: flex !important;
+  flex-direction: row-reverse !important;
+  align-items: center; /* Keeps alignment consistent */
+  justify-content: space-between;
+}
+
+.post-card-image {
+  order: 2 !important; /* Image moves to the right */
+}
+
+.post-text {
+  order: 1 !important; /* Text moves to the left */
 }
