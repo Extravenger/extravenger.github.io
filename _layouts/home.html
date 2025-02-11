@@ -13,9 +13,14 @@ home: true
           <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
           <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
         </div>
+        
         {% if post.image %}
         <div class="post-card-image">
           <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+        </div>
+        {% else %}
+        <div class="post-card-image">
+          <img src="/assets/default-image.jpg" alt="Default Image">
         </div>
         {% endif %}
       </div>
