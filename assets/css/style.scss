@@ -237,7 +237,10 @@
   }
   100% {
     transform: translateX(100%); /* Move off-screen to the right */
-    opacity: 0; /* Fully transparent */
+    opacity: 1; /* Keep visible */
+  }
+  100.1% {
+    transform: translateX(-100%); /* Immediately reappear from the left */
   }
 }
 
