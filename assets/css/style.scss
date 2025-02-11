@@ -211,12 +211,13 @@
   box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4); /* Cyan glow */
 }
 
-/* Image styling */
+/* Image styling with swallowed effect */
 .cert-card-image {
   width: 100%;
   height: 100%;
   overflow: hidden;
   position: relative;
+  mask-image: radial-gradient(circle, transparent 50%, black 100%);
 }
 
 .cert-card-image img {
@@ -224,11 +225,13 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 1s ease, opacity 1s ease;
 }
 
+/* Swallowed animation on hover */
 .cert-card:hover .cert-card-image img {
-  transform: scale(1.1) rotate(2deg);
+  transform: scale(0.5); /* Image shrinks */
+  opacity: 0; /* Fades out */
 }
 
 /* Infinite scrolling animation */
