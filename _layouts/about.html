@@ -35,8 +35,8 @@ layout: compress
 
         <!-- Title and description with animation classes -->
         <div class="text-container">
-          <h1 id="title" class="fade-slide"></h1>
-          <p id="description" class="fade-slide"></p>
+          <h1 id="title" class="fade-slide"> </h1>
+          <p id="description" class="fade-slide"> </p>
         </div>
       </div>
     </main>
@@ -54,9 +54,11 @@ layout: compress
     titleElement.innerHTML = title;
     descriptionElement.innerHTML = text;
 
-    // Trigger animation by adding the class
-    titleElement.classList.add("visible");
-    descriptionElement.classList.add("visible");
+    // Trigger animation after a short delay to ensure rendering
+    setTimeout(() => {
+      titleElement.classList.add("visible");
+      descriptionElement.classList.add("visible");
+    }, 100); 
   </script>
 
   <style>
