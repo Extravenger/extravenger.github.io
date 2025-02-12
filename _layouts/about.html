@@ -33,10 +33,10 @@ layout: compress
         <!-- Image with rounded edges -->
         <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" id="profile-image" class="profile-image" />
 
-        <!-- Title and description with fixed heights -->
+        <!-- Title and description with animation classes -->
         <div class="text-container">
-          <h1 id="title"></h1>
-          <p id="description"></p>
+          <h1 id="title" class="fade-slide"></h1>
+          <p id="description" class="fade-slide"></p>
         </div>
       </div>
     </main>
@@ -54,46 +54,25 @@ layout: compress
 
     let stepIndex = 0;
 
-    function typeEffect(element, text, callback) {
-      let i = 0;
-      element.innerHTML = "";
-      const interval = setInterval(() => {
-        element.innerHTML += text[i];
-        i++;
-        if (i === text.length) {
-          clearInterval(interval);
-          setTimeout(callback, 1000);
-        }
-      }, 70);
-    }
+    function showText(title, text) {
+      titleElement.innerHTML = title;
+      descriptionElement.innerHTML = text;
 
-    function deleteEffect(element, callback) {
-      const text = element.innerHTML;
-      let i = text.length;
-      const interval = setInterval(() => {
-        element.innerHTML = text.substring(0, i);
-        i--;
-        if (i < 0) {
-          clearInterval(interval);
-          setTimeout(callback, 500);
-        }
-      }, 30);
+      // Trigger animation by adding the class
+      titleElement.classList.add("visible");
+      descriptionElement.classList.add("visible");
+
+      setTimeout(() => {
+        titleElement.classList.remove("visible");
+        descriptionElement.classList.remove("visible");
+        stepIndex = (stepIndex + 1) % steps.length;
+        setTimeout(cycleAnimation, 1000);
+      }, 4000); // Display for 4 seconds
     }
 
     function cycleAnimation() {
       const { title, text } = steps[stepIndex];
-      typeEffect(titleElement, title, () => {
-        typeEffect(descriptionElement, text, () => {
-          setTimeout(() => {
-            deleteEffect(titleElement, () => {
-              deleteEffect(descriptionElement, () => {
-                stepIndex = (stepIndex + 1) % steps.length;
-                cycleAnimation();
-              });
-            });
-          }, 2000);
-        });
-      });
+      showText(title, text);
     }
 
     cycleAnimation();
@@ -102,9 +81,9 @@ layout: compress
   <style>
     /* Prevents page from scrolling */
     html, body {
-      height: 100%;  /* Ensure the body takes full height */
-      margin: 0;  /* Remove default margin */
-      overflow: hidden; /* Prevent scroll */
+      height: 100%; 
+      margin: 0;
+      overflow: hidden;
     }
 
     .wrapper {
@@ -112,7 +91,7 @@ layout: compress
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;  /* Ensure wrapper takes full height */
+      height: 100%; 
       text-align: center;
     }
 
@@ -122,30 +101,41 @@ layout: compress
       align-items: center;
     }
 
-    /* Fixed height for text containers */
     .text-container {
-      min-height: 120px; /* Ensures enough space for title and description */
+      min-height: 120px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
 
     #title {
-      margin-bottom: 10px; /* Adds space between title and description */
-      font-size: 1.5rem; /* Adjust font size as needed */
+      margin-bottom: 10px;
+      font-size: 1.5rem;
     }
 
     #description {
-      font-size: 1rem; /* Adjust font size as needed */
+      font-size: 1rem;
     }
 
-    /* Add styling for the image with rounded edges */
+    /* Image Styling */
     .profile-image {
-      max-width: 350px; /* Adjust the size as needed */
+      max-width: 350px;
       height: auto;
-      margin-bottom: 20px; /* Adds space between the image and text */
-      border-radius: 50%; /* This makes the image round */
-      border: 2px solid #fff; /* Optional: Adds a border around the image */
+      margin-bottom: 20px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    /* Animation Styling */
+    .fade-slide {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-slide.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 
