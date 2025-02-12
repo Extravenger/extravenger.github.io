@@ -9,7 +9,6 @@
   flex-direction: column;
   justify-content: center; /* Center vertically */
   align-items: center; /* Center horizontally */
-  height: 100vh; /* Full viewport height */
   margin: 0 auto; /* Center horizontally */
   padding: 20px; /* Optional padding */
 }
@@ -27,6 +26,7 @@
   text-decoration: none;
   color: inherit; /* Inherit color from parent */
 }
+
 
 /* Makes the entire cards clickable */
 .cert-card-link {
