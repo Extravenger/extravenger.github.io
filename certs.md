@@ -5,6 +5,15 @@ permalink: /certs/
 ---
 
 <div class="cert-cards-container">
+
+  <a href="#" class="cert-card-link">
+    <div class="cert-card">
+      <div class="cert-card-image">
+        <img src="/assets/img/certs/ITSAFE.png" alt="Cert 1">
+      </div>
+    </div>
+  </a>
+  
   <a href="#" class="cert-card-link">
     <div class="cert-card">
       <div class="cert-card-image">
