@@ -13,6 +13,15 @@ permalink: /certs/
     </div>
   </a>
 
+  <a href="#" class="cert-card-link">
+    <div class="cert-card">
+      <div class="cert-card-image">
+        <img src="/assets/img/certs/THM.png" alt="Cert 2">
+      </div>
+    </div>
+  </a>
+
+
   <!-- Repeat for other certifications -->
   <a href="#" class="cert-card-link">
     <div class="cert-card">
@@ -26,6 +35,14 @@ permalink: /certs/
     <div class="cert-card">
       <div class="cert-card-image">
         <img src="/assets/img/certs/CRTP.png" alt="Cert 3">
+      </div>
+    </div>
+  </a>
+
+  <a href="#" class="cert-card-link">
+    <div class="cert-card">
+      <div class="cert-card-image">
+        <img src="/assets/img/certs/HTB-Offshore.png" alt="Cert 2">
       </div>
     </div>
   </a>
