@@ -33,8 +33,11 @@ layout: compress
         <!-- Image with rounded edges -->
         <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" id="profile-image" class="profile-image" />
 
-        <h1 id="title"></h1>
-        <p id="description"></p>
+        <!-- Title and description with fixed heights -->
+        <div class="text-container">
+          <h1 id="title"></h1>
+          <p id="description"></p>
+        </div>
       </div>
     </main>
     {% include footer.html %}
@@ -120,8 +123,21 @@ layout: compress
       align-items: center;
     }
 
+    /* Fixed height for text containers */
+    .text-container {
+      height: 120px; /* Adjust this value based on your content */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
     #title {
       margin-bottom: 10px; /* Adds space between title and description */
+      font-size: 1.5rem; /* Adjust font size as needed */
+    }
+
+    #description {
+      font-size: 1rem; /* Adjust font size as needed */
     }
 
     /* Add styling for the image with rounded edges */
