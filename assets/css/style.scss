@@ -173,13 +173,12 @@
 /* Wrapper to control the grid layout */
 .cert-cards-wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+  grid-template-columns: 1fr; /* One image per row */
   gap: 30px; /* Space between images */
   width: 100%; /* Ensure it spans the full width */
   box-sizing: border-box;
   padding: 20px; /* Optional, for some padding around the grid */
   grid-auto-rows: 400px; /* Ensure consistent row height */
-  grid-template-rows: auto; /* Ensure rows adjust dynamically */
 }
 
 /* Certification card styles */
@@ -209,7 +208,7 @@
 .cert-card-image img {
   width: 100%; /* Ensure image fills the width */
   height: 100%; /* Ensure image fills the height */
-  object-fit: cover; /* Cover ensures images fill the square without distorting */
+  object-fit: cover; /* Ensure images cover the square without distorting */
   display: block;
 }
 
