@@ -4,6 +4,8 @@ title: Certifications
 permalink: /certs/
 ---
 
+<h2 class="certs-title">My Accomplishments Throughout The Years</h2>
+
 <div class="cert-cards-container">
 
   <a href="#" class="cert-card-link">
