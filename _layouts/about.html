@@ -56,13 +56,14 @@ layout: compress
 
     function typeEffect(element, text, callback) {
       let i = 0;
-      element.innerHTML = "";
+      element.innerHTML = "";  // Clear previous content
       const cursor = document.createElement("span");
-      cursor.classList.add("cursor");  // Add cursor as a span
-      element.appendChild(cursor);  // Initially add the cursor at the end
+      cursor.classList.add("cursor");  // Add cursor span for typing effect
+      element.appendChild(cursor);  // Attach cursor span at the end
+
       const interval = setInterval(() => {
-        element.innerHTML = text.substring(0, i);  // Update text
-        element.appendChild(cursor);  // Reattach cursor at the end
+        element.innerHTML = text.substring(0, i);  // Update typed text
+        element.appendChild(cursor);  // Reattach cursor after each character
         i++;
         if (i === text.length) {
           clearInterval(interval);
@@ -140,6 +141,7 @@ layout: compress
       height: 30px; /* Ensures the height stays fixed */
       line-height: 30px; /* Centers the text vertically */
       display: inline-block;
+      position: relative;  /* Ensure positioning context for cursor */
     }
 
     #description {
