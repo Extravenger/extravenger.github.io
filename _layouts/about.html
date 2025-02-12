@@ -56,21 +56,15 @@ layout: compress
 
     function typeEffect(element, text, callback) {
       let i = 0;
-      element.innerHTML = "";  // Clear previous content
-
-      const cursor = document.createElement("span");
-      cursor.classList.add("cursor");  // Add cursor span for typing effect
-      element.appendChild(cursor);  // Attach cursor span at the end
-
+      element.innerHTML = "";
       const interval = setInterval(() => {
-        element.innerHTML = text.substring(0, i);  // Update typed text
-        element.appendChild(cursor);  // Reattach cursor after each character
+        element.innerHTML += text[i];
         i++;
         if (i === text.length) {
           clearInterval(interval);
           setTimeout(callback, 1000);
         }
-      }, 70);  // Speed of typing
+      }, 70);
     }
 
     function deleteEffect(element, callback) {
@@ -83,7 +77,7 @@ layout: compress
           clearInterval(interval);
           setTimeout(callback, 500);
         }
-      }, 30);  // Speed of deleting
+      }, 30);
     }
 
     function cycleAnimation() {
@@ -139,16 +133,10 @@ layout: compress
     #title {
       margin-bottom: 10px; /* Adds space between title and description */
       font-size: 1.5rem; /* Adjust font size as needed */
-      height: 30px; /* Ensures the height stays fixed */
-      line-height: 30px; /* Centers the text vertically */
-      display: inline-block;
-      position: relative;  /* Ensure positioning context for cursor */
-      color: #fff; /* Ensure text is visible (adjust color as needed) */
     }
 
     #description {
       font-size: 1rem; /* Adjust font size as needed */
-      color: #fff; /* Ensure text is visible (adjust color as needed) */
     }
 
     /* Add styling for the image with rounded edges */
@@ -158,23 +146,6 @@ layout: compress
       margin-bottom: 20px; /* Adds space between the image and text */
       border-radius: 50%; /* This makes the image round */
       border: 2px solid #fff; /* Optional: Adds a border around the image */
-    }
-
-    /* L-beam cursor animation */
-    .cursor {
-      display: inline-block;
-      width: 2px;  /* Thin vertical line */
-      height: 1.2em;  /* Height of the cursor */
-      background-color: #fff;  /* Color of the cursor */
-      margin-left: 2px;  /* Space after the text */
-      animation: blink 0.75s step-end infinite;
-      vertical-align: middle;  /* Align cursor with text */
-    }
-
-    @keyframes blink {
-      50% {
-        opacity: 0;
-      }
     }
   </style>
 
