@@ -6,7 +6,7 @@ home: true
 <h3 class="posts-item-note" aria-label="Recent Posts">Recent Posts</h3>
 
 <div class="posts-grid">
-  {%- for post in site.posts limit: site.number_of_posts -%}
+  {% for post in site.posts limit: site.number_of_posts %}
   <article class="post-card">
     <div class="post-card-content">
       <h4 class="post-card-title">
@@ -17,5 +17,5 @@ home: true
       <a href="{{ post.url }}" class="read-more-btn">Read More</a>
     </div>
   </article>
-  {%- endfor -%}
+  {% endfor %}
 </div>
