@@ -176,10 +176,10 @@
   grid-template-columns: repeat(3, 1fr); /* 3 images per row */
   gap: 25px; /* Space between images */
   width: 100%; /* Ensure it spans the full width */
-  max-width: 100%; /* Prevent any max-width issues */
   box-sizing: border-box;
   padding: 20px; /* Optional, for some padding around the grid */
   grid-auto-rows: 400px; /* Ensure consistent row height */
+  grid-template-rows: auto; /* Ensure rows adjust dynamically */
 }
 
 /* Certification card styles */
