@@ -32,43 +32,24 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.contact-form .input-group {
-  margin-bottom: 20px;
+.contact-info h2 {
+  font-size: 1.5em;
+  margin-bottom: 5px;
+  color: #6c63ff;
 }
 
-.contact-form label {
+.contact-info p {
   font-size: 1.1em;
   color: #333;
-  display: block;
-  margin-bottom: 5px;
 }
 
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 10px;
-  border: 2px solid #ddd;
-  border-radius: 5px;
-  font-size: 1em;
+.contact-info a {
+  color: #6c63ff;
+  text-decoration: none;
 }
 
-.contact-form textarea {
-  resize: vertical;
-}
-
-.contact-form button {
-  width: 100%;
-  padding: 15px;
-  background-color: #6c63ff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 1.1em;
-  cursor: pointer;
-}
-
-.contact-form button:hover {
-  background-color: #5b54e7;
+.contact-info a:hover {
+  text-decoration: underline;
 }
 
 .social-links {
@@ -95,6 +76,7 @@
 .social-links a:hover {
   text-decoration: underline;
 }
+
 
 /* Makes the entire cards clickable */
 .cert-card-link {
