@@ -178,6 +178,7 @@
   width: 100%;
   box-sizing: border-box;
   padding: 20px; /* Optional, for some padding around the grid */
+  grid-auto-rows: 400px; /* Ensure consistent row height */
 }
 
 /* Certification card styles */
