@@ -6,14 +6,14 @@
 /* Post Grid */
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Increase the width of the cards */
+  gap: 30px;
   margin-top: 20px;
 }
 
 /* Post Card */
 .post-card {
-  background-color: #fff;
+  background-color: #f7f7f7; /* Default Klise background color */
   border-radius: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -27,8 +27,10 @@
 
 .post-card-content {
   padding: 20px;
+  color: #333; /* Klise's default text color */
 }
 
+/* Post Title */
 .post-card-title {
   font-size: 1.5em;
   color: #333;
@@ -41,14 +43,17 @@
 }
 
 .post-card-title a:hover {
-  color: #007bff;
+  color: #0066cc; /* Klise's link color */
 }
 
+/* Post Date */
 .post-card-date {
   color: #888;
   font-size: 0.9em;
+  margin-bottom: 10px;
 }
 
+/* Post Excerpt */
 .post-card-excerpt {
   color: #555;
   margin-bottom: 20px;
@@ -58,7 +63,7 @@
 .read-more-btn {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #0066cc; /* Klise's button color */
   color: white;
   text-decoration: none;
   border-radius: 5px;
@@ -67,7 +72,7 @@
 }
 
 .read-more-btn:hover {
-  background-color: #0056b3;
+  background-color: #004d99; /* Darker shade for hover effect */
 }
 
 
