@@ -162,7 +162,6 @@
 .read-more-button:hover {
   background: var(--accent-hover-color); /* Darker shade for hover */
 }
-
 /* Makes the entire cards clickable */
 .cert-card-link {
   text-decoration: none;
@@ -170,27 +169,19 @@
   display: block;
 }
 
-/* Wrapper to control overflow and create smooth scrolling */
+/* Wrapper for the cards */
 .cert-cards-wrapper {
   width: 100%;
-  overflow: hidden;
-  position: relative;
   display: flex;
-  justify-content: flex-start;
-  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
-}
-
-/* Container holding all cards */
-.cert-cards-container {
-  display: flex;
+  flex-wrap: wrap;
   gap: 25px;
-  width: max-content;
-  animation: scrollInfinite 20s linear infinite;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* Certification card styles */
 .cert-card {
-  display: flex;
   background: var(--content-bg);
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -198,16 +189,15 @@
   overflow: hidden;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 500px;
+  width: calc(33.33% - 20px); /* 3 cards per row */
+  max-width: 500px;
   height: 400px;
-  flex-shrink: 0;
-  opacity: 1;
-  perspective: 1000px;
+  box-sizing: border-box;
 }
 
 /* Hover effect: Adds depth and glow */
 .cert-card:hover {
-  transform: translateY(-5px) rotateY(5deg);
+  transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4); /* Cyan glow */
 }
 
@@ -228,21 +218,19 @@
 }
 
 .cert-card:hover .cert-card-image img {
-  transform: scale(1.1) rotate(2deg);
+  transform: scale(1.1);
 }
 
-/* Infinite scrolling animation */
-@keyframes scrollInfinite {
-  0% {
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(0);
+/* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .cert-card {
+    width: calc(50% - 20px); /* 2 cards per row on medium screens */
   }
 }
 
-/* Pause animation on hover */
-.cert-cards-wrapper:hover .cert-cards-container {
-  animation-play-state: paused;
+@media (max-width: 768px) {
+  .cert-card {
+    width: 100%; /* 1 card per row on small screens */
+  }
 }
 
