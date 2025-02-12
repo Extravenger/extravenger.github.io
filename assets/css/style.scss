@@ -176,8 +176,8 @@
   overflow: hidden;
   position: relative;
   display: flex;
-  justify-content: center;
-  mask-image: linear-gradient(to right, transparent 5%, black 30%, black 70%, transparent 95%);
+  justify-content: flex-start; /* Aligns to the far left */
+  mask-image: linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%);
 }
 
 /* Container holding all cards */
@@ -186,6 +186,7 @@
   gap: 25px;
   width: max-content;
   animation: scrollInfinite 20s linear infinite;
+  transform: translateX(-100%); /* Start from the far left */
 }
 
 /* Certification card styles */
@@ -234,10 +235,10 @@
 /* Infinite scrolling animation */
 @keyframes scrollInfinite {
   0% {
-    transform: translateX(0);
+    transform: translateX(-100%);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(0);
   }
 }
 
