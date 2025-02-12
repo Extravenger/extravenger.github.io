@@ -13,24 +13,24 @@
 /* Card styles */
 .post-card {
   display: flex;
-  flex-direction: column; /* Changed to column to separate header from content */
   background: var(--content-bg);
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px; /* Increased border radius */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Softer shadow */
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   overflow: hidden;
   padding: 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
   width: 700px;
-  margin: 10px auto;
-  opacity: 0;
+  height: 220px;
+  margin: 10px auto; /* Centers the card horizontally */
+  opacity: 0; /* For fade-in animation */
   animation: fadeIn 0.5s ease-in-out forwards;
 }
 
 /* Hover effect */
 .post-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
 }
 
 /* Fade-in animation */
@@ -47,8 +47,8 @@
 
 /* Flex container for text and image */
 .post-card-content {
-  display: flex;
-  flex-direction: row;
+  display: flex !important;
+  flex-direction: row !important; /* Changed to row */
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -61,7 +61,7 @@
   flex-shrink: 0;
   overflow: hidden;
   border-left: 1px solid var(--border-color);
-  order: 2;
+  order: 2 !important; /* Image remains on the right */
   position: relative;
 }
 
@@ -82,10 +82,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 20px;
+  padding: 20px; /* Increased padding */
   height: 100%;
-  order: 1;
-  position: relative;
+  order: 1 !important; /* Text remains on the left */
+  position: relative; /* For positioning the button */
 }
 
 /* Image styling */
@@ -99,7 +99,7 @@
 
 /* Hover effect for the image */
 .post-card:hover .post-card-image img {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Slight zoom on hover */
 }
 
 /* Styles for the title */
@@ -113,7 +113,7 @@
 
 /* Hover effect for the title */
 .post-card:hover h2 {
-  color: var(--accent-color);
+  color: var(--accent-color); /* Change to your accent color */
 }
 
 /* Metadata styling */
@@ -122,7 +122,7 @@
   color: var(--text-secondary);
   margin-bottom: 10px;
   display: flex;
-  gap: 10px;
+  gap: 10px; /* Spacing between metadata items */
 }
 
 .post-meta span {
@@ -141,17 +141,7 @@
 
 /* Hover effect for the excerpt */
 .post-card:hover .post-excerpt {
-  color: var(--text-secondary);
-}
-
-/* Fix for post-card content to ensure no overlap */
-.post-card-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.post-card .post-text {
-  margin-top: 10px; /* Added space between metadata and post text */
+  color: var(--text-secondary); /* Change color on hover */
 }
 
 /* Read More button */
