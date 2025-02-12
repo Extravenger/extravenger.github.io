@@ -6,7 +6,7 @@ layout: compress
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {% include header.html %}
-<body data-theme="{{ site.mode }}" class="notransition">
+<body data-theme="{{ site.mode }}">
 
   <script>
     const body = document.body;
@@ -23,7 +23,6 @@ layout: compress
     };
 
     initTheme(localStorage.getItem("theme"));
-    setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
   {% include navbar.html %}
@@ -31,37 +30,17 @@ layout: compress
     <main aria-label="Content">
       <div class="centered-content">
         <!-- Image with rounded edges -->
-        <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" id="profile-image" class="profile-image" />
+        <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" class="profile-image" />
 
-        <!-- Title and descriptiont -->
+        <!-- Title and description -->
         <div class="text-container">
-          <h1 id="title" class="hidden-text"></h1>
-          <p id="description" class="hidden-text"></p>
+          <h1>$ whoami</h1>
+          <p>Hi, I'm Amit Mor, an Adversarial Tactics Expert at Sygnia. My journey in cybersecurity began as a SOC Analyst, where I gained valuable experience in monitoring and defending networks. However, I always had a passion for the offensive side of cybersecurity, so I transitioned to Penetration Testing. Red Teaming has always been my ultimate goal, and today? Today I’m living that aspiration.</p>
         </div>
       </div>
     </main>
     {% include footer.html %}
   </div>
-
-  <script>
-    window.addEventListener("load", () => {
-      const titleElement = document.getElementById("title");
-      const descriptionElement = document.getElementById("description");
-
-      const title = "$ whoami";
-      const text = "Hi, I'm Amit Mor, an Adversarial Tactics Expert at Sygnia. My journey in cybersecurity began as a SOC Analyst, where I gained valuable experience in monitoring and defending networks. However, I always had a passion for the offensive side of cybersecurity, so I transitioned to Penetration Testing. Red Teaming has always been my ultimate goal, and today? Today I’m living that aspiration.";
-
-      // Set the text content first
-      titleElement.innerHTML = title;
-      descriptionElement.innerHTML = text;
-
-      // Add the visible class to trigger animation
-      setTimeout(() => {
-        titleElement.classList.add("visible-text");
-        descriptionElement.classList.add("visible-text");
-      }, 100); 
-    });
-  </script>
 
   <style>
     /* Allow scrolling */
@@ -95,12 +74,12 @@ layout: compress
       padding: 10px;
     }
 
-    #title {
+    h1 {
       margin-bottom: 10px;
       font-size: 1.5rem;
     }
 
-    #description {
+    p {
       font-size: 1rem;
       max-width: 600px;
       line-height: 1.5;
@@ -114,18 +93,6 @@ layout: compress
       margin-bottom: 20px;
       border-radius: 50%;
       border: 2px solid #fff;
-    }
-
-    /* Animation Styling */
-    .hidden-text {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .visible-text {
-      opacity: 1;
-      transform: translateY(0);
     }
   </style>
 
