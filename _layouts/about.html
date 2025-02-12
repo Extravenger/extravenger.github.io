@@ -57,8 +57,12 @@ layout: compress
     function typeEffect(element, text, callback) {
       let i = 0;
       element.innerHTML = "";
+      const cursor = document.createElement("span");
+      cursor.classList.add("cursor");  // Add cursor as a span
+      element.appendChild(cursor);  // Initially add the cursor at the end
       const interval = setInterval(() => {
-        element.innerHTML += text[i];
+        element.innerHTML = text.substring(0, i);  // Update text
+        element.appendChild(cursor);  // Reattach cursor at the end
         i++;
         if (i === text.length) {
           clearInterval(interval);
@@ -152,14 +156,12 @@ layout: compress
     }
 
     /* L-beam cursor animation */
-    #title::after {
-      content: '|';
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      background-color: #fff;  /* Color of the cursor */
       animation: blink 0.75s step-end infinite;
-      position: absolute;
-      right: 0;
-      top: 0;
-      font-size: 2rem; /* Size of the cursor */
-      color: #fff;
+      margin-left: 5px;  /* Space after the text */
     }
 
     @keyframes blink {
