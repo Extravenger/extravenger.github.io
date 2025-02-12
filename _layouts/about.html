@@ -75,23 +75,26 @@ layout: compress
         i--;
         if (i < 0) {
           clearInterval(interval);
-          setTimeout(callback, 500);
+          callback();
         }
       }, 30);
     }
 
     function cycleAnimation() {
       const { title, text } = steps[stepIndex];
+
+      // Start with typing the title and description
       typeEffect(titleElement, title, () => {
         typeEffect(descriptionElement, text, () => {
-          setTimeout(() => {
+          // Once the text is fully typed, delete description first
+          deleteEffect(descriptionElement, () => {
+            // After the description is deleted, delete the title
             deleteEffect(titleElement, () => {
-              deleteEffect(descriptionElement, () => {
-                stepIndex = (stepIndex + 1) % steps.length;
-                cycleAnimation();
-              });
+              // Move to the next step
+              stepIndex = (stepIndex + 1) % steps.length;
+              cycleAnimation();
             });
-          }, 2000);
+          });
         });
       });
     }
