@@ -133,6 +133,9 @@ layout: compress
     #title {
       margin-bottom: 10px; /* Adds space between title and description */
       font-size: 1.5rem; /* Adjust font size as needed */
+      height: 30px; /* Ensures the height stays fixed */
+      line-height: 30px; /* Centers the text vertically */
+      display: inline-block;
     }
 
     #description {
@@ -146,6 +149,23 @@ layout: compress
       margin-bottom: 20px; /* Adds space between the image and text */
       border-radius: 50%; /* This makes the image round */
       border: 2px solid #fff; /* Optional: Adds a border around the image */
+    }
+
+    /* L-beam cursor animation */
+    #title::after {
+      content: '|';
+      animation: blink 0.75s step-end infinite;
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 2rem; /* Size of the cursor */
+      color: #fff;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
     }
   </style>
 
