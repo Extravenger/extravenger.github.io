@@ -1,3 +1,7 @@
+---
+layout: compress
+---
+
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
@@ -71,23 +75,26 @@
         i--;
         if (i < 0) {
           clearInterval(interval);
-          setTimeout(callback, 500);
+          callback();
         }
       }, 30);
     }
 
     function cycleAnimation() {
       const { title, text } = steps[stepIndex];
+
+      // Start with typing the title and description
       typeEffect(titleElement, title, () => {
         typeEffect(descriptionElement, text, () => {
-          setTimeout(() => {
+          // Once the text is fully typed, delete description first
+          deleteEffect(descriptionElement, () => {
+            // After the description is deleted, delete the title
             deleteEffect(titleElement, () => {
-              deleteEffect(descriptionElement, () => {
-                stepIndex = (stepIndex + 1) % steps.length;
-                cycleAnimation();
-              });
+              // Move to the next step
+              stepIndex = (stepIndex + 1) % steps.length;
+              cycleAnimation();
             });
-          }, 2000);
+          });
         });
       });
     }
@@ -110,6 +117,7 @@
       justify-content: center;
       height: 100%;  /* Ensure wrapper takes full height */
       text-align: center;
+      position: relative;
     }
 
     .centered-content {
@@ -120,25 +128,27 @@
 
     /* Fixed height for text containers */
     .text-container {
+      height: 120px; /* Adjust this value based on your content */
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
     }
 
     #title {
       margin-bottom: 10px; /* Adds space between title and description */
       font-size: 1.5rem; /* Adjust font size as needed */
-      min-height: 40px; /* Ensures the title height remains constant */
     }
 
     #description {
       font-size: 1rem; /* Adjust font size as needed */
-      min-height: 60px; /* Ensures description height remains constant */
     }
 
-    /* Add styling for the image with rounded edges */
+    /* Add styling for the image with rounded edges and make it fixed */
     .profile-image {
+      position: fixed;  /* Make image fixed */
+      top: 50%;  /* Adjust vertical position */
+      left: 50%;  /* Adjust horizontal position */
+      transform: translate(-50%, -50%);  /* Center the image */
       max-width: 350px; /* Adjust the size as needed */
       height: auto;
       margin-bottom: 20px; /* Adds space between the image and text */
