@@ -191,7 +191,7 @@
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%; /* Full width of grid cell */
-  height: 400px; /* Fixed height */
+  height: 100%; /* Use full height of the grid container */
 }
 
 /* Image styling */
@@ -206,9 +206,9 @@
 }
 
 .cert-card-image img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  width: 100%; /* Ensure image fills the width */
+  height: 100%; /* Ensure image fills the height */
+  object-fit: cover; /* Cover ensures images fill the square without distorting */
   display: block;
 }
 
