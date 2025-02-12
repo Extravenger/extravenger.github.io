@@ -111,7 +111,7 @@ layout: compress
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;  /* Allow space between content and footer */
+      justify-content: center;
       height: 100%;  /* Ensure wrapper takes full height */
       text-align: center;
     }
@@ -120,10 +120,9 @@ layout: compress
       display: flex;
       flex-direction: column;
       align-items: center;
-      flex-grow: 1;  /* Allow content area to expand */
-      justify-content: center;
     }
 
+    /* Fixed height for text containers */
     .text-container {
       min-height: 120px; /* Ensures enough space for title and description */
       display: flex;
@@ -140,22 +139,13 @@ layout: compress
       font-size: 1rem; /* Adjust font size as needed */
     }
 
-    /* Styling for the profile image */
+    /* Add styling for the image with rounded edges */
     .profile-image {
       max-width: 350px; /* Adjust the size as needed */
       height: auto;
       margin-bottom: 20px; /* Adds space between the image and text */
       border-radius: 50%; /* This makes the image round */
       border: 2px solid #fff; /* Optional: Adds a border around the image */
-    }
-
-    /* Footer at the bottom */
-    footer {
-      padding: 20px 0;
-      font-size: 0.875rem;
-      color: #666;
-      position: relative; /* Ensure footer stays at the bottom */
-      width: 100%;
     }
   </style>
 
