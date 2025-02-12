@@ -3,28 +3,12 @@ layout: default
 home: true
 ---
 
-<div class="posts-grid">
-  {% for post in site.posts %}
-  <article class="post-card">
-    <a href="{{ post.url | relative_url }}" class="post-card-link">
-      <div class="post-card-content image-right">
-        <div class="post-text">
-          <h2>{{ post.title }}</h2>
-          <p class="post-meta">{{ post.date | date: "%B %d, %Y" }}</p>
-          <p class="post-excerpt">{{ post.excerpt | strip_html | truncate: 120 }}</p>
-        </div>
-        
-        {% if post.image %}
-        <div class="post-card-image">
-          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
-        </div>
-        {% else %}
-        <div class="post-card-image">
-          <img src="/assets/default-image.jpg" alt="Default Image">
-        </div>
-        {% endif %}
-      </div>
-    </a>
-  </article>
-  {% endfor %}
-</div>
+<h3 class="posts-item-note" aria-label="Recent Posts">Recent Posts</h3>
+{%- for post in site.posts limit: site.number_of_posts -%}
+<article class="post-item">
+  <span class="post-item-date">{{ post.date | date: "%b %d, %Y" }}</span>
+  <h4 class="post-item-title">
+    <a href="{{ post.url }}">{{ post.title | escape }}</a>
+  </h4>
+</article>
+{%- endfor -%}
