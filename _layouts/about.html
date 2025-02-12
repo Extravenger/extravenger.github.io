@@ -75,26 +75,23 @@ layout: compress
         i--;
         if (i < 0) {
           clearInterval(interval);
-          callback();
+          setTimeout(callback, 500);
         }
       }, 30);
     }
 
     function cycleAnimation() {
       const { title, text } = steps[stepIndex];
-
-      // Start with typing the title and description
       typeEffect(titleElement, title, () => {
         typeEffect(descriptionElement, text, () => {
-          // Once the text is fully typed, delete description first
-          deleteEffect(descriptionElement, () => {
-            // After the description is deleted, delete the title
+          setTimeout(() => {
             deleteEffect(titleElement, () => {
-              // Move to the next step
-              stepIndex = (stepIndex + 1) % steps.length;
-              cycleAnimation();
+              deleteEffect(descriptionElement, () => {
+                stepIndex = (stepIndex + 1) % steps.length;
+                cycleAnimation();
+              });
             });
-          });
+          }, 2000);
         });
       });
     }
@@ -117,7 +114,6 @@ layout: compress
       justify-content: center;
       height: 100%;  /* Ensure wrapper takes full height */
       text-align: center;
-      position: relative;
     }
 
     .centered-content {
@@ -143,12 +139,8 @@ layout: compress
       font-size: 1rem; /* Adjust font size as needed */
     }
 
-    /* Add styling for the image with rounded edges and make it fixed */
+    /* Add styling for the image with rounded edges */
     .profile-image {
-      position: fixed;  /* Make image fixed */
-      top: 20px;  /* Keep image at the top */
-      left: 50%;  /* Adjust horizontal position */
-      transform: translateX(-50%);  /* Center the image horizontally */
       max-width: 350px; /* Adjust the size as needed */
       height: auto;
       margin-bottom: 20px; /* Adds space between the image and text */
