@@ -33,10 +33,10 @@ layout: compress
         <!-- Image with rounded edges -->
         <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" id="profile-image" class="profile-image" />
 
-        <!-- Title and description with animation classes -->
+        <!-- Title and description -->
         <div class="text-container">
-          <h1 id="title" class="fade-slide"> </h1>
-          <p id="description" class="fade-slide"> </p>
+          <h1 id="title" class="hidden-text"></h1>
+          <p id="description" class="hidden-text"></p>
         </div>
       </div>
     </main>
@@ -44,29 +44,31 @@ layout: compress
   </div>
 
   <script>
-    const titleElement = document.getElementById("title");
-    const descriptionElement = document.getElementById("description");
+    window.addEventListener("load", () => {
+      const titleElement = document.getElementById("title");
+      const descriptionElement = document.getElementById("description");
 
-    const title = "$ whoami";
-    const text = "Hi, I'm Amit Mor, an Adversarial Tactics Expert at Sygnia. My journey in cybersecurity began as a SOC Analyst, where I gained valuable experience in monitoring and defending networks. However, I always had a passion for the offensive side of cybersecurity, so I transitioned to Penetration Testing. Red Teaming has always been my ultimate goal, and today? Today I’m living that aspiration.";
+      const title = "$ whoami";
+      const text = "Hi, I'm Amit Mor, an Adversarial Tactics Expert at Sygnia. My journey in cybersecurity began as a SOC Analyst, where I gained valuable experience in monitoring and defending networks. However, I always had a passion for the offensive side of cybersecurity, so I transitioned to Penetration Testing. Red Teaming has always been my ultimate goal, and today? Today I’m living that aspiration.";
 
-    // Set the text content
-    titleElement.innerHTML = title;
-    descriptionElement.innerHTML = text;
+      // Set the text content first
+      titleElement.innerHTML = title;
+      descriptionElement.innerHTML = text;
 
-    // Trigger animation after a short delay to ensure rendering
-    setTimeout(() => {
-      titleElement.classList.add("visible");
-      descriptionElement.classList.add("visible");
-    }, 100); 
+      // Add the visible class to trigger animation
+      setTimeout(() => {
+        titleElement.classList.add("visible-text");
+        descriptionElement.classList.add("visible-text");
+      }, 100); 
+    });
   </script>
 
   <style>
-    /* Prevents page from scrolling */
+    /* Allow scrolling */
     html, body {
       height: 100%; 
       margin: 0;
-      overflow: hidden;
+      overflow: auto;
     }
 
     .wrapper {
@@ -74,8 +76,9 @@ layout: compress
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%; 
+      min-height: 100vh;
       text-align: center;
+      padding: 20px;
     }
 
     .centered-content {
@@ -89,6 +92,7 @@ layout: compress
       display: flex;
       flex-direction: column;
       justify-content: center;
+      padding: 10px;
     }
 
     #title {
@@ -98,6 +102,9 @@ layout: compress
 
     #description {
       font-size: 1rem;
+      max-width: 600px;
+      line-height: 1.5;
+      text-align: justify;
     }
 
     /* Image Styling */
@@ -110,13 +117,13 @@ layout: compress
     }
 
     /* Animation Styling */
-    .fade-slide {
+    .hidden-text {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .fade-slide.visible {
+    .visible-text {
       opacity: 1;
       transform: translateY(0);
     }
