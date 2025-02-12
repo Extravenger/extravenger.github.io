@@ -1,7 +1,3 @@
----
-layout: compress
----
-
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
@@ -75,26 +71,23 @@ layout: compress
         i--;
         if (i < 0) {
           clearInterval(interval);
-          callback();
+          setTimeout(callback, 500);
         }
       }, 30);
     }
 
     function cycleAnimation() {
       const { title, text } = steps[stepIndex];
-
-      // Start with typing the title and description
       typeEffect(titleElement, title, () => {
         typeEffect(descriptionElement, text, () => {
-          // Once the text is fully typed, delete description first
-          deleteEffect(descriptionElement, () => {
-            // After the description is deleted, delete the title
+          setTimeout(() => {
             deleteEffect(titleElement, () => {
-              // Move to the next step
-              stepIndex = (stepIndex + 1) % steps.length;
-              cycleAnimation();
+              deleteEffect(descriptionElement, () => {
+                stepIndex = (stepIndex + 1) % steps.length;
+                cycleAnimation();
+              });
             });
-          });
+          }, 2000);
         });
       });
     }
@@ -127,19 +120,21 @@ layout: compress
 
     /* Fixed height for text containers */
     .text-container {
-      height: 120px; /* Adjust this value based on your content */
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
     }
 
     #title {
       margin-bottom: 10px; /* Adds space between title and description */
       font-size: 1.5rem; /* Adjust font size as needed */
+      min-height: 40px; /* Ensures the title height remains constant */
     }
 
     #description {
       font-size: 1rem; /* Adjust font size as needed */
+      min-height: 60px; /* Ensures description height remains constant */
     }
 
     /* Add styling for the image with rounded edges */
