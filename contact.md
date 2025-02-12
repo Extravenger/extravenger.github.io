@@ -6,35 +6,31 @@ permalink: /contact/
 
 <div class="contact-container">
   <h1>Contact Me</h1>
-  <p>If you'd like to reach out, feel free to fill in the form below or connect with me via social media!</p>
+  <p>If you'd like to reach out, here are my contact details:</p>
   
   <div class="contact-card">
-    <form action="https://formspree.io/f/{your-form-id}" method="POST" class="contact-form">
-      <div class="input-group">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required>
-      </div>
+    <div class="contact-info">
+      <h2><i class="fas fa-envelope"></i> Email</h2>
+      <p><a href="mailto:amitmor582@gmail.com">youremail@example.com</a></p>
+    </div>
 
-      <div class="input-group">
-        <label for="email">Your Email:</label>
-        <input type="email" id="email" name="email" required>
-      </div>
+    <div class="contact-info">
+      <h2><i class="fab fa-github"></i> GitHub</h2>
+      <p><a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+    </div>
 
-      <div class="input-group">
-        <label for="message">Your Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-      </div>
-
-      <button type="submit">Send Message</button>
-    </form>
+    <div class="contact-info">
+      <h2><i class="fab fa-linkedin"></i> LinkedIn</h2>
+      <p><a href="https://www.linkedin.com/in/yourlinkedinprofile" target="_blank">linkedin.com/in/yourlinkedinprofile</a></p>
+    </div>
+    <!-- Add more contact methods as needed -->
   </div>
 
   <div class="social-links">
-    <p>Or connect with me:</p>
+    <p>Or connect with me on my social profiles:</p>
     <ul>
-      <li><a href="https://github.com/Extravenger" target="_blank">GitHub</a></li>
-      <li><a href="https://www.linkedin.com/in/amitmorr/" target="_blank">Linkedin</a></li>
-      <li><a href="mailto:amitmor582@gmail.com" target="_blank">Email</a></li>
+      <li><a href="https://github.com/Extravenger" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/amitmorr" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
       <!-- Add more social links as needed -->
     </ul>
   </div>
