@@ -175,6 +175,8 @@
   width: 100%;
   overflow: hidden;
   position: relative;
+  display: flex;
+  justify-content: start;
   box-sizing: border-box;
 }
 
@@ -184,7 +186,6 @@
   gap: 25px;
   width: max-content;
   animation: scrollInfinite 30s linear infinite;
-  will-change: transform;
 }
 
 /* Duplicate cards for seamless looping */
@@ -237,14 +238,19 @@
   transform: scale(1.1) rotate(2deg);
 }
 
-/* Infinite scrolling animation (continuous left) */
+/* Infinite scrolling animation (left to right) */
 @keyframes scrollInfinite {
   0% {
-    transform: translateX(0);
-  }
-  100% {
     transform: translateX(-50%);
   }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Pause animation on hover */
+.cert-cards-wrapper:hover .cert-cards-container {
+  animation-play-state: paused;
 }
 
 /* Pause animation on hover */
