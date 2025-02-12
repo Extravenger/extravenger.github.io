@@ -174,7 +174,7 @@
 .cert-cards-wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 images per row */
-  gap: 30px; /* Increased space between images */
+  gap: 90px; /* Increased space between images */
   width: 100%; /* Ensure it spans the full width */
   box-sizing: border-box;
   padding: 20px; /* Optional, for some padding around the grid */
