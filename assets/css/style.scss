@@ -207,7 +207,7 @@
 
 /* Hover effect: Adds depth and glow */
 .cert-card:hover {
-  transform: translateY(-5px) rotateY(5deg);
+  transform: translateY(-5px) rotateY(-5deg);
   box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4); /* Cyan glow */
 }
 
@@ -228,16 +228,16 @@
 }
 
 .cert-card:hover .cert-card-image img {
-  transform: scale(1.1) rotate(2deg);
+  transform: scale(1.1) rotate(-2deg);
 }
 
 /* Infinite scrolling animation */
 @keyframes scrollInfinite {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
-    transform: translateX(-50%);
+  100% {
+    transform: translateX(100%);
   }
 }
 
