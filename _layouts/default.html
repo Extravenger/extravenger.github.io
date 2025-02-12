@@ -2,11 +2,9 @@
 layout: compress
 ---
 <!DOCTYPE html>
-<head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  {% include header.html %}
-</head>
 <html lang="{{ page.lang | default: site.lang | default: " en " }}">
+{% include header.html %}
+
 <body data-theme="{{ site.mode }}" class="notransition">
 
   <script>
