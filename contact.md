@@ -4,4 +4,3 @@ title: Certifications
 permalink: /contact/
 ---
 
-// CONTACT information.
