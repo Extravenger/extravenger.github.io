@@ -6,6 +6,8 @@ permalink: /certs/
 
 <h2 class="certs-title">🏆 My Accomplishments Throughout The Years 🏆</h2>
 
+<p class="chronological-note">Note: The images are arranged in chronological order, showcasing my accomplishments over the years.</p>
+
 <div class="cert-cards-container">
 
   <a href="" class="cert-card-link">
