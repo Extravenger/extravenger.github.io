@@ -161,10 +161,12 @@ layout: compress
     /* L-beam cursor animation */
     .cursor {
       display: inline-block;
-      width: 10px;
+      width: 2px;  /* Thin vertical line */
+      height: 1.2em;  /* Height of the cursor */
       background-color: #fff;  /* Color of the cursor */
+      margin-left: 2px;  /* Space after the text */
       animation: blink 0.75s step-end infinite;
-      margin-left: 5px;  /* Space after the text */
+      vertical-align: middle;  /* Align cursor with text */
     }
 
     @keyframes blink {
