@@ -3,53 +3,6 @@
 
 @import "main";
 
-/* Contact Page */
-.contact-container {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px;
-  background: #f5f5f5;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.contact-container h1 {
-  font-size: 2.5em;
-  text-align: center;
-  color: #333;
-}
-
-.contact-container p {
-  font-size: 1.1em;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.social-links {
-  text-align: center;
-  padding: 0;
-  list-style: none;
-}
-
-.social-links li {
-  display: inline-block;
-  margin: 10px;
-}
-
-.social-links a {
-  text-decoration: none;
-  color: #6c63ff;
-  font-size: 1.2em;
-}
-
-.social-links a i {
-  margin-right: 10px; /* Adds space between icon and text */
-}
-
-.social-links a:hover {
-  text-decoration: underline;
-}
-
 
 /* Makes the entire cards clickable */
 .cert-card-link {
