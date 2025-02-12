@@ -188,6 +188,13 @@
   animation: scrollInfinite 20s linear infinite;
 }
 
+/* Duplicate container for seamless looping */
+.cert-cards-container::after {
+  content: "";
+  display: block;
+  width: 25px; /* Adjust based on your gap */
+}
+
 /* Certification card styles */
 .cert-card {
   display: flex;
@@ -233,10 +240,10 @@
 
 /* Infinite scrolling animation */
 @keyframes scrollInfinite {
-  from {
+  0% {
     transform: translateX(0);
   }
-  to {
+  100% {
     transform: translateX(-50%);
   }
 }
