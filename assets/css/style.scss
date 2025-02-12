@@ -175,8 +175,6 @@
   width: 100%;
   overflow: hidden;
   position: relative;
-  display: flex;
-  justify-content: start;
   box-sizing: border-box;
 }
 
@@ -186,6 +184,7 @@
   gap: 25px;
   width: max-content;
   animation: scrollInfinite 30s linear infinite;
+  will-change: transform;
 }
 
 /* Duplicate cards for seamless looping */
@@ -222,35 +221,34 @@
 .cert-card-image {
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   position: relative;
 }
 
 .cert-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   display: block;
   transition: transform 0.5s ease-in-out;
 }
 
+/* Image hover effect */
 .cert-card:hover .cert-card-image img {
-  transform: scale(1.1) rotate(2deg);
+  transform: scale(1.05);
 }
 
-/* Infinite scrolling animation (left to right) */
+/* Infinite scrolling animation (continuous left) */
 @keyframes scrollInfinite {
   0% {
-    transform: translateX(-50%);
-  }
-  100% {
     transform: translateX(0);
   }
-}
-
-/* Pause animation on hover */
-.cert-cards-wrapper:hover .cert-cards-container {
-  animation-play-state: paused;
+  100% {
+    transform: translateX(-50%);
+  }
 }
 
 /* Pause animation on hover */
