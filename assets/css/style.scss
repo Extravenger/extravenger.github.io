@@ -170,19 +170,27 @@
   display: block;
 }
 
-/* Wrapper for the cards */
+/* Wrapper to control overflow and create smooth scrolling */
 .cert-cards-wrapper {
   width: 100%;
+  overflow: hidden;
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
-  gap: 25px;
   justify-content: center;
-  padding: 20px;
-  box-sizing: border-box;
+  mask-image: linear-gradient(to right, transparent 5%, black 30%, black 70%, transparent 95%);
+}
+
+/* Container holding all cards */
+.cert-cards-container {
+  display: flex;
+  gap: 25px;
+  width: max-content;
+  animation: scrollInfinite 20s linear infinite;
 }
 
 /* Certification card styles */
 .cert-card {
+  display: flex;
   background: var(--content-bg);
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -190,16 +198,16 @@
   overflow: hidden;
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  width: calc(33.33% - 20px); /* 3 cards per row */
-  max-width: 350px;
-  height: 300px;
-  box-sizing: border-box;
+  width: 500px;
+  height: 400px;
   flex-shrink: 0;
+  opacity: 1;
+  perspective: 1000px;
 }
 
 /* Hover effect: Adds depth and glow */
 .cert-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) rotateY(5deg);
   box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4); /* Cyan glow */
 }
 
@@ -220,19 +228,21 @@
 }
 
 .cert-card:hover .cert-card-image img {
-  transform: scale(1.1);
+  transform: scale(1.1) rotate(2deg);
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 992px) {
-  .cert-card {
-    width: calc(50% - 20px); /* 2 cards per row on tablets */
+/* Infinite scrolling animation */
+@keyframes scrollInfinite {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
-@media (max-width: 600px) {
-  .cert-card {
-    width: 100%; /* 1 card per row on mobile */
-  }
+/* Pause animation on hover */
+.cert-cards-wrapper:hover .cert-cards-container {
+  animation-play-state: paused;
 }
 
