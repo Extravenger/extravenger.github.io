@@ -162,6 +162,7 @@
 .read-more-button:hover {
   background: var(--accent-hover-color); /* Darker shade for hover */
 }
+
 /* Makes the entire cards clickable */
 .cert-card-link {
   text-decoration: none;
@@ -190,9 +191,10 @@
   padding: 0;
   border: 1px solid rgba(255, 255, 255, 0.1);
   width: calc(33.33% - 20px); /* 3 cards per row */
-  max-width: 500px;
-  height: 400px;
+  max-width: 350px;
+  height: 300px;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 /* Hover effect: Adds depth and glow */
@@ -222,15 +224,15 @@
 }
 
 /* Responsive Breakpoints */
-@media (max-width: 1200px) {
+@media (max-width: 992px) {
   .cert-card {
-    width: calc(50% - 20px); /* 2 cards per row on medium screens */
+    width: calc(50% - 20px); /* 2 cards per row on tablets */
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .cert-card {
-    width: 100%; /* 1 card per row on small screens */
+    width: 100%; /* 1 card per row on mobile */
   }
 }
 
