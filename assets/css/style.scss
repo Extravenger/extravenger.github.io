@@ -186,6 +186,7 @@
   gap: 25px;
   width: max-content;
   animation: scrollInfinite 20s linear infinite;
+  transform: translateX(100%); /* Start from the right */
 }
 
 /* Duplicate container for seamless looping */
@@ -238,13 +239,13 @@
   transform: scale(1.1) rotate(2deg);
 }
 
-/* Infinite scrolling animation */
+/* Infinite scrolling animation (right to left) */
 @keyframes scrollInfinite {
   0% {
-    transform: translateX(0);
+    transform: translateX(100%); /* Start from the right */
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-50%); /* Move to the left */
   }
 }
 
