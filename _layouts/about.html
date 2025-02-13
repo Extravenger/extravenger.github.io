@@ -34,8 +34,14 @@ layout: compress
 
         <!-- Title and description -->
         <div class="text-container">
-          <h1>$ whoami</h1>
-          <p>I'm Amit Mor, and am working as an Adversarial Tactics Expert at <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>My journey in cybersecurity began as a SOC Analyst back at 2021, where I gained valuable experience in monitoring and defending networks.<br>However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>Red Teaming has always been my ultimate goal, and today? today I’m living that aspiration.</p>
+          <h1 class="typing-animation"></h1>
+          <p class="fade-in-text">
+            I'm Amit Mor, and am working as an Adversarial Tactics Expert at 
+            <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>
+            My journey in cybersecurity began as a SOC Analyst back at 2021, where I gained valuable experience in monitoring and defending networks.<br>
+            However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>
+            Red Teaming has always been my ultimate goal, and today? today I’m living that aspiration.
+          </p>
         </div>
       </div>
     </main>
@@ -55,7 +61,7 @@ layout: compress
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;  /* Remove fixed 100vh to allow content to adjust naturally */
+      height: 100%; 
       text-align: center;
       padding: 20px;
     }
@@ -75,46 +81,91 @@ layout: compress
       padding: 10px;
     }
 
-    h1 {
-      margin-bottom: 10px;
+    /* Typing Animation */
+    .typing-animation {
+      border-right: .15em solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
       font-size: 2rem;
+      animation: typing 3s steps(12, end), blink .7s step-end infinite;
     }
 
-    p {
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* Fade-in Effect */
+    .fade-in-text {
+      opacity: 0;
+      animation: fadeIn 2s ease-in-out forwards;
+      animation-delay: 3s;
       font-size: 1.1rem;
       max-width: 600px;
       line-height: 1.6;
       text-align: center;
-      margin: 0; /* Prevent shifting due to text size changes */
+      margin: 0;
     }
 
-    /* Image Styling with fixed size */
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* Image Animation */
     .profile-image {
-      width: 200px;   /* Fixed size */
-      height: 200px;  /* Fixed size */
+      width: 200px;
+      height: 200px;
       margin-bottom: 20px;
       border-radius: 50%;
       border: 2px solid #fff;
-      object-fit: cover;  /* Ensures the image doesn't get stretched or squished */
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05);
     }
 
     /* Adjust layout on smaller screens */
     @media (max-width: 600px) {
       .profile-image {
-        width: 150px;   /* Smaller size on mobile */
-        height: 150px;  /* Smaller size on mobile */
+        width: 150px;
+        height: 150px;
       }
-      h1 {
-        font-size: 1.5rem;  /* Adjust heading size for mobile */
+      .typing-animation {
+        font-size: 1.5rem;
       }
-      p {
-        font-size: 1rem;  /* Adjust paragraph size for mobile */
+      .fade-in-text {
+        font-size: 1rem;
       }
       .wrapper {
-        padding: 10px; /* Reduce padding on mobile */
+        padding: 10px;
       }
     }
   </style>
 
+  <script>
+    // Typing Effect Script
+    document.addEventListener("DOMContentLoaded", function() {
+      const text = "$ whoami";
+      const typingElement = document.querySelector(".typing-animation");
+      let index = 0;
+      
+      function type() {
+        if (index < text.length) {
+          typingElement.innerHTML += text.charAt(index);
+          index++;
+          setTimeout(type, 200);
+        }
+      }
+      type();
+    });
+  </script>
+  
 </body>
 </html>
