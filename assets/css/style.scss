@@ -6,8 +6,8 @@
 /* Grid Layout */
 .cert-cards-wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
   width: 100%;
   padding: 20px;
   perspective: 1000px;
@@ -16,12 +16,14 @@
 /* Card Structure */
 .cert-card {
   width: 100%;
-  height: 400px;
+  aspect-ratio: 1 / 1;  /* Ensures a perfect square */
   perspective: 1000px;
   cursor: pointer;
   position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
+  border-radius: 15px;
+  overflow: hidden;
 }
 
 .cert-card.is-flipped {
@@ -49,7 +51,6 @@
   justify-content: center;
   text-align: center;
   box-sizing: border-box;
-  padding: 20px;
 }
 
 /* Front (Image) */
@@ -57,17 +58,22 @@
   background: var(--content-bg);
 }
 
+.cert-card-image {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
 .cert-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 10px;
 }
 
 /* Back (Clean Text) */
 .cert-card-back {
-  background: #333; /* Solid clean background */
+  background: #333;
   color: white;
   transform: rotateY(180deg);
   display: flex;
@@ -77,7 +83,7 @@
 }
 
 .cert-card-back h3 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: white;
   margin: 0;
   padding: 0;
