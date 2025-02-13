@@ -29,20 +29,8 @@ layout: compress
   <div class="wrapper">
     <main aria-label="Content">
       <div class="centered-content">
-        <!-- Image with fixed size and responsive adjustments -->
-        <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" class="profile-image" />
-
-        <!-- Title and description -->
-        <div class="text-container">
-          <h1 class="typing-animation"></h1> 
-          <p class="slide-in-text">
-            I'm Amit Mor, and am working as an Adversarial Tactics Expert at 
-            <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>
-            My journey in cybersecurity began as a SOC Analyst back at 2021, where I gained valuable experience in monitoring and defending networks.<br>
-            However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>
-            Red Teaming has always been my ultimate goal, and today? today I’m living that aspiration.
-          </p>
-        </div>
+        <!-- Typing effect container -->
+        <h1 class="typing-animation"></h1> 
       </div>
     </main>
     {% include footer.html %}
@@ -73,14 +61,6 @@ layout: compress
       justify-content: center;
     }
 
-    .text-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-    }
-
     /* Typing Animation */
     .typing-animation {
       display: inline-block;
@@ -96,58 +76,6 @@ layout: compress
         border-color: transparent;
       }
     }
-
-    /* Slide-in from Left */
-    .slide-in-text {
-      opacity: 0;
-      transform: translateX(-100%);
-      animation: slideIn 0.8s ease-out forwards;
-      animation-delay: 2.5s;
-      font-size: 1.1rem;
-      max-width: 600px;
-      line-height: 1.6;
-      text-align: center;
-      margin: 0;
-    }
-
-    @keyframes slideIn {
-      to {
-        opacity: 1;
-        transform: translateX(0);
-      }
-    }
-
-    /* Image Animation */
-    .profile-image {
-      width: 200px;
-      height: 200px;
-      margin-bottom: 20px;
-      border-radius: 50%;
-      border: 2px solid #fff;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .profile-image:hover {
-      transform: scale(1.05);
-    }
-
-    /* Adjust layout on smaller screens */
-    @media (max-width: 600px) {
-      .profile-image {
-        width: 150px;
-        height: 150px;
-      }
-      .typing-animation {
-        font-size: 1.5rem;
-      }
-      .slide-in-text {
-        font-size: 1rem;
-      }
-      .wrapper {
-        padding: 10px;
-      }
-    }
   </style>
 
   <script>
@@ -161,10 +89,7 @@ layout: compress
         if (index < text.length) {
           typingElement.textContent += text.charAt(index);
           index++;
-          setTimeout(type, 150); // Typing speed
-        } else {
-          // Add blinking cursor after typing is complete
-          typingElement.classList.add("completed-typing");
+          setTimeout(type, 200); // Typing speed
         }
       }
       
