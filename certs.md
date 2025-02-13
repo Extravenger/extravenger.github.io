@@ -39,7 +39,7 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>TryHackMe Offensive Pentesting Path/h3>
+            <h3>TryHackMe Offensive Pentesting Path</h3>
             <p>Main Focus:</p>
             <ul>
               <li>Advanced Exploitation including: SQL Injection, Remote File Inlcusion, SSH Tunneling and Privilege Escalation.</li>
