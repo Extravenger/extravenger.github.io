@@ -46,30 +46,16 @@
 }
 
 /* Front side of the card (image only) */
-.cert-card-front {
+.cert-card-image {
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  position: absolute; /* Position absolutely within the inner container */
-  backface-visibility: hidden; /* Hide the back side when flipped */
+  position: relative;
   border-radius: 10px; /* Optional: Add border-radius to the image container */
-}
-
-/* Back side of the card (blank) */
-.cert-card-back {
-  width: 100%;
-  height: 100%;
-  background: var(--background); /* Set to background color of the theme */
-  color: var(--text-color); /* Set text color to fit the theme */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute; /* Position absolutely within the inner container */
-  backface-visibility: hidden; /* Hide the front side when flipped */
-  transform: rotateY(180deg); /* Rotate the back side to be visible when flipped */
+  backface-visibility: hidden; /* Hide the back side when flipped */
 }
 
 /* Flip effect */
@@ -77,8 +63,25 @@
   transform: rotateY(180deg); /* Flip the whole inner content when hovered */
 }
 
+/* Back side of the card (blank) */
+.cert-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background); /* Set to background color of the theme */
+  color: var(--text-color); /* Set text color to fit the theme */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: rotateY(180deg); /* Rotate the back side to be visible when flipped */
+}
+
 /* Ensure the front side image is still shown on initial load */
-.cert-card-front img {
+.cert-card-image img {
   width: 100%; /* Ensure image fills the width */
   height: 100%; /* Ensure image fills the height */
   object-fit: cover; /* Ensure images cover the square without distorting */
