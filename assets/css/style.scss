@@ -101,7 +101,7 @@
 .cert-card-back .content {
   display: flex;
   justify-content: flex-start; /* Align content to the top */
-  align-items: flex-start;    /* Align items to the top */
+  align-items: center;    /* Align items to the center horizontally */
   flex-direction: column;
   height: 100%; /* Ensure the content takes full height */
   text-align: center; /* Center the text horizontally */
