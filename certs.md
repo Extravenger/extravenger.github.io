@@ -19,7 +19,6 @@ permalink: /certs/
         <div class="cert-card-back">
           <div class="content">
             <h3>ITSAFE Pentesting</h3>
-            <p>Main Focus:</p>
             <ul>
               <li>Active Directory Enumeration & Exploitation</li>
               <li>Offensive Python</li>
@@ -40,7 +39,6 @@ permalink: /certs/
         <div class="cert-card-back">
           <div class="content">
             <h3>TryHackMe Offensive Pentesting Path</h3>
-            <p>Main Focus:</p>
             <ul>
               <li>Advanced Exploitation including: SQL Injection, Remote File Inlcusion, SSH Tunneling and Privilege Escalation.</li>
               <li>Buffer Overflow Exploitation.</li>
@@ -60,8 +58,12 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>EJPT Certification</h3>
-            <p>Details about the EJPT certification, including description and date of completion.</p>
+            <h3>eLearn Junior Penetration Tester</h3>
+            <ul>
+              <li>Assessment Methodologies.</li>
+              <li>Web Application Penetration Testing.</li>
+              <li>Host & Networking Penetration Testing.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -77,8 +79,14 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>OSCP Certification</h3>
-            <p>Details about the OSCP certification, including description and date of completion.</p>
+            <h3>OffSec Certified Professional</h3>
+            <ul>
+              <li>Client Side Attacks.</li>
+              <li>Web Exploitation.</li>
+              <li>Tunneling.</li>
+              <li>Privilege Escalation.</li>
+              <li>Active Directory Attacks.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -93,8 +101,15 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>CRTP Certification</h3>
-            <p>Details about the CRTP certification, including description and date of completion.</p>
+            <h3>Certified Red Team Professional</h3>
+            <ul>
+              <li>Active Directory Enumeration.</li>
+              <li>Local Privilege Escalation.</li>
+              <li>Domain Privilege Escalation.</li>
+              <li>Domain Persistence.</li>
+              <li>Forest privilege escalation using cross trust attacks.</li>
+              <li>Inter-forest trust attacks.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -109,8 +124,10 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>HTB Offshore Certification</h3>
-            <p>Details about the HTB Offshore certification, including description and date of completion.</p>
+            <h3>HackTheBox - Offshore ProLab</h3>
+            <ul>
+              <li>A lot of Active Directory stuff, Pivoting, Web attacks etc.</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -125,8 +142,17 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>OSEP Certification</h3>
-            <p>Details about the OSEP certification, including description and date of completion.</p>
+            <h3>OffSec Experienced Penetration Tester</h3>
+            <ul>
+              <li>Client-Side Attacks.</li>
+              <li>Process Injection and Migration.</li>
+              <li>Antivirus Evasion.</li>
+              <li>Application Allow-Listing.</li>
+              <li>Bypassing Network Filters.</li>
+              <li>Windows and Linux Lateral Movement.</li>
+              <li>Active Directory Exploitation.</li>
+              <li>Microsoft SQL Attacks.</li>
+            </ul>
           </div>
         </div>
       </div>
