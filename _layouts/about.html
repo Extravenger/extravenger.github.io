@@ -34,7 +34,7 @@ layout: compress
 
         <!-- Title and description -->
         <div class="text-container">
-          <h1 class="typing-animation"></h1>
+          <h1 class="typing-animation" style="min-height: 2.5em;"></h1> <!-- Reserve space for title -->
           <p class="fade-in-text">
             I'm Amit Mor, and am working as an Adversarial Tactics Expert at 
             <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>
@@ -88,7 +88,7 @@ layout: compress
       overflow: hidden;
       width: 0;
       font-size: 2rem;
-      animation: typing 3s steps(12, end), blink .7s step-end infinite;
+      animation: typing 2s steps(12, end), blink .7s step-end infinite;
     }
 
     @keyframes typing {
@@ -103,8 +103,8 @@ layout: compress
     /* Fade-in Effect */
     .fade-in-text {
       opacity: 0;
-      animation: fadeIn 2s ease-in-out forwards;
-      animation-delay: 3s;
+      animation: fadeIn 1.5s ease-in-out forwards;
+      animation-delay: 2s; /* Slightly faster */
       font-size: 1.1rem;
       max-width: 600px;
       line-height: 1.6;
@@ -160,7 +160,7 @@ layout: compress
         if (index < text.length) {
           typingElement.innerHTML += text.charAt(index);
           index++;
-          setTimeout(type, 200);
+          setTimeout(type, 100); // Faster typing speed
         }
       }
       type();
