@@ -18,7 +18,7 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>ITSAFE Certification</h3>
+            <h3>ITSAFE Pentesting</h3>
             <p>Main Focus:</p>
             <ul>
               <li>Active Directory Enumeration & Exploitation</li>
@@ -39,8 +39,13 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>THM Certification</h3>
-            <p>Details about the THM certification, including description and date of completion.</p>
+            <h3>TryHackMe Offensive Pentesting Path/h3>
+            <p>Main Focus:</p>
+            <ul>
+              <li>Advanced Exploitation including: SQL Injection, Remote File Inlcusion, SSH Tunneling and Privilege Escalation.</li>
+              <li>Buffer Overflow Exploitation.</li>
+              <li>Basic Active Directory Exploitation.</li>
+            </ul>
           </div>
         </div>
       </div>
