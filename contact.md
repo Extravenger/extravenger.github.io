@@ -5,10 +5,11 @@ permalink: /contact/
 ---
 
 <style>
-  /* Ensure the body fills the full viewport height */
+  /* Ensure the body and html fill the full viewport height */
   body, html {
     height: 100%;
     margin: 0;
+    overflow: hidden; /* Prevent scrolling */
   }
 
   /* Use Flexbox to center the container */
