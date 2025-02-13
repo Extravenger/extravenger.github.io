@@ -45,7 +45,7 @@
   transition: transform 0.6s; /* Smooth transition for flip effect */
 }
 
-/* Front side of the card */
+/* Front side of the card (image only) */
 .cert-card-image {
   width: 100%;
   height: 100%;
@@ -60,10 +60,10 @@
 
 /* Flip effect */
 .cert-card:hover .cert-card-inner {
-  transform: rotateY(180deg); /* Flip image when clicked */
+  transform: rotateY(180deg); /* Flip the whole inner content when hovered */
 }
 
-/* Back side of the card */
+/* Back side of the card (text only) */
 .cert-card-back {
   position: absolute;
   top: 0;
