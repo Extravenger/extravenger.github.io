@@ -30,8 +30,8 @@
 
         <!-- Title and description -->
         <div class="text-container">
-          <h1 class="slide-in"> $ whoami </h1>
-          <p class="slide-in"> I'm Amit Mor, and am working as an Adversarial Tactics Expert at <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>My journey in cybersecurity began as a SOC Analyst back at 2021, where I gained valuable experience in monitoring and defending networks.<br>However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>Red Teaming has always been my ultimate goal, and today? today I’m living that aspiration. </p>
+          <h1 class="typing"> <span class="text"> $ whoami </span><span class="cursor">|</span> </h1>
+          <p> I'm Amit Mor, and am working as an Adversarial Tactics Expert at <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>My journey in cybersecurity began as a SOC Analyst back at 2021, where I gained valuable experience in monitoring and defending networks.<br>However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>Red Teaming has always been my ultimate goal, and today? today I’m living that aspiration. </p>
         </div>
       </div>
     </main>
@@ -94,20 +94,38 @@
       object-fit: cover;  /* Ensures the image doesn't get stretched or squished */
     }
 
-    /* Animation for sliding text from the left */
-    .slide-in {
-      animation: slideIn 1s ease-out forwards;
-      opacity: 0;
+    /* Animation for typing effect on title */
+    .typing .text {
+      display: inline-block;
+      width: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #fff;
+      animation: typing 3s steps(8) 1s 1 normal both, blink 0.75s step-end infinite;
     }
 
-    @keyframes slideIn {
+    /* Typing effect animation */
+    @keyframes typing {
       from {
-        transform: translateX(-100%);
-        opacity: 0;
+        width: 0;
       }
       to {
-        transform: translateX(0);
-        opacity: 1;
+        width: 8ch; /* Adjust for the number of characters in $ whoami */
+      }
+    }
+
+    /* Blinking cursor effect */
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      background-color: #fff;
+      margin-left: 5px;
+      animation: blink 0.75s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
       }
     }
 
