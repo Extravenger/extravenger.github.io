@@ -34,7 +34,7 @@ layout: compress
 
         <!-- Title and description -->
         <div class="text-container">
-          <h1 class="typing-animation" style="min-height: 2.5em;"></h1> <!-- Reserve space for title -->
+          <h1 class="typing-animation" style="min-height: 2.5em; visibility: hidden;"></h1> <!-- Hidden until typing starts -->
           <p class="slide-in-text">
             I'm Amit Mor, and am working as an Adversarial Tactics Expert at 
             <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>
@@ -88,12 +88,13 @@ layout: compress
       overflow: hidden;
       width: 0;
       font-size: 2rem;
+      visibility: hidden; /* Hidden until typing starts */
       animation: typing 2s steps(12, end), blink .7s step-end infinite;
     }
 
     @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
+      from { width: 0; visibility: visible; }
+      to { width: 100%; visibility: visible; }
     }
 
     @keyframes blink {
@@ -105,7 +106,7 @@ layout: compress
       opacity: 0;
       transform: translateX(-100%);
       animation: slideIn 1s ease-out forwards;
-      animation-delay: 2s; /* Matches typing duration */
+      animation-delay: 2s;
       font-size: 1.1rem;
       max-width: 600px;
       line-height: 1.6;
@@ -159,10 +160,11 @@ layout: compress
       const text = "$ whoami";
       const typingElement = document.querySelector(".typing-animation");
       let index = 0;
+      typingElement.style.visibility = "visible"; // Make it visible before typing starts
       
       function type() {
         if (index < text.length) {
-          typingElement.innerHTML += text.charAt(index);
+          typingElement.innerText += text.charAt(index);
           index++;
           setTimeout(type, 100); // Fast typing speed
         }
