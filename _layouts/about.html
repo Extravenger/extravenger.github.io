@@ -121,23 +121,20 @@ layout: compress
 
     /* Initially hide the description text */
     .hidden-text {
-      display: none;
+      opacity: 0;
+      visibility: hidden;
       margin-top: 20px;
       font-size: 1.1rem;
       max-width: 600px;
       line-height: 1.6;
       text-align: center;
+      transition: opacity 1s ease-in-out, visibility 1s ease-in-out;
     }
 
     /* Visible after the typing animation completes */
     .visible-text {
-      display: block;
-      animation: fadeIn 2s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      opacity: 1;
+      visibility: visible;
     }
   </style>
 
