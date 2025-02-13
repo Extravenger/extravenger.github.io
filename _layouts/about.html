@@ -29,7 +29,7 @@ layout: compress
   <div class="wrapper">
     <main aria-label="Content">
       <div class="centered-content">
-        <!-- Image with rounded edges -->
+        <!-- Image with fixed size -->
         <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" class="profile-image" />
 
         <!-- Title and description -->
@@ -43,19 +43,20 @@ layout: compress
   </div>
 
   <style>
-    /* No scrolling */
+    /* Prevent scrolling */
     html, body {
       height: 100%; 
       margin: 0;
       overflow: hidden;
     }
 
+    /* Wrapper to fix layout height */
     .wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
+      height: 100vh;  /* Full viewport height */
       text-align: center;
       padding: 20px;
     }
@@ -85,12 +86,13 @@ layout: compress
       max-width: 600px;
       line-height: 1.6;
       text-align: center;
+      margin: 0; /* Prevent shifting due to text size changes */
     }
 
-    /* Image Styling */
+    /* Image Styling with fixed size */
     .profile-image {
-      max-width: 300px;
-      height: auto;
+      width: 200px;   /* Fixed size */
+      height: 200px;  /* Fixed size */
       margin-bottom: 20px;
       border-radius: 50%;
       border: 2px solid #fff;
