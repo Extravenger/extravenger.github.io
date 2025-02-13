@@ -45,7 +45,7 @@
   transition: transform 0.6s; /* Smooth transition for flip effect */
 }
 
-/* Image styling */
+/* Front side of the card */
 .cert-card-image {
   width: 100%;
   height: 100%;
@@ -63,7 +63,7 @@
   transform: rotateY(180deg); /* Flip image when clicked */
 }
 
-/* Image flip content */
+/* Back side of the card */
 .cert-card-back {
   position: absolute;
   top: 0;
@@ -81,9 +81,9 @@
   backface-visibility: hidden; /* Prevent front side from being visible */
 }
 
-/* Hide image behind the content on the back */
+/* Remove the image from the back of the card */
 .cert-card-back .cert-card-image {
-  display: none;
+  display: none; /* Completely hide the image on the back side */
 }
 
 /* Style for the content inside the flipped side */
