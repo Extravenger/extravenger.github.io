@@ -12,7 +12,7 @@
 }
 
 /* Wrapper to control the grid layout */
-.cert-cards-wrapper {
+.cert-cards-container {
   display: grid;
   grid-template-columns: 1fr; /* One image per row */
   gap: 30px; /* Space between cards */
@@ -74,4 +74,26 @@
   font-size: 1rem;      /* Adjust the font size as needed */
   margin-bottom: 20px;  /* Adds some space below the note */
   color: #666;          /* Light gray text for subtlety */
+}
+
+/* Styles for the certification year groups */
+.cert-year-group {
+  margin-bottom: 40px; /* Add spacing between years */
+}
+
+/* Style for the year titles */
+.cert-year-title {
+  font-size: 2rem; /* Adjust the font size as needed */
+  font-weight: bold; /* Make the title bold */
+  text-align: center; /* Center the title */
+  margin-bottom: 20px; /* Space between title and certifications */
+  color: #333; /* Dark color for the title */
+  background-color: #f4f4f4; /* Light background for the year section */
+  padding: 10px; /* Padding around the title */
+  border-radius: 10px; /* Optional: Add border-radius for a rounded look */
+}
+
+/* Optional: Style for the certification cards inside the year group */
+.cert-year-group .cert-card-link {
+  margin-bottom: 15px; /* Space between cards within each year */
 }
