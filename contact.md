@@ -62,6 +62,4 @@ permalink: /contact/
       <!-- Add more social links as needed -->
     </ul>
   </div>
-
-  {% include footer.html %}
 </div>
