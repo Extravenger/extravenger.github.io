@@ -18,7 +18,7 @@ permalink: /contact/
     flex-direction: column;
     align-items: center;  /* Center horizontally */
     justify-content: center;  /* Center vertically */
-    height: 100vh; /* Full viewport height */
+    height: 200vh; /* Full viewport height */
     text-align: center;
   }
 
