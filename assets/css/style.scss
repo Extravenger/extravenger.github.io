@@ -48,8 +48,8 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 20px;
   box-sizing: border-box;
+  padding: 20px;
 }
 
 /* Front (Image) */
@@ -65,23 +65,21 @@
   border-radius: 10px;
 }
 
-/* Back (Text) */
+/* Back (Clean Text) */
 .cert-card-back {
-  background: var(--content-bg);
+  background: #333; /* Solid clean background */
   color: white;
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .cert-card-back h3 {
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-}
-
-.cert-card-back p {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #ccc;
+  font-size: 1.8rem;
+  color: white;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
 }
