@@ -3,99 +3,46 @@
 
 @import "main";
 
-/* Makes the entire cards clickable */
-.cert-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-/* Wrapper to control the horizontal scrolling layout */
-.cert-cards-wrapper {
-  display: flex; /* Use flexbox for horizontal layout */
-  justify-content: center; /* Center the cards horizontally */
-  align-items: center; /* Center the cards vertically */
-  overflow: hidden; /* Hide overflow to create the scrolling effect */
-  width: 100%; /* Ensure it spans the full width */
-  position: relative; /* For positioning the edge effect */
-  height: 500px; /* Adjust height as needed */
-}
-
-/* Add a right edge for the "disappear" effect */
-.cert-cards-wrapper::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 50%; /* Position the edge near the middle of the page */
-  bottom: 0;
-  width: 200px; /* Width of the edge effect */
-  z-index: 2;
-  background: linear-gradient(to left, var(--content-bg), transparent);
-  pointer-events: none; /* Ensure clicks pass through */
-}
-
-/* Certification card styles */
-.cert-card {
-  flex: 0 0 auto; /* Prevent flex items from shrinking */
-  background: var(--content-bg);
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 300px; /* Fixed width for each card */
-  height: 400px; /* Fixed height for each card */
-  margin-right: 30px; /* Space between cards */
-  box-sizing: border-box;
-  animation: scroll-right 20s linear infinite; /* Animation for infinite scrolling */
-}
-
-/* Image styling */
-.cert-card-image {
+/* Container for the carousel */
+.cert-carousel {
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
+  white-space: nowrap;
   position: relative;
-  border-radius: 10px;
 }
 
+/* Container for the certification cards */
+.cert-cards-container {
+  display: inline-block;
+  animation: scroll 20s linear infinite; /* Adjust animation duration as needed */
+}
+
+/* Individual certification card styling */
+.cert-card {
+  display: inline-block;
+  width: 200px; /* Adjust card width as needed */
+  margin-right: 20px; /* Space between cards */
+  vertical-align: top;
+}
+
+/* Certification image styling */
 .cert-card-image img {
   width: 100%;
-  height: 100%;
-  object-fit: contain; /* Ensure images are fully visible without cropping */
+  height: auto;
   display: block;
 }
 
-/* Remove hover effect */
-.cert-card:hover {
-  transform: none;
-  box-shadow: none;
-}
-
-/* Style for the title */
-.certs-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-/* Style for the chronological note */
-.chronological-note {
-  text-align: center;
-  font-size: 1rem;
-  margin-bottom: 20px;
-  color: #666;
-}
-
-/* Keyframes for infinite scrolling from left to right */
-@keyframes scroll-right {
+/* Keyframes for the scrolling animation */
+@keyframes scroll {
   0% {
-    transform: translateX(-100%); /* Start off-screen to the left */
+    transform: translateX(100%); /* Start off-screen to the right */
   }
   100% {
-    transform: translateX(100%); /* Move off-screen to the right */
+    transform: translateX(-100%); /* Move to the left off-screen */
   }
+}
+
+/* Optional: Pause animation on hover */
+.cert-carousel:hover .cert-cards-container {
+  animation-play-state: paused;
 }
