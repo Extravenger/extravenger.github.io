@@ -81,6 +81,11 @@
   backface-visibility: hidden; /* Prevent front side from being visible */
 }
 
+/* Hide image behind the content on the back */
+.cert-card-back .cert-card-image {
+  display: none;
+}
+
 /* Style for the content inside the flipped side */
 .cert-card-back .content {
   text-align: center;
