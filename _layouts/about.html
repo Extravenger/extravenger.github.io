@@ -101,8 +101,8 @@ layout: compress
     .slide-in-text {
       opacity: 0;
       transform: translateX(-100%);
-      animation: slideIn 1s ease-out forwards;
-      animation-delay: 2s;
+      animation: slideIn 0.8s ease-out forwards;
+      animation-delay: 2.5s;
       font-size: 1.1rem;
       max-width: 600px;
       line-height: 1.6;
@@ -162,6 +162,9 @@ layout: compress
           typingElement.textContent += text.charAt(index);
           index++;
           setTimeout(type, 150); // Typing speed
+        } else {
+          // Add blinking cursor after typing is complete
+          typingElement.classList.add("completed-typing");
         }
       }
       
