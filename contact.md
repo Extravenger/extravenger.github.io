@@ -12,6 +12,13 @@ permalink: /contact/
     overflow: hidden; /* Prevent scrolling */
   }
 
+  /* Use Flexbox for the layout of the page */
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Full page height */
+  }
+
   /* Center the contact-container in the viewport */
   .contact-container {
     display: flex;
@@ -19,6 +26,7 @@ permalink: /contact/
     align-items: center;  /* Center horizontally */
     justify-content: center;  /* Center vertically */
     text-align: center;
+    flex-grow: 1;  /* Makes sure content grows to fill available space */
   }
 
   /* Style the social links to look neat */
@@ -43,13 +51,17 @@ permalink: /contact/
   }
 </style>
 
-<div class="contact-container">
-  <h1>Contact Me</h1>
-  <p>Feel free to reach out via my social media profiles:</p>
+<div class="page-wrapper">
+  <div class="contact-container">
+    <h1>Contact Me</h1>
+    <p>Feel free to reach out via my social media profiles:</p>
 
-  <ul class="social-links">
-    <li><a href="https://github.com/Extravenger" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
-    <li><a href="https://www.linkedin.com/in/amitmorr/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
-    <!-- Add more social links as needed -->
-  </ul>
+    <ul class="social-links">
+      <li><a href="https://github.com/Extravenger" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+      <li><a href="https://www.linkedin.com/in/amitmorr/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+      <!-- Add more social links as needed -->
+    </ul>
+  </div>
+
+  {% include footer.html %}
 </div>
