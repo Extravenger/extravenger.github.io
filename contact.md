@@ -5,20 +5,16 @@ permalink: /contact/
 ---
 
 <style>
-  /* Ensure the body and html fill the full viewport height */
-  body, html {
-    height: 100%;
-    margin: 0;
-    overflow: hidden; /* Prevent scrolling */
-  }
-
-  /* Use Flexbox to center the container both vertically and horizontally */
+  /* Make sure the contact-container is positioned in the middle of the page */
   .contact-container {
     display: flex;
     flex-direction: column;
-    align-items: center;  /* Center horizontally */
-    justify-content: center;  /* Center vertically */
-    height: 100vh;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Adjust position to truly center */
     text-align: center;
   }
 
