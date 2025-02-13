@@ -98,7 +98,7 @@
 
     /* Typing effect */
     .text::before {
-      content: "$ whoami";
+      content: "";
       display: inline-block;
       overflow: hidden;
       white-space: nowrap;
@@ -117,8 +117,10 @@
     /* Blinking cursor */
     .cursor {
       display: inline-block;
-      animation: blink 0.7s step-end infinite;
+      line-height: 1;
+      margin-left: 2px;
       vertical-align: 0.7em;
+      animation: blink 0.7s step-end infinite;
     }
 
     @keyframes blink {
@@ -132,7 +134,6 @@
       opacity: 0;
       transform: translateX(-100%);
       animation: slideIn 1s ease-out 4s forwards;
-      vertical-align: -0.5em;
     }
 
     @keyframes slideIn {
