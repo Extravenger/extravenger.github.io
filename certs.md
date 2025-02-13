@@ -14,6 +14,7 @@ permalink: /certs/
   
   <div class="cert-year-group">
     <h3 class="cert-year-title">2021</h3> <!-- Title for 2021 -->
+    <br>
 
     <!-- Certifications for 2021 -->
     <a class="cert-card-link">
@@ -36,6 +37,7 @@ permalink: /certs/
   
   <div class="cert-year-group">
     <h3 class="cert-year-title">2022</h3> <!-- Title for 2022 -->
+    <br>
 
     <!-- Certifications for 2022 -->
     <a class="cert-card-link">
@@ -59,6 +61,7 @@ permalink: /certs/
 
   <div class="cert-year-group">
     <h3 class="cert-year-title">2023</h3> <!-- Title for 2023 -->
+    <br>
 
     <!-- Certifications for 2023 -->
     <a class="cert-card-link">
