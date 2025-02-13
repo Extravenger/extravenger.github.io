@@ -56,7 +56,7 @@ layout: compress
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;  /* Adjusted to start from the top */
       height: 100%; 
       text-align: center;
       padding: 20px;
@@ -158,7 +158,7 @@ layout: compress
           // Once typing is finished, show the description text
           setTimeout(() => {
             descriptionElement.classList.add("visible-text");
-          }, 500);
+          }, 500); // Short delay before text appears
         }
       }
 
