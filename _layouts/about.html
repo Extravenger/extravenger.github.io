@@ -29,6 +29,9 @@ layout: compress
   <div class="wrapper">
     <main aria-label="Content">
       <div class="centered-content">
+        <!-- Image with fixed size and responsive adjustments -->
+        <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" class="profile-image" />
+
         <!-- Typing effect container -->
         <h1 class="typing-animation"></h1> 
       </div>
@@ -74,6 +77,35 @@ layout: compress
     @keyframes blinkCursor {
       50% {
         border-color: transparent;
+      }
+    }
+
+    /* Image Styling */
+    .profile-image {
+      width: 200px;
+      height: 200px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-image:hover {
+      transform: scale(1.05);
+    }
+
+    /* Adjust layout on smaller screens */
+    @media (max-width: 600px) {
+      .profile-image {
+        width: 150px;
+        height: 150px;
+      }
+      .typing-animation {
+        font-size: 1.5rem;
+      }
+      .wrapper {
+        padding: 10px;
       }
     }
   </style>
