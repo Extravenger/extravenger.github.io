@@ -34,7 +34,7 @@ layout: compress
 
         <!-- Title and description -->
         <div class="text-container">
-          <h1 class="typing-animation" style="min-height: 2.5em; visibility: hidden;"></h1> <!-- Hidden until typing starts -->
+          <h1 class="typing-animation"></h1> 
           <p class="slide-in-text">
             I'm Amit Mor, and am working as an Adversarial Tactics Expert at 
             <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>
@@ -86,15 +86,9 @@ layout: compress
       border-right: .15em solid #fff;
       white-space: nowrap;
       overflow: hidden;
-      width: 0;
+      display: inline-block;
       font-size: 2rem;
-      visibility: hidden; /* Hidden until typing starts */
-      animation: typing 2s steps(12, end), blink .7s step-end infinite;
-    }
-
-    @keyframes typing {
-      from { width: 0; visibility: visible; }
-      to { width: 100%; visibility: visible; }
+      animation: blink .7s step-end infinite;
     }
 
     @keyframes blink {
@@ -160,11 +154,10 @@ layout: compress
       const text = "$ whoami";
       const typingElement = document.querySelector(".typing-animation");
       let index = 0;
-      typingElement.style.visibility = "visible"; // Make it visible before typing starts
       
       function type() {
         if (index < text.length) {
-          typingElement.innerText += text.charAt(index);
+          typingElement.textContent += text.charAt(index); // Use textContent
           index++;
           setTimeout(type, 100); // Fast typing speed
         }
