@@ -13,22 +13,25 @@
 /* Wrapper to control the horizontal scrolling layout */
 .cert-cards-wrapper {
   display: flex; /* Use flexbox for horizontal layout */
+  justify-content: center; /* Center the cards horizontally */
+  align-items: center; /* Center the cards vertically */
   overflow: hidden; /* Hide overflow to create the scrolling effect */
   width: 100%; /* Ensure it spans the full width */
   position: relative; /* For positioning the edge effect */
-  padding: 20px 0; /* Optional, for some padding around the grid */
+  height: 500px; /* Adjust height as needed */
 }
 
-/* Add a right edge for the "eating" effect */
+/* Add a right edge for the "disappear" effect */
 .cert-cards-wrapper::after {
   content: '';
   position: absolute;
   top: 0;
-  right: 0;
+  right: 50%; /* Position the edge near the middle of the page */
   bottom: 0;
-  width: 100px; /* Width of the edge effect */
+  width: 200px; /* Width of the edge effect */
   z-index: 2;
   background: linear-gradient(to left, var(--content-bg), transparent);
+  pointer-events: none; /* Ensure clicks pass through */
 }
 
 /* Certification card styles */
