@@ -3,7 +3,6 @@
 
 @import "main";
 
-
 /* Makes the entire cards clickable */
 .cert-card-link {
   text-decoration: none;
@@ -12,7 +11,7 @@
 }
 
 /* Wrapper to control the grid layout */
-.cert-cards-container {
+.cert-cards-wrapper {
   display: grid;
   grid-template-columns: 1fr; /* One image per row */
   gap: 30px; /* Space between cards */
@@ -74,30 +73,4 @@
   font-size: 1rem;      /* Adjust the font size as needed */
   margin-bottom: 20px;  /* Adds some space below the note */
   color: #666;          /* Light gray text for subtlety */
-}
-
-/* Styles for the certification year groups */
-/* Styles for the certification year groups */
-.cert-year-group {
-  margin-bottom: 40px; /* Add spacing between years */
-  text-align: center;  /* Ensures content inside the year group is centered */
-}
-
-/* Style for the year titles */
-.cert-year-title {
-  font-size: 2rem; /* Adjust the font size as needed */
-  font-weight: bold; /* Make the title bold */
-  text-align: center; /* Ensure the text is centered horizontally */
-  margin-bottom: 20px; /* Space between title and certifications */
-  color: #333; /* Dark color for the title */
-  background-color: #f4f4f4; /* Light background for the year section */
-  padding: 15px 0; /* Add padding around the title (vertical padding) */
-  border-radius: 10px; /* Optional: Add border-radius for a rounded look */
-  display: inline-block; /* This makes the title's width fit to the content */
-  width: auto; /* Ensures the width only takes as much space as needed */
-}
-
-/* Optional: Style for the certification cards inside the year group */
-.cert-year-group .cert-card-link {
-  margin-bottom: 15px; /* Space between cards within each year */
 }
