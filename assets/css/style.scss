@@ -63,7 +63,7 @@
   transform: rotateY(180deg); /* Flip the whole inner content when hovered */
 }
 
-/* Back side of the card (text only) */
+/* Back side of the card (blank) */
 .cert-card-back {
   position: absolute;
   top: 0;
@@ -79,20 +79,6 @@
   flex-direction: column;
   transform: rotateY(180deg); /* Rotate the back side to be visible when flipped */
   backface-visibility: hidden; /* Prevent front side from being visible */
-}
-
-/* Remove the image from the back of the card */
-.cert-card-back .cert-card-image {
-  display: none; /* Completely hide the image on the back side */
-}
-
-/* Style for the content inside the flipped side */
-.cert-card-back .content {
-  text-align: center;
-  font-size: 1rem;
-  max-width: 300px; /* Limit the width of content */
-  line-height: 1.5;
-  color: var(--text-color); /* Ensure text color matches theme */
 }
 
 /* Ensure the front side image is still shown on initial load */
