@@ -5,16 +5,13 @@ permalink: /contact/
 ---
 
 <style>
-  /* Make sure the contact-container is positioned in the middle of the page */
+  /* Ensure the contact-container is centered in the viewport */
   .contact-container {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Adjust position to truly center */
+    align-items: center;  /* Center horizontally */
+    justify-content: center;  /* Center vertically */
+    height: 100vh; /* Take full viewport height */
     text-align: center;
   }
 
