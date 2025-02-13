@@ -12,12 +12,12 @@ permalink: /contact/
     overflow: hidden; /* Prevent scrolling */
   }
 
-  /* Use Flexbox to center the container */
+  /* Use Flexbox to center the container both vertically and horizontally */
   .contact-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: center;  /* Center horizontally */
+    justify-content: center;  /* Center vertically */
     height: 100vh;
     text-align: center;
   }
