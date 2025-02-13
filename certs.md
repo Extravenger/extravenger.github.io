@@ -18,7 +18,7 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>ITSAFE Pentesting</h3>
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
               <li>Active Directory Enumeration & Exploitation</li>
               <li>Offensive Python</li>
