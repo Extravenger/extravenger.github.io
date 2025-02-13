@@ -31,7 +31,7 @@
         <!-- Title and description -->
         <div class="text-container">
           <h1 class="typing-container">
-            <span class="text"></span>
+            <span class="text"></span><span class="cursor"></span>
           </h1>
           <p class="slide-in">I'm Amit Mor, and am working as an Adversarial Tactics Expert at <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>My journey in cybersecurity began as a SOC Analyst back in 2021, where I gained valuable experience in monitoring and defending networks.<br>However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>Red Teaming has always been my ultimate goal, and today? today I’m living that aspiration.</p>
         </div>
@@ -102,7 +102,7 @@
       overflow: hidden;
       white-space: nowrap;
       border-right: 2px solid;
-      animation: typing 3s steps(8) 0.5s forwards, blink 0.7s step-end infinite;
+      animation: typing 3s steps(8) 0.5s forwards;
     }
 
     .text::before {
@@ -118,9 +118,26 @@
       }
     }
 
+    /* Cursor animation (only after typing) */
+    .cursor {
+      display: inline-block;
+      line-height: 1;
+      margin-left: 2px;
+      vertical-align: -0.1em;
+      opacity: 0; /* Start hidden */
+      animation: blink 0.7s step-end infinite, showCursor 0.5s forwards;
+    }
+
     @keyframes blink {
       50% {
         opacity: 0;
+      }
+    }
+
+    /* Make the cursor visible after typing */
+    @keyframes showCursor {
+      100% {
+        opacity: 1;
       }
     }
 
