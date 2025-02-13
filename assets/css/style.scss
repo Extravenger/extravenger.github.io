@@ -33,6 +33,7 @@
   width: 100%; /* Full width of grid cell */
   height: 100%; /* Use full height of the grid container */
   box-sizing: border-box; /* Ensure padding is included in the width/height */
+  perspective: 1000px; /* Set perspective for flip effect */
 }
 
 /* Image styling */
@@ -45,6 +46,12 @@
   overflow: hidden;
   position: relative;
   border-radius: 10px; /* Optional: Add border-radius to the image container */
+  transition: transform 0.6s; /* Smooth transition for flipping */
+}
+
+/* Flip effect */
+.cert-card-link:active .cert-card-image {
+  transform: rotateY(180deg); /* Flip image when clicked */
 }
 
 .cert-card-image img {
