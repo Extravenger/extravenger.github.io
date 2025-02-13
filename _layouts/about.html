@@ -35,7 +35,7 @@ layout: compress
         <!-- Title and description -->
         <div class="text-container">
           <h1 class="typing-animation" style="min-height: 2.5em;"></h1> <!-- Reserve space for title -->
-          <p class="fade-in-text">
+          <p class="slide-in-text">
             I'm Amit Mor, and am working as an Adversarial Tactics Expert at 
             <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>
             My journey in cybersecurity began as a SOC Analyst back at 2021, where I gained valuable experience in monitoring and defending networks.<br>
@@ -100,11 +100,12 @@ layout: compress
       50% { border-color: transparent; }
     }
 
-    /* Fade-in Effect */
-    .fade-in-text {
+    /* Slide-in from Left */
+    .slide-in-text {
       opacity: 0;
-      animation: fadeIn 1.5s ease-in-out forwards;
-      animation-delay: 2s; /* Slightly faster */
+      transform: translateX(-100%);
+      animation: slideIn 1s ease-out forwards;
+      animation-delay: 2s; /* Matches typing duration */
       font-size: 1.1rem;
       max-width: 600px;
       line-height: 1.6;
@@ -112,8 +113,11 @@ layout: compress
       margin: 0;
     }
 
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    @keyframes slideIn {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     /* Image Animation */
@@ -140,7 +144,7 @@ layout: compress
       .typing-animation {
         font-size: 1.5rem;
       }
-      .fade-in-text {
+      .slide-in-text {
         font-size: 1rem;
       }
       .wrapper {
@@ -160,7 +164,7 @@ layout: compress
         if (index < text.length) {
           typingElement.innerHTML += text.charAt(index);
           index++;
-          setTimeout(type, 100); // Faster typing speed
+          setTimeout(type, 100); // Fast typing speed
         }
       }
       type();
