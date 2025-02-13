@@ -3,30 +3,6 @@
 
 @import "main";
 
-/* Contact Page */
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* Center vertically */
-  align-items: center; /* Center horizontally */
-  margin: 0 auto; /* Center horizontally */
-  padding: 20px; /* Optional padding */
-}
-
-.social-links {
-  padding: 0;
-  text-align: center;
-}
-
-.social-links li {
-  margin: 10px 0;
-}
-
-.social-links a {
-  text-decoration: none;
-  color: inherit; /* Inherit color from parent */
-}
-
 
 /* Makes the entire cards clickable */
 .cert-card-link {
