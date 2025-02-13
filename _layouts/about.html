@@ -33,7 +33,12 @@ layout: compress
         <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" class="profile-image" />
 
         <!-- Typing effect container -->
-        <h1 class="typing-animation">$ whoami</h1> 
+        <h1 class="typing-animation">$ whoami</h1>
+
+        <!-- Text below that will appear after $ whoami typing -->
+        <div id="description" class="hidden-text">
+          <p>I'm Amit Mor, and I’m working as an Adversarial Tactics Expert at <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>My journey in cybersecurity began as a SOC Analyst back in 2021, where I gained valuable experience in monitoring and defending networks.<br>However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>Red Teaming has always been my ultimate goal, and today? Today, I’m living that aspiration.</p>
+        </div>
       </div>
     </main>
     {% include footer.html %}
@@ -113,7 +118,54 @@ layout: compress
         padding: 10px;
       }
     }
+
+    /* Initially hide the description text */
+    .hidden-text {
+      display: none;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      max-width: 600px;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* Visible after the typing animation completes */
+    .visible-text {
+      display: block;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
+
+  <script>
+    // Typing Effect Script
+    document.addEventListener("DOMContentLoaded", function() {
+      const text = "$ whoami";
+      const typingElement = document.querySelector(".typing-animation");
+      const descriptionElement = document.getElementById("description");
+      let index = 0;
+
+      function type() {
+        if (index < text.length) {
+          typingElement.textContent += text.charAt(index);
+          index++;
+          setTimeout(type, 200); // Typing speed
+        } else {
+          // Once typing is finished, show the description text
+          setTimeout(() => {
+            descriptionElement.classList.add("visible-text");
+          }, 500);
+        }
+      }
+
+      // Start typing after a short delay to ensure visibility
+      setTimeout(type, 500);
+    });
+  </script>
   
 </body>
 </html>
