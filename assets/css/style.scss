@@ -21,7 +21,6 @@
   grid-auto-rows: 400px; /* Ensure consistent row height */
 }
 
-/* Certification card styles */
 .cert-card {
   display: flex;
   background: var(--content-bg);
@@ -34,7 +33,7 @@
   height: 100%; /* Use full height of the grid container */
   box-sizing: border-box; /* Ensure padding is included in the width/height */
   perspective: 1000px; /* Set perspective for flip effect */
-  position: relative;
+  position: relative; /* Make the card relative for proper flipping */
 }
 
 /* Image styling */
@@ -48,7 +47,7 @@
   position: relative;
   border-radius: 10px; /* Optional: Add border-radius to the image container */
   transition: transform 0.6s; /* Smooth transition for flipping */
-  backface-visibility: hidden; /* Prevent back side from being visible when flipped */
+  backface-visibility: hidden; /* Hide the back side when flipped */
 }
 
 /* Flip effect */
@@ -57,7 +56,7 @@
 }
 
 /* Image flip content */
-.cert-card .cert-card-back {
+.cert-card-back {
   position: absolute;
   top: 0;
   left: 0;
@@ -80,6 +79,7 @@
   font-size: 1rem;
   max-width: 300px; /* Limit the width of content */
   line-height: 1.5;
+  color: var(--text-color); /* Ensure text color matches theme */
 }
 
 /* Ensure the front side image is still shown on initial load */
@@ -94,19 +94,4 @@
 .cert-card:hover {
   transform: none; /* No transformation */
   box-shadow: none; /* No hover shadow */
-}
-
-/* Style for the title */
-.certs-title {
-  text-align: center; /* Centers the text horizontally */
-  font-size: 2rem; /* Adjust the font size as needed */
-  margin-bottom: 20px; /* Adds some space below the title */
-}
-
-/* Style for the chronological note */
-.chronological-note {
-  text-align: center;  /* Centers the text horizontally */
-  font-size: 1rem;      /* Adjust the font size as needed */
-  margin-bottom: 20px;  /* Adds some space below the note */
-  color: #666;          /* Light gray text for subtlety */
 }
