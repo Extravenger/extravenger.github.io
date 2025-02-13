@@ -35,7 +35,7 @@ permalink: /certs/
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/THM.png" alt="Cert 1">
+          <img src="/assets/img/certs/THM.png" alt="Cert 2">
         </div>
         <div class="cert-card-back">
           <div class="content">
@@ -56,7 +56,7 @@ permalink: /certs/
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/EJPT.png" alt="Cert 2">
+          <img src="/assets/img/certs/EJPT.png" alt="Cert 3">
         </div>
         <div class="cert-card-back">
           <div class="content">
@@ -89,7 +89,7 @@ permalink: /certs/
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/CRTP.png" alt="Cert 3">
+          <img src="/assets/img/certs/CRTP.png" alt="Cert 4">
         </div>
         <div class="cert-card-back">
           <div class="content">
@@ -105,7 +105,7 @@ permalink: /certs/
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/HTB-Offshore.png" alt="Cert 2">
+          <img src="/assets/img/certs/HTB-Offshore.png" alt="Cert 5">
         </div>
         <div class="cert-card-back">
           <div class="content">
@@ -121,7 +121,7 @@ permalink: /certs/
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/OSEP.png" alt="Cert 3">
+          <img src="/assets/img/certs/OSEP.png" alt="Cert 6">
         </div>
         <div class="cert-card-back">
           <div class="content">
