@@ -38,7 +38,7 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>TryHackMe Offensive Pentesting Path</h3>
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
               <li>Advanced Exploitation including: SQL Injection, Remote File Inlcusion, SSH Tunneling and Privilege Escalation.</li>
               <li>Buffer Overflow Exploitation.</li>
@@ -58,7 +58,7 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>eLearn Junior Penetration Tester</h3>
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
               <li>Assessment Methodologies.</li>
               <li>Web Application Penetration Testing.</li>
@@ -79,7 +79,7 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>OffSec Certified Professional</h3>
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
               <li>Client Side Attacks.</li>
               <li>Web Exploitation.</li>
@@ -101,7 +101,7 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>Certified Red Team Professional</h3>
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
               <li>Active Directory Enumeration.</li>
               <li>Local Privilege Escalation.</li>
@@ -124,7 +124,7 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>HackTheBox - Offshore ProLab</h3>
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
               <li>A lot of Active Directory stuff, Pivoting, Web attacks etc.</li>
             </ul>
@@ -142,7 +142,7 @@ permalink: /certs/
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3>OffSec Experienced Penetration Tester</h3>
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
               <li>Client-Side Attacks.</li>
               <li>Process Injection and Migration.</li>
