@@ -19,7 +19,12 @@ permalink: /certs/
         <div class="cert-card-back">
           <div class="content">
             <h3>ITSAFE Certification</h3>
-            <p>Details about the ITSAFE certification, including description and date of completion.</p>
+            <p>Main Focus:</p>
+            <ul>
+              <li>Active Directory Enumeration & Exploitation</li>
+              <li>Offensive Python</li>
+              <li>Linux & Windows Privilege Escalation</li>
+            </ul>
           </div>
         </div>
       </div>
