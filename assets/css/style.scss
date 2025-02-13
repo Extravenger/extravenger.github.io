@@ -97,3 +97,13 @@
   object-fit: cover; /* Ensure images cover the square without distorting */
   display: block;
 }
+
+/* Ensure the content inside the back of the card is centered */
+.cert-card-back .content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100%; /* Ensure the content takes full height */
+  text-align: center; /* Center the text */
+}
