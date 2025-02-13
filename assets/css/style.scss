@@ -3,48 +3,31 @@
 
 @import "main";
 
-/* Makes the entire cards clickable */
-.cert-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-/* Wrapper to control the grid layout */
+/* Grid Layout */
 .cert-cards-wrapper {
   display: grid;
-  grid-template-columns: 1fr; /* One image per row */
-  gap: 30px; /* Space between cards */
-  width: 100%; /* Ensure it spans the full width */
-  box-sizing: border-box;
-  padding: 20px; /* Optional, for some padding around the grid */
-  grid-auto-rows: 400px; /* Ensure consistent row height */
-  perspective: 1000px; /* Necessary for 3D flip effect */
-}
-
-/* Certification card styles */
-.cert-card {
-  background: var(--content-bg);
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
   width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  position: relative;
-  cursor: pointer;
+  padding: 20px;
+  perspective: 1000px;
 }
 
-/* Flip effect */
+/* Card Structure */
+.cert-card {
+  width: 100%;
+  height: 400px;
+  perspective: 1000px;
+  cursor: pointer;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
 .cert-card.is-flipped {
   transform: rotateY(180deg);
 }
 
-/* Card inner container */
 .cert-card-inner {
   position: relative;
   width: 100%;
@@ -53,52 +36,52 @@
   transform-style: preserve-3d;
 }
 
-/* Front and back faces */
 .cert-card-front, .cert-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 10px;
+  border-radius: 15px;
   overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
+/* Front (Image) */
 .cert-card-front {
   background: var(--content-bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
-.cert-card-back {
-  background: var(--content-bg);
-  transform: rotateY(180deg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  text-align: center;
-}
-
-/* Image styling */
 .cert-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  border-radius: 10px;
 }
 
-/* Style for the title */
-.certs-title {
-  text-align: center;
-  font-size: 2rem;
-  margin-bottom: 20px;
+/* Back (Text) */
+.cert-card-back {
+  background: var(--content-bg);
+  color: white;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Style for the chronological note */
-.chronological-note {
-  text-align: center;
+.cert-card-back h3 {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.cert-card-back p {
   font-size: 1rem;
-  margin-bottom: 20px;
-  color: #666;
+  line-height: 1.5;
+  color: #ccc;
 }
