@@ -5,13 +5,20 @@ permalink: /contact/
 ---
 
 <style>
-  /* Ensure the contact-container is centered in the viewport */
+  /* Ensure the body and html elements are set to prevent scrolling */
+  body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* Prevent scrolling */
+  }
+
+  /* Center the contact-container in the viewport */
   .contact-container {
     display: flex;
     flex-direction: column;
     align-items: center;  /* Center horizontally */
     justify-content: center;  /* Center vertically */
-    height: 100vh; /* Take full viewport height */
+    height: 100vh; /* Full viewport height */
     text-align: center;
   }
 
