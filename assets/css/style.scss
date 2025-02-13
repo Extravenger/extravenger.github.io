@@ -53,9 +53,11 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  position: relative;
-  border-radius: 10px; /* Optional: Add border-radius to the image container */
+  position: absolute; /* Make it absolute to stack on top of the back side */
+  top: 0;
+  left: 0;
   backface-visibility: hidden; /* Hide the back side when flipped */
+  border-radius: 10px; /* Optional: Add border-radius to the image container */
 }
 
 /* Back side of the card (text only) */
@@ -76,14 +78,9 @@
   backface-visibility: hidden; /* Ensure the back side is hidden when not flipped */
 }
 
-/* Ensure the front side image is hidden when flipped */
-.cert-card:hover .cert-card-image {
-  visibility: hidden; /* Hide the image when the card is flipped */
-}
-
-/* Ensure the back side is visible when flipped */
-.cert-card:hover .cert-card-back {
-  visibility: visible; /* Show the back side when the card is flipped */
+/* Flip effect */
+.cert-card:hover .cert-card-inner {
+  transform: rotateY(180deg); /* Flip the whole inner content when hovered */
 }
 
 /* Ensure the front side image is still shown on initial load */
