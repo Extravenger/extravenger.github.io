@@ -98,14 +98,13 @@
   display: block;
 }
 
-/* Ensure the content inside the back of the card is centered */
 .cert-card-back .content {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; /* Align content to the top */
+  align-items: flex-start;    /* Align items to the top */
   flex-direction: column;
   height: 100%; /* Ensure the content takes full height */
-  text-align: center; /* Center the text */
+  text-align: center; /* Center the text horizontally */
 }
 
 /* Style for the title */
