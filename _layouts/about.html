@@ -31,7 +31,7 @@
         <!-- Title and description -->
         <div class="text-container">
           <h1 class="typing-container">
-            <span class="text">$ whoami</span><span class="cursor"></span>
+            <span class="text"></span><span class="cursor">|</span>
           </h1>
           <p class="slide-in">I'm Amit Mor, and am working as an Adversarial Tactics Expert at <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>My journey in cybersecurity began as a SOC Analyst back in 2021, where I gained valuable experience in monitoring and defending networks.<br>However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>Red Teaming has always been my ultimate goal, and today? today I’m living that aspiration.</p>
         </div>
@@ -53,7 +53,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;  /* Remove fixed 100vh to allow content to adjust naturally */
+      height: 100%;  
       text-align: center;
       padding: 20px;
     }
@@ -83,46 +83,41 @@
       max-width: 600px;
       line-height: 1.6;
       text-align: center;
-      margin: 0; /* Prevent shifting due to text size changes */
+      margin: 0;
     }
 
     /* Image Styling with fixed size */
     .profile-image {
-      width: 200px;   /* Fixed size */
-      height: 200px;  /* Fixed size */
+      width: 200px;  
+      height: 200px;
       margin-bottom: 20px;
       border-radius: 50%;
       border: 2px solid #fff;
-      object-fit: cover;  /* Ensures the image doesn't get stretched or squished */
+      object-fit: cover; 
     }
 
     /* Typing effect */
-    .typing-container .text {
+    .text::before {
+      content: "$ whoami";
       display: inline-block;
-      width: 0;
-      white-space: nowrap;
       overflow: hidden;
-      border-right: 2px solid transparent;  /* Makes the border "invisible" for typing */
-      animation: typing 3s steps(8) 1s forwards;
+      white-space: nowrap;
+      animation: typing 3s steps(8) 0.5s forwards;
     }
 
-    /* Typing animation */
     @keyframes typing {
       from {
         width: 0;
       }
       to {
-        width: 8ch; /* 8 characters in $ whoami */
+        width: 8ch;
       }
     }
 
-    /* Blinking cursor animation */
+    /* Blinking cursor */
     .cursor {
       display: inline-block;
-      width: 2px;
-      background-color: #fff;
-      margin-left: 5px;
-      animation: blink 0.75s step-end infinite;
+      animation: blink 0.7s step-end infinite;
     }
 
     @keyframes blink {
@@ -131,17 +126,14 @@
       }
     }
 
-    /* Animation for sliding text */
+    /* Slide in text after typing */
     .slide-in {
-      animation: slideIn 1s ease-out 3s forwards; /* Delay after typing */
       opacity: 0;
+      transform: translateX(-100%);
+      animation: slideIn 1s ease-out 4s forwards;
     }
 
     @keyframes slideIn {
-      from {
-        transform: translateX(-100%);
-        opacity: 0;
-      }
       to {
         transform: translateX(0);
         opacity: 1;
@@ -151,17 +143,17 @@
     /* Adjust layout on smaller screens */
     @media (max-width: 600px) {
       .profile-image {
-        width: 150px;   /* Smaller size on mobile */
-        height: 150px;  /* Smaller size on mobile */
+        width: 150px;
+        height: 150px;
       }
       h1 {
-        font-size: 1.5rem;  /* Adjust heading size for mobile */
+        font-size: 1.5rem;
       }
       p {
-        font-size: 1rem;  /* Adjust paragraph size for mobile */
+        font-size: 1rem;
       }
       .wrapper {
-        padding: 10px; /* Reduce padding on mobile */
+        padding: 10px;
       }
     }
   </style>
