@@ -83,16 +83,18 @@ layout: compress
 
     /* Typing Animation */
     .typing-animation {
-      border-right: .15em solid #fff;
+      display: inline-block;
+      border-right: 2px solid #fff;
       white-space: nowrap;
       overflow: hidden;
-      display: inline-block;
       font-size: 2rem;
-      animation: blink .7s step-end infinite;
+      animation: blinkCursor 0.7s step-end infinite;
     }
 
-    @keyframes blink {
-      50% { border-color: transparent; }
+    @keyframes blinkCursor {
+      50% {
+        border-color: transparent;
+      }
     }
 
     /* Slide-in from Left */
@@ -157,12 +159,14 @@ layout: compress
       
       function type() {
         if (index < text.length) {
-          typingElement.textContent += text.charAt(index); // Use textContent
+          typingElement.textContent += text.charAt(index);
           index++;
-          setTimeout(type, 100); // Fast typing speed
+          setTimeout(type, 150); // Typing speed
         }
       }
-      type();
+      
+      // Start typing after a short delay to ensure visibility
+      setTimeout(type, 500);
     });
   </script>
   
