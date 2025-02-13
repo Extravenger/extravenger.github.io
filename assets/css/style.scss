@@ -77,20 +77,24 @@
 }
 
 /* Styles for the certification year groups */
+/* Styles for the certification year groups */
 .cert-year-group {
   margin-bottom: 40px; /* Add spacing between years */
+  text-align: center;  /* Ensures content inside the year group is centered */
 }
 
 /* Style for the year titles */
 .cert-year-title {
   font-size: 2rem; /* Adjust the font size as needed */
   font-weight: bold; /* Make the title bold */
-  text-align: center; /* Center the title */
+  text-align: center; /* Ensure the text is centered horizontally */
   margin-bottom: 20px; /* Space between title and certifications */
   color: #333; /* Dark color for the title */
   background-color: #f4f4f4; /* Light background for the year section */
-  padding: 10px; /* Padding around the title */
+  padding: 15px 0; /* Add padding around the title (vertical padding) */
   border-radius: 10px; /* Optional: Add border-radius for a rounded look */
+  display: inline-block; /* This makes the title's width fit to the content */
+  width: auto; /* Ensures the width only takes as much space as needed */
 }
 
 /* Optional: Style for the certification cards inside the year group */
