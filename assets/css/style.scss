@@ -45,11 +45,6 @@
   transition: transform 0.6s ease; /* Smooth transition for flip effect */
 }
 
-/* Card hover to flip */
-.cert-card:hover .cert-card-inner {
-  transform: rotateY(180deg); /* Flip the card on hover */
-}
-
 /* Front side of the card (image only) */
 .cert-card-image {
   width: 100%;
@@ -81,12 +76,12 @@
 }
 
 /* Ensure the front side image is hidden when flipped */
-.cert-card-inner:hover .cert-card-image {
+.cert-card.flipped .cert-card-image {
   visibility: hidden; /* Hide the image when the card is flipped */
 }
 
 /* Ensure the back side is visible when flipped */
-.cert-card-inner:hover .cert-card-back {
+.cert-card.flipped .cert-card-back {
   visibility: visible; /* Show the back side when the card is flipped */
 }
 
