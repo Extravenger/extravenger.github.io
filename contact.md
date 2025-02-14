@@ -129,7 +129,6 @@ permalink: /contact/
       </div>
       <!-- Back Side with Details -->
       <div class="card-back">
-        <p>Discord:</p>
         <p>Extravenger#8538</p>
       </div>
     </div>
