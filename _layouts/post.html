@@ -22,7 +22,7 @@ layout: compress
         localStorage.setItem("theme", data);
       }
     };
-
+ 
     initTheme(localStorage.getItem("theme"));
     
     setTimeout(() => body.classList.remove("notransition"), 75);
@@ -30,24 +30,15 @@ layout: compress
 
   {% include navbar.html %}
   
-  <div class="wrapper post" style="display: flex; padding: 20px;">
-    <!-- Sidebar Navigation -->
-    <div class="post-nav" style="width: 250px; position: sticky; top: 20px; background-color: #f4f4f4; padding: 15px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-      <h3>On this page</h3>
-      <ul id="post-navigation" style="list-style: none; padding: 0;">
-        <!-- Dynamic links will be populated by JavaScript -->
-      </ul>
-    </div>
-
-    <!-- Main content -->
-    <main class="page-content" aria-label="Content" style="flex-grow: 1; padding-left: 270px;">
-      <article itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="wrapper post">
+    <main class="page-content" aria-label="Content">
+      <article itemscope itemtype="https://schema.org/BlogPosting" class="post-article">
 
         <header class="header">
           {% if page.tags and page.tags != empty %}
           <div class="tags">
             {% assign tags = page.tags %}
-            <span itemprop="keywords">
+            <span itemprop="keywords" class="tags-container">
               {% for tag in tags %}
               <a class="tag"
                 href="/tags/#{{tag | downcase | slugify}}">{{tag | upcase }}</a>{% unless forloop.last %},{% endunless %}
@@ -56,6 +47,7 @@ layout: compress
           </div>
           {% endif %}
           <h1 class="header-title" itemprop="headline">{{ page.title | escape }}</h1>
+          
           {% if page.date %}
           <div class="post-meta">
             <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
@@ -78,45 +70,32 @@ layout: compress
         <div class="post-body" itemprop="articleBody">
           {{ content | markdownify }}
         </div>
-
+        
         {% if page.tweet %}
-        <p>Comments this article on 
-          <a href="https://twitter.com/{{site.twitter}}/status/{{page.tweet}}">Twitter</a>.
-        </p>
+        <div class="tweet-link">
+          <p>Comments this article on 
+            <a href="https://twitter.com/{{site.twitter}}/status/{{page.tweet}}">Twitter</a>.
+          </p>
+        </div>
         {% endif %}
       </article>
-
+    
       {% if page.comments %}
         {% include comments.html %}
       {% endif %}
+
     </main>
 
     {% if page.modified %}
-      <small class="post-updated-at">updated_at {{page.modified | date: "%d-%m-%Y"}}</small>
+      <small class="post-updated-at">Last updated: {{page.modified | date: "%d-%m-%Y"}}</small>
     {% endif %}
+    
     {% if page.next or page.previous %}
       {% include navigation.html %}
     {% endif %}
 
     {% include footer.html %}
   </div>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
-      const headers = document.querySelectorAll(".post-body h1, .post-body h2, .post-body h3, .post-body h4, .post-body h5, .post-body h6");
-      const navList = document.getElementById("post-navigation");
-
-      headers.forEach(function(header, index) {
-        const id = `header-${index}`;
-        header.id = id;
-
-        const link = document.createElement("li");
-        link.innerHTML = `<a href="#${id}">${header.innerHTML}</a>`;
-        navList.appendChild(link);
-      });
-    });
-  </script>
-
 </body>
 
 </html>
