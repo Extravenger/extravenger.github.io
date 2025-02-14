@@ -66,6 +66,9 @@ This is just one example. Think about other time-consuming tasks and find ways t
 # Final Thoughts
 
 Overall, this course is an incredible resource that can significantly elevate your penetration testing skills. If you're willing to dedicate the time and effort to both learning and practicing the material, it will undoubtedly take you to the next level in the field.
+I've made my course GitHub repository public to help other students, but I still encourage you to create your own tools:
+
+https://github.com/Extravenger/OSEPlayground
 
 <figure>
 <img src="{{ page.certificate }}">
