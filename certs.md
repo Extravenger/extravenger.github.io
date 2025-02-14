@@ -168,3 +168,76 @@ document.querySelectorAll('.cert-card').forEach(card => {
   });
 });
 </script>
+
+<style>
+  .cert-card {
+    width: 250px;
+    height: 350px;
+    perspective: 1000px;
+    margin: 20px;
+  }
+
+  .cert-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+
+  .cert-card-front,
+  .cert-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 10px;
+  }
+
+  .cert-card-front {
+    background-size: cover;
+    background-position: center;
+  }
+
+  .cert-card-back {
+    background-size: cover;
+    background-position: center;
+    transform: rotateY(180deg);
+  }
+
+  /* Flip on hover */
+  .cert-card:hover .cert-card-inner {
+    transform: rotateY(180deg);
+  }
+
+  /* Other styling for the card */
+  .cert-card-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+  }
+
+  .cert-card-back .content {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border-radius: 10px;
+  }
+
+  .cert-card-back h3 {
+    font-size: 1.2rem;
+    color: lightcoral;
+  }
+
+  .cert-card-back ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .cert-card-back ul li {
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+</style>
