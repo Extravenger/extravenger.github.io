@@ -26,7 +26,16 @@ layout: home
       width: 100%;
     }
 
-    /* Container to center post cards to the right */
+    /* Center the container vertically and horizontally */
+    .wrapper {
+      display: flex;
+      justify-content: center;  /* Horizontally center */
+      align-items: center;      /* Vertically center */
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    /* Container to align post cards to the right */
     .post-cards-container {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Wider cards */
@@ -36,7 +45,6 @@ layout: home
       width: 100%;
       margin-left: auto;  /* Align to the right */
       margin-right: 0;
-      flex-grow: 1;  /* Ensures the container takes up available space */
     }
 
     /* Card-style layout for each post */
