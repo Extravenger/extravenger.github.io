@@ -5,6 +5,7 @@ date:   2025-02-06 22:57:49 +0000
 categories: jekyll update
 usemathjax: true
 image: /assets/img/certs/OSEP.png
+certificate: /assets/img/certs/OSEP.png
 ---
 
 # Course overview
@@ -61,3 +62,11 @@ netexec smb 172.16.149.0/24 --log hosts.txt && sed -i 's/x64//g' hosts.txt && ca
 ```
 
 This is just one example. Think about other time-consuming tasks and find ways to streamline them for more efficiency.
+
+# Final Thoughts
+
+Overall, this course is an incredible resource that can significantly elevate your penetration testing skills. If you're willing to dedicate the time and effort to both learning and practicing the material, it will undoubtedly take you to the next level in the field.
+
+<figure>
+<img src="{{ page.certificate }}">
+</figure>
