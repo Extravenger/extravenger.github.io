@@ -13,7 +13,7 @@
 /* Wrapper to control the grid layout */
 .cert-cards-wrapper {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* One image per row */
   gap: 30px;
   width: 100%;
   box-sizing: border-box;
@@ -35,7 +35,6 @@
   box-sizing: border-box;
   perspective: 1000px;
   position: relative;
-  cursor: pointer; /* Pointer cursor for the entire card */
 }
 
 /* Card inner element for flip effect */
@@ -47,8 +46,7 @@
   transition: transform 0.6s ease;
 }
 
-/* Add click flip functionality */
-.cert-card.flipped .cert-card-inner {
+.cert-card:hover .cert-card-inner {
   transform: rotateY(180deg);
 }
 
@@ -62,7 +60,6 @@
   overflow: hidden;
   position: relative;
   backface-visibility: hidden;
-  cursor: pointer; /* Pointer cursor specifically for the image */
 }
 
 .cert-card-image img {
@@ -89,7 +86,7 @@
   transform: rotateY(180deg);
   backface-visibility: hidden;
   text-align: center;
-  overflow: auto;
+  overflow: auto; /* Make text scrollable if it overflows */
   word-wrap: break-word;
 }
 
@@ -103,12 +100,12 @@
 }
 
 /* Hide front when flipped */
-.cert-card.flipped .cert-card-image {
+.cert-card:hover .cert-card-image {
   visibility: hidden;
 }
 
 /* Show back when flipped */
-.cert-card.flipped .cert-card-back {
+.cert-card:hover .cert-card-back {
   visibility: visible;
 }
 
@@ -135,26 +132,26 @@
   }
 
   .cert-card {
-    grid-auto-rows: 300px;
+    grid-auto-rows: 300px; /* Adjust card height for smaller screens */
   }
 
   .cert-card-back {
-    font-size: 0.9rem;
+    font-size: 0.9rem; /* Smaller text on mobile */
     padding: 15px;
   }
 }
 
 @media (max-width: 480px) {
   .cert-card {
-    grid-auto-rows: 250px;
+    grid-auto-rows: 250px; /* Adjust card height for very small screens */
   }
 
   .cert-card-back {
-    font-size: 0.8rem;
+    font-size: 0.8rem; /* Even smaller text on very small screens */
     padding: 10px;
   }
 
   .cert-card-back .content {
-    overflow-y: auto;
+    overflow-y: auto; /* Allow scrolling for long text */
   }
 }
