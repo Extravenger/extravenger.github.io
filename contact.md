@@ -7,13 +7,17 @@ permalink: /contact/
 <style>
   /* General Reset */
   body, html {
-    height: 100%;
     margin: 0;
+    padding: 0;
+  }
+
+  /* Centering Container */
+  .contact-page-container {
+    min-height: 80vh; /* Ensure it doesn't interfere with the navbar */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: Arial, sans-serif;
-    background: var(--color-bg);
+    padding: 20px;
   }
 
   /* Card Style for the Contact Section */
@@ -75,17 +79,19 @@ permalink: /contact/
   }
 </style>
 
-<div class="contact-card">
-  <h1>Contact Me</h1>
-  <p>Feel free to reach out via my social profiles:</p>
-  <ul class="social-links">
-    <li><a href="https://github.com/Extravenger" target="_blank" aria-label="GitHub">
-      <i class="fab fa-github"></i>
-    </a></li>
-    <li><a href="https://www.linkedin.com/in/amitmorr/" target="_blank" aria-label="LinkedIn">
-      <i class="fab fa-linkedin"></i>
-    </a></li>
-  </ul>
+<div class="contact-page-container">
+  <div class="contact-card">
+    <h1>Contact Me</h1>
+    <p>Feel free to reach out via my social profiles:</p>
+    <ul class="social-links">
+      <li><a href="https://github.com/Extravenger" target="_blank" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a></li>
+      <li><a href="https://www.linkedin.com/in/amitmorr/" target="_blank" aria-label="LinkedIn">
+        <i class="fab fa-linkedin"></i>
+      </a></li>
+    </ul>
+  </div>
 </div>
 
 <!-- Font Awesome for Social Icons -->
