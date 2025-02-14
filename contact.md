@@ -17,11 +17,12 @@ permalink: /contact/
   .contact-page-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start; /* Aligns cards near the top */
+    align-items: flex-start;
     gap: 20px;
-    padding: 50px 20px; /* Space from top */
-    flex-wrap: wrap;
-    height: 100%;
+    padding: 50px 20px;
+    flex-wrap: nowrap; /* Single row */
+    overflow-x: auto;  /* Allow horizontal scrolling if needed */
+    width: 100%;
   }
 
   /* Card Container */
@@ -29,6 +30,7 @@ permalink: /contact/
     perspective: 1000px;
     width: 200px;
     height: 200px;
+    flex-shrink: 0; /* Prevent shrinking */
   }
 
   /* Inner Wrapper for 3D Flip */
@@ -127,6 +129,7 @@ permalink: /contact/
       </div>
       <!-- Back Side with Details -->
       <div class="card-back">
+        <p>Discord:</p>
         <p>Extravenger#8538</p>
       </div>
     </div>
