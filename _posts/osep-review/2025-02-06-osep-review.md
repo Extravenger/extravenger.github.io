@@ -6,7 +6,7 @@ image: /assets/img/certs/OSEP.png
 certificate: /assets/img/certs/OSEP.png
 ---
 
-# Course overview
+# Course Overview
 
 Offsec’s Offensive Security Experienced Penetration Tester (OSEP) certification is an advanced penetration testing course that builds on the knowledge and techniques taught in OSCP focusing specifcially on evasion techniques and bypassing defences within AD environments.
 
@@ -24,7 +24,7 @@ The course covers various topics, which some of them are:
 Each topic is covered in depth, and Offsec has done a great job explaining each one.
 Many people expect Red Teaming content in the course, which makes sense, but this is not a Red Team course. Instead, it's the next level of penetration testing after the OSCP.
 
-# The Modules Labs
+# The Labs Modules
 
 Each topic has its own dedicated lab setup. I highly recommend completing all the lab exercises for each module, as they provide hands-on practice that reinforces the material, allowing you to learn by doing rather than just watching videos. After all, the essence of this course is hands-on hacking.<br>
 Each module also includes an extra mile section, which I strongly suggest you complete. These exercises go beyond the core curriculum, offering additional insights such as the basics of Win32 APIs. In my opinion, it's important to dive deeper and conduct research beyond the course's focus, as this will enhance your understanding and skills.
