@@ -22,8 +22,12 @@ The course covers various topics, which some of them are:
 - Active Directory Exploitation.
 - Microsoft SQL Attacks.
 
-Each topic is convered widely and Offsec did a pretty good job at explaning each one of them.<br>
-Many people except a Red Teaming stuff in the course, while it's make sense, this is NOT red team course, it's just the next level of penetration testing after the OSCP.
+Each topic is covered in depth, and Offsec has done a great job explaining each one.
+Many people expect Red Teaming content in the course, which makes sense, but this is not a Red Team course. Instead, it's the next level of penetration testing after the OSCP.
+
+# Learn to read between the lines
+
+
 
 # The Modules Labs
 
