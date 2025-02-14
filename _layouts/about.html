@@ -44,7 +44,13 @@
           <h1 class="typing-container">
             <span class="text"></span><span class="cursor">|</span>
           </h1>
-          <p class="slide-in">I'm Amit Mor, and am working as an Adversarial Tactics Expert at <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>My journey in cybersecurity began as a SOC Analyst back in 2021, where I gained valuable experience in monitoring and defending networks.<br>However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>Red Teaming has always been my ultimate goal, and today? today I’m living that aspiration.</p>
+          <p class="slide-in">
+            I'm Amit Mor, and am working as an Adversarial Tactics Expert at 
+            <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>
+            My journey in cybersecurity began as a SOC Analyst back in 2021, where I gained valuable experience in monitoring and defending networks.<br>
+            However, I always had a passion for the offensive side of the field, so I transitioned to Penetration Testing.<br>
+            Red Teaming has always been my ultimate goal, and today? Today I’m living that aspiration.
+          </p>
         </div>
       </div>
     </main>
@@ -64,7 +70,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100%;  
+      min-height: 100vh;
       text-align: center;
       padding: 20px;
     }
@@ -199,8 +205,8 @@
       }
     }
 
-    /* Adjust layout on smaller screens */
-    @media (max-width: 600px) {
+    /* Responsive Styles */
+    @media (max-width: 768px) {
       .flip-card {
         width: 150px;
         height: 150px;
@@ -210,9 +216,27 @@
       }
       p {
         font-size: 1rem;
+        max-width: 90%;
       }
       .wrapper {
-        padding: 10px;
+        padding: 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .flip-card {
+        width: 120px;
+        height: 120px;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+      p {
+        font-size: 0.9rem;
+      }
+      .text::before {
+        content: "$ whoami";
+        font-size: 0.9rem;
       }
     }
   </style>
