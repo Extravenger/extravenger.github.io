@@ -9,17 +9,19 @@ permalink: /contact/
   body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
+    overflow: hidden; /* Disable scrolling */
   }
 
   /* Container for the cards */
   .contact-page-container {
-    min-height: 80vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Aligns cards near the top */
     gap: 20px;
+    padding: 50px 20px; /* Space from top */
     flex-wrap: wrap;
-    padding: 20px;
+    height: 100%;
   }
 
   /* Card Container */
@@ -78,13 +80,10 @@ permalink: /contact/
   }
 
   /* Styling for Text and Links */
-  .card-back p {
-    margin: 10px 0;
-  }
-
   .card-back a {
     color: var(--color-accent);
     text-decoration: none;
+    font-size: 1.2em;
     transition: color 0.3s;
   }
 
