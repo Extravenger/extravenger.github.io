@@ -118,4 +118,17 @@ permalink: /contact/
       </div>
     </div>
   </div>
+
+  <!-- Discord Card -->
+  <div class="contact-card">
+    <div class="card-inner">
+      <!-- Front Side with Background Image -->
+      <div class="card-front" style="background-image: url('https://extravenger.github.io/assets/img/contact/discord-bg.jpg');">
+      </div>
+      <!-- Back Side with Details -->
+      <div class="card-back">
+        <p>Extravenger#8538</p>
+      </div>
+    </div>
+  </div>
 </div>
