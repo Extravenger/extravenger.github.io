@@ -9,6 +9,7 @@ layout: home
 
 <head>
   <style>
+    
     /* Card-container wrapper just for posts */
     .posts-wrapper {
       display: flex;
@@ -132,6 +133,17 @@ layout: home
     
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.cert-card').forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('flipped');
+      });
+    });
+  });
+  </script>
+
 
   {% include navbar.html %}
 
