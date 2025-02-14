@@ -10,7 +10,7 @@ permalink: /contact/
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Disable scrolling */
+    overflow-x: hidden; /* Prevent horizontal scroll */
   }
 
   /* Container for the cards */
@@ -20,8 +20,8 @@ permalink: /contact/
     align-items: flex-start;
     gap: 20px;
     padding: 50px 20px;
-    flex-wrap: nowrap; /* Single row */
-    overflow-x: auto;  /* Allow horizontal scrolling if needed */
+    flex-wrap: nowrap;
+    overflow-x: auto;
     width: 100%;
   }
 
@@ -30,7 +30,7 @@ permalink: /contact/
     perspective: 1000px;
     width: 200px;
     height: 200px;
-    flex-shrink: 0; /* Prevent shrinking */
+    flex-shrink: 0;
   }
 
   /* Inner Wrapper for 3D Flip */
@@ -91,6 +91,32 @@ permalink: /contact/
 
   .card-back a:hover {
     color: #0073e6;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .contact-page-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      overflow-x: hidden;
+    }
+
+    .contact-card {
+      width: 80%;  /* Make cards wider on mobile */
+      height: 250px; /* Adjust height for better visibility */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .contact-card {
+      width: 90%;  /* Slightly wider on smaller screens */
+      height: 220px;
+    }
+
+    .card-back a {
+      font-size: 1em;  /* Adjust text size for smaller screens */
+    }
   }
 </style>
 
