@@ -29,22 +29,22 @@ layout: home
       margin-right: 0;
     }
 
-      /* Card-style layout for each post */
-  .post-card {
-    background: var(--content-bg);
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    display: grid;
-    grid-template-columns: 1fr 1fr;  /* Split into two equal parts */
-    gap: 20px;
-    padding: 20px;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    height: 80%;
-    border: 2px solid #ffcccc; /* Light red border */
-  }
+    /* Card-style layout for each post */
+    .post-card {
+      background: var(--content-bg);
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;  /* Split into two equal parts */
+      gap: 20px;
+      padding: 0; /* Removed padding to eliminate space */
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      height: 80%;
+      border: 2px solid #ffcccc; /* Light red border */
+    }
 
     /* Hover effect for cards */
     .post-card:hover {
@@ -52,11 +52,12 @@ layout: home
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
-    /* Left section of the post card (for text) */
+    /* Adjusted padding inside the text section */
     .post-card .text-content {
       display: flex;
       flex-direction: column;
-      justify-content: center;  /* Center the content vertically */
+      justify-content: center;
+      padding: 20px;
     }
 
     .post-card h2 {
