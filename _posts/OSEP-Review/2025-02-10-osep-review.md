@@ -13,14 +13,14 @@ Offsec’s Offensive Security Experienced Penetration Tester (OSEP) certificatio
 
 The course covers various advanced topics, which some of them are:
 
-- <p style="color: #f8d7da;">Client-Side Attacks.</p>
-- <p style="color: #f8d7da;">Process Injection and Migration.</p>
-- <p style="color: #f8d7da;">Antivirus Evasion.</p>
-- <p style="color: #f8d7da;">Application Allow-Listing.</p>
-- <p style="color: #f8d7da;">Bypassing Network Filters.</p>
-- <p style="color: #f8d7da;">Windows and Linux Lateral Movement.</p>
-- <p style="color: #f8d7da;">Active Directory Exploitation.</p>
-- <p style="color: #f8d7da;">Microsoft SQL Attacks.</p>
+<p style="color: #f8d7da;">Client-Side Attacks.</p>
+<p style="color: #f8d7da;">Process Injection and Migration.</p>
+<p style="color: #f8d7da;">Antivirus Evasion.</p>
+<p style="color: #f8d7da;">Application Allow-Listing.</p>
+<p style="color: #f8d7da;">Bypassing Network Filters.</p>
+<p style="color: #f8d7da;">Windows and Linux Lateral Movement.</p>
+<p style="color: #f8d7da;">Active Directory Exploitation.</p>
+<p style="color: #f8d7da;">Microsoft SQL Attacks.</p>
 
 Each topic is convered widely and Offsec did a pretty good job at explaning each one of them.<br>
 Many people except a Red Teaming stuff in the course, while it's make sense, this is NOT red team course, it's just the next level of penetration testing after the OSCP.
