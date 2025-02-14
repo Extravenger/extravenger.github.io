@@ -74,10 +74,10 @@ Bypassing Windows Defender is a valuable skill, but in most environments I've en
 
 I've made my course GitHub repository public to help other students, but I still encourage you to create your own tools:
 
-[Extravenger OSEP Github Repository][OSEP-gh]
+[Extravenger's OSEP Github Repository][OSEP-github]
 
 <figure>
 <img src="{{ page.certificate }}">
 </figure>
 
-[OSEP-gh]: https://github.com/Extravenger/OSEPlayground
+[OSEP-github]: https://github.com/Extravenger/OSEPlayground
