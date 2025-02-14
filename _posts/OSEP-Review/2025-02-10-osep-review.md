@@ -69,7 +69,7 @@ This is just one example. Think about other time-consuming tasks and find ways t
 
 # Final Thoughts
 
-Overall, this course is an incredible resource that can significantly elevate your penetration testing skills. If you're willing to dedicate the time and effort to both learning and practicing the material, it will undoubtedly take you to the next level in the field.
+Overall, this course is an incredible resource that can significantly elevate your penetration testing skills. If you're willing to dedicate the time and effort to both learning and practicing the material, it will undoubtedly take you to the next level in the field.<br>
 Bypassing Windows Defender is a valuable skill, but in most environments I've encountered, EDRs (Endpoint Detection and Response) present the real challenge. These defenses are far more complex and demand a higher level of expertise and skill to bypass effectively in today’s security landscape. I’m hopeful that, one day, OffSec will release a course focused on tackling these advanced defenses.
 
 I've made my course GitHub repository public to help other students, but I still encourage you to create your own tools:
