@@ -22,15 +22,24 @@ layout: compress
         localStorage.setItem("theme", data);
       }
     };
- 
+
     initTheme(localStorage.getItem("theme"));
     
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
   {% include navbar.html %}
-  <div class="wrapper post">
-    <main class="page-content" aria-label="Content">
+  <div class="wrapper post" style="display: flex; padding: 20px;">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <h3>Navigation</h3>
+      <ul id="sidebar-links">
+        <!-- Links to headers will be dynamically inserted here -->
+      </ul>
+    </div>
+
+    <!-- Main content -->
+    <main class="page-content" aria-label="Content" style="flex-grow: 1;">
       <article itemscope itemtype="https://schema.org/BlogPosting">
 
         <header class="header">
@@ -91,6 +100,73 @@ layout: compress
 
     {% include footer.html %}
   </div>
+
+  <script>
+    // JavaScript to populate the sidebar with header links
+    document.addEventListener("DOMContentLoaded", function() {
+      const headers = document.querySelectorAll(".post-body h1, .post-body h2, .post-body h3, .post-body h4, .post-body h5, .post-body h6");
+      const sidebarLinks = document.getElementById("sidebar-links");
+
+      headers.forEach(function(header, index) {
+        const id = `header-${index}`;
+        header.id = id; // Set an id to the header for linking
+        
+        const link = document.createElement("li");
+        link.innerHTML = `<a href="#${id}">${header.innerHTML}</a>`;
+        sidebarLinks.appendChild(link);
+      });
+    });
+  </script>
+
+  <style>
+    /* Sidebar styles */
+    .sidebar {
+      width: 250px;
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      padding: 20px;
+      background: #f4f4f4;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      max-height: calc(100vh - 40px);
+      overflow-y: auto;
+    }
+
+    .sidebar h3 {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 10px;
+    }
+
+    .sidebar a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .sidebar a:hover {
+      color: #0096FF;
+    }
+
+    /* Adjust the content area to make room for the sidebar */
+    .page-content {
+      margin-left: 270px; /* Room for the sidebar */
+      padding: 20px;
+    }
+  </style>
+
 </body>
 
 </html>
