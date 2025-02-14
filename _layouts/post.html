@@ -7,92 +7,6 @@ layout: compress
 
 {% include header.html %}
 
-<head>
-  <style>
-    /* Card-style layout for the blog post */
-    .card {
-      background: var(--content-bg);
-      border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      margin: 30px auto;
-      padding: 20px;
-      max-width: 800px;
-      width: 100%;
-      box-sizing: border-box;
-      transition: all 0.3s ease;
-    }
-
-    /* Card header with title and metadata */
-    .card-header {
-      margin-bottom: 20px;
-    }
-
-    .card-title {
-      font-size: 2rem;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 10px;
-      text-align: center;
-    }
-
-    .card-meta {
-      font-size: 1rem;
-      color: #666;
-      text-align: center;
-    }
-
-    /* Card body for the content */
-    .card-body {
-      font-size: 1rem;
-      color: #444;
-      line-height: 1.6;
-      text-align: justify;
-    }
-
-    /* Tags section */
-    .tags {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .tag {
-      font-size: 0.9rem;
-      padding: 5px 10px;
-      background: #e0e0e0;
-      border-radius: 20px;
-      color: #333;
-      text-decoration: none;
-      transition: background 0.3s ease;
-    }
-
-    .tag:hover {
-      background: #0096FF;
-      color: white;
-    }
-
-    .post-updated-at {
-      font-size: 0.9rem;
-      color: #666;
-      display: block;
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    /* Adjustments for small screens */
-    @media (max-width: 768px) {
-      .card {
-        padding: 15px;
-      }
-
-      .card-title {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
-</head>
-
 <body data-theme="{{ site.mode }}" class="notransition">
 
   <script>
@@ -115,11 +29,11 @@ layout: compress
   </script>
 
   {% include navbar.html %}
-  
   <div class="wrapper post">
     <main class="page-content" aria-label="Content">
-      <article class="card" itemscope itemtype="https://schema.org/BlogPosting">
-        <div class="card-header">
+      <article itemscope itemtype="https://schema.org/BlogPosting">
+
+        <header class="header">
           {% if page.tags and page.tags != empty %}
           <div class="tags">
             {% assign tags = page.tags %}
@@ -131,7 +45,7 @@ layout: compress
             </span>
           </div>
           {% endif %}
-          <h1 class="card-title" itemprop="headline">{{ page.title | escape }}</h1>
+          <h1 class="header-title" itemprop="headline">{{ page.title | escape }}</h1>
           {% if page.date %}
           <div class="post-meta">
             <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
@@ -148,21 +62,18 @@ layout: compress
             <span hidden itemprop="mainEntityOfPage">{{ page.excerpt }}</span>
           </div>
           {% endif %}
-        </div>
+        </header>
 
-        <div class="card-body">
-          <!-- Content Section -->
-          <div class="post-body" itemprop="articleBody">
-            {{ content | markdownify }}
-          </div>
-
-          {% if page.tweet %}
-          <p>Comments this article on 
-            <a href="https://twitter.com/{{site.twitter}}/status/{{page.tweet}}">Twitter</a>.
-          </p>
-          {% endif %}
+        <!-- Content Section -->
+        <div class="post-body" itemprop="articleBody">
+          {{ content | markdownify }}
         </div>
         
+        {% if page.tweet %}
+        <p>Comments this article on 
+          <a href="https://twitter.com/{{site.twitter}}/status/{{page.tweet}}">Twitter</a>.
+        </p>
+        {% endif %}
       </article>
     
       {% if page.comments %}
