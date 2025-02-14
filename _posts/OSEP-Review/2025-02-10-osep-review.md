@@ -37,6 +37,10 @@ Each module also includes an extra mile section, which I strongly suggest you co
 Currently, there are 7 challenges in total, with Offsec recently adding a new one. The challenges are arranged in increasing order of difficulty, so challenge 7 will be the toughest. The first four challenges focus on specific topics, while challenges 5 through 7 offer the best simulation of the actual exam environment, providing the closest experience to the real thing.<br>
 I encourage you to approach the labs from multiple angles rather than relying on just one method. For example, if you solve a step on a Windows machine, make sure you also know how to do it on a Linux machine. This way, you'll always have a backup plan if something goes wrong.
 
+# The Exam
+
+Without exposing too much, I began the exam at 8 AM and gained initial foothold into the internal network within the first hour. However, I spent the next 8 hours stuck, overlooking something very obvious. Once I realized that, things became much smoother, and from there, it felt pretty straightforward.
+
 # My four cents
 
 ### <u>Learn to read between the lines</u>:
