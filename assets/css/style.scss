@@ -14,43 +14,43 @@
 .cert-cards-wrapper {
   display: grid;
   grid-template-columns: 1fr; /* One image per row */
-  gap: 30px; /* Space between cards */
-  width: 100%; /* Ensure it spans the full width */
+  gap: 30px;
+  width: 100%;
   box-sizing: border-box;
-  padding: 20px; /* Optional, for some padding around the grid */
-  grid-auto-rows: 400px; /* Ensure consistent row height */
+  padding: 20px;
+  grid-auto-rows: 400px;
 }
 
+/* Card container */
 .cert-card {
   display: flex;
   background: var(--content-bg);
   border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Keep shadow but no hover effect */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  padding: 10px; /* Add padding inside the card to create space around the image */
+  padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 100%; /* Full width of grid cell */
-  height: 100%; /* Use full height of the grid container */
-  box-sizing: border-box; /* Ensure padding is included in the width/height */
-  perspective: 1000px; /* Set perspective for flip effect */
-  position: relative; /* Make the card relative for proper flipping */
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  perspective: 1000px;
+  position: relative;
 }
 
-/* Card inner element to handle flip */
+/* Card inner element for flip effect */
 .cert-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d; /* Enable 3D effect for flip */
-  transition: transform 0.6s ease; /* Smooth transition for flip effect */
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
 }
 
-/* Flip the card on hover instead of click */
 .cert-card:hover .cert-card-inner {
-  transform: rotateY(180deg); /* Flip the card */
+  transform: rotateY(180deg);
 }
 
-/* Front side of the card (image only) */
+/* Front side of the card */
 .cert-card-image {
   width: 100%;
   height: 100%;
@@ -59,65 +59,99 @@
   justify-content: center;
   overflow: hidden;
   position: relative;
-  backface-visibility: hidden; /* Hide the back side when flipped */
+  backface-visibility: hidden;
 }
 
-/* Back side of the card (text only) */
+.cert-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Back side of the card */
 .cert-card-back {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--background); /* Set to background color of the theme */
+  background: var(--background);
   color: #666;
   padding: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transform: rotateY(180deg); /* Rotate the back side to be visible when flipped */
-  backface-visibility: hidden; /* Ensure the back side is hidden when not flipped */
-}
-
-/* Ensure the front side image is hidden when flipped */
-.cert-card:hover .cert-card-image {
-  visibility: hidden; /* Hide the image when the card is hovered */
-}
-
-/* Ensure the back side is visible when flipped */
-.cert-card:hover .cert-card-back {
-  visibility: visible; /* Show the back side when the card is hovered */
-}
-
-/* Ensure the front side image is still shown on initial load */
-.cert-card-image img {
-  width: 100%; /* Ensure image fills the width */
-  height: 100%; /* Ensure image fills the height */
-  object-fit: cover; /* Ensure images cover the square without distorting */
-  display: block;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  text-align: center;
+  overflow: auto; /* Make text scrollable if it overflows */
+  word-wrap: break-word;
 }
 
 .cert-card-back .content {
   display: flex;
-  justify-content: flex-start; /* Align content to the top */
-  align-items: center;    /* Align items to the center horizontally */
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  height: 100%; /* Ensure the content takes full height */
-  text-align: center; /* Center the text horizontally */
+  width: 100%;
+  height: 100%;
 }
 
-/* Style for the title */
+/* Hide front when flipped */
+.cert-card:hover .cert-card-image {
+  visibility: hidden;
+}
+
+/* Show back when flipped */
+.cert-card:hover .cert-card-back {
+  visibility: visible;
+}
+
+/* Title style */
 .certs-title {
-  text-align: center; /* Centers the text horizontally */
-  font-size: 2rem; /* Adjust the font size as needed */
-  margin-bottom: 20px; /* Adds some space below the title */
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 20px;
 }
 
-/* Style for the chronological note */
+/* Chronological note style */
 .chronological-note {
-  text-align: center;  /* Centers the text horizontally */
-  font-size: 1rem;      /* Adjust the font size as needed */
-  margin-bottom: 20px;  /* Adds some space below the note */
-  color: #666;          /* Light gray text for subtlety */
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cert-cards-wrapper {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .cert-card {
+    grid-auto-rows: 300px; /* Adjust card height for smaller screens */
+  }
+
+  .cert-card-back {
+    font-size: 0.9rem; /* Smaller text on mobile */
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cert-card {
+    grid-auto-rows: 250px; /* Adjust card height for very small screens */
+  }
+
+  .cert-card-back {
+    font-size: 0.8rem; /* Even smaller text on very small screens */
+    padding: 10px;
+  }
+
+  .cert-card-back .content {
+    overflow-y: auto; /* Allow scrolling for long text */
+  }
 }
