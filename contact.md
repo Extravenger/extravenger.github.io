@@ -98,12 +98,11 @@ permalink: /contact/
   <div class="contact-card">
     <div class="card-inner">
       <!-- Front Side with Background Image -->
-      <div class="card-front" style="background-image: url('https://extravenger.github.io/assets/img/github-bg.jpg');">
+      <div class="card-front" style="background-image: url('https://extravenger.github.io/assets/img/contact/github-bg.jpg');">
         <h2>GitHub</h2>
       </div>
       <!-- Back Side with Details -->
       <div class="card-back">
-        <p>Check out my projects on:</p>
         <a href="https://github.com/Extravenger" target="_blank">GitHub</a>
       </div>
     </div>
@@ -113,12 +112,11 @@ permalink: /contact/
   <div class="contact-card">
     <div class="card-inner">
       <!-- Front Side with Background Image -->
-      <div class="card-front" style="background-image: url('https://extravenger.github.io/assets/img/linkedin-bg.jpg');">
+      <div class="card-front" style="background-image: url('https://extravenger.github.io/assets/img/contact/linkedin-bg.jpg');">
         <h2>LinkedIn</h2>
       </div>
       <!-- Back Side with Details -->
       <div class="card-back">
-        <p>Connect with me on:</p>
         <a href="https://www.linkedin.com/in/amitmorr/" target="_blank">LinkedIn</a>
       </div>
     </div>
