@@ -38,16 +38,16 @@ I encourage you to approach the labs from multiple angles rather than relying on
 
 # My three cents
 
-<u>Learn to read between the lines</u>:
+### <u>Learn to read between the lines</u>:
 
 This section may not follow the standard course overview format, but it's a crucial one.
 Learning to read between the lines is key to understanding what’s happening behind the scenes, especially when the information isn't directly in front of you. For example, when you ping a machine, you can often determine whether the target system is running Linux or Windows based on the TTL value. A TTL of 63 typically indicates Linux, while 127 suggests Windows—assuming there’s a router between you and the target.
 This is what I mean by learning to read between the lines: understanding the context behind the output of your tools, because the data they provide can tell you so much more than what’s immediately visible.
 
-<u>Know your tools</u>:
+### <u>Know your tools</u>:
 
 You can achieve the same result with multiple tools, so it's important to always have a backup tool ready. Not every tool is suited for every situation, and having alternatives ensures you're prepared for anything that comes up.
 
-<u>Take notes as you go</u>:
+### <u>Take notes as you go</u>:
 
 Take notes and write up your own detailed summary for every lab you exploit. This can serve as a valuable reference for similar situations you might encounter during the exam.
