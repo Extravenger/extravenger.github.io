@@ -39,7 +39,7 @@ I encourage you to approach the labs from multiple angles rather than relying on
 
 Without exposing too much, I began the exam at 8 AM and gained initial foothold into the internal network within the first hour. However, I spent the next 8 hours stuck, overlooking something very obvious.<br>Once I realized that, things became much smoother, and from there, it felt pretty straightforward, In addition, I can confidently say that the exam environment remained very stable for me throughout the process.<br>
 After 27 hours into the exam, I successfully completed one of the key objectives needed to pass. I then dedicated an additional 9 hours to finalizing the report.<br>
-two days later, I got the results:
+Two days later, I got the results:
 
 <figure>
 <img src="{{ page.exampass }}">
