@@ -26,17 +26,17 @@
     <main aria-label="Content">
       <div class="centered-content">
 
-        <!-- Image with Slide-In Effect -->
-        <div class="image-container">
+        <!-- Image with Slide-In Effect (initially hidden) -->
+        <div class="image-container hidden">
           <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" class="profile-image" />
         </div>
 
-        <!-- Title and description -->
-        <div class="text-container">
+        <!-- Title and description (initially hidden) -->
+        <div class="text-container hidden">
           <h1 class="typing-container">
             <span class="text"></span><span class="cursor">|</span>
           </h1>
-          <p class="slide-in">
+          <p>
             I'm Amit Mor, and am working as an Adversarial Tactics Expert at 
             <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>
             My journey in cybersecurity began as a SOC Analyst back in 2021, where I gained valuable experience in monitoring and defending networks.<br>
@@ -56,6 +56,7 @@
       const text = "$ whoami";
       let index = 0;
 
+      // Typing effect function
       const type = () => {
         if (index < text.length) {
           textElement.textContent += text[index];
@@ -68,13 +69,17 @@
         }
       };
 
+      // Trigger "Enter" key effect
       const triggerEnterEffect = () => {
         textElement.textContent += "\n"; // Add newline (simulating Enter press)
         cursorElement.style.display = "none"; // Hide cursor
         setTimeout(triggerSlideIn, 300); // Delay before the slide-in animation
       };
 
+      // Trigger the slide-in effect for image and text
       const triggerSlideIn = () => {
+        document.querySelector(".image-container").classList.remove("hidden");
+        document.querySelector(".text-container").classList.remove("hidden");
         document.querySelector(".image-container").classList.add("slide-in");
         document.querySelector(".text-container").classList.add("slide-in");
       };
@@ -134,6 +139,9 @@
       width: 200px;
       height: 200px;
       margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s, transform 1s;
     }
 
     /* Image Styling */
@@ -169,16 +177,13 @@
 
     /* Slide-in effect for image and text */
     .slide-in {
-      opacity: 0;
-      transform: translateX(-100%);
-      animation: slideIn 1s ease-out forwards;
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    @keyframes slideIn {
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
+    /* Hide elements initially */
+    .hidden {
+      display: none;
     }
 
     /* Responsive Styles */
