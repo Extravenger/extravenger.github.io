@@ -20,15 +20,15 @@ layout: home
     /* Container to hold post cards */
     .post-cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr)); /* Adjusted card size */
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjusted for mobile */
       gap: 30px;
       padding: 20px;
       max-width: 1200px;
       width: 100%;
-      margin-left: auto;  /* Align cards to the right */
+      margin-left: auto;
       margin-right: 0;
     }
-
+    
     /* Card-style layout for each post */
     .post-card {
       background: var(--content-bg);
@@ -36,14 +36,14 @@ layout: home
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       display: grid;
-      grid-template-columns: 1fr 1fr;  /* Split into two equal parts */
+      grid-template-columns: 1fr 1fr;
       gap: 20px;
-      padding: 0; /* Removed padding to eliminate space */
+      padding: 0;
       text-align: left;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       height: 100%;
-      border: 1px solid #ffcccc; /* Light red border */
+      border: 1px solid #ffcccc;
     }
 
     /* Hover effect for cards */
@@ -101,6 +101,13 @@ layout: home
       border-radius: 10px;
       object-fit: cover;
     }
+
+      /* Responsive Styles */
+    @media (max-width: 768px) {
+    .post-card {
+      grid-template-columns: 1fr; /* Stack content vertically on smaller screens */
+    }
+  }
 
   </style>
 </head>
