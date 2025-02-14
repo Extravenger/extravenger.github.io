@@ -27,7 +27,7 @@
       <div class="centered-content">
 
         <!-- Image with Slide-In Effect -->
-        <div class="image-container slide-in">
+        <div class="image-container">
           <img src="https://extravenger.github.io/assets/img/amit.jpg" alt="Profile Image" class="profile-image" />
         </div>
 
@@ -63,7 +63,20 @@
           setTimeout(type, 150); // Speed of typing
         } else {
           cursorElement.style.display = "inline-block";
+          // Simulate "Enter" key press after typing ends
+          setTimeout(triggerEnterEffect, 500); // Delay before the "Enter" effect
         }
+      };
+
+      const triggerEnterEffect = () => {
+        textElement.textContent += "\n"; // Add newline (simulating Enter press)
+        cursorElement.style.display = "none"; // Hide cursor
+        setTimeout(triggerSlideIn, 300); // Delay before the slide-in animation
+      };
+
+      const triggerSlideIn = () => {
+        document.querySelector(".image-container").classList.add("slide-in");
+        document.querySelector(".text-container").classList.add("slide-in");
       };
 
       setTimeout(type, 500); // Delay before typing starts
@@ -158,7 +171,7 @@
     .slide-in {
       opacity: 0;
       transform: translateX(-100%);
-      animation: slideIn 1s ease-out 2s forwards;
+      animation: slideIn 1s ease-out forwards;
     }
 
     @keyframes slideIn {
