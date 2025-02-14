@@ -11,88 +11,116 @@ permalink: /contact/
     padding: 0;
   }
 
-  /* Centering Container */
+  /* Container for the cards */
   .contact-page-container {
-    min-height: 80vh; /* Ensure it doesn't interfere with the navbar */
+    min-height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
     padding: 20px;
   }
 
-  /* Card Style for the Contact Section */
+  /* Card Container */
   .contact-card {
-    background: var(--color-bg-secondary);
-    color: var(--color-text);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    perspective: 1000px;
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Inner Wrapper for 3D Flip */
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
     text-align: center;
-    width: 90%;
-    max-width: 400px;
-    animation: fadeIn 1s ease;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 12px;
   }
 
-  /* Header Styles */
-  .contact-card h1 {
-    margin-top: 0;
-    font-size: 2em;
-    color: var(--color-accent);
+  /* Flip on Hover */
+  .contact-card:hover .card-inner {
+    transform: rotateY(180deg);
   }
 
-  /* Social Links Styling */
-  .social-links {
-    list-style: none;
-    padding: 0;
+  /* Front and Back of the Card */
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+    color: #fff;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
+    align-items: center;
+    font-size: 1.2em;
   }
 
-  .social-links li {
-    display: inline-block;
+  .card-front {
+    background-size: cover;
+    background-position: center;
   }
 
-  .social-links a {
-    text-decoration: none;
-    font-size: 24px;
-    color: var(--color-text);
-    transition: transform 0.3s, color 0.3s;
+  .card-back {
+    background: var(--color-bg-secondary);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
   }
 
-  .social-links a:hover {
-    transform: scale(1.2);
+  /* Styling for Text and Links */
+  .card-back p {
+    margin: 10px 0;
+  }
+
+  .card-back a {
     color: var(--color-accent);
+    text-decoration: none;
+    transition: color 0.3s;
   }
 
-  /* Animation */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .card-back a:hover {
+    color: #0073e6;
   }
 </style>
 
 <div class="contact-page-container">
+  <!-- GitHub Card -->
   <div class="contact-card">
-    <h1>Contact Me</h1>
-    <p>Feel free to reach out via my social profiles:</p>
-    <ul class="social-links">
-      <li><a href="https://github.com/Extravenger" target="_blank" aria-label="GitHub">
-        <i class="fab fa-github"></i>
-      </a></li>
-      <li><a href="https://www.linkedin.com/in/amitmorr/" target="_blank" aria-label="LinkedIn">
-        <i class="fab fa-linkedin"></i>
-      </a></li>
-    </ul>
+    <div class="card-inner">
+      <!-- Front Side with Background Image -->
+      <div class="card-front" style="background-image: url('https://extravenger.github.io/assets/img/github-bg.jpg');">
+        <h2>GitHub</h2>
+      </div>
+      <!-- Back Side with Details -->
+      <div class="card-back">
+        <p>Check out my projects on:</p>
+        <a href="https://github.com/Extravenger" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- LinkedIn Card -->
+  <div class="contact-card">
+    <div class="card-inner">
+      <!-- Front Side with Background Image -->
+      <div class="card-front" style="background-image: url('https://extravenger.github.io/assets/img/linkedin-bg.jpg');">
+        <h2>LinkedIn</h2>
+      </div>
+      <!-- Back Side with Details -->
+      <div class="card-back">
+        <p>Connect with me on:</p>
+        <a href="https://www.linkedin.com/in/amitmorr/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
   </div>
 </div>
-
-<!-- Font Awesome for Social Icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
