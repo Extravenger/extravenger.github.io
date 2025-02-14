@@ -2,8 +2,6 @@
 layout: post
 title:  OSEP Review
 date:   2025-02-06 22:57:49 +0000
-categories: jekyll update
-usemathjax: true
 image: /assets/img/certs/OSEP.png
 certificate: /assets/img/certs/OSEP.png
 ---
