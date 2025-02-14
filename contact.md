@@ -99,7 +99,6 @@ permalink: /contact/
     <div class="card-inner">
       <!-- Front Side with Background Image -->
       <div class="card-front" style="background-image: url('https://extravenger.github.io/assets/img/contact/github-bg.jpg');">
-        <h2>GitHub</h2>
       </div>
       <!-- Back Side with Details -->
       <div class="card-back">
@@ -113,7 +112,6 @@ permalink: /contact/
     <div class="card-inner">
       <!-- Front Side with Background Image -->
       <div class="card-front" style="background-image: url('https://extravenger.github.io/assets/img/contact/linkedin-bg.jpg');">
-        <h2>LinkedIn</h2>
       </div>
       <!-- Back Side with Details -->
       <div class="card-back">
