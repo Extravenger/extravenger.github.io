@@ -28,14 +28,13 @@ Many people expect Red Teaming content in the course, which makes sense, but thi
 
 # The Modules Labs
 
-Each topic has its own dedicated lab setup. I highly recommend completing all the lab exercises for each module, as they provide hands-on practice that reinforces the material, allowing you to learn by doing rather than just watching videos. After all, the essence of this course is hands-on hacking.
-
+Each topic has its own dedicated lab setup. I highly recommend completing all the lab exercises for each module, as they provide hands-on practice that reinforces the material, allowing you to learn by doing rather than just watching videos. After all, the essence of this course is hands-on hacking.<br>
 Each module also includes an extra mile section, which I strongly suggest you complete. These exercises go beyond the core curriculum, offering additional insights such as the basics of Win32 APIs. In my opinion, it's important to dive deeper and conduct research beyond the course's focus, as this will enhance your understanding and skills.
 
 # The Challenges
 
 Currently, there are 7 challenges in total, with Offsec recently adding a new one. The challenges are arranged in increasing order of difficulty, so challenge 7 will be the toughest. The first four challenges focus on specific topics, while challenges 5 through 7 offer the best simulation of the actual exam environment, providing the closest experience to the real thing.<br>
-I encourage you to approach the labs from multiple angles rather than relying on just one method. For example, if you solve a step on a Windows machine, make sure you also know how to do it on a Linux machine. This way, you'll always have a backup plan if something goes wrong.
+I encourage you to approach the labs from multiple angles rather than relying on just one method.<br>For example, if you solve a step on a Windows machine, make sure you also know how to do it on a Linux machine. This way, you'll always have a backup plan if something goes wrong.
 
 # The Exam
 
@@ -46,7 +45,7 @@ Without exposing too much, I began the exam at 8 AM and gained initial foothold 
 ### <u>Learn to read between the lines</u>:
 
 This section may not follow the standard course overview format, but it's a crucial one.
-Learning to read between the lines is key to understanding what’s happening behind the scenes, especially when the information isn't directly in front of you. For example, when you ping a machine, you can often determine whether the target system is running Linux or Windows based on the TTL value. A TTL of 63 typically indicates Linux, while 127 suggests Windows—assuming there’s a router between you and the target.
+Learning to read between the lines is key to understanding what’s happening behind the scenes, especially when the information isn't directly in front of you.<br>For example, when you ping a machine, you can often determine whether the target system is running Linux or Windows based on the TTL value. A TTL of 63 typically indicates Linux, while 127 suggests Windows—assuming there’s a router between you and the target.<br>
 This is what I mean by learning to read between the lines: understanding the context behind the output of your tools, because the data they provide can tell you so much more than what’s immediately visible.
 
 ### <u>Know your tools</u>:
