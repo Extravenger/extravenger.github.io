@@ -5,61 +5,88 @@ permalink: /contact/
 ---
 
 <style>
-  /* Ensure the body and html elements are set to prevent scrolling */
+  /* General Reset */
   body, html {
     height: 100%;
     margin: 0;
-    overflow: hidden; /* Prevent scrolling */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background: var(--color-bg);
   }
 
-  /* Use Flexbox for the layout of the page */
-  .page-wrapper {
-    display: flex;
-    flex-direction: column;
-    height: 100%; /* Full page height */
-  }
-
-  /* Center the contact-container in the viewport */
-  .contact-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;  /* Center horizontally */
-    justify-content: center;  /* Center vertically */
+  /* Card Style for the Contact Section */
+  .contact-card {
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     text-align: center;
-    flex-grow: 1;  /* Makes sure content grows to fill available space */
+    width: 90%;
+    max-width: 400px;
+    animation: fadeIn 1s ease;
   }
 
-  /* Style the social links to look neat */
+  /* Header Styles */
+  .contact-card h1 {
+    margin-top: 0;
+    font-size: 2em;
+    color: var(--color-accent);
+  }
+
+  /* Social Links Styling */
   .social-links {
     list-style: none;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
   }
 
   .social-links li {
-    margin: 10px 0;
+    display: inline-block;
   }
 
   .social-links a {
     text-decoration: none;
-    font-size: 18px;
-    color: #333;
-    transition: color 0.3s ease;
+    font-size: 24px;
+    color: var(--color-text);
+    transition: transform 0.3s, color 0.3s;
   }
 
   .social-links a:hover {
-    color: #0073e6;
+    transform: scale(1.2);
+    color: var(--color-accent);
+  }
+
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
 
-<div class="page-wrapper">
-  <div class="contact-container">
-    <h1>Contact Me</h1>
-    <p>Feel free to reach out via my social media profiles:</p>
-
+<div class="contact-card">
+  <h1>Contact Me</h1>
+  <p>Feel free to reach out via my social profiles:</p>
   <ul class="social-links">
-  <li><a href="https://github.com/Extravenger" target="_blank">GitHub</a></li>
-  <li><a href="https://www.linkedin.com/in/amitmorr/" target="_blank">LinkedIn</a></li>
-    <!-- Add more social links as needed -->
+    <li><a href="https://github.com/Extravenger" target="_blank" aria-label="GitHub">
+      <i class="fab fa-github"></i>
+    </a></li>
+    <li><a href="https://www.linkedin.com/in/amitmorr/" target="_blank" aria-label="LinkedIn">
+      <i class="fab fa-linkedin"></i>
+    </a></li>
   </ul>
-  </div>
 </div>
+
+<!-- Font Awesome for Social Icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
