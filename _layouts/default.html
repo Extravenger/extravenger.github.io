@@ -9,23 +9,34 @@ layout: home
 
 <head>
   <style>
-    /* Center the content on the homepage */
+    /* Fix the navigation bar at the top */
     body {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      flex-direction: column;
       min-height: 100vh;
       margin: 0;
       background: var(--content-bg);
     }
 
+    /* Ensure the navbar stays at the top */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      width: 100%;
+    }
+
+    /* Container to center post cards to the right */
     .post-cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); /* Wider cards */
       gap: 30px;
       padding: 20px;
       max-width: 1200px;
       width: 100%;
+      margin-left: auto;  /* Align to the right */
+      margin-right: 0;
+      flex-grow: 1;  /* Ensures the container takes up available space */
     }
 
     /* Card-style layout for each post */
@@ -38,6 +49,7 @@ layout: home
       text-align: center;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      height: 100%;
     }
 
     .post-card:hover {
@@ -53,14 +65,14 @@ layout: home
     }
 
     .post-card h2 {
-      font-size: 1.5rem;
+      font-size: 1.8rem; /* Increased font size */
       font-weight: bold;
       color: #333;
       margin-bottom: 10px;
     }
 
     .post-card .meta {
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: #666;
     }
 
@@ -72,7 +84,7 @@ layout: home
     }
 
     .post-card .tag {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       padding: 5px 10px;
       background: #e0e0e0;
       border-radius: 20px;
