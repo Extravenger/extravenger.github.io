@@ -25,14 +25,6 @@ The course covers various topics, which some of them are:
 Each topic is covered in depth, and Offsec has done a great job explaining each one.
 Many people expect Red Teaming content in the course, which makes sense, but this is not a Red Team course. Instead, it's the next level of penetration testing after the OSCP.
 
-# Learn to read between the lines
-
-This section may not follow the standard course overview format, but it's a crucial one.
-
-Learning to read between the lines is key to understanding what’s happening behind the scenes, especially when the information isn't directly in front of you. For example, when you ping a machine, you can often determine whether the target system is running Linux or Windows based on the TTL value. A TTL of 63 typically indicates Linux, while 127 suggests Windows—assuming there’s a router between you and the target.
-
-This is what I mean by learning to read between the lines: understanding the context behind the output of your tools, because the data they provide can tell you so much more than what’s immediately visible.
-
 # The Modules Labs
 
 Each topic has its own dedicated lab setup. I highly recommend completing all the lab exercises for each module, as they provide hands-on practice that reinforces the material, allowing you to learn by doing rather than just watching videos. After all, the essence of this course is hands-on hacking.
@@ -44,3 +36,18 @@ Each module also includes an extra mile section, which I strongly suggest you co
 Currently, there are 7 challenges in total, with Offsec recently adding a new one. The challenges are arranged in increasing order of difficulty, so challenge 7 will be the toughest. The first four challenges focus on specific topics, while challenges 5 through 7 offer the best simulation of the actual exam environment, providing the closest experience to the real thing.<br>
 I encourage you to approach the labs from multiple angles rather than relying on just one method. For example, if you solve a step on a Windows machine, make sure you also know how to do it on a Linux machine. This way, you'll always have a backup plan if something goes wrong.
 
+# My three cents
+
+1. <u>Learn to read between the lines</u>:
+
+This section may not follow the standard course overview format, but it's a crucial one.
+Learning to read between the lines is key to understanding what’s happening behind the scenes, especially when the information isn't directly in front of you. For example, when you ping a machine, you can often determine whether the target system is running Linux or Windows based on the TTL value. A TTL of 63 typically indicates Linux, while 127 suggests Windows—assuming there’s a router between you and the target.
+This is what I mean by learning to read between the lines: understanding the context behind the output of your tools, because the data they provide can tell you so much more than what’s immediately visible.
+
+2. <u>Know your tools</u>:
+
+You can achieve the same result with multiple tools, so it's important to always have a backup tool ready. Not every tool is suited for every situation, and having alternatives ensures you're prepared for anything that comes up.
+
+3. <u>Take notes as you go</u>:
+
+Take notes and write up your own detailed summary for every lab you exploit. This can serve as a valuable reference for similar situations you might encounter during the exam.
