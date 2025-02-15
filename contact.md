@@ -103,19 +103,31 @@ permalink: /contact/
     }
 
     .contact-card {
-      width: 80%;  /* Make cards wider on mobile */
-      height: 250px; /* Adjust height for better visibility */
+      width: 150px;  /* Make cards smaller on smaller screens */
+      height: 150px;
+    }
+
+    .card-front {
+      background-size: contain; /* Adjust background image size */
+    }
+
+    .card-back a {
+      font-size: 1em;
     }
   }
 
   @media (max-width: 480px) {
     .contact-card {
-      width: 90%;  /* Slightly wider on smaller screens */
-      height: 220px;
+      width: 120px;  /* Even smaller for very small screens */
+      height: 120px;
+    }
+
+    .card-front {
+      background-size: contain;
     }
 
     .card-back a {
-      font-size: 1em;  /* Adjust text size for smaller screens */
+      font-size: 0.9em;
     }
   }
 </style>
