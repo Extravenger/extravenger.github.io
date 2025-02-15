@@ -45,7 +45,7 @@ Two days later, I got the results:
 <img src="{{ page.exampass }}">
 </figure>
 
-# My Four Cents
+# My Five Cents
 
 ### <u>Know your tools</u>:
 
@@ -64,6 +64,11 @@ Take notes and write up your own detailed summary for every lab you exploit. Thi
 ### <u>Make the process efficiently</u>
 
 While working through the labs, I was always thinking about how to optimize processes to save valuable time, especially under exam time constraints. For instance, rather than manually adding IP addresses and hostnames to `/etc/hosts`, I automated the task with a one-liner using `netexec`:
+
+### Simplicity Over Complexity
+
+If you are OSCP certified, you probably already know it, the rule of KISS, or "Keep It Simple Stupid".<br>
+I can't tell you how much this is effective during advanced situations you might encounter, always try to keep it simple as much as you can.
 
 ```bash
 netexec smb 172.16.149.0/24 --log hosts.txt && sed -i 's/x64//g' hosts.txt && cat hosts.txt | awk '{print $9,$11,$11"."$21}' | sed 's/(domain://g' | sed 's/)//g' | uniq | sort -u | tr '[:upper:]' '[:lower:]' | sudo tee -a /etc/hosts
