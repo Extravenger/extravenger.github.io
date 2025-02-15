@@ -65,7 +65,7 @@ Take notes and write up your own detailed summary for every lab you exploit. Thi
 
 While working through the labs, I was always thinking about how to optimize processes to save valuable time, especially under exam time constraints. For instance, rather than manually adding IP addresses and hostnames to `/etc/hosts`, I automated the task with a one-liner using `netexec`:
 
-### Simplicity Over Complexity
+### <u>Simplicity Over Complexity</u>
 
 If you are OSCP certified, you probably already know it, the rule of KISS, or "Keep It Simple Stupid".<br>
 I can't tell you how much this is effective during advanced situations you might encounter, always try to keep it simple as much as you can.
