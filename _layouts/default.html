@@ -3,7 +3,7 @@ layout: home
 ---
 
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 
 {% include header.html %}
 
@@ -19,7 +19,7 @@ layout: home
       padding: 10px;
       border-left: 5px solid #ffcccc;
     }
-    
+
     /* Card-container wrapper just for posts */
     .posts-wrapper {
       display: flex;
@@ -31,15 +31,13 @@ layout: home
     /* Container to hold post cards */
     .post-cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 30px;
       padding: 20px;
       max-width: 1200px;
       width: 100%;
-      margin-left: auto;
-      margin-right: 0;
     }
-    
+
     /* Card-style layout for each post */
     .post-card {
       background: var(--content-bg);
@@ -114,16 +112,58 @@ layout: home
     }
 
     /* Responsive Styles */
-    @media (max-width: 768px) {
+    @media (max-width: 1024px) {
+      .post-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+
       .post-card {
         grid-template-columns: 1fr;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .post-cards-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+
+      .post-card {
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .post-cards-container {
+        grid-template-columns: 1fr;
+      }
+
+      .post-card {
+        width: 90%;
+        max-width: 300px;
+        margin: 0 auto;
+        grid-template-columns: 1fr;
+        padding: 10px;
+      }
+
+      .post-card h2 {
+        font-size: 1.5rem;
+      }
+
+      .post-card .text-content {
+        padding: 10px;
+      }
+
+      .post-card img {
+        border-radius: 8px;
       }
     }
   </style>
 </head>
 
 <body data-theme="{{ site.mode }}" class="notransition">
-
   <script>
     const body = document.body;
     const data = body.getAttribute("data-theme");
@@ -139,7 +179,7 @@ layout: home
     };
 
     initTheme(localStorage.getItem("theme"));
-    
+
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
@@ -182,7 +222,6 @@ layout: home
 
     {% include footer.html %}
   </div>
-
 </body>
 
 </html>
