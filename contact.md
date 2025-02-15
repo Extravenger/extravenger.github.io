@@ -17,7 +17,7 @@ permalink: /contact/
   .contact-page-container {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 20px;
     padding: 50px 20px;
     flex-wrap: nowrap;
@@ -96,19 +96,20 @@ permalink: /contact/
   /* Responsive Styles */
   @media (max-width: 768px) {
     .contact-page-container {
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: center;
       align-items: center;
-      gap: 30px;
-      overflow-x: hidden;
+      gap: 15px;
+      overflow-x: auto;
     }
 
     .contact-card {
-      width: 150px;  /* Make cards smaller on smaller screens */
+      width: 150px;  /* Smaller cards on medium screens */
       height: 150px;
     }
 
     .card-front {
-      background-size: contain; /* Adjust background image size */
+      background-size: contain;
     }
 
     .card-back a {
@@ -117,8 +118,15 @@ permalink: /contact/
   }
 
   @media (max-width: 480px) {
+    .contact-page-container {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+
     .contact-card {
-      width: 120px;  /* Even smaller for very small screens */
+      width: 120px;  /* Smaller cards on small screens */
       height: 120px;
     }
 
