@@ -118,11 +118,11 @@ layout: home
         justify-items: center;
       }
 
+      /* Shrink the post card using scale on mobile */
       .post-card {
-        transform: scale(0.9);
-        width: 90%;
-        max-width: 320px;
-        grid-template-columns: 1fr;
+        transform: scale(0.85);
+        width: auto;
+        height: auto;
       }
 
       .post-card h2 {
@@ -141,8 +141,8 @@ layout: home
     @media (max-width: 480px) {
       .post-card {
         transform: scale(0.8);
-        width: 85%;
-        max-width: 280px;
+        width: auto;
+        height: auto;
       }
 
       .post-card h2 {
