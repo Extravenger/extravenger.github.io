@@ -166,11 +166,3 @@ permalink: /certs/
   </a>
   
 </div>
-
-<script>
-document.querySelectorAll('.cert-card').forEach(card => {
-  card.addEventListener('click', function() {
-    this.classList.toggle('clicked');
-  });
-});
-</script>
