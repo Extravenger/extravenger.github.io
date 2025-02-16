@@ -18,10 +18,11 @@ layout: home
       margin: 40px 20px;
       padding: 10px;
       border: none; /* Removed the left border */
-      display: flex;
-      justify-content: center; /* Center the content horizontally */
-      align-items: center; /* Center the content vertically */
-      height: 100vh; /* Take up the full height of the viewport */
+      width: 100%;
+      position: absolute;
+      top: 0; /* Position the quote at the top */
+      left: 50%;
+      transform: translateX(-50%); /* Center the quote horizontally */
     }
     
     /* Card-container wrapper just for posts */
