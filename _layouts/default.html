@@ -11,17 +11,17 @@ layout: home
   <style>
     /* Quote Styles */
     .quote {
+      position: absolute;  /* Position relative to the page */
+      top: 50%;  /* Vertically center */
+      left: 50%;  /* Horizontally center */
+      transform: translate(-50%, -50%);  /* Adjust for perfect centering */
       text-align: center;
       font-size: 2rem;
       font-weight: bold;
       color: #555;
-      margin: 40px auto; /* Center horizontally */
-      padding: 10px;
       white-space: nowrap;  /* Prevents line breaks */
-      max-width: 90%;  /* Optional: Adds some margin to the sides */
+      padding: 10px;
     }
-
-
     
     /* Card-container wrapper just for posts */
     .posts-wrapper {
