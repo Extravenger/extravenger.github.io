@@ -37,14 +37,6 @@
   position: relative;
 }
 
-footer {
-  position: relative;
-  width: 100%;
-  text-align: center;
-  padding: 10px 0;
-  margin-top: auto;
-}
-
 /* Card inner element for flip effect */
 .cert-card-inner {
   position: relative;
@@ -130,6 +122,13 @@ footer {
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 0.2s;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Chronological note style */
