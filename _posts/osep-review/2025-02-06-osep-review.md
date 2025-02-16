@@ -88,4 +88,7 @@ I've made my course GitHub repository public to help other students, but I still
 <img src="{{ page.certificate }}">
 </figure>
 
+Thanks for reading!
+
 [OSEP-github]: https://github.com/Extravenger/OSEPlayground
+
