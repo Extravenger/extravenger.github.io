@@ -1,49 +1,24 @@
+---
+layout: home
+---
+
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
 {% include header.html %}
 
 <head>
   <style>
-    /* Enhanced Quote Styles */
+    /* Quote Styles */
     .quote {
       text-align: center;
       font-size: 2rem;
       font-weight: bold;
       color: #555;
       margin: 40px 20px;
-      padding: 20px;
-      position: relative;
-      animation: fadeIn 1s ease-out;
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
+      padding: 10px;
     }
-
-    /* Quote Text Shadow */
-    .quote::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: -1;
-      transform: scale(1.05);
-    }
-
-    /* Fade-in animation */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
+    
     /* Card-container wrapper just for posts */
     .posts-wrapper {
       display: flex;
@@ -143,38 +118,6 @@
         grid-template-columns: 1fr;
       }
     }
-
-    /* Sticky Footer (Always at the bottom) */
-    body, html {
-      height: 100%;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Wrapper to allow the content to grow and fill the available space */
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      max-height: 100%; /* Prevent wrapper from expanding beyond available space */
-    }
-
-    /* Main content area to expand */
-    main {
-      flex-grow: 1; 
-      padding-bottom: 50px; /* Ensures footer does not overlap content */
-    }
-
-    /* Footer styles */
-    footer {
-      text-align: center;
-      padding: 10px 0;
-      background-color: transparent;
-      box-shadow: none;
-      margin-top: auto; /* Ensures footer stays at the bottom when content is short */
-      position: relative; /* Keep it at the bottom of the page */
-    }
   </style>
 </head>
 
@@ -236,9 +179,7 @@
       </div>
     </main>
 
-    <footer>
-      {% include footer.html %}
-    </footer>
+    {% include footer.html %}
   </div>
 
 </body>
