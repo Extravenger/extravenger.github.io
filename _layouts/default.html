@@ -9,6 +9,24 @@ layout: home
 
 <head>
   <style>
+    /* Flexbox Layout */
+    .flex-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    .page-content {
+      flex: 1;
+    }
+
+    .site-footer {
+      background: var(--color-bg-secondary);
+      color: var(--color-text-secondary);
+      padding: 20px;
+      text-align: center;
+    }
+
     /* Quote Styles */
     .quote {
       text-align: center;
@@ -156,7 +174,7 @@ layout: home
   </style>
 </head>
 
-<body data-theme="{{ site.mode }}" class="notransition">
+<body data-theme="{{ site.mode }}" class="notransition flex-container">
   <script>
     const body = document.body;
     const data = body.getAttribute("data-theme");
@@ -172,49 +190,45 @@ layout: home
     };
 
     initTheme(localStorage.getItem("theme"));
-
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
   {% include navbar.html %}
 
-  <div class="wrapper">
-    <main class="page-content" aria-label="Content">
+  <main class="page-content" aria-label="Content">
+    <!-- Quote Section -->
+    <div class="quote">
+      "The strongest walls are built by those who know how to break them."
+    </div>
 
-      <!-- Quote Section -->
-      <div class="quote">
-        "The strongest walls are built by those who know how to break them."
-      </div>
-
-      <div class="posts-wrapper">
-        <div class="post-cards-container">
-          {% for post in site.posts %}
-          <div class="post-card" onclick="window.location.href='{{ post.url }}'">
-            <div class="text-content">
-              <h2>{{ post.title }}</h2>
-              <div class="meta">
-                <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
-              </div>
-              {% if post.tags %}
-              <div class="tags">
-                {% for tag in post.tags %}
-                <a class="tag" href="/tags/#{{ tag | downcase | slugify }}">{{ tag | upcase }}</a>
-                {% endfor %}
-              </div>
-              {% endif %}
+    <div class="posts-wrapper">
+      <div class="post-cards-container">
+        {% for post in site.posts %}
+        <div class="post-card" onclick="window.location.href='{{ post.url }}'">
+          <div class="text-content">
+            <h2>{{ post.title }}</h2>
+            <div class="meta">
+              <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
             </div>
-
-            {% if post.image %}
-            <img src="{{ post.image }}" alt="{{ post.title }}">
+            {% if post.tags %}
+            <div class="tags">
+              {% for tag in post.tags %}
+              <a class="tag" href="/tags/#{{ tag | downcase | slugify }}">{{ tag | upcase }}</a>
+              {% endfor %}
+            </div>
             {% endif %}
           </div>
-          {% endfor %}
-        </div>
-      </div>
-    </main>
 
-    {% include footer.html %}
-  </div>
+          {% if post.image %}
+          <img src="{{ post.image }}" alt="{{ post.title }}">
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+
+  {% include footer.html %}
 </body>
 
 </html>
