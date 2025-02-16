@@ -13,6 +13,14 @@ permalink: /contact/
     overflow-x: hidden; /* Prevent horizontal scroll */
   }
 
+  footer {
+    position: relative;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: auto;
+  }
+
   /* Container for the cards */
   .contact-page-container {
     display: flex;
