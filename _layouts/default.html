@@ -3,35 +3,12 @@ layout: home
 ---
 
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+<html lang="{{ page.lang | default: site.lang | default: "en" }}">
+
+{% include header.html %}
 
 <head>
-  {% include header.html %}
-
   <style>
-    /* General Reset */
-    body, html {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-    }
-
-    /* Wrapper and Mdain */
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-
-    main.page-content {
-      flex-grow: 1;
-    }
-
-    /* Ensure footer is at bottom */
-    footer {
-      margin-top: auto;
-    }
-
     /* Quote Styles */
     .quote {
       text-align: center;
@@ -42,24 +19,27 @@ layout: home
       padding: 10px;
       border-left: 5px solid #ffcccc;
     }
-
+    
     /* Card-container wrapper just for posts */
     .posts-wrapper {
       display: flex;
       justify-content: center;
       padding: 20px;
+      flex-grow: 1;
     }
 
     /* Container to hold post cards */
     .post-cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 30px;
       padding: 20px;
       max-width: 1200px;
       width: 100%;
+      margin-left: auto;
+      margin-right: 0;
     }
-
+    
     /* Card-style layout for each post */
     .post-card {
       background: var(--content-bg);
@@ -83,6 +63,7 @@ layout: home
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
     }
 
+    /* Adjusted padding inside the text section */
     .post-card .text-content {
       display: flex;
       flex-direction: column;
@@ -124,6 +105,7 @@ layout: home
       color: white;
     }
 
+    /* Right section of the post card (for image) */
     .post-card img {
       width: 100%;
       height: auto;
@@ -133,59 +115,15 @@ layout: home
 
     /* Responsive Styles */
     @media (max-width: 768px) {
-      .post-cards-container {
+      .post-card {
         grid-template-columns: 1fr;
-        justify-items: center;
       }
-    }
-
-    @media (max-width: 480px) {
-      .post-card h2 {
-        font-size: 1.3rem;
-      }
-    }
-
-    /* Navbar Styles */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      box-sizing: border-box;
-      margin: 0 auto;
-      max-width: 1400px;
-    }
-
-    .navbar .nav-items {
-      display: flex;
-      gap: 15px;
-    }
-
-    .navbar .nav-items a {
-      text-decoration: none;
-      color: inherit;
-      padding: 5px 10px;
-      border-radius: 5px;
-      transition: background 0.3s ease;
-    }
-
-    .navbar .nav-items a:hover {
-      background: #ffcccc;
-      color: #333;
-    }
-
-    .navbar .left {
-      justify-content: flex-start;
-    }
-
-
-    .navbar .dark-mode-button {
-      margin-right: auto;
     }
   </style>
 </head>
 
 <body data-theme="{{ site.mode }}" class="notransition">
+
   <script>
     const body = document.body;
     const data = body.getAttribute("data-theme");
@@ -201,25 +139,15 @@ layout: home
     };
 
     initTheme(localStorage.getItem("theme"));
+    
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <div class="dark-mode-button">
-      {% include dark-mode-button.html %}
-    </div>
-
-    <div class="nav-items">
-      <a href="/">Home</a>
-      <a href="/about/">About</a>
-      <a href="/contact/">Contact</a>
-      <a href="/posts/">Posts</a>
-    </div>
-  </nav>
+  {% include navbar.html %}
 
   <div class="wrapper">
     <main class="page-content" aria-label="Content">
+
       <!-- Quote Section -->
       <div class="quote">
         "The strongest walls are built by those who know how to break them."
@@ -254,5 +182,7 @@ layout: home
 
     {% include footer.html %}
   </div>
+
 </body>
+
 </html>
