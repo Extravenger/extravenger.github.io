@@ -49,11 +49,12 @@ layout: home
     /* Container to hold post cards */
     .post-cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
       gap: 30px;
       padding: 20px;
       max-width: 1400px;
       width: 100%;
+      justify-items: center; /* Centers the cards */
     }
 
     /* Card-style layout for each post */
@@ -71,6 +72,8 @@ layout: home
       cursor: pointer;
       height: 100%;
       border: 1px solid #ffcccc;
+      width: 100%; /* Ensures full width within grid */
+      max-width: 600px; /* Controls the maximum size */
     }
 
     /* Hover effect for cards */
@@ -88,7 +91,7 @@ layout: home
     }
 
     .post-card h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
       font-weight: bold;
       color: #333;
       margin-bottom: 10px;
