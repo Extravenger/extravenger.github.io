@@ -80,15 +80,15 @@ I can't tell you how much this is effective during advanced situations you might
 Overall, this course is an incredible resource that can significantly elevate your penetration testing skills. If you're willing to dedicate the time and effort to both learning and practicing the material, it will undoubtedly take you to the next level in the field.<br>
 Bypassing Windows Defender is a valuable skill, but in most environments I've encountered, EDRs (Endpoint Detection and Response) present the real challenge. These defenses are far more complex and demand a higher level of expertise and skill to bypass effectively in today’s security landscape. I’m hopeful that, one day, OffSec will release a course focused on tackling these advanced defenses.
 
-I've made my course GitHub repository public to help other students, but I still encourage you to create your own tools:
+Thanks for reading!
+
+P.S - I've made my course GitHub repository public to help other students, but I still encourage you to create your own tools:
 
 [OSEPlayground][OSEP-github]
 
 <figure>
 <img src="{{ page.certificate }}">
 </figure>
-
-Thanks for reading!
 
 [OSEP-github]: https://github.com/Extravenger/OSEPlayground
 
