@@ -152,24 +152,33 @@
       flex-direction: column;
     }
 
+    /* Wrapper to allow the content to grow and fill the available space */
     .wrapper {
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+      max-height: 100%; /* Prevent wrapper from expanding beyond available space */
     }
 
+    /* Main content area to expand */
     main {
-      flex-grow: 1;
+      flex-grow: 1; 
+      padding-bottom: 50px; /* Ensures footer does not overlap content */
     }
 
+    /* Footer styles */
     footer {
       text-align: center;
       padding: 10px 0;
       background-color: transparent;
       box-shadow: none;
-      margin-top: auto; /* Ensures footer stays at bottom when content is short */
+      margin-top: auto; /* Ensures footer stays at the bottom when content is short */
+      position: relative; /* Keep it at the bottom of the page */
     }
   </style>
+</head>
+
+<body data-theme="{{ site.mode }}" class="notransition">
 
   <script>
     const body = document.body;
@@ -186,10 +195,9 @@
     };
 
     initTheme(localStorage.getItem("theme"));
+    
+    setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
-</head>
-
-<body data-theme="{{ site.mode }}" class="notransition">
 
   {% include navbar.html %}
 
