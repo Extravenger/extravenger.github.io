@@ -144,16 +144,18 @@
       }
     }
 
-    /* Sticky Footer */
+    /* Sticky Footer (Always at the bottom) */
     body, html {
       height: 100%;
       margin: 0;
+      display: flex;
+      flex-direction: column;
     }
 
     .wrapper {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      flex-grow: 1;
     }
 
     main {
@@ -161,13 +163,10 @@
     }
 
     footer {
-      position: relative;
-      bottom: 0;
-      width: 100%;
       text-align: center;
       padding: 10px 0;
-      background-color: transparent; /* Transparent background */
-      box-shadow: none; /* Removes any shadow */
+      background-color: transparent;
+      box-shadow: none;
     }
   </style>
 </head>
