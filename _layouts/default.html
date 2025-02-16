@@ -9,6 +9,32 @@ layout: home
 
 <head>
   <style>
+    /* Navigation Bar Styling */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+    }
+
+    .navbar .left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .navbar .right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    /* Ensures proper alignment for navigation elements */
+    .navbar .right a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     /* Flexbox Layout */
     .flex-container {
       display: flex;
@@ -54,7 +80,7 @@ layout: home
       padding: 20px;
       max-width: 1400px;
       width: 100%;
-      justify-items: center; /* Centers the cards */
+      justify-items: center;
     }
 
     /* Card-style layout for each post */
@@ -72,8 +98,8 @@ layout: home
       cursor: pointer;
       height: 100%;
       border: 1px solid #ffcccc;
-      width: 100%; /* Ensures full width within grid */
-      max-width: 600px; /* Controls the maximum size */
+      width: 100%;
+      max-width: 600px;
     }
 
     /* Hover effect for cards */
@@ -207,7 +233,20 @@ layout: home
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
-  {% include navbar.html %}
+  <nav class="navbar">
+    <div class="left">
+      <!-- Dark Mode Button -->
+      {% include dark-mode-button.html %}
+    </div>
+
+    <div class="right">
+      <!-- Navigation Links -->
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/posts">Posts</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </nav>
 
   <main class="page-content" aria-label="Content">
     <!-- Quote Section -->
@@ -224,18 +263,7 @@ layout: home
             <div class="meta">
               <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %d, %Y" }}</time>
             </div>
-            {% if post.tags %}
-            <div class="tags">
-              {% for tag in post.tags %}
-              <a class="tag" href="/tags/#{{ tag | downcase | slugify }}">{{ tag | upcase }}</a>
-              {% endfor %}
-            </div>
-            {% endif %}
           </div>
-
-          {% if post.image %}
-          <img src="{{ post.image }}" alt="{{ post.title }}">
-          {% endif %}
         </div>
         {% endfor %}
       </div>
