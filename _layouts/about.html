@@ -84,7 +84,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh; /* Ensures wrapper takes full viewport height */
+      min-height: 100vh;
       text-align: center;
       padding: 20px;
       box-sizing: border-box;
@@ -92,11 +92,20 @@
     }
 
     main {
-      flex-grow: 1; /* Main content grows to fill space */
+      flex-grow: 1; 
     }
 
+    /* Fixed Footer */
     footer {
-      flex-shrink: 0; /* Footer stays at the bottom */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      background-color: #fff;
+      padding: 10px 0;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 10;
     }
     
     .centered-content {
@@ -106,6 +115,7 @@
       justify-content: center;
       flex-grow: 1;
       overflow: hidden;
+      padding-bottom: 50px; /* Prevents text from hiding behind footer */
     }
 
     .text-container {
