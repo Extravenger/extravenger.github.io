@@ -12,11 +12,14 @@ layout: home
     /* Quote Styles */
     .quote {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: 2rem;
       font-weight: bold;
       color: #333;
       margin: 40px 20px;
       padding: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 1s ease-out forwards;
@@ -129,6 +132,10 @@ layout: home
     @media (max-width: 768px) {
       .post-card {
         grid-template-columns: 1fr;
+      }
+
+      .quote {
+        font-size: 1.5rem;
       }
     }
   </style>
