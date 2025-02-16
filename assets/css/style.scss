@@ -69,25 +69,22 @@
   display: block;
 }
 
-/* Back side of the card */
-.cert-card-back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--background);
-  color: #666;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
+h2.certs-title {
+  width: 100vw;
   text-align: center;
-  overflow: auto; /* Make text scrollable if it overflows */
-  word-wrap: break-word;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #666 !important;
+  margin: 0; /* Remove default margin */
+  padding: 20px 0;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s ease-out forwards;
+  animation-delay: 0.2s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  border-top: 5px solid #ffcccc;
+  border-bottom: 5px solid #ffcccc;
+  box-sizing: border-box;
 }
 
 .cert-card-back .content {
