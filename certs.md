@@ -126,7 +126,13 @@ permalink: /certs/
           <div class="content">
             <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
-              <li>A lot of Active Directory stuff, Pivoting, Web attacks etc.</li>
+              <li>Web Application Attacks.</li>
+              <li>Enumeration.</li>
+              <li>Exploiting Obscure and Real-World Active Directory Flaws.</li>
+              <li>Lateral Movement and Crossing Trust Boundaries.</li>
+              <li>Evading Endpoint Protections.</li>
+              <li>Reverse Engineering.</li>
+              <li>Out-Of-The-Box Thinking.</li>
             </ul>
           </div>
         </div>
