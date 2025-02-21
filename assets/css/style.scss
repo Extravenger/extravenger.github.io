@@ -3,26 +3,27 @@
 
 @import "main";
 
-/* Makes the entire cards clickable */
-.cert-card-link {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
-/* Wrapper to control the grid layout */
+/* Wrapper to control the single visible card */
 .cert-cards-wrapper {
-  display: grid;
-  grid-template-columns: 1fr; /* One image per row */
-  gap: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
   padding: 20px;
-  grid-auto-rows: 400px;
+  box-sizing: border-box;
 }
 
-/* Card container */
+/* Card container for the slider */
+.cert-card-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
 .cert-card {
+  flex: 0 0 100%; /* Ensure only one card is visible */
   display: flex;
   background: var(--content-bg);
   border-radius: 15px;
@@ -30,142 +31,47 @@
   overflow: hidden;
   padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 100%;
-  height: 100%;
   box-sizing: border-box;
-  perspective: 1000px;
   position: relative;
 }
 
-/* Card inner element for flip effect */
-.cert-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.6s ease;
-}
-
-.cert-card:hover .cert-card-inner {
-  transform: rotateY(180deg);
-}
-
-/* Front side of the card */
-.cert-card-image {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  position: relative;
-  backface-visibility: hidden;
-}
-
-.cert-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* Back side of the card */
-.cert-card-back {
+/* Navigation buttons */
+.cert-nav {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: var(--background);
-  color: #666;
-  padding: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-  text-align: center;
-  overflow: auto; /* Make text scrollable if it overflows */
-  word-wrap: break-word;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  transition: background 0.3s ease;
 }
 
-.cert-card-back .content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+.cert-nav:hover {
+  background: rgba(0, 0, 0, 0.8);
 }
 
-/* Hide front when flipped */
-.cert-card:hover .cert-card-image {
-  visibility: hidden;
+.cert-nav-left {
+  left: 10px;
 }
 
-/* Show back when flipped */
-.cert-card:hover .cert-card-back {
-  visibility: visible;
+.cert-nav-right {
+  right: 10px;
 }
 
-h2.certs-title {
-  text-align: center;
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: #666 !important;
-  margin: 40px 20px;
-  padding: 20px;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 1s ease-out forwards;
-  animation-delay: 0.2s;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Chronological note style */
-.chronological-note {
-  text-align: center;
-  font-size: 1rem;
-  margin-bottom: 20px;
-  color: #666;
-}
-
-/* Responsive adjustments */
+/* Adjustments for responsiveness */
 @media (max-width: 768px) {
-  .cert-cards-wrapper {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
   .cert-card {
-    grid-auto-rows: 300px; /* Adjust card height for smaller screens */
-  }
-
-  .cert-card-back {
-    font-size: 0.9rem; /* Smaller text on mobile */
-    padding: 15px;
+    flex: 0 0 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .cert-card {
-    grid-auto-rows: 250px; /* Adjust card height for very small screens */
-  }
-
-  .cert-card-back {
-    font-size: 0.8rem; /* Even smaller text on very small screens */
-    padding: 10px;
-  }
-
-  .cert-card-back .content {
-    overflow-y: auto; /* Allow scrolling for long text */
+  .cert-nav {
+    font-size: 1rem;
+    padding: 8px;
   }
 }
