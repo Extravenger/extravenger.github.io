@@ -15,12 +15,12 @@ layout: home
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      max-width: 90vw;
+      max-width: 100%;
       text-align: center;
       font-size: 2.5rem;
       font-weight: bold;
       color: #666;
-      margin: 40px auto;
+      margin: 40px 0;
       padding: 20px;
       opacity: 0;
       transform: translateY(20px);
@@ -28,7 +28,11 @@ layout: home
       animation-delay: 0.2s;
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
       width: fit-content;
+      position: relative;
+      left: 50%;
+      transform: translate(-50%, 20px);
     }
+
 
 
     /* Fade-in and upward movement */
