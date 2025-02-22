@@ -82,7 +82,7 @@ Bypassing Windows Defender is a valuable skill, but in most environments I've en
 
 Thanks for reading!
 
-P.S - I've made my course GitHub repository public to help other students, but I still encourage you to create your own tools:
+P.S. – I've made my course's GitHub repository public to assist other students, but I still encourage you to develop your own tools:
 
 [OSEPlayground][OSEP-github]
 
