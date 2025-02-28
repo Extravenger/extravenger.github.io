@@ -11,23 +11,23 @@ permalink: /tools/
 
 <div class="tools-cards-container">
 
-  <a class="tool-card-link" href="https://github.com/yourrepo/tool1" target="_blank">
+  <a class="tool-card-link" href="https://github.com/Extravenger/mssqlVenger" target="_blank">
     <div class="tool-card">
       <div class="tool-card-inner">
         <div class="tool-card-content">
-          <h3>Tool Name 1</h3>
-          <p>A brief description of what this tool does and its primary features.</p>
+          <h3>mssqlVenger</h3>
+          <p>An MSSQL exploitation tool designed for Active Directory environments, developed as part of the OSEP course.</p>
         </div>
       </div>
     </div>
   </a>
 
-  <a class="tool-card-link" href="https://github.com/yourrepo/tool2" target="_blank">
+  <a class="tool-card-link" href="https://github.com/Extravenger/scanVenger" target="_blank">
     <div class="tool-card">
       <div class="tool-card-inner">
         <div class="tool-card-content">
-          <h3>Tool Name 2</h3>
-          <p>A brief description of what this tool does and its primary features.</p>
+          <h3>scanVenger</h3>
+          <p>A Windows-based tool for discovering live hosts and scanning open ports within a network, primarily built as part of the OSEP course.</p>
         </div>
       </div>
     </div>
