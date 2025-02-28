@@ -27,7 +27,7 @@ permalink: /tools/
     <div class="tool-card">
       <div class="tool-card-inner">
         <div class="tool-card-content">
-          <h3>scanVenger</h3>
+          <h1>scanVenger</h1>
           <p>A Windows-based tool for discovering live hosts and scanning open ports within a network, primarily built as part of the OSEP course.</p>
         </div>
       </div>
