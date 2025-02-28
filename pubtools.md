@@ -48,7 +48,7 @@ permalink: /tools/
 .tool-card {
   width: 300px;
   background: var(--card-background);
-  border: 1px solid var(--border-color);
+  border: 1px solid #333;
   border-radius: 10px;
   padding: 15px;
   text-align: center;
