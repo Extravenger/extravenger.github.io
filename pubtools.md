@@ -9,7 +9,6 @@ permalink: /tools/
   <p class="tools-note">Here are some public tools I have developed.</p>
 </div>
 <br>
-<br>
 
 <div class="tools-cards-container">
 
