@@ -6,7 +6,7 @@ permalink: /tools/
 
 <div style="text-align: center;">
   <h2 class="tools-title">Open-Source Tools Developed by Me</h2>
-  <p class="tools-note">Here are some public tools I have developed. Click on the cards to learn more and access the repositories.</p>
+  <p class="tools-note">Here are some public tools I have developed.</p>
 </div>
 
 <div class="tools-cards-container">
