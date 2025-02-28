@@ -2,10 +2,6 @@
   url: /
   external: false
 
-- title: About
-  url: /about/
-  external: false # set true if you using external link, see below
-
 - title: Public Tools
   url: /tools/
   external: false
@@ -13,6 +9,10 @@
 - title: Certifications
   url: /certs/
   external: false
+
+- title: About
+  url: /about/
+  external: false # set true if you using external link, see below
 
 - title: Contact
   url: /contact/
