@@ -6,7 +6,7 @@ permalink: /tools/
 
 <div style="text-align: center;">
   <h2 class="certs-title">Open-Source Tools</h2>
-  <p class="tools-note">Here are some public tools I have developed and make them public as part of my courses i've taken.</p>
+  <p class="tools-note">Here are some public tools I have developed and make them public as part of the courses i've taken.</p>
 </div>
 <br>
 
