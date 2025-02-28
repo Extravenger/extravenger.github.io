@@ -16,7 +16,7 @@ permalink: /tools/
     <div class="tool-card">
       <div class="tool-card-inner">
         <div class="tool-card-content">
-          <h3>mssqlVenger</h3>
+          <h1>mssqlVenger</h1>
           <p>An MSSQL exploitation tool designed for Active Directory environments, developed as part of the OSEP course.</p>
         </div>
       </div>
