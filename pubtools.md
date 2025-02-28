@@ -5,8 +5,8 @@ permalink: /tools/
 ---
 
 <div style="text-align: center;">
-  <h2 class="tools-title">Open-Source Tools Developed</h2>
-  <p class="tools-note">Here are some public tools I have developed as part of my courses.</p>
+  <h2 class="tools-title">Open-Source Tools Developed by Me</h2>
+  <p class="tools-note">Here are some public tools I have developed. Click on the cards to learn more and access the repositories.</p>
 </div>
 
 <div class="tools-cards-container">
@@ -48,6 +48,7 @@ permalink: /tools/
 .tool-card {
   width: 300px;
   background: var(--card-background);
+  border: 1px solid var(--border-color);
   border-radius: 10px;
   padding: 15px;
   text-align: center;
