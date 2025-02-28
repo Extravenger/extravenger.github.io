@@ -49,7 +49,7 @@ permalink: /tools/
 .tool-card {
   width: 300px;
   background: var(--card-background);
-  border: 5px solid #333;
+  border: 5px solid #666;
   border-radius: 20px;
   padding: 15px;
   text-align: center;
