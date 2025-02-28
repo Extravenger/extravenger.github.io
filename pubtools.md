@@ -42,15 +42,18 @@ permalink: /tools/
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .tool-card {
-  width: 300px;
+  width: 22%;
   background: var(--card-background);
   border-radius: 10px;
   padding: 15px;
   text-align: center;
   transition: transform 0.2s ease-in-out;
+  box-sizing: border-box;
 }
 
 .tool-card:hover {
@@ -59,9 +62,22 @@ permalink: /tools/
 
 .tool-card-content {
   color: var(--text-color);
+  text-align: center;
 }
 
 .tool-card-link {
   text-decoration: none;
+}
+
+@media (max-width: 1024px) {
+  .tool-card {
+    width: 45%;
+  }
+}
+
+@media (max-width: 600px) {
+  .tool-card {
+    width: 100%;
+  }
 }
 </style>
