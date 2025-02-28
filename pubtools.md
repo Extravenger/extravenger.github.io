@@ -8,6 +8,8 @@ permalink: /tools/
   <h2 class="tools-title">Open-Source Tools Developed by Me</h2>
   <p class="tools-note">Here are some public tools I have developed.</p>
 </div>
+<br>
+<br>
 
 <div class="tools-cards-container">
 
