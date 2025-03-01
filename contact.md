@@ -20,7 +20,6 @@ permalink: /contact/
     text-align: center;
     padding: 10px 0;
     z-index: 10;
-    margin-top: auto;
   }
 
   /* Container for the cards */
