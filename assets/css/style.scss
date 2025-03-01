@@ -158,6 +158,13 @@ h2.certs-title {
   .cert-card {
     grid-auto-rows: 250px; /* Adjust card height for very small screens */
   }
+@media (max-width: 768px) {
+  .certs-title {
+    text-align: center; 
+    margin: 0 auto;
+  }
+}
+
 
   .cert-card-back {
     font-size: 0.8rem; /* Even smaller text on very small screens */
