@@ -95,8 +95,6 @@ permalink: /contact/
   @media (max-width: 768px) {
     .contact-page-container {
       flex-direction: row;
-      justify-content: center;
-      align-items: center;
       gap: 15px;
       overflow-x: auto;
     }
