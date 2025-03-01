@@ -7,19 +7,8 @@ permalink: /contact/
 <style>
   /* General Reset */
   body, html {
-    margin: 0;
-    padding: 0;
     height: 100%;
     overflow-x: hidden; /* Prevent horizontal scroll */
-  }
-
-  footer {
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-    z-index: 10;
   }
 
   /* Container for the cards */
