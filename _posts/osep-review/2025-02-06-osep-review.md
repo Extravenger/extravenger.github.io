@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  OSEP Review
+title:  PEN 300 (OSEP) Review
 date:   2025-02-06 22:57:49 +0000
 image: /assets/img/certs/OSEP.png
 certificate: /assets/img/certs/OSEP.png
