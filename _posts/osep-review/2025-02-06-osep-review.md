@@ -34,6 +34,7 @@ Each module also includes an extra mile section, which I strongly suggest you co
 
 Currently, there are 7 challenges in total, with Offsec recently adding a new one. The challenges are arranged in increasing order of difficulty, so challenge 7 will be the toughest. The first four challenges focus on specific topics, while challenges 5 through 7 offer the best simulation of the actual exam environment, providing the closest experience to the real thing.<br>
 I encourage you to approach the labs from multiple angles rather than relying on just one method.<br>For example, if you solve a step on a Windows machine, make sure you also know how to do it on a Linux machine. This way, you'll always have a backup plan if something goes wrong.
+Another example is when you exploit a vulnerability or misconfiguration in one tool, try exploiting it again using a different tool than before.
 
 # The Exam
 
