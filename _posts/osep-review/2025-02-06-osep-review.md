@@ -4,7 +4,7 @@ title:  PEN-300 (OSEP) Review
 date:   2025-02-06 22:57:49 +0000
 image: /assets/img/certs/OSEP.png
 certificate: /assets/img/certs/OSEP.png
-exampass: /assets/img/posts/osep-pass.png
+exampass: /assets/img/posts/osep-review/osep-pass.png
 ---
 
 # Course Overview
