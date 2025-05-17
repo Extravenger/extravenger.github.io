@@ -47,8 +47,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 /** PowerShell command generation */
-function GeneratePS() {
-    const command = getPayload(); // Calls getPayload from codeScript.js
+function GeneratePS(edr) {
+    const command = getPayload(edr); // Calls getPayload with EDR type
     document.getElementById("PowerShellOutRaw").value = command;
     document.getElementById("PowerShellOut").innerHTML = formatPowerShell(command);
 }
