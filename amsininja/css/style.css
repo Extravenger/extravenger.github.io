@@ -298,10 +298,6 @@ aside .logo {
     padding: 8px 48px;
 }
 
-.size-button-generateCoded {
-    padding: 10px;
-}
-
 .icon-generate {
     width: 24px;
     height: 24px;
@@ -313,10 +309,6 @@ aside .logo {
 
 .icon-position-generate {
     margin-top: 1px;
-}
-
-.icon-position-generateCoded {
-    margin-top: 3px;
 }
 
 /* Terminal Overlay */
@@ -518,10 +510,6 @@ aside .logo {
 
     .size-button-generate {
         padding: 6px 37px;
-    }
-
-    .size-button-generateCoded {
-        padding: 8px;
     }
 
     .slider-container {
