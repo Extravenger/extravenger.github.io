@@ -20,12 +20,7 @@ function getPayload(){
   }
 }
   
-  
-  function GeneratePS(){
-     
-     document.getElementById("PowerShellOut").value =  getPayload();            
-  }
-  
-  function GenerateEncPS(){
-     document.getElementById("PowerShellOut").value =  `${randomCase("[System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String(")}"${toBinary(getPayload())}"))|iex`           
-  }
+function GeneratePS(){
+   
+   document.getElementById("PowerShellOut").value =  getPayload();            
+}
