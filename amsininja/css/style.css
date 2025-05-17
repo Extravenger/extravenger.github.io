@@ -104,16 +104,16 @@ aside .logo {
     display: block;
     padding: 12px 20px; /* Espaciado ajustado */
     border-radius: 6px;
-    background: linear-gradient(45deg, #58a6ff, #1f6feb);
-    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+    background: linear-gradient(45deg, #FFFFFF, #FFD700);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
     transition: all 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
     background: transparent;
-    color: #fff;
-    border: 2px solid #58a6ff;
-    box-shadow: 0 0 15px #58a6ff, 0 0 30px #1f6feb;
+    color: #FFFFFF;
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 15px #FFD700, 0 0 30px #FFFFFF;
     transform: translateX(8px);
 }
 
@@ -220,8 +220,8 @@ textarea {
 }
 
 /*button {
-    background-color: #58a6ff;
-    color: white;
+    background-color: #FFFFFF;
+    color: #FFD700;
     border: none;
     padding: 12px;
     cursor: pointer;
@@ -232,7 +232,8 @@ textarea {
 }
 
 button:hover {
-    background-color: #1f6feb;
+    background-color: #FFD700;
+    color: #FFFFFF;
 }*/
 
 #copyBtn {
@@ -263,7 +264,6 @@ button:hover {
     filter: brightness(0) invert(1); /* Esto hará que la imagen se vuelva blanca */
 }
 
-
 /* Aseguramos que el texto "PowerShell" esté centrado y no se mueva */
 .title {
     flex: 1; /* Esto hace que el título ocupe todo el espacio disponible */
@@ -275,7 +275,7 @@ button:hover {
     opacity: 0;
     transition: opacity 0.5s ease;
     font-size: 14px;
-    color: #58a6ff;
+    color: #FFD700;
     margin-left: 10px;
 }
 
@@ -284,7 +284,7 @@ button:hover {
     opacity: 0;
     transition: opacity 0.5s ease;
     font-size: 14px;
-    color: #58a6ff;
+    color: #FFD700;
     margin-left: 10px;
 }
 
@@ -307,6 +307,7 @@ button:hover {
     max-width: 80%;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
+
 .terminal-header {
     display: flex;
     justify-content: space-between; /* Esto distribuye el espacio entre los elementos */
@@ -393,18 +394,21 @@ button:hover {
     border-radius: 0 0 8px 8px;
     font-size: 14px;
 }
+
 .copy-container {
     display: flex;
     align-items: center;
 }
+
 .copy-btn {
     width: 16px;
     height: 16px;
     cursor: pointer;
     margin-left: 5px;
 }
+
 .copied-text {
-    color: #58a6ff;
+    color: #FFD700;
     margin-right: -50px;
     margin-top: -20px;
     margin-bottom: 20px;
@@ -412,7 +416,7 @@ button:hover {
 }
 
 .copied-text-terminal {
-    color: #58a6ff;
+    color: #FFD700;
     margin-right: 5px;
     visibility: hidden;
 }
@@ -438,7 +442,7 @@ button:hover {
     align-items: center; /* Centra el contenido verticalmente */
     background: linear-gradient(90deg, #0a0f14, #1a1f29);
     padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
     top: 0;
     width: 100%;
@@ -451,16 +455,16 @@ button:hover {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.8rem;
     font-weight: bold;
-    color: #58a6ff;
-    text-shadow: 0 0 10px #58a6ff, 0 0 20px #1f6feb;
+    color: #FFD700;
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFFFFF;
     animation: flicker 1.5s infinite alternate;
 }
 
 /* Efecto de parpadeo en el logo */
 @keyframes flicker {
-    0% { opacity: 1; text-shadow: 0 0 10px #58a6ff, 0 0 20px #1f6feb; }
-    50% { opacity: 0.8; text-shadow: 0 0 5px #58a6ff, 0 0 10px #1f6feb; }
-    100% { opacity: 1; text-shadow: 0 0 15px #58a6ff, 0 0 30px #1f6feb; }
+    0% { opacity: 1; text-shadow: 0 0 10px #FFD700, 0 0 20px #FFFFFF; }
+    50% { opacity: 0.8; text-shadow: 0 0 5px #FFD700, 0 0 10px #FFFFFF; }
+    100% { opacity: 1; text-shadow: 0 0 15px #FFD700, 0 0 30px #FFFFFF; }
 }
 
 /* Estilos de la barra de navegación */
@@ -478,15 +482,15 @@ button:hover {
     padding: 8px 16px;
     border-radius: 6px;
     transition: all 0.3s ease-in-out;
-    background: linear-gradient(45deg, #58a6ff, #1f6feb);
-    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+    background: linear-gradient(45deg, #FFFFFF, #FFD700);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .nav-bar a:hover {
     background-color: transparent;
-    color: #fff;
-    border-color: #58a6ff;
-    box-shadow: 0 0 15px #58a6ff, 0 0 30px #1f6feb;
+    color: #FFFFFF;
+    border: 2px solid #FFD700;
+    box-shadow: 0 0 15px #FFD700, 0 0 30px #FFFFFF;
     transform: translateY(-3px);
 }
 
@@ -515,7 +519,7 @@ button:hover {
     align-items: center;
     background: linear-gradient(90deg, #1a1f29, #0a0f14);
     padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -527,16 +531,16 @@ button:hover {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1.2rem;
     font-weight: bold;
-    color: #58a6ff;
-    text-shadow: 0 0 10px #58a6ff, 0 0 20px #1f6feb;
+    color: #FFD700;
+    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFFFFF;
     animation: flicker 1.5s infinite alternate;
 }
 
 /* Animación de parpadeo */
 @keyframes flicker {
-    0% { opacity: 1; text-shadow: 0 0 10px #58a6ff, 0 0 20px #1f6feb; }
-    50% { opacity: 0.8; text-shadow: 0 0 5px #58a6ff, 0 0 10px #1f6feb; }
-    100% { opacity: 1; text-shadow: 0 0 15px #58a6ff, 0 0 30px #1f6feb; }
+    0% { opacity: 1; text-shadow: 0 0 10px #FFD700, 0 0 20px #FFFFFF; }
+    50% { opacity: 0.8; text-shadow: 0 0 5px #FFD700, 0 0 10px #FFFFFF; }
+    100% { opacity: 1; text-shadow: 0 0 15px #FFD700, 0 0 30px #FFFFFF; }
 }
 
 /* Hacer el footer responsive */
@@ -672,7 +676,6 @@ button:hover {
     }
 }
 
-
 /* COLORES */
 
 .comment { color: #569CD6; font-style: italic; }  /* 🟣 Comentarios en azul-morado */
@@ -689,7 +692,7 @@ button:hover {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2px;
-    color: #00eaff;  /* Azul Neón */
+    color: #FFD700;  /* Gold */
     background: linear-gradient(to right, #051937, #00214d); /* Degradado Azul Oscuro */
     padding: 12px 24px;
     border-radius: 10px;
@@ -697,18 +700,18 @@ button:hover {
     display: block;
     width: fit-content;
     margin: 20px auto; /* Centrado horizontal */
-    box-shadow: 0px 0px 15px rgba(0, 234, 255, 0.6); /* Brillo Neón Azul */
-    border: 2px solid rgba(0, 234, 255, 0.8); /* Borde Neón */
-    text-shadow: 0px 0px 8px rgba(0, 234, 255, 0.9); /* Brillo en el texto */
+    box-shadow: 0px 0px 15px rgba(255, 215, 0, 0.6); /* Brillo Gold */
+    border: 2px solid rgba(255, 215, 0, 0.8); /* Borde Gold */
+    text-shadow: 0px 0px 8px rgba(255, 215, 0, 0.9); /* Brillo en el texto */
 }
 
 hr {
     border: none;
     height: 3px;
-    background: linear-gradient(to right, #00eaff, #004080); /* Azul Neón a Azul Oscuro */
+    background: linear-gradient(to right, #FFD700, #FFFFFF); /* Gold a White */
     margin: 12px 0;
     border-radius: 3px;
-    box-shadow: 0px 0px 10px rgba(0, 234, 255, 0.5); /* Efecto Glow */
+    box-shadow: 0px 0px 10px rgba(255, 215, 0, 0.5); /* Efecto Glow */
 }
 
 .description-page {
@@ -728,7 +731,7 @@ hr {
 .styled-divider {
     width: 0%;
     height: 2px;
-    background: #58a6ff;
+    background: #FFD700;
     margin: 30px auto;
     border-radius: 5px;
     animation: expand 1s ease-in-out forwards;
@@ -747,7 +750,7 @@ hr {
 
 .link-page {
     text-decoration: none;
-    color: #00eaff;
+    color: #FFD700;
 }
 
 /* Estilo del logo de la pagina */
@@ -758,27 +761,6 @@ hr {
     left: 48.5%;
     transform: translateX(-50%); /* Esto la centra exactamente */
 }
-
-
-/* Estilo del titulo "Sin formato" rollo terminal (kali) */
-
-/*
-.terminal-page-title {
-    background-color: #000;
-    color: #33FF33;
-    font-family: "Courier New", monospace;
-    padding: 15px 25px;
-    border-radius: 5px;
-    font-size: 20px;
-    text-shadow: 0 0 5px #33FF33;
-    border: 2px solid #33FF33;
-}*/
-
-/*
-.prompt-page {
-    color: #ffcc00;
-    font-weight: bold;
-}*/
 
 /* Contenedor para centrar */
 .terminal-container-page {
@@ -801,7 +783,7 @@ hr {
 }
 
 .host {
-    color: #87CEEB; /* Azul claro para el hostname */
+    color: #FFD700; /* Gold para el hostname */
     font-weight: bold;
 }
 
@@ -811,7 +793,7 @@ hr {
 }
 
 .command-page {
-    color: #fff; /* Blanco para el texto ingresado */
+    color: #FFFFFF; /* White para el texto ingresado */
     font-weight: bold;
 }
 
@@ -845,25 +827,13 @@ hr {
     gap: 8px; /* Espacio entre la imagen y el botón */
 }
 
-/*
-.generate-btn {
-    font-size: 16px;
-    padding: 8px 16px;
-    cursor: pointer;
-    border: none;
-    margin-top: 10px;
-    font-size: 1em;
-    border-radius: 4px;
-    font-family: monospace;
-}*/
-
 .generate-btn {
     font-size: 16px;
     cursor: pointer;
-    border: 2px solid #2196F3; /* Borde azul */
+    border: 2px solid #FFD700; /* Borde gold */
     background-color: transparent; /* Fondo transparente */
-    color: #2196F3; /* Color del texto azul */
-    border-radius: 8px; /* Bordes redondeados */
+    color: #FFD700; /* Color del texto gold */
+    border-radius: 8px; /* Bord Borders redondeados */
     font-family: 'Courier New', monospace; /* Estilo tipo terminal */
     font-weight: bold; /* Agrega negrita */
     text-transform: uppercase; /* Transforma el texto a mayúsculas */
@@ -871,14 +841,14 @@ hr {
 }
 
 .generate-btn:hover {
-    background-color: #2196F3; /* Fondo azul cuando se pasa el ratón */
-    color: white; /* Texto blanco cuando el fondo se vuelve azul */
-    border: 2px solid #1976D2; /* Borde azul más oscuro al pasar el ratón */
+    background-color: #FFD700; /* Fondo gold cuando se pasa el ratón */
+    color: #FFFFFF; /* Texto white cuando el fondo se vuelve gold */
+    border: 2px solid #FFFFFF; /* Borde white al pasar el ratón */
 }
 
 .generate-btn:active {
-    background-color: #1976D2; /* Fondo azul más oscuro cuando se hace clic */
-    border: 2px solid #1976D2; /* Borde más oscuro cuando se hace clic */
+    background-color: #FFFFFF; /* Fondo white cuando se hace clic */
+    border: 2px solid #FFD700; /* Borde gold cuando se hace clic */
     transform: scale(0.98); /* Efecto de pulsación */
 }
 
@@ -996,7 +966,6 @@ hr {
         padding: 5px 10px;
     }
 }
-
 
 .icon-generate {
     width: 24px; /* Ajusta el tamaño de la imagen */
