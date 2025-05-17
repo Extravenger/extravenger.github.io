@@ -12,7 +12,6 @@
 </head>
 
 <body>
-
     <!-- Header de la pagina -->
     <header class="header">
         <!-- Botón de hamburguesa -->
@@ -36,7 +35,7 @@
         <aside id="sidebar">
             <button id="closeBtn">×</button> <!-- Botón de cierre (X) -->
             <br><br><br><br><br>
-            <div class="logo"><p class="logo-text-burguer">AMSI.bypass<p></div>
+            <div class="logo"><p class="logo-text-burguer">AMSI.bypass</p></div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="amsiinfomodule.html">Info AMSI Module</a></li>
@@ -81,19 +80,13 @@
                     <div class="copy-container">
                         <div class="button-container">
                             <img src="img/generatePlay.png" class="icon-generate color-play icon-position-generate">
-                            <button class="generate-btn size-button-generate" onclick="GeneratePS(); showTerminalEffect(this)"><b>Generate</b></button>
-                            <span class="terminal-overlay"></span> <!-- Span para este botón -->
+                            <button class="generate-btn size-button-generate" onclick="GeneratePS()"><b>Generate</b></button>
                         </div>
                         <div class="button-container">
                             <img src="img/codifgicar.png" class="icon-generate icon-position-generateCoded">
-                            <button class="generate-btn size-button-generateCoded" onclick="GenerateEncPS(); showTerminalEffect(this, true)"><b>Generate Encoded</b></button>
-                            <span class="terminal-overlay"></span> <!-- Span para este otro botón -->
+                            <button class="generate-btn size-button-generateCoded" onclick="GenerateEncPS()"><b>Generate Encoded</b></button>
                         </div>
                     </div>
-                    <div class="slider-container">
-                        <input type="checkbox" id="animation-toggle" checked> <!-- Agregar checked aquí -->
-                        <span id="animation-status">Animación Activada</span>
-                    </div>                                                                                                                                   
                 </div>
             </div>
         </div>
@@ -108,5 +101,4 @@
         </div>
     </footer>    
 </body>
-
 </html>
