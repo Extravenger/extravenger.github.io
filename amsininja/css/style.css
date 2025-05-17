@@ -34,7 +34,7 @@ body {
 }
 
 .logo-page {
-    width: 100px;
+    width: 80px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
