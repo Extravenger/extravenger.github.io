@@ -118,3 +118,10 @@ function showTerminalEffect(button) {
 
     typeWriter();
 }
+
+/** Generate payload for PowerShell command */
+function getPayload() {
+    // Placeholder: Return a sample PowerShell command
+    // Replace this with your actual AMSI bypass logic
+    return '$var = "Hello"; Write-Output $var # Sample command';
+}
