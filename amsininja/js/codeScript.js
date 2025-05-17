@@ -8,15 +8,15 @@ function getPayload(){
 
   switch (randomInt(5)) {
       case 0:
-          return encodePayload(ForceErrer)
+          return ForceErrer
       case 1:
-          return encodePayload(MattGRefl)
+          return MattGRefl
       case 2:
-          return encodePayload(MattGReflLog)
+          return MattGReflLog
       case 3:
-          return encodePayload(MattGref02)
+          return MattGref02
       case 4:
-          return encodeRasta(RastaBuf)
+          return RastaBuf
   }
 }
   
