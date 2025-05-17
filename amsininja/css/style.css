@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background: #D4AF37;
+    background: #B89778; /* Updated gold color */
     padding: 20px;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
@@ -469,7 +469,7 @@ aside .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #D4AF37;
+    background: #B89778; /* Updated gold color */
     padding: 20px;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
