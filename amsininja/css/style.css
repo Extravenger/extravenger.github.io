@@ -1,7 +1,7 @@
 /* General Reset and Base Styles */
 body {
     background-color: #0a0f14;
-    color: #FFFFFF; /* Updated to white to match the text in the image */
+    color: #FFFFFF;
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background: #1C2526; /* Updated to a dark gray-black to match the image */
+    background: #1C2526;
     padding: 20px;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
@@ -24,8 +24,8 @@ body {
 .logo-container {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #D4AF37; /* Updated to gold to match the logo in the image */
-    text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37; /* Adjusted shadow to match gold tone */
+    color: #D4AF37;
+    text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37;
     animation: flicker 1.5s infinite alternate;
 }
 
@@ -55,14 +55,14 @@ body {
     height: 25px;
     cursor: pointer;
     padding: 5px;
-    border-radius: 8px;
+    border-radius:8px;
     transition: transform 0.3s ease-in-out;
     position: absolute;
     left: 10px;
 }
 
 .burger div {
-    background-color: #FFFFFF; /* Updated to white to match the image */
+    background-color: #FFFFFF;
     width: 100%;
     height: 4px;
     border-radius: 4px;
@@ -87,7 +87,7 @@ aside {
     flex-direction: column;
     align-items: center;
     width: 250px;
-    background-color: rgba(28, 37, 38, 0.95); /* Updated to match the dark background */
+    background-color: rgba(28, 37, 38, 0.95);
     height: 100vh;
     position: fixed;
     left: -250px;
@@ -163,21 +163,21 @@ aside .logo {
 
 .nav-links a {
     text-decoration: none;
-    color: #FFFFFF; /* Updated to white to match the navigation links */
+    color: #FFFFFF;
     font-size: 1.1em;
     padding: 12px 20px;
     border-radius: 6px;
-    background: transparent; /* Removed gradient to match the flat style */
-    box-shadow: none; /* Removed shadow to match the image */
+    background: transparent;
+    box-shadow: none;
     display: block;
     transition: all 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
     background: transparent;
-    color: #D4AF37; /* Updated hover to gold to match the theme */
-    border: none; /* Removed border to match the image */
-    box-shadow: none; /* Removed shadow to match the image */
+    color: #D4AF37;
+    border: none;
+    box-shadow: none;
     transform: translateX(8px);
 }
 
@@ -223,8 +223,8 @@ aside .logo {
     width: 100%;
     height: 180px;
     background-color: #0d1117;
-    border: 1px solid #FFFFFF; /* Updated to white to match the theme */
-    color: #FFFFFF; /* Updated to white */
+    border: 1px solid #FFFFFF;
+    color: #FFFFFF;
     padding: 10px;
     border-radius: 4px;
     overflow-y: auto;
@@ -249,66 +249,95 @@ aside .logo {
     opacity: 0;
     transition: opacity 0.5s ease;
     font-size: 14px;
-    color: #D4AF37; /* Updated to gold to match the theme */
+    color: #D4AF37;
     margin-left: 10px;
 }
 
-/* Generate Buttons */
-.copy-container {
+/* EDR Buttons Container */
+.edr-buttons-container {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: center;
-    align-items: center;
-    margin-bottom: -40px;
+    margin: 20px 0;
 }
 
-.button-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
+/* Generate Buttons */
 .generate-btn {
     font-size: 16px;
     cursor: pointer;
-    border: 2px solid #D4AF37; /* Updated to gold to match the button border */
-    background-color: #D2B48C; /* Updated to beige to match the button in the image */
-    color: #1C2526; /* Updated to dark color for contrast */
+    border: 2px solid #D4AF37;
+    background-color: #D2B48C;
+    color: #1C2526;
     border-radius: 8px;
     font-family: 'Courier New', monospace;
     font-weight: bold;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
+    padding: 8px 20px;
 }
 
 .generate-btn:hover {
-    background-color: #D4AF37; /* Updated to gold on hover */
-    color: #FFFFFF; /* Updated to white for contrast */
+    background-color: #D4AF37;
+    color: #FFFFFF;
     border: 2px solid #FFFFFF;
 }
 
 .generate-btn:active {
     background-color: #FFFFFF;
-    border: 2px solid #D4AF37; /* Updated to gold */
+    border: 2px solid #D4AF37;
     transform: scale(0.98);
 }
 
-.size-button-generate {
-    padding: 8px 48px;
+/* EDR-specific Button Styles */
+.crowdstrike-btn {
+    background-color: #FF2D55;
+    border-color: #FF5555;
 }
 
-.icon-generate {
-    width: 24px;
-    height: 24px;
+.crowdstrike-btn:hover {
+    background-color: #FF5555;
+    border-color: #FFFFFF;
 }
 
-.color-play {
-    filter: invert(35%) sepia(100%) saturate(1000%) hue-rotate(90deg);
+.microsoftxdr-btn {
+    background-color: #0078D4;
+    border-color: #00A1F1;
 }
 
-.icon-position-generate {
-    margin-top: 1px;
+.microsoftxdr-btn:hover {
+    background-color: #00A1F1;
+    border-color: #FFFFFF;
+}
+
+.sentinelone-btn {
+    background-color: #6F42C1;
+    border-color: #8A5AD5;
+}
+
+.sentinelone-btn:hover {
+    background-color: #8A5AD5;
+    border-color: #FFFFFF;
+}
+
+.defender-btn {
+    background-color: #00A4B4;
+    border-color: #00CED1;
+}
+
+.defender-btn:hover {
+    background-color: #00CED1;
+    border-color: #FFFFFF;
+}
+
+.random-btn {
+    background-color: #D2B48C;
+    border-color: #D4AF37;
+}
+
+.random-btn:hover {
+    background-color: #D4AF37;
+    border-color: #FFFFFF;
 }
 
 /* Terminal Overlay */
@@ -392,12 +421,12 @@ aside .logo {
 }
 
 .host {
-    color: #D4AF37; /* Updated to gold to match the theme */
+    color: #D4AF37;
     font-weight: bold;
 }
 
 .command-page {
-    color: #FFFFFF; /* Updated to white */
+    color: #FFFFFF;
     font-weight: bold;
 }
 
@@ -413,7 +442,7 @@ aside .logo {
 .styled-divider {
     width: 0%;
     height: 2px;
-    background: #D4AF37; /* Updated to gold to match the theme */
+    background: #D4AF37;
     margin: 30px auto;
     border-radius: 5px;
     animation: expand 1s ease-in-out forwards;
@@ -429,7 +458,7 @@ aside .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1C2526; /* Updated to match the header background */
+    background: #1C2526;
     padding: 20px;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
@@ -440,14 +469,14 @@ aside .logo {
 .footer-text {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #D4AF37; /* Updated to gold to match the theme */
-    text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37; /* Adjusted shadow to match gold tone */
+    color: #D4AF37;
+    text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37;
     animation: flicker 1.5s infinite alternate;
 }
 
 /* Syntax Highlighting */
 .comment { color: #569CD6; font-style: italic; }
-.command { color: #D4AF37; /* Updated to gold to match the theme */ font-weight: bold; }
+.command { color: #D4AF37; font-weight: bold; }
 .parameter { color: #888888; font-weight: bold; }
 .value { color: #FF5555; }
 .operator { color: #C586C0; }
@@ -474,7 +503,7 @@ aside .logo {
         margin-top: -8%;
     }
 
-    aside {
+    .aside {
         width: 200px;
         left: -200px;
     }
@@ -503,13 +532,9 @@ aside .logo {
         padding: 6px 12px;
     }
 
-    .icon-generate {
-        width: 20px;
-        height: 20px;
-    }
-
-    .size-button-generate {
-        padding: 6px 37px;
+    .edr-buttons-container {
+        flex-direction: column;
+        align-items: center;
     }
 
     .slider-container {
@@ -589,11 +614,6 @@ aside .logo {
     .generate-btn {
         font-size: 12px;
         padding: 5px 10px;
-    }
-
-    .icon-generate {
-        width: 18px;
-        height: 18px;
     }
 
     .slider-container {
