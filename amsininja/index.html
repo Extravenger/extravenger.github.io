@@ -1,4 +1,3 @@
-<!-- redo -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -61,19 +60,17 @@
                     <span>PowerShell</span>
                 </span>
                 <img src="img/copy.png" id="copyBtnTerminal" alt="Copy">
-                <span id="copiedText" style="visibility: hidden; opacity: 0; transition: opacity 0.5s;">Copied!</span>
+                <span id="copiedText">Copied!</span>
             </div>
-            <div class="terminal-container">
-                <div class="terminal-body">
-                    <textarea id="PowerShellOutRaw" style="display: none;"></textarea>
-                    <div id="PowerShellOut" class="output"></div>
-                    <div class="edr-buttons-container">
-                        <button class="generate-btn edr-btn crowdstrike-btn" onclick="GeneratePS('CrowdStrike')"><b>CrowdStrike</b></button>
-                        <button class="generate-btn edr-btn microsoftxdr-btn" onclick="GeneratePS('MicrosoftXDR')"><b>MicrosoftXDR</b></button>
-                        <button class="generate-btn edr-btn sentinelone-btn" onclick="GeneratePS('SentinelOne')"><b>SentinelOne</b></button>
-                        <button class="generate-btn edr-btn defender-btn" onclick="GeneratePS('Defender')"><b>Defender</b></button>
-                        <button class="generate-btn edr-btn random-btn" onclick="GeneratePS('Random')"><b>Random</b></button>
-                    </div>
+            <div class="terminal-body">
+                <textarea id="PowerShellOutRaw" style="display: none;"></textarea>
+                <div id="PowerShellOut" class="output"></div>
+                <div class="edr-buttons-container">
+                    <button class="generate-btn edr-btn crowdstrike-btn" onclick="GeneratePS('CrowdStrike')"><b>CrowdStrike</b></button>
+                    <button class="generate-btn edr-btn microsoftxdr-btn" onclick="GeneratePS('MicrosoftXDR')"><b>MicrosoftXDR</b></button>
+                    <button class="generate-btn edr-btn sentinelone-btn" onclick="GeneratePS('SentinelOne')"><b>SentinelOne</b></button>
+                    <button class="generate-btn edr-btn defender-btn" onclick="GeneratePS('Defender')"><b>Defender</b></button>
+                    <button class="generate-btn edr-btn random-btn" onclick="GeneratePS('Random')"><b>Random</b></button>
                 </div>
             </div>
         </div>
