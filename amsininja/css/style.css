@@ -1,4 +1,4 @@
-/* General Reset and Base Stylest */
+/* General Reset and Base Styles */
 body {
     background-color: #0a0f14;
     color: #FFFFFF;
@@ -55,7 +55,7 @@ body {
     height: 25px;
     cursor: pointer;
     padding: 5px;
-    border-radius:8px;
+    border-radius: 8px;
     transition: transform 0.3s ease-in-out;
     position: absolute;
     left: 10px;
@@ -194,12 +194,12 @@ aside .logo {
 
 .terminal-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     background-color: #0d1117;
     padding: 10px;
     border-radius: 8px 8px 0 0;
-    position: relative; /* Added to make terminal-header the positioning context */
+    position: relative;
 }
 
 .buttons span {
@@ -213,6 +213,13 @@ aside .logo {
 .red { background-color: #ff5f56; }
 .yellow { background-color: #ffbd2e; }
 .green { background-color: #27c93f; }
+
+.terminal-header .title {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 14px;
+    margin: 0 80px 0 60px; /* Prevents overlap with buttons and copy icon */
+}
 
 .terminal-body {
     padding: 15px;
@@ -236,23 +243,25 @@ aside .logo {
 /* Copy Button */
 #copyBtnTerminal {
     position: absolute;
-    top: 10px; /* Adjusted to align with header */
-    right: 10px; /* Position in top-right corner */
+    top: 10px;
+    right: 10px;
     cursor: pointer;
     width: 20px;
     height: 20px;
     filter: brightness(0) invert(1);
+    z-index: 10; /* Ensures button is above other elements */
 }
 
 #copiedText {
     position: absolute;
     top: 10px;
-    right: 40px; /* Adjusted to appear next to copy button */
+    right: 40px;
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.5s ease;
     font-size: 14px;
     color: #D4AF37;
+    z-index: 10; /* Ensures text is above other elements */
 }
 
 /* EDR Buttons Container */
@@ -505,7 +514,7 @@ aside .logo {
         margin-top: -8%;
     }
 
-    .aside {
+    aside {
         width: 200px;
         left: -200px;
     }
@@ -544,6 +553,10 @@ aside .logo {
         gap: 5px;
         margin-top: 20px;
         margin-bottom: -30px;
+    }
+
+    .terminal-header .title {
+        margin: 0 60px 0 40px; /* Adjusted for smaller screens */
     }
 
     #animation-toggle {
@@ -603,10 +616,22 @@ aside .logo {
         font-size: 11px;
     }
 
+    .terminal-header .title {
+        margin: 0 50px 0 30px; /* Adjusted for smaller screens */
+        font-size: 12px;
+    }
+
     #copyBtnTerminal {
         width: 15px;
         height: 15px;
         right: 5px;
+        top: 12px;
+    }
+
+    #copiedText {
+        right: 25px;
+        top: 12px;
+        font-size: 12px;
     }
 
     .margin-page-desc {
