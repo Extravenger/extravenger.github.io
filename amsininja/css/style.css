@@ -1,7 +1,7 @@
 /* General Reset and Base Styles */
 body {
     background-color: #0a0f14;
-    color: #c9d1d9;
+    color: #FFFFFF; /* Updated to white to match the text in the image */
     font-family: 'Courier New', Courier, monospace;
     margin: 0;
     padding: 0;
@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background: linear-gradient(90deg, #0a0f14, #1a1f29);
+    background: #1C2526; /* Updated to a dark gray-black to match the image */
     padding: 20px;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
@@ -24,8 +24,8 @@ body {
 .logo-container {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #FFD700;
-    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFFFFF;
+    color: #D4AF37; /* Updated to gold to match the logo in the image */
+    text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37; /* Adjusted shadow to match gold tone */
     animation: flicker 1.5s infinite alternate;
 }
 
@@ -41,9 +41,9 @@ body {
 }
 
 @keyframes flicker {
-    0% { opacity: 1; text-shadow: 0 0 10px #FFD700, 0 0 20px #FFFFFF; }
-    50% { opacity: 0.8; text-shadow: 0 0 5px #FFD700, 0 0 10px #FFFFFF; }
-    100% { opacity: 1; text-shadow: 0 0 15px #FFD700, 0 0 30px #FFFFFF; }
+    0% { opacity: 1; text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37; }
+    50% { opacity: 0.8; text-shadow: 0 0 5px #D4AF37, 0 0 10px #D4AF37; }
+    100% { opacity: 1; text-shadow: 0 0 15px #D4AF37, 0 0 30px #D4AF37; }
 }
 
 /* Hamburger Menu */
@@ -62,7 +62,7 @@ body {
 }
 
 .burger div {
-    background-color: #c9d1d9;
+    background-color: #FFFFFF; /* Updated to white to match the image */
     width: 100%;
     height: 4px;
     border-radius: 4px;
@@ -87,7 +87,7 @@ aside {
     flex-direction: column;
     align-items: center;
     width: 250px;
-    background-color: rgba(26, 31, 41, 0.95);
+    background-color: rgba(28, 37, 38, 0.95); /* Updated to match the dark background */
     height: 100vh;
     position: fixed;
     left: -250px;
@@ -163,21 +163,21 @@ aside .logo {
 
 .nav-links a {
     text-decoration: none;
-    color: #c9d1d9;
+    color: #FFFFFF; /* Updated to white to match the navigation links */
     font-size: 1.1em;
     padding: 12px 20px;
     border-radius: 6px;
-    background: linear-gradient(45deg, #FFFFFF, #FFD700);
-    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    background: transparent; /* Removed gradient to match the flat style */
+    box-shadow: none; /* Removed shadow to match the image */
     display: block;
     transition: all 0.3s ease-in-out;
 }
 
 .nav-links a:hover {
     background: transparent;
-    color: #FFFFFF;
-    border: 2px solid #FFD700;
-    box-shadow: 0 0 15px #FFD700, 0 0 30px #FFFFFF;
+    color: #D4AF37; /* Updated hover to gold to match the theme */
+    border: none; /* Removed border to match the image */
+    box-shadow: none; /* Removed shadow to match the image */
     transform: translateX(8px);
 }
 
@@ -223,8 +223,8 @@ aside .logo {
     width: 100%;
     height: 180px;
     background-color: #0d1117;
-    border: 1px solid #c9d1d9;
-    color: #c9d1d9;
+    border: 1px solid #FFFFFF; /* Updated to white to match the theme */
+    color: #FFFFFF; /* Updated to white */
     padding: 10px;
     border-radius: 4px;
     overflow-y: auto;
@@ -249,7 +249,7 @@ aside .logo {
     opacity: 0;
     transition: opacity 0.5s ease;
     font-size: 14px;
-    color: #FFD700;
+    color: #D4AF37; /* Updated to gold to match the theme */
     margin-left: 10px;
 }
 
@@ -272,9 +272,9 @@ aside .logo {
 .generate-btn {
     font-size: 16px;
     cursor: pointer;
-    border: 2px solid #FFD700;
-    background-color: transparent;
-    color: #FFD700;
+    border: 2px solid #D4AF37; /* Updated to gold to match the button border */
+    background-color: #D2B48C; /* Updated to beige to match the button in the image */
+    color: #1C2526; /* Updated to dark color for contrast */
     border-radius: 8px;
     font-family: 'Courier New', monospace;
     font-weight: bold;
@@ -283,14 +283,14 @@ aside .logo {
 }
 
 .generate-btn:hover {
-    background-color: #FFD700;
-    color: #FFFFFF;
+    background-color: #D4AF37; /* Updated to gold on hover */
+    color: #FFFFFF; /* Updated to white for contrast */
     border: 2px solid #FFFFFF;
 }
 
 .generate-btn:active {
     background-color: #FFFFFF;
-    border: 2px solid #FFD700;
+    border: 2px solid #D4AF37; /* Updated to gold */
     transform: scale(0.98);
 }
 
@@ -400,12 +400,12 @@ aside .logo {
 }
 
 .host {
-    color: #FFD700;
+    color: #D4AF37; /* Updated to gold to match the theme */
     font-weight: bold;
 }
 
 .command-page {
-    color: #FFFFFF;
+    color: #FFFFFF; /* Updated to white */
     font-weight: bold;
 }
 
@@ -421,7 +421,7 @@ aside .logo {
 .styled-divider {
     width: 0%;
     height: 2px;
-    background: #FFD700;
+    background: #D4AF37; /* Updated to gold to match the theme */
     margin: 30px auto;
     border-radius: 5px;
     animation: expand 1s ease-in-out forwards;
@@ -437,7 +437,7 @@ aside .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(90deg, #1a1f29, #0a0f14);
+    background: #1C2526; /* Updated to match the header background */
     padding: 20px;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
@@ -448,14 +448,14 @@ aside .logo {
 .footer-text {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #FFD700;
-    text-shadow: 0 0 10px #FFD700, 0 0 20px #FFFFFF;
+    color: #D4AF37; /* Updated to gold to match the theme */
+    text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37; /* Adjusted shadow to match gold tone */
     animation: flicker 1.5s infinite alternate;
 }
 
 /* Syntax Highlighting */
 .comment { color: #569CD6; font-style: italic; }
-.command { color: #FFD700; font-weight: bold; }
+.command { color: #D4AF37; /* Updated to gold to match the theme */ font-weight: bold; }
 .parameter { color: #888888; font-weight: bold; }
 .value { color: #FF5555; }
 .operator { color: #C586C0; }
