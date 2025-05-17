@@ -1,4 +1,4 @@
-/* General Reset and Base Stylest */
+/* General Reset and Base Styles */
 body {
     background-color: #0a0f14;
     color: #FFFFFF;
@@ -12,7 +12,7 @@ body {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background: #1C2526;
+    background: #D4AF37;
     padding: 20px;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
@@ -24,8 +24,8 @@ body {
 .logo-container {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #D4AF37;
-    text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37;
+    color: #000000;
+    text-shadow: 0 0 10px #000000, 0 0 20px #000000;
     animation: flicker 1.5s infinite alternate;
 }
 
@@ -41,9 +41,9 @@ body {
 }
 
 @keyframes flicker {
-    0% { opacity: 1; text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37; }
-    50% { opacity: 0.8; text-shadow: 0 0 5px #D4AF37, 0 0 10px #D4AF37; }
-    100% { opacity: 1; text-shadow: 0 0 15px #D4AF37, 0 0 30px #D4AF37; }
+    0% { opacity: 1; text-shadow: 0 0 10px #000000, 0 0 20px #000000; }
+    50% { opacity: 0.8; text-shadow: 0 0 5px #000000, 0 0 10px #000000; }
+    100% { opacity: 1; text-shadow: 0 0 15px #000000, 0 0 30px #000000; }
 }
 
 /* Hamburger Menu */
@@ -62,7 +62,7 @@ body {
 }
 
 .burger div {
-    background-color: #FFFFFF;
+    background-color: #000000;
     width: 100%;
     height: 4px;
     border-radius: 4px;
@@ -281,7 +281,7 @@ aside .logo {
     background-color: #D2B48C;
     color: #1C2526;
     border-radius: 8px;
-    font-family: 'Courier New', monospace;
+    font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
     text-transform: uppercase;
     transition: all 0.3s ease-in-out;
@@ -469,7 +469,7 @@ aside .logo {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #1C2526;
+    background: #D4AF37;
     padding: 20px;
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
     position: fixed;
@@ -480,8 +480,8 @@ aside .logo {
 .footer-text {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #D4AF37;
-    text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37;
+    color: #000000;
+    text-shadow: 0 0 10px #000000, 0 0 20px #000000;
     animation: flicker 1.5s infinite alternate;
 }
 
