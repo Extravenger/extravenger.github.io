@@ -4,55 +4,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMSI.bypass</title>
-    <link rel="icon" type="image/x-icon" href="img/icons/PS1.ico"> <!-- Icono de la pestaña -->
+    <title>AMSI.NINJA</title>
+    <link rel="icon" type="image/x-icon" href="img/icons/PS1.ico">
     <link rel="stylesheet" href="css/style.css">
-    <script defer src="js/script.js"></script> <!-- Cargar Script funcional de la pagina -->
-    <script src="js/codeScript.js"></script> <!-- Cargar script PowerShell Aleatorio MASI -->
+    <script defer src="js/script.js"></script>
+    <script src="js/codeScript.js"></script> 
 </head>
 
 <body>
-    <!-- Header de la pagina -->
     <header class="header">
-        <!-- Botón de hamburguesa -->
         <div class="burger" id="burger">
             <div></div>
             <div></div>
             <div></div>
         </div>
         
-        <!-- Imagen de la pagina -->
         <img src="img/logoAMSIBypass2-SinFondo.png" alt="Logo AMSI Bypass" class="logo-page">
 
         <div class="logo-container">
-            <span class="logo-text">AMSI.bypass</span>
+            <span class="logo-text">AMSI.NINJA</span>
         </div>
 
-        <!-- Overlay para cerrar aside al hacer clic fuera -->
+
         <div class="overlay" id="overlay"></div>
 
-        <!-- Aside para la navegación -->
         <aside id="sidebar">
-            <button id="closeBtn">×</button> <!-- Botón de cierre (X) -->
+            <button id="closeBtn">×</button> 
             <br><br><br><br><br>
-            <div class="logo"><p class="logo-text-burguer">AMSI.bypass</p></div>
+            <div class="logo"><p class="logo-text-burguer">AMSI.NINJA</p></div>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="amsiinfomodule.html">Info AMSI Module</a></li>
-                <li><a href="#">GitBook</a></li> <!-- Mi GitBook donde explico este modulo y como explotarlo -->
-                <!--<li><a href="https://github.com/Flangvik/AMSI.fail">GitHub</a></li>-->
+                <li><a href="#">GitBook</a></li>
+
             </ul>
         </aside>
     </header>   
-    <!-- br's para separar la terminal con el header --> 
+
     <br><br><br><br><br>
 
     <main>
         <br>
-        <!-- Diseño de prompt kali terminal titulo -->
+
         <div class="terminal-container-page">
             <div class="terminal-page-title">
-                <span class="line1"><span class="user">extravenger</span>💀<span class="host">amsi.ninja</span>)</span>
+                <span class="line1"><span class="user">extravenger</span>💀<span class="host">amsi.ninja</span></span>
             </div>
         </div> 
         <hr class="styled-divider">
@@ -72,9 +68,7 @@
             </div>
             <div class="terminal-container">
                 <div class="terminal-body">
-                    <!-- Textarea for raw output (hidden) -->
                     <textarea id="PowerShellOutRaw" style="display: none;"></textarea>
-                    <!-- Salida formateada con colores -->
                     <div id="PowerShellOut" class="output"></div>
                     <div class="copy-container">
                         <div class="button-container">
@@ -92,7 +86,6 @@
         <br>
     </main>
 
-    <!-- Footer de la pagina -->
     <br><br><br><br>
     <footer class="footer">
         <div class="footer-content">
