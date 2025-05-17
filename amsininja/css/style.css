@@ -199,6 +199,7 @@ aside .logo {
     background-color: #0d1117;
     padding: 10px;
     border-radius: 8px 8px 0 0;
+    position: relative; /* Added to make terminal-header the positioning context */
 }
 
 .buttons span {
@@ -235,9 +236,8 @@ aside .logo {
 /* Copy Button */
 #copyBtnTerminal {
     position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
+    top: 10px; /* Adjusted to align with header */
+    right: 10px; /* Position in top-right corner */
     cursor: pointer;
     width: 20px;
     height: 20px;
@@ -245,12 +245,14 @@ aside .logo {
 }
 
 #copiedText {
+    position: absolute;
+    top: 10px;
+    right: 40px; /* Adjusted to appear next to copy button */
     visibility: hidden;
     opacity: 0;
     transition: opacity 0.5s ease;
     font-size: 14px;
     color: #D4AF37;
-    margin-left: 10px;
 }
 
 /* EDR Buttons Container */
