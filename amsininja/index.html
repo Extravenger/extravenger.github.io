@@ -34,7 +34,7 @@
 
         <!-- Aside para la navegación -->
         <aside id="sidebar">
-            <button id="closeBtn">&times;</button> <!-- Botón de cierre (X) -->
+            <button id="closeBtn">×</button> <!-- Botón de cierre (X) -->
             <br><br><br><br><br>
             <div class="logo"><p class="logo-text-burguer">AMSI.bypass<p></div>
             <ul class="nav-links">
@@ -74,9 +74,6 @@
             </div>
             <div class="terminal-container">
                 <div class="terminal-body">
-                    <!-- Textarea oculto para copiar el payload sin formato -->
-                    <!--<textarea id="PowerShellOutRaw" cols="50" rows="10" style="display:none;"></textarea>-->
-                    <!--<textarea id="PowerShellOutRaw" cols="50" rows="10"></textarea>-->
                     <!-- Salida formateada con colores -->
                     <div id="PowerShellOut" class="output"></div>
                     <div class="copy-container">
@@ -92,36 +89,13 @@
                         </div>
                     </div>
                     <div class="slider-container">
-                        <!--<label for="animation-toggle">Animación:</label>-->
                         <input type="checkbox" id="animation-toggle" checked> <!-- Agregar checked aquí -->
                         <span id="animation-status">Animación Activada</span>
                     </div>                                                                                                                                   
-                    <!--<button onclick="GeneratePS()">Generate</button>-->
-                    <!--<button onclick="GenerateEncPS()">Generate Encoded</button>-->
                 </div>
             </div>
         </div>
         <br>
-        <!-- Diseño de prompt kali terminal titulo -->
-        <div class="terminal-container-page">
-            <div class="terminal-page-title">
-                <span class="line1">┌──(<span class="user">root</span>💀<span class="host">amsi.bypass</span>)-[~]</span>
-                <span class="line2">└─# <span class="command-page">CODIGO SIN FORMATO</span></span>
-            </div>
-        </div> 
-        <!--      
-        <div class="terminal-container-page">
-            <div class="terminal-page-title">
-                <span class="prompt-page">$</span> CODIGO SIN FORMATO
-            </div>
-        </div>-->
-        <hr class="styled-divider">
-        <div class="terminal-container">
-            <p class="des-nullformat">Este codigo de aquí esta sin formato de color, por si el anterior codigo diera algun error de formato en el PowerShell</p>
-            <div class="terminal-body">
-                <textarea id="PowerShellOutRaw" cols="50" rows="10"></textarea> <!-- Area donde esta el codigo sin formato de color por si el otro da error -->
-            </div>
-        </div>
     </main>
 
     <!-- Footer de la pagina -->
