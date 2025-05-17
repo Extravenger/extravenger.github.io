@@ -48,7 +48,7 @@
             </div>
         </div> 
         <hr class="styled-divider">
-        <p class="description-page margin-page-desc">Generates obfuscated PowerShell snippets that interrupt or disable AMSI for the current process. The snippets are randomly selected from a small set of techniques/variations. Each snippet is obfuscated at runtime/on request so that no generated result shares the same signatures.</p>
+        <p class="description-page margin-page-desc">Generates obfuscated PowerShell snippets that interrupt or disable AMSI for the current process. Select an EDR to generate a specific bypass snippet or use the Random button for a general approach.</p>
         <div class="terminal-container">
             <div class="terminal-header">
                 <div class="buttons">
@@ -57,7 +57,7 @@
                     <span class="green"></span>
                 </div>
                 <span class="title">
-                    <span> naukri resume makerPowerShell</span>
+                    <span>PowerShell</span>
                 </span>
                 <img src="img/copy.png" id="copyBtnTerminal" alt="Copy">
                 <span id="copiedText" style="visibility: hidden; opacity: 0; transition: opacity 0.5s;">Copied!</span>
@@ -66,11 +66,12 @@
                 <div class="terminal-body">
                     <textarea id="PowerShellOutRaw" style="display: none;"></textarea>
                     <div id="PowerShellOut" class="output"></div>
-                    <div class="copy-container">
-                        <div class="button-container">
-                            <img src="img/generatePlay.png" class="icon-generate color-play icon-position-generate">
-                            <button class="generate-btn size-button-generate" onclick="GeneratePS()"><b>Generate</b></button>
-                        </div>
+                    <div class="edr-buttons-container">
+                        <button class="generate-btn edr-btn crowdstrike-btn" onclick="GeneratePS('CrowdStrike')"><b>CrowdStrike</b></button>
+                        <button class="generate-btn edr-btn microsoftxdr-btn" onclick="GeneratePS('MicrosoftXDR')"><b>MicrosoftXDR</b></button>
+                        <button class="generate-btn edr-btn sentinelone-btn" onclick="GeneratePS('SentinelOne')"><b>SentinelOne</b></button>
+                        <button class="generate-btn edr-btn defender-btn" onclick="GeneratePS('Defender')"><b>Defender</b></button>
+                        <button class="generate-btn edr-btn random-btn" onclick="GeneratePS('Random')"><b>Random</b></button>
                     </div>
                 </div>
             </div>
