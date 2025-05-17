@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 /** PowerShell command generation */
 function GeneratePS() {
-    const command = getPayload();
+    const command = getPayload(); // Calls getPayload from codeScript.js
     document.getElementById("PowerShellOutRaw").value = command;
     document.getElementById("PowerShellOut").innerHTML = formatPowerShell(command);
 }
@@ -117,11 +117,4 @@ function showTerminalEffect(button) {
     }
 
     typeWriter();
-}
-
-/** Generate payload for PowerShell command */
-function getPayload() {
-    // Placeholder: Return a sample PowerShell command
-    // Replace this with your actual AMSI bypass logic
-    return '$var = "Hello"; Write-Output $var # Sample command';
 }
