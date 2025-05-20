@@ -55,19 +55,15 @@ function GeneratePS(edr) {
 
 /** PowerShell command formatting */
 function formatPowerShell(command) {
-    const escapeHTML = str => str.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
-
-    let formatted = escapeHTML(command);
-
-    return formatted
+    return command
         .replace(/#(.*)$/gm, '<span class="comment">#$1</span>')
-        .replace(/(['"])(.*?)(?<!\\)\1/g, '<span class="string">$1$2$1</span>')
-        .replace(/\b(Get|Set|Remove|Start|Stop|Restart|Enable|Disable|New|Out|Write|ForEach|Where|Select|Invoke|Measure|Format|Import|Export|Convert|Test|iex)-[A-Za-z][A-Za-z0-9]*(?![A-Za-z0-9_-])/gi, '<span class="command"><b>$&</b></span>')
-        .replace(/(-[A-Za-z0-9_]+)/g, '<span class="parameter"><b>$1</b></span>')
+        .replace(/\b(Get|Set|Remove|Start|Stop|Restart|Enable|Disable|New|Out|Write|ForEach|Where|Select|Invoke|Measure|Format|Import|Export|Convert|Test|iex)-[A-Za-z0-9]+\b/g, '<span class="command"><b>$&</b></span>')
+        .replace(/(-[A-Za-z0-9]+)/g, '<span class="parameter"><b>$1</b></span>')
         .replace(/\[\s*([A-Za-z0-9_\.]+)\s*\]/g, '<span class="datatype">[$1]</span>')
-        .replace(/\b(\$true|\$false|\$null|True|False|\d+)\b/gi, '<span class="value">$1</span>')
-        .replace(/\b(-eq|-ne|-gt|-lt|-ge|-le|-like|-match|-notmatch|-contains|-notcontains|-in|-notin|using)\b/gi, '<span class="operator">$1</span>')
-        .replace(/\$([A-Za-z0-9_]+)/g, '<span class="variable">$$$1</span>');
+        .replace(/\b(True|False|\d+)\b/g, '<span class="value">$1</span>')
+        .replace(/\b(-eq|-ne|-gt|-lt|-ge|-le|-like|-match|-notmatch|-contains|-notcontains|-in|-notin|using)\b/g, '<span class="operator">$1</span>')
+        .replace(/\$(\w+)/g, '<span class="variable">$$$1</span>')
+        .replace(/'([^']+)'/g, '<span class="string">\'$1\'</span>');
 }
 
 /** Terminal animation effect */
