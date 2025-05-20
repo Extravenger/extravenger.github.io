@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Initialize vote counts
+    // Initialize vote counts and vote states
     initializeVoteCounts();
     
     // Add event listeners for like buttons
@@ -55,14 +55,23 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-/** Initialize vote counts from localStorage */
+/** Initialize vote counts and vote states from localStorage */
 function initializeVoteCounts() {
     const edrList = ['CrowdStrike', 'Microsoft-XDR', 'SentinelOne', 'CarbonBlack', 'Cortex'];
     edrList.forEach(edr => {
+        // Initialize vote count
         const voteCount = localStorage.getItem(`vote-${edr}`) || '0';
         const voteDisplay = document.getElementById(`voteCount-${edr}`);
         if (voteDisplay) {
             voteDisplay.textContent = voteCount;
+        }
+
+        // Check if user has already voted and disable button if true
+        const hasVoted = localStorage.getItem(`hasVoted-${edr}`);
+        const likeButton = document.getElementById(`likeBtn-${edr}`);
+        if (hasVoted === 'true' && likeButton) {
+            likeButton.disabled = true;
+            likeButton.classList.add('disabled');
         }
     });
 }
@@ -70,12 +79,23 @@ function initializeVoteCounts() {
 /** Handle like button clicks */
 function handleLikeClick(event) {
     const edr = event.currentTarget.getAttribute('data-edr');
+    const hasVoted = localStorage.getItem(`hasVoted-${edr}`);
+
+    // Prevent voting if user has already voted
+    if (hasVoted === 'true') {
+        return;
+    }
+
     const voteCountElement = document.getElementById(`voteCount-${edr}`);
-    if (voteCountElement) {
+    const likeButton = document.getElementById(`likeBtn-${edr}`);
+    if (voteCountElement && likeButton) {
         let currentCount = parseInt(localStorage.getItem(`vote-${edr}`) || '0');
         currentCount += 1;
         localStorage.setItem(`vote-${edr}`, currentCount);
+        localStorage.setItem(`hasVoted-${edr}`, 'true');
         voteCountElement.textContent = currentCount;
+        likeButton.disabled = true;
+        likeButton.classList.add('disabled');
     }
 }
 
