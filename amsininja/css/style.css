@@ -273,6 +273,13 @@ aside .logo {
     margin: 20px 0;
 }
 
+/* EDR Button Group */
+.edr-button-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 /* Generate Buttons */
 .generate-btn {
     font-size: 16px;
@@ -349,6 +356,39 @@ aside .logo {
 .random-btn:hover {
     background-color: #D4AF37;
     border-color: #FFFFFF;
+}
+
+/* Like Button */
+.like-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.like-btn img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.like-btn:hover img {
+    filter: brightness(1) invert(0.7);
+}
+
+.like-btn:active {
+    transform: scale(0.95);
+}
+
+/* Vote Count */
+.vote-count {
+    font-size: 14px;
+    color: #D4AF37;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
 }
 
 /* Terminal Overlay */
@@ -559,6 +599,15 @@ aside .logo {
         margin: 0 60px 0 40px; /* Adjusted for smaller screens */
     }
 
+    .like-btn img {
+        width: 18px;
+        height: 18px;
+    }
+
+    .vote-count {
+        font-size: 12px;
+    }
+
     #animation-toggle {
         width: 40px;
         height: 20px;
@@ -641,6 +690,15 @@ aside .logo {
     .generate-btn {
         font-size: 12px;
         padding: 5px 10px;
+    }
+
+    .like-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .vote-count {
+        font-size: 11px;
     }
 
     .slider-container {
