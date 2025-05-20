@@ -44,7 +44,40 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("El div con id 'PowerShellOut' no existe.");
         }
     });
+
+    // Initialize vote counts
+    initializeVoteCounts();
+    
+    // Add event listeners for like buttons
+    const likeButtons = document.querySelectorAll('.like-btn');
+    likeButtons.forEach(button => {
+        button.addEventListener('click', handleLikeClick);
+    });
 });
+
+/** Initialize vote counts from localStorage */
+function initializeVoteCounts() {
+    const edrList = ['CrowdStrike', 'Microsoft-XDR', 'SentinelOne', 'CarbonBlack', 'Cortex'];
+    edrList.forEach(edr => {
+        const voteCount = localStorage.getItem(`vote-${edr}`) || '0';
+        const voteDisplay = document.getElementById(`voteCount-${edr}`);
+        if (voteDisplay) {
+            voteDisplay.textContent = voteCount;
+        }
+    });
+}
+
+/** Handle like button clicks */
+function handleLikeClick(event) {
+    const edr = event.currentTarget.getAttribute('data-edr');
+    const voteCountElement = document.getElementById(`voteCount-${edr}`);
+    if (voteCountElement) {
+        let currentCount = parseInt(localStorage.getItem(`vote-${edr}`) || '0');
+        currentCount += 1;
+        localStorage.setItem(`vote-${edr}`, currentCount);
+        voteCountElement.textContent = currentCount;
+    }
+}
 
 /** PowerShell command generation */
 function GeneratePS(edr) {
