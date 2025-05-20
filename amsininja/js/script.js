@@ -55,29 +55,18 @@ function GeneratePS(edr) {
 
 /** PowerShell command formatting */
 function formatPowerShell(command) {
-    // Escape HTML characters to prevent XSS
-    const escapeHTML = str => str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    const escapeHTML = str => str.replace(/&/g, '&').replace(/</g, '<').replace(/>/g, '>');
 
-    // Apply HTML escaping first
     let formatted = escapeHTML(command);
 
-    // Apply syntax highlighting in order of specificity to avoid conflicts
     return formatted
-        // Comments (match # followed by anything until end of line)
         .replace(/#(.*)$/gm, '<span class="comment">#$1</span>')
-        // Single- and double-quoted strings (including empty and escaped quotes)
         .replace(/(['"])(.*?)(?<!\\)\1/g, '<span class="string">$1$2$1</span>')
-        // PowerShell cmdlets (case-insensitive, allow underscores)
-        .replace(/\b(Get|Set|Remove|Start|Stop|Restart|Enable|Disable|New|Out|Write|ForEach|Where|Select|Invoke|Measure|Format|Import|Export|Convert|Test|iex)-[A-Za-z0-9_]+\b/gi, '<span class="command"><b>$&</b></span>')
-        // Parameters (e.g., -Verbose)
+        .replace(/\b(Get|Set|Remove|Start|Stop|Restart|Enable|Disable|New|Out|Write|ForEach|Where|Select|Invoke|Measure|Format|Import|Export|Convert|Test|iex)-[A-Za-z][A-Za-z0-9]*(?![A-Za-z0-9_-])/gi, '<span class="command"><b>$&</b></span>')
         .replace(/(-[A-Za-z0-9_]+)/g, '<span class="parameter"><b>$1</b></span>')
-        // Data types (e.g., [String])
         .replace(/\[\s*([A-Za-z0-9_\.]+)\s*\]/g, '<span class="datatype">[$1]</span>')
-        // Values (e.g., $true, $false, $null, numbers)
         .replace(/\b(\$true|\$false|\$null|True|False|\d+)\b/gi, '<span class="value">$1</span>')
-        // Operators
         .replace(/\b(-eq|-ne|-gt|-lt|-ge|-le|-like|-match|-notmatch|-contains|-notcontains|-in|-notin|using)\b/gi, '<span class="operator">$1</span>')
-        // Variables (e.g., $variable, $my_variable)
         .replace(/\$([A-Za-z0-9_]+)/g, '<span class="variable">$$$1</span>');
 }
 
