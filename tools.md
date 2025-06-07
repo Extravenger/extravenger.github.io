@@ -1,12 +1,12 @@
 ---
 layout: page
-title: Public Tools
-permalink: /tools/
+title: Github Repositories
+permalink: /github-repositories/
 ---
 
 <div style="text-align: center;">
-  <h2 class="certs-title">Open-Source Tools</h2>
-  <p class="tools-note">Here are some tools I have developed and make them public as part of the courses i've taken.</p>
+  <h2 class="certs-title">Github Repositories</h2>
+  <p class="tools-note">These repositories were developed as part of my hands-on learning during various courses.</p>
 </div>
 <br>
 
