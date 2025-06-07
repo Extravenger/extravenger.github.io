@@ -2,8 +2,8 @@
   url: /
   external: false
 
-- title: Public Tools
-  url: /tools/
+- title: Github Repositories
+  url: /github-repositories/
   external: false
 
 - title: Certifications
