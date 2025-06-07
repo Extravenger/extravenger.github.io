@@ -12,6 +12,17 @@ permalink: /tools/
 
 <div class="tools-cards-container">
 
+  <a class="tool-card-link" href="https://github.com/Extravenger/OSEPlayground" target="_blank">
+    <div class="tool-card">
+      <div class="tool-card-inner">
+        <div class="tool-card-content">
+          <h1>OSEPlayground</h1>
+          <p>A collection of useful tools and scripts were developed and gathered throughout the Offensive Security's PEN-300 (OSEP) course.</p>
+        </div>
+      </div>
+    </div>
+  </a>
+
   <a class="tool-card-link" href="https://github.com/Extravenger/mssqlVenger" target="_blank">
     <div class="tool-card">
       <div class="tool-card-inner">
