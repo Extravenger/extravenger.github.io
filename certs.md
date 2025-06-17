@@ -10,10 +10,10 @@ permalink: /certs/
   Note: The images are arranged in chronological order. Hover over the images to see details of <span style="color: lightcoral;">Skills & Knowledge</span> achieved per certification.
 </p>
 
-<div class="cert-cards-container">
+<div class="cert-cards-wrapper">
 
   <a class="cert-card-link">
-    <div class="cert-card">
+    <div class="cert-card" style="--card-index: 0;">
       <div class="cert-card-inner">
         <div class="cert-card-image">
           <img src="/assets/img/certs/ITSAFE.png" alt="Cert 1">
@@ -33,7 +33,7 @@ permalink: /certs/
   </a>
 
   <a class="cert-card-link">
-    <div class="cert-card">
+    <div class="cert-card" style="--card-index: 1;">
       <div class="cert-card-inner">
         <div class="cert-card-image">
           <img src="/assets/img/certs/THM.png" alt="Cert 2">
@@ -53,7 +53,7 @@ permalink: /certs/
   </a>
 
   <a class="cert-card-link">
-    <div class="cert-card">
+    <div class="cert-card" style="--card-index: 2;">
       <div class="cert-card-inner">
         <div class="cert-card-image">
           <img src="/assets/img/certs/EJPT.png" alt="Cert 3">
@@ -72,12 +72,11 @@ permalink: /certs/
     </div>
   </a>
 
-  <!-- Repeat for other certifications -->
   <a class="cert-card-link">
-    <div class="cert-card">
+    <div class="cert-card" style="--card-index: 3;">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/OSCP.png" alt="Cert 2">
+          <img src="/assets/img/certs/OSCP.png" alt="Cert 4">
         </div>
         <div class="cert-card-back">
           <div class="content">
@@ -96,10 +95,10 @@ permalink: /certs/
   </a>
 
   <a class="cert-card-link">
-    <div class="cert-card">
+    <div class="cert-card" style="--card-index: 4;">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/CRTP.png" alt="Cert 4">
+          <img src="/assets/img/certs/CRTP.png" alt="Cert 5">
         </div>
         <div class="cert-card-back">
           <div class="content">
@@ -119,10 +118,10 @@ permalink: /certs/
   </a>
 
   <a class="cert-card-link">
-    <div class="cert-card">
+    <div class="cert-card" style="--card-index: 5;">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/HTB-Offshore.png" alt="Cert 5">
+          <img src="/assets/img/certs/HTB-Offshore.png" alt="Cert 6">
         </div>
         <div class="cert-card-back">
           <div class="content">
@@ -143,10 +142,10 @@ permalink: /certs/
   </a>
 
   <a class="cert-card-link">
-    <div class="cert-card">
+    <div class="cert-card" style="--card-index: 6;">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/OSEP.png" alt="Cert 6">
+          <img src="/assets/img/certs/OSEP.png" alt="Cert 7">
         </div>
         <div class="cert-card-back">
           <div class="content">
