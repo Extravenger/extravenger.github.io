@@ -68,8 +68,8 @@ permalink: /github-repositories/
   padding: 15px;
   text-align: center;
   position: relative;
-  animation: moveAndFragment 6s infinite linear;
-  will-change: transform, opacity, clip-path;
+  animation: moveAndFragment 10s infinite linear;
+  will-change: transform, opacity;
   flex-shrink: 0;
 }
 
@@ -77,16 +77,14 @@ permalink: /github-repositories/
   0% {
     transform: translateX(-100%);
     opacity: 1;
-    clip-path: inset(0 0 0 0);
   }
   50% {
     transform: translateX(calc(50vw + 50%));
     opacity: 1;
-    clip-path: inset(0 0 0 0);
   }
   55% {
     opacity: 0;
-    clip-path: inset(0 50% 0 50%);
+    transform: translateX(calc(50vw + 50%));
   }
   60% {
     transform: translateX(80vw);
@@ -95,24 +93,22 @@ permalink: /github-repositories/
   61% {
     transform: translateX(-100%);
     opacity: 0;
-    clip-path: polygon(0 0, 50% 20%, 30% 80%, 0 100%);
   }
   70% {
+    transform: translateX(-80%);
     opacity: 0.3;
-    clip-path: polygon(0 0, 50% 20%, 30% 80%, 0 100%);
   }
   80% {
+    transform: translateX(-60%);
     opacity: 0.7;
-    clip-path: polygon(0 0, 70% 30%, 50% 70%, 0 100%);
   }
   90% {
+    transform: translateX(-40%);
     opacity: 1;
-    clip-path: inset(0 0 0 0);
   }
   100% {
     transform: translateX(-100%);
     opacity: 1;
-    clip-path: inset(0 0 0 0);
   }
 }
 
