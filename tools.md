@@ -60,7 +60,7 @@ permalink: /github-repositories/
 .tool-card {
   width: 300px;
   background: var(--card-background);
-  border: 2px solid #666;
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 15px;
   text-align: center;
