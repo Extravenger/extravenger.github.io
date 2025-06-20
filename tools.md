@@ -51,13 +51,10 @@ permalink: /github-repositories/
 
 <style>
 .tools-cards-container {
-  display: flex;
-  flex-wrap: nowrap;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  justify-content: flex-start;
-  position: relative;
-  overflow: hidden;
-  width: 100%;
+  justify-items: center;
 }
 
 .tool-card {
@@ -67,53 +64,10 @@ permalink: /github-repositories/
   border-radius: 20px;
   padding: 15px;
   text-align: center;
-  position: relative;
-  animation: moveAndFragment 10s infinite linear;
-  will-change: transform, opacity;
-  flex-shrink: 0;
-}
-
-@keyframes moveAndFragment {
-  0% {
-    transform: translateX(-100%);
-    opacity: 1;
-  }
-  50% {
-    transform: translateX(calc(50vw + 50%));
-    opacity: 1;
-  }
-  55% {
-    opacity: 0;
-    transform: translateX(calc(50vw + 50%));
-  }
-  60% {
-    transform: translateX(80vw);
-    opacity: 0;
-  }
-  61% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  70% {
-    transform: translateX(-80%);
-    opacity: 0.3;
-  }
-  80% {
-    transform: translateX(-60%);
-    opacity: 0.7;
-  }
-  90% {
-    transform: translateX(-40%);
-    opacity: 1;
-  }
-  100% {
-    transform: translateX(-100%);
-    opacity: 1;
-  }
+  transition: transform 0.2s ease-in-out;
 }
 
 .tool-card:hover {
-  animation-play-state: paused;
   transform: scale(1.05);
 }
 
