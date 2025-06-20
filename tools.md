@@ -52,11 +52,12 @@ permalink: /github-repositories/
 <style>
 .tools-cards-container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 20px;
-  justify-content: center;
+  justify-content: flex-start;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .tool-card {
@@ -67,20 +68,9 @@ permalink: /github-repositories/
   padding: 15px;
   text-align: center;
   position: relative;
-  animation: moveAndFragment 8s infinite linear;
+  animation: moveAndFragment 6s infinite linear;
   will-change: transform, opacity, clip-path;
-}
-
-.tool-card:nth-child(1) {
-  animation-delay: 0s;
-}
-
-.tool-card:nth-child(2) {
-  animation-delay: 2s;
-}
-
-.tool-card:nth-child(3) {
-  animation-delay: 4s;
+  flex-shrink: 0;
 }
 
 @keyframes moveAndFragment {
@@ -89,33 +79,33 @@ permalink: /github-repositories/
     opacity: 1;
     clip-path: inset(0 0 0 0);
   }
-  25% {
-    transform: translateX(50vw);
+  50% {
+    transform: translateX(calc(50vw + 50%));
     opacity: 1;
     clip-path: inset(0 0 0 0);
   }
-  30% {
+  55% {
     opacity: 0;
     clip-path: inset(0 50% 0 50%);
   }
-  35% {
+  60% {
     transform: translateX(80vw);
     opacity: 0;
   }
-  36% {
+  61% {
     transform: translateX(-100%);
     opacity: 0;
     clip-path: polygon(0 0, 50% 20%, 30% 80%, 0 100%);
   }
-  40% {
+  70% {
     opacity: 0.3;
     clip-path: polygon(0 0, 50% 20%, 30% 80%, 0 100%);
   }
-  50% {
+  80% {
     opacity: 0.7;
     clip-path: polygon(0 0, 70% 30%, 50% 70%, 0 100%);
   }
-  60% {
+  90% {
     opacity: 1;
     clip-path: inset(0 0 0 0);
   }
