@@ -51,28 +51,53 @@ permalink: /github-repositories/
 
 <style>
 .tools-cards-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: center;
   gap: 20px;
-  justify-items: center;
+  flex-wrap: wrap;
 }
 
 .tool-card {
   width: 300px;
+  height: 200px; /* Fixed height for uniformity */
   background: var(--card-background);
   border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
   padding: 15px;
   text-align: center;
   transition: transform 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tool-card:hover {
   transform: scale(1.05);
 }
 
+.tool-card-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
 .tool-card-content {
   color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.tool-card-content h1 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.tool-card-content p {
+  font-size: 0.9em;
+  margin: 0;
 }
 
 .tool-card-link {
