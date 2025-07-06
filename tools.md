@@ -10,6 +10,17 @@ permalink: /github-repositories/
 </div>
 <br>
 
+  <a class="tool-card-link" href="https://github.com/Extravenger/RollerRoaster" target="_blank">
+    <div class="tool-card">
+      <div class="tool-card-inner">
+        <div class="tool-card-content">
+          <h1>RollerRoaster</h1>
+          <p>RollerRoaster is a tool designed for performing enumeration and exploitation of Kerberoasting attack in Active Directory environments.</p>
+        </div>
+      </div>
+    </div>
+  </a>
+
 <div class="tools-cards-container">
 
   <a class="tool-card-link" href="https://github.com/Extravenger/OSEPlayground" target="_blank">
@@ -33,18 +44,7 @@ permalink: /github-repositories/
       </div>
     </div>
   </a>
-
-  <a class="tool-card-link" href="https://github.com/Extravenger/scanVenger" target="_blank">
-    <div class="tool-card">
-      <div class="tool-card-inner">
-        <div class="tool-card-content">
-          <h1>scanVenger</h1>
-          <p>A Windows-based tool for discovering live hosts and scanning open ports within a network, primarily built as part of the OSEP course.</p>
-        </div>
-      </div>
-    </div>
-  </a>
-
+  
   <!-- Add more tools as needed -->
 
 </div>
