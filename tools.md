@@ -6,22 +6,22 @@ permalink: /github-repositories/
 
 <div style="text-align: center;">
   <h2 class="certs-title">Github Repositories</h2>
-  <p class="tools-note">These repositories were developed as part of my hands-on learning during various courses.</p>
+  <p class="tools-note">These repositories were gathered and developed as part of my hands-on learning during various courses.</p>
 </div>
 <br>
 
+<div class="tools-cards-container">
+
   <a class="tool-card-link" href="https://github.com/Extravenger/RollerRoaster" target="_blank">
-    <div class="tool-card">
-      <div class="tool-card-inner">
-        <div class="tool-card-content">
-          <h1>RollerRoaster</h1>
-          <p>RollerRoaster is a tool designed for performing enumeration and exploitation of Kerberoasting attack in Active Directory environments.</p>
-        </div>
+  <div class="tool-card">
+    <div class="tool-card-inner">
+      <div class="tool-card-content">
+        <h1>RollerRoaster</h1>
+        <p>RollerRoaster is a tool designed for performing enumeration and exploitation of Kerberoasting attack in Active Directory environments.</p>
       </div>
     </div>
+  </div>
   </a>
-
-<div class="tools-cards-container">
 
   <a class="tool-card-link" href="https://github.com/Extravenger/OSEPlayground" target="_blank">
     <div class="tool-card">
