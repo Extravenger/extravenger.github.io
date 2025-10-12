@@ -18,7 +18,7 @@ permalink: /python-code-snippets/
     --bg: #0a0a0a;
     --panel: #151515;
     --muted: #a1a1a1;
-    --text: #d4d4d4;
+    --text: #ffc0cb;
     --accent: #c71585;
     --accent-2: #ffffff;
     --code-bg: #050505;
@@ -95,6 +95,9 @@ permalink: /python-code-snippets/
     border: 1px solid var(--border);
     box-shadow: inset 0 -10px 50px rgba(0,0,0,0.6);
     font-size: 0.95rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
   }
   /* Make code fonts a little larger for readability */
   pre code { font-family: "Fira Code", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, monospace; }
