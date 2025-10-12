@@ -18,6 +18,10 @@
   url: /contact/
   external: false
 
+- title: Python Code Snippets
+  url: /python-code-snippets/
+  external: false
+
 # Example:
 # - title: github
 #   url: https://github.com/piharpi/jekyll-klise
