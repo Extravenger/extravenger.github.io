@@ -19,7 +19,7 @@ permalink: /python-code-snippets/
     --panel: #151515;
     --muted: #a1a1a1;
     --text: #d4d4d4;
-    --accent: #fb923c;
+    --accent: #c71585;
     --accent-2: #ffffff;
     --code-bg: #050505;
     --border: rgba(255,255,255,0.2);
@@ -73,6 +73,8 @@ permalink: /python-code-snippets/
   p, li, pre, code { color: var(--text); }
   code.inline { background: rgba(255,255,255,0.03); padding: 2px 6px; border-radius: 4px; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; font-size: .95em; }
   ul { margin-left: 1.1rem; }
+  ul > li { list-style-type: none; }
+  ul > li::before { content: ""; }
 
   /* Panels */
   .panel {
@@ -536,7 +538,7 @@ listen_for_cookies()</code></pre>
         <h3 id="Methods-and-Classes">Methods and Classes</h3>
         <div class="panel">
           <ul>
-            <li><code>ObjectInputStream.readObject()</code> - Primary method for deserializing objects in Java.</li>
+            <li><code>ObjectInputStream.readObject()</code> Primary method for deserializing objects in Java.</li>
             <li><code>ObjectInputStream.readUnshared()</code></li>
             <li><code>ObjectInputStream.readResolve()</code></li>
             <li><code>ObjectInputStream.defaultReadObject()</code></li>
