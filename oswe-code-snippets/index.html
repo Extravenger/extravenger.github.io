@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Extravenger's OSWE Cheatsheet</title>
+    <title>OSWE Cheatsheet</title>
     <!-- Highlight.js for syntax highlighting -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
@@ -1396,41 +1396,50 @@ get_epoch_from_server()
 
         <h4 id="methods-and-classes">Methods and Classes</h4>
         <div class="code-container">
-            <pre><code class="language-java">ObjectInputStream.readObject() - The primary method for deserializing objects in Java. It reads an object from an ObjectInputStream and reconstructs it.</code></pre>
+            <pre><code class="language-java">ObjectInputStream.readObject()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>The primary method for deserializing objects in Java. It reads an object from an ObjectInputStream and reconstructs it.</p>
         <div class="code-container">
-            <pre><code class="language-java">ObjectInputStream.readUnshared() - Similar to readObject(), but ensures the deserialized object is not shared with previously deserialized objects.</code></pre>
+            <pre><code class="language-java">ObjectInputStream.readUnshared()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Similar to readObject(), but ensures the deserialized object is not shared with previously deserialized objects.</p>
         <div class="code-container">
-            <pre><code class="language-java">ObjectInputStream.readResolve() - A special method that can be defined in a class to replace the deserialized object during deserialization.</code></pre>
+            <pre><code class="language-java">ObjectInputStream.readResolve()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>A special method that can be defined in a class to replace the deserialized object during deserialization.</p>
         <div class="code-container">
-            <pre><code class="language-java">ObjectInputStream.defaultReadObject() - Used within a class’s readObject() method to perform default deserialization of non-transient fields.</code></pre>
+            <pre><code class="language-java">ObjectInputStream.defaultReadObject()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Used within a class’s readObject() method to perform default deserialization of non-transient fields.</p>
         <div class="code-container">
-            <pre><code class="language-java">XMLDecoder.readObject() - Used to deserialize objects from XML input, typically in JavaBeans-style XML.</code></pre>
+            <pre><code class="language-java">XMLDecoder.readObject()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Used to deserialize objects from XML input, typically in JavaBeans-style XML.</p>
         <div class="code-container">
-            <pre><code class="language-java">XStream.fromXML() - Part of the XStream library, used to deserialize objects from XML.</code></pre>
+            <pre><code class="language-java">XStream.fromXML()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Part of the XStream library, used to deserialize objects from XML.</p>
         <div class="code-container">
-            <pre><code class="language-java">ObjectMapper.readValue() - Part of the Jackson library, used to deserialize JSON or other formats into Java objects.</code></pre>
+            <pre><code class="language-java">ObjectMapper.readValue()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Part of the Jackson library, used to deserialize JSON or other formats into Java objects.</p>
         <div class="code-container">
-            <pre><code class="language-java">Kryo.readObject() - Part of the Kryo serialization library, used for high-performance serialization/deserialization.</code></pre>
+            <pre><code class="language-java">Kryo.readObject()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Part of the Kryo serialization library, used for high-performance serialization/deserialization.</p>
         <div class="code-container">
-            <pre><code class="language-java">SnakeYAML.load() - Part of the SnakeYAML library, used to deserialize YAML into Java objects.</code></pre>
+            <pre><code class="language-java">SnakeYAML.load()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Part of the SnakeYAML library, used to deserialize YAML into Java objects.</p>
 
         <h4 id="identify-insecure-deserialization-in-source-code">Identify Insecure Deserialization in Source Code</h4>
         <p>When auditing source code, follow these steps to identify potential insecure deserialization vulnerabilities:</p>
@@ -1523,21 +1532,25 @@ if __name__ == "__main__":
 
         <h4 id="methods-and-classes-1">Methods and Classes</h4>
         <div class="code-container">
-            <pre><code class="language-python">pickle.loads() - The primary method for deserializing pickled data in Python.</code></pre>
+            <pre><code class="language-python">pickle.loads()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>The primary method for deserializing pickled data in Python.</p>
         <div class="code-container">
-            <pre><code class="language-python">pickle.load() - Deserializes from a file-like object.</code></pre>
+            <pre><code class="language-python">pickle.load()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Deserializes from a file-like object.</p>
         <div class="code-container">
-            <pre><code class="language-python">yaml.load() with UnsafeLoader - From PyYAML, can deserialize arbitrary objects if unsafe.</code></pre>
+            <pre><code class="language-python">yaml.load() with UnsafeLoader</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>From PyYAML, can deserialize arbitrary objects if unsafe.</p>
         <div class="code-container">
-            <pre><code class="language-python">jsonpickle.decode() - From jsonpickle library, deserializes JSON to Python objects.</code></pre>
+            <pre><code class="language-python">jsonpickle.decode()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>From jsonpickle library, deserializes JSON to Python objects.</p>
 
         <h4 id="identify-insecure-deserialization-in-source-code-1">Identify Insecure Deserialization in Source Code</h4>
         <p>Search for calls to <code>pickle.loads()</code>, <code>pickle.load()</code>, <code>yaml.load(..., Loader=yaml.UnsafeLoader)</code>, or similar.</p>
@@ -1582,17 +1595,20 @@ if __name__ == "__main__":
 
         <h4 id="methods-and-classes-2">Methods and Classes</h4>
         <div class="code-container">
-            <pre><code class="language-php">unserialize() - The primary function for deserializing serialized data in PHP.</code></pre>
+            <pre><code class="language-php">unserialize()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>The primary function for deserializing serialized data in PHP.</p>
         <div class="code-container">
-            <pre><code class="language-php">__wakeup() - Magic method called before deserialization.</code></pre>
+            <pre><code class="language-php">__wakeup()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Magic method called before deserialization.</p>
         <div class="code-container">
-            <pre><code class="language-php">__destruct() - Magic method called when object is destroyed, often used in gadget chains.</code></pre>
+            <pre><code class="language-php">__destruct()</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Magic method called when object is destroyed, often used in gadget chains.</p>
         <p>Libraries like Symfony, Laravel may have vulnerable gadgets.</p>
 
         <h4 id="identify-insecure-deserialization-in-source-code-2">Identify Insecure Deserialization in Source Code</h4>
@@ -1641,9 +1657,10 @@ if __name__ == "__main__":
 
         <h4 id="methods-and-classes-3">Methods and Classes</h4>
         <div class="code-container">
-            <pre><code class="language-javascript">serialize.unserialize() from node-serialize - Vulnerable to RCE if using eval.</code></pre>
+            <pre><code class="language-javascript">serialize.unserialize() from node-serialize</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Vulnerable to RCE if using eval.</p>
         <p>Custom deserializers in libraries like funcster.</p>
         <p>Magic markers like _$$ND_FUNC$$_ for functions.</p>
 
@@ -2017,33 +2034,40 @@ req2.send();
         </div>
         <p>Postgres Database Shortcuts (psql meta-commands):</p>
         <div class="code-container">
-            <pre><code class="language-bash">\l - List all databases</code></pre>
+            <pre><code class="language-bash">\l</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>List all databases</p>
         <div class="code-container">
-            <pre><code class="language-bash">\c database_name - Connect to a database</code></pre>
+            <pre><code class="language-bash">\c database_name</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Connect to a database</p>
         <div class="code-container">
-            <pre><code class="language-bash">\dt - List all tables in the current database</code></pre>
+            <pre><code class="language-bash">\dt</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>List all tables in the current database</p>
         <div class="code-container">
-            <pre><code class="language-bash">\d table_name - Describe a table (columns, types, etc.)</code></pre>
+            <pre><code class="language-bash">\d table_name</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Describe a table (columns, types, etc.)</p>
         <div class="code-container">
-            <pre><code class="language-bash">\du - List all users and roles</code></pre>
+            <pre><code class="language-bash">\du</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>List all users and roles</p>
         <div class="code-container">
-            <pre><code class="language-bash">\dn - List all schemas</code></pre>
+            <pre><code class="language-bash">\dn</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>List all schemas</p>
         <div class="code-container">
-            <pre><code class="language-bash">\q - Quit psql</code></pre>
+            <pre><code class="language-bash">\q</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>Quit psql</p>
 
         <h3 id="mysql-specific">MySQL Specific</h3>
         <p>MySQL SQL Injection Payloads:</p>
