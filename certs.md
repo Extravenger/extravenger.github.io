@@ -163,6 +163,41 @@ permalink: /certs/
             </ul>
           </div>
         </div>
+
+
+        
+      </div>
+    </div>
+  </a>
+
+<a class="cert-card-link">
+    <div class="cert-card">
+      <div class="cert-card-inner">
+        <div class="cert-card-image">
+          <img src="/assets/img/certs/OSWE.png" alt="Cert 2">
+        </div>
+        <div class="cert-card-back">
+          <div class="content">
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <ul>
+              <li>Persistent Cross-Site Scripting</li>
+              <li>Session Hijacking</li>
+              <li>Data Exfiltration</li>
+              <li>Bypassing File Extension Filters</li>
+              <li>Magic Hashes</li>
+              <li>PostgreSQL Extension and User-Defined Functions</li>
+              <li>Bypassing REGEX Restrictions</li>
+              <li>Cross-Site Request Forgery</li>
+              <li>Type Juggling</li>
+              <li>Blind SQL Injection</li>
+              <li>Bypassing File Upload Restrictions</li>
+              <li>Loose Comparisons</li>
+              <li>Bypassing Character Restrictions</li>
+              <li>PostgreSQL Large Objects</li>
+              <li>Debugging .NET Assemblies</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </a>
