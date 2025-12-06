@@ -2,10 +2,6 @@
   url: /
   external: false
 
-- title: Github Repositories
-  url: /github-repositories/
-  external: false
-
 - title: Certifications
   url: /certs/
   external: false
