@@ -7,15 +7,25 @@
   display: block;
 }
 
-/* Wrapper to control the grid layout */
+/* Wrapper to control the layout and animation */
 .cert-cards-wrapper {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: hidden;
   width: 100%;
   box-sizing: border-box;
   padding: 20px;
-  grid-auto-rows: 400px;
+  animation: slide 30s linear infinite; /* Adjust duration for speed */
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 /* Card container */
@@ -27,12 +37,15 @@
   overflow: hidden;
   padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  width: 100%;
-  height: 100%;
+  flex: 0 0 300px; /* Fixed width for horizontal layout; adjust as needed */
+  height: 400px;
   box-sizing: border-box;
   perspective: 1000px;
   position: relative;
+  margin-right: 50px; /* Gap via margin for seamless loop calculation */
 }
+
+/* Remove margin from the last card in the duplicated set if needed, but not required for seamlessness */
 
 /* Card inner element for flip effect */
 .cert-card-inner {
@@ -57,24 +70,6 @@
   overflow: hidden;
   position: relative;
   backface-visibility: hidden;
-}
-
-.cert-card-image::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -200%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
-  transform: skewX(-25deg);
-  transition: left 1s ease;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.cert-card:hover .cert-card-image::before {
-  left: 100%;
 }
 
 .cert-card-image img {
@@ -153,20 +148,29 @@ h2.certs-title {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .cert-cards-wrapper {
-    gap: 20px;
+    padding: 10px;
+    animation-duration: 20s; /* Speed up on smaller screens if desired */
   }
   .cert-card {
-    grid-auto-rows: 300px; /* Adjust card height for smaller screens */
+    flex: 0 0 250px;
+    height: 300px;
+    margin-right: 20px;
   }
   .cert-card-back {
     font-size: 0.9rem; /* Smaller text on mobile */
     padding: 15px;
   }
+  .certs-title {
+    text-align: center;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 480px) {
   .cert-card {
-    grid-auto-rows: 250px; /* Adjust card height for very small screens */
+    flex: 0 0 200px;
+    height: 250px;
+    margin-right: 20px;
   }
   .cert-card-back {
     font-size: 0.8rem; /* Even smaller text on very small screens */
@@ -174,12 +178,5 @@ h2.certs-title {
   }
   .cert-card-back .content {
     overflow-y: auto; /* Allow scrolling for long text */
-  }
-}
-
-@media (max-width: 768px) {
-  .certs-title {
-    text-align: center;
-    margin: 0 auto;
   }
 }
