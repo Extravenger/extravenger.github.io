@@ -219,19 +219,17 @@ h2.certs-title {
   font-weight: bold;
   color: #fff !important;
   opacity: 0;
-  transform: translateY(30px);
-  animation: titleReveal 1.2s ease-out forwards;
-  animation-delay: 0.2s;
+  animation: titleReveal 1.2s ease-out 0.2s forwards;
   text-shadow: 0 0 40px rgba(255, 100, 100, 0.4),
                0 4px 20px rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
-  letter-spacing: 3px;
+  letter-spacing: 15px;
 }
 
 @keyframes titleReveal {
   0% {
     opacity: 0;
-    transform: translateY(40px) scale(0.9);
+    transform: translateY(30px) scale(0.95);
     letter-spacing: 15px;
   }
   100% {
