@@ -15,7 +15,8 @@ permalink: /certs/
 /* Container for the conveyor belt effect */
 .cert-cards-container {
   position: relative;
-  width: 100%;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
   overflow: hidden;
   padding: 40px 0;
 }
@@ -27,7 +28,7 @@ permalink: /certs/
   right: 0;
   top: 0;
   bottom: 0;
-  width: 120px;
+  width: 150px;
   background: linear-gradient(to right, 
     transparent 0%,
     rgba(0, 0, 0, 0.5) 30%,
@@ -44,7 +45,7 @@ permalink: /certs/
   left: 0;
   top: 0;
   bottom: 0;
-  width: 80px;
+  width: 100px;
   background: linear-gradient(to left, 
     transparent 0%,
     rgba(255, 100, 100, 0.05) 50%,
@@ -57,9 +58,9 @@ permalink: /certs/
 /* Wrapper - horizontal conveyor belt */
 .cert-cards-wrapper {
   display: flex;
-  gap: 50px;
-  padding: 20px 150px 20px 50px;
-  animation: conveyor 45s linear infinite;
+  gap: 60px;
+  padding: 20px 200px 20px 80px;
+  animation: conveyor 50s linear infinite;
   width: max-content;
 }
 
@@ -87,8 +88,8 @@ permalink: /certs/
   overflow: hidden;
   padding: 10px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  width: 420px;
-  height: 320px;
+  width: 480px;
+  height: 360px;
   flex-shrink: 0;
   box-sizing: border-box;
   perspective: 1000px;
@@ -297,14 +298,14 @@ h2.certs-title {
 /* Responsive */
 @media (max-width: 768px) {
   .cert-cards-wrapper {
-    gap: 30px;
-    padding: 15px 100px 15px 30px;
+    gap: 40px;
+    padding: 15px 120px 15px 40px;
     animation-duration: 35s;
   }
 
   .cert-card {
-    width: 300px;
-    height: 260px;
+    width: 340px;
+    height: 280px;
   }
 
   .cert-card-back {
@@ -318,14 +319,23 @@ h2.certs-title {
   }
 
   .cert-cards-container::after {
-    width: 80px;
+    width: 100px;
+  }
+  
+  .cert-cards-container::before {
+    width: 60px;
   }
 }
 
 @media (max-width: 480px) {
+  .cert-cards-wrapper {
+    gap: 25px;
+    padding: 10px 80px 10px 20px;
+  }
+
   .cert-card {
-    width: 260px;
-    height: 220px;
+    width: 280px;
+    height: 230px;
   }
 
   .cert-card-back {
@@ -335,6 +345,14 @@ h2.certs-title {
 
   h2.certs-title {
     font-size: 1.5rem;
+  }
+  
+  .cert-cards-container::after {
+    width: 60px;
+  }
+  
+  .cert-cards-container::before {
+    width: 40px;
   }
 }
 </style>
