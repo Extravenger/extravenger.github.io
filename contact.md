@@ -147,6 +147,7 @@ permalink: /contact/
     text-align: center;
     transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
     transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
     border-radius: 20px;
   }
 
@@ -160,6 +161,7 @@ permalink: /contact/
     position: absolute;
     width: 100%;
     height: 100%;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 20px;
     overflow: hidden;
@@ -177,6 +179,8 @@ permalink: /contact/
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4),
                 0 0 60px rgba(255, 100, 100, 0.05);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .contact-card:hover .card-front {
