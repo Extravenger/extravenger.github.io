@@ -22,27 +22,80 @@
   </script>
 
   {% include navbar.html %}
+  
+  <!-- Animated background particles -->
+  <div class="particles-container">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
   <div class="wrapper">
     <main aria-label="Content">
       <div class="centered-content">
-        <br>
-        <!-- Image with Slide-In Effect -->
-        <div class="image-container slide-in">
-          <img src="https://extravenger.github.io/assets/img/ninja.png" alt="Profile Image" class="profile-image" />
+        
+        <!-- Glowing ring behind image -->
+        <div class="image-wrapper">
+          <div class="glow-ring"></div>
+          <div class="orbit-ring">
+            <div class="orbit-dot"></div>
+          </div>
+          <div class="image-container">
+            <img src="https://extravenger.github.io/assets/img/ninja.png" alt="Profile Image" class="profile-image" />
+          </div>
         </div>
 
         <!-- Title and description -->
         <div class="text-container">
           <h1 class="typing-container">
-            <span class="text"></span><span class="cursor">|</span>
+            <span class="prompt">┌──(</span><span class="user">extravenger</span><span class="prompt">)</span><span class="prompt">-[</span><span class="path">~</span><span class="prompt">]</span><br>
+            <span class="prompt">└─</span><span class="dollar">$</span> <span class="text"></span><span class="cursor">▊</span>
           </h1>
-          <p class="slide-in">
-            My name is Amit Mor, and I'm working as an Adversarial Tactics Expert at 
-            <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer">Sygnia</a>.<br>
-            My cyber security journey began in 2021 as a SOC Analyst, where I gained invaluable experience in network monitoring and defense.<br>
-            However, my true passion lay in the offensive side of the field, which led me to transition into Penetration Testing.<br>
-            After two and a half years as a Penetration Tester, I achieved my ultimate goal of breaking into Red Teaming, and Today, i'm living that goal.
-          </p>
+          
+          <div class="bio-card">
+            <div class="bio-header">
+              <span class="bio-icon">👤</span>
+              <span class="bio-title">PROFILE</span>
+              <div class="bio-status">
+                <span class="status-dot"></span>
+                <span>ACTIVE</span>
+              </div>
+            </div>
+            <div class="bio-content">
+              <p class="bio-name">
+                <span class="label">NAME:</span> Amit Mor
+              </p>
+              <p class="bio-role">
+                <span class="label">ROLE:</span> Adversarial Tactics Expert @ 
+                <a href="https://www.sygnia.co" target="_blank" rel="noopener noreferrer" class="company-link">Sygnia</a>
+              </p>
+              <div class="bio-divider"></div>
+              <div class="bio-story">
+                <p>
+                  <span class="year">2021</span> Started as a <span class="highlight">SOC Analyst</span> — mastering network monitoring and defense.
+                </p>
+                <p>
+                  <span class="year">2022</span> Transitioned to <span class="highlight">Penetration Testing</span> — following my passion for offensive security.
+                </p>
+                <p>
+                  <span class="year">2024</span> Achieved the goal: <span class="highlight">Red Teaming</span> — living the dream.
+                </p>
+              </div>
+            </div>
+            <div class="bio-footer">
+              <div class="skill-tags">
+                <span class="tag">Red Team</span>
+                <span class="tag">Pentesting</span>
+                <span class="tag">Active Directory</span>
+                <span class="tag">Evasion</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
@@ -53,32 +106,96 @@
     document.addEventListener("DOMContentLoaded", function() {
       const textElement = document.querySelector(".text");
       const cursorElement = document.querySelector(".cursor");
-      const text = "$ whoami";
+      const text = "whoami";
       let index = 0;
 
       const type = () => {
         if (index < text.length) {
           textElement.textContent += text[index];
           index++;
-          setTimeout(type, 150); // Speed of typing
+          setTimeout(type, 120);
         } else {
-          cursorElement.style.display = "inline-block";
+          // After typing, show the bio card
+          setTimeout(() => {
+            document.querySelector('.bio-card').classList.add('visible');
+          }, 400);
         }
       };
 
-      setTimeout(type, 500); // Delay before typing starts
+      // Start typing after image animation
+      setTimeout(type, 1500);
+
+      // Animate skill tags one by one
+      setTimeout(() => {
+        const tags = document.querySelectorAll('.tag');
+        tags.forEach((tag, i) => {
+          setTimeout(() => {
+            tag.classList.add('visible');
+          }, i * 150);
+        });
+      }, 3000);
     });
   </script>
 
   <style>
-    /* Prevent scrolling */
+    /* Base styles */
     html, body {
       height: 100%;
       margin: 0;
-      overflow: auto; /* Prevent scrolling */
+      overflow-x: hidden;
+      overflow-y: auto;
     }
 
-    /* Wrapper to fix layout height */
+    /* Animated particles background */
+    .particles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 100, 100, 0.3);
+      border-radius: 50%;
+      animation: float 20s infinite;
+    }
+
+    .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
+    .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 20s; }
+    .particle:nth-child(3) { left: 35%; animation-delay: 4s; animation-duration: 28s; }
+    .particle:nth-child(4) { left: 50%; animation-delay: 1s; animation-duration: 22s; }
+    .particle:nth-child(5) { left: 65%; animation-delay: 3s; animation-duration: 26s; }
+    .particle:nth-child(6) { left: 75%; animation-delay: 5s; animation-duration: 24s; }
+    .particle:nth-child(7) { left: 85%; animation-delay: 2.5s; animation-duration: 21s; }
+    .particle:nth-child(8) { left: 92%; animation-delay: 4.5s; animation-duration: 27s; }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+        transform: translateY(90vh) scale(1);
+      }
+      90% {
+        opacity: 1;
+        transform: translateY(10vh) scale(1);
+      }
+      100% {
+        transform: translateY(-10vh) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* Wrapper */
     .wrapper {
       display: flex;
       flex-direction: column;
@@ -88,11 +205,14 @@
       text-align: center;
       padding: 20px;
       box-sizing: border-box;
-      overflow: hidden;
+      position: relative;
+      z-index: 1;
     }
 
     main {
-      flex-grow: 1; 
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
     }
 
     footer {
@@ -105,120 +225,441 @@
       z-index: 10;
     }
 
-    
     .centered-content {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-grow: 1;
-      overflow: hidden;
-      padding-bottom: 50px; /* Prevents text from hiding behind footer */
-      margin-top: 50px;
+      padding-bottom: 50px;
     }
 
+    /* Image wrapper with effects */
+    .image-wrapper {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin-bottom: 30px;
+    }
+
+    /* Glowing ring */
+    .glow-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(255, 100, 100, 0.4),
+        transparent,
+        rgba(255, 100, 100, 0.4),
+        transparent
+      );
+      animation: rotateGlow 4s linear infinite;
+      opacity: 0;
+      animation: rotateGlow 4s linear infinite, fadeInGlow 1s ease-out 0.5s forwards;
+    }
+
+    @keyframes rotateGlow {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    @keyframes fadeInGlow {
+      to { opacity: 1; }
+    }
+
+    /* Orbiting ring */
+    .orbit-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 260px;
+      height: 260px;
+      border: 1px dashed rgba(255, 100, 100, 0.2);
+      border-radius: 50%;
+      animation: orbitSpin 10s linear infinite;
+      opacity: 0;
+      animation: orbitSpin 10s linear infinite, fadeInGlow 1s ease-out 0.8s forwards;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: #ff6464;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff6464, 0 0 20px #ff6464;
+    }
+
+    @keyframes orbitSpin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* Image container */
+    .image-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      z-index: 2;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
+      box-shadow: 0 0 40px rgba(255, 100, 100, 0.3);
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    .profile-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .image-container:hover .profile-image {
+      transform: scale(1.1);
+    }
+
+    /* Text container */
     .text-container {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 10px;
+      width: 100%;
+      max-width: 700px;
     }
 
-    h1 {
-      margin-bottom: 10px;
-      font-size: 2rem;
-    }
-
-    p {
+    /* Terminal-style typing */
+    h1.typing-container {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
       font-size: 1.1rem;
-      max-width: 600px;
-      line-height: 1.6;
-      text-align: center;
-      margin: 0;
+      text-align: left;
+      margin-bottom: 25px;
+      line-height: 1.8;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px 25px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 100, 100, 0.2);
+      width: fit-content;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease-out 1s forwards;
     }
 
-    /* Image Container */
-    .image-container {
-      width: 200px;
-      height: 200px;
-      margin-bottom: 20px;
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    /* Image Styling */
-    .profile-image {
-      width: 100%;  
-      height: 100%;
-      border-radius: 50%;
-      object-fit: cover;
-    }
+    .prompt { color: #64ffda; }
+    .user { color: #ff6464; font-weight: bold; }
+    .path { color: #82aaff; }
+    .dollar { color: #c792ea; }
+    .text { color: #eeffff; }
 
-    /* Typing effect */
-    .text {
-      display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: none;
-      color: #666;
-    }
-
-    /* Cursor animation */
     .cursor {
       display: inline-block;
-      line-height: 1;
+      color: #ff6464;
+      animation: blink 1s step-end infinite;
       margin-left: 2px;
-      vertical-align: 0.7em;
-      animation: blink 0.7s step-end infinite;
     }
 
     @keyframes blink {
-      50% {
-        opacity: 0;
-      }
+      50% { opacity: 0; }
     }
 
-    /* Slide-in effect for image and text */
-    .slide-in {
+    /* Bio card */
+    .bio-card {
+      background: linear-gradient(145deg, 
+        rgba(30, 30, 50, 0.9) 0%, 
+        rgba(20, 20, 35, 0.95) 100%
+      );
+      border: 1px solid rgba(255, 100, 100, 0.2);
+      border-radius: 15px;
+      padding: 0;
+      width: 100%;
+      max-width: 600px;
+      text-align: left;
+      overflow: hidden;
       opacity: 0;
-      transform: translateX(-100%);
-      animation: slideIn 1s ease-out 2s forwards;
+      transform: translateY(30px) scale(0.95);
+      transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3),
+                  0 0 80px rgba(255, 100, 100, 0.05);
     }
 
-    @keyframes slideIn {
-      to {
-        transform: translateX(0);
-        opacity: 1;
-      }
+    .bio-card.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
 
-    /* Responsive Styles */
+    .bio-card:hover {
+      border-color: rgba(255, 100, 100, 0.4);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4),
+                  0 0 100px rgba(255, 100, 100, 0.1);
+    }
+
+    .bio-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 15px 20px;
+      background: rgba(255, 100, 100, 0.1);
+      border-bottom: 1px solid rgba(255, 100, 100, 0.2);
+    }
+
+    .bio-icon {
+      font-size: 1.2rem;
+    }
+
+    .bio-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: #ff6464;
+      letter-spacing: 2px;
+    }
+
+    .bio-status {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.7rem;
+      color: #64ffda;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #64ffda;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4); }
+      50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(100, 255, 218, 0); }
+    }
+
+    .bio-content {
+      padding: 20px;
+    }
+
+    .bio-name, .bio-role {
+      margin: 0 0 10px 0;
+      font-size: 1rem;
+      color: #ccc;
+    }
+
+    .label {
+      color: #888;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      margin-right: 8px;
+    }
+
+    .company-link {
+      color: #ff6464;
+      text-decoration: none;
+      position: relative;
+      font-weight: bold;
+    }
+
+    .company-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: #ff6464;
+      transition: width 0.3s ease;
+    }
+
+    .company-link:hover::after {
+      width: 100%;
+    }
+
+    .bio-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255, 100, 100, 0.3), transparent);
+      margin: 20px 0;
+    }
+
+    .bio-story p {
+      margin: 0 0 15px 0;
+      font-size: 0.95rem;
+      color: #aaa;
+      line-height: 1.6;
+      padding-left: 15px;
+      border-left: 2px solid rgba(255, 100, 100, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .bio-story p:hover {
+      border-left-color: #ff6464;
+      padding-left: 20px;
+    }
+
+    .year {
+      display: inline-block;
+      background: rgba(255, 100, 100, 0.2);
+      color: #ff6464;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      margin-right: 8px;
+    }
+
+    .highlight {
+      color: #64ffda;
+      font-weight: 500;
+    }
+
+    .bio-footer {
+      padding: 15px 20px;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      background: rgba(255, 100, 100, 0.1);
+      color: #ff6464;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid rgba(255, 100, 100, 0.2);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+    }
+
+    .tag.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tag:hover {
+      background: rgba(255, 100, 100, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 100, 100, 0.2);
+    }
+
+    /* Responsive */
     @media (max-width: 768px) {
+      .image-wrapper {
+        width: 180px;
+        height: 180px;
+      }
+
       .image-container {
-        width: 150px;
-        height: 150px;
+        width: 160px;
+        height: 160px;
       }
-      h1 {
-        font-size: 1.5rem;
+
+      .glow-ring {
+        width: 190px;
+        height: 190px;
       }
-      p {
-        font-size: 1rem;
-        max-width: 90%;
+
+      .orbit-ring {
+        width: 210px;
+        height: 210px;
       }
-      .wrapper {
-        padding: 15px;
+
+      h1.typing-container {
+        font-size: 0.9rem;
+        padding: 12px 18px;
+      }
+
+      .bio-card {
+        margin: 0 15px;
+      }
+
+      .bio-story p {
+        font-size: 0.9rem;
+      }
+
+      .skill-tags {
+        justify-content: center;
       }
     }
 
     @media (max-width: 480px) {
+      .image-wrapper {
+        width: 150px;
+        height: 150px;
+      }
+
       .image-container {
-        width: 120px;
-        height: 120px;
+        width: 130px;
+        height: 130px;
       }
-      h1 {
-        font-size: 1.3rem;
+
+      .glow-ring {
+        width: 160px;
+        height: 160px;
       }
-      p {
+
+      .orbit-ring {
+        width: 180px;
+        height: 180px;
+      }
+
+      h1.typing-container {
+        font-size: 0.75rem;
+        padding: 10px 15px;
+      }
+
+      .bio-name, .bio-role {
         font-size: 0.9rem;
+      }
+
+      .bio-story p {
+        font-size: 0.85rem;
+      }
+
+      .tag {
+        font-size: 0.7rem;
+        padding: 4px 10px;
       }
     }
   </style>
