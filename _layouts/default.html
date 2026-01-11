@@ -9,135 +9,534 @@ layout: home
 
 <head>
   <style>
-/* Quote Styles */
-    .quote-container {
+    /* Animated particles background */
+    .particles-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(255, 100, 100, 0.25);
+      border-radius: 50%;
+      animation: float 20s infinite;
+    }
+
+    .particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 25s; }
+    .particle:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 20s; }
+    .particle:nth-child(3) { left: 28%; animation-delay: 4s; animation-duration: 28s; }
+    .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 22s; }
+    .particle:nth-child(5) { left: 55%; animation-delay: 3s; animation-duration: 26s; }
+    .particle:nth-child(6) { left: 68%; animation-delay: 5s; animation-duration: 24s; }
+    .particle:nth-child(7) { left: 80%; animation-delay: 2.5s; animation-duration: 21s; }
+    .particle:nth-child(8) { left: 92%; animation-delay: 4.5s; animation-duration: 27s; }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+        transform: translateY(90vh) scale(1);
+      }
+      90% {
+        opacity: 1;
+        transform: translateY(10vh) scale(1);
+      }
+      100% {
+        transform: translateY(-10vh) scale(0);
+        opacity: 0;
+      }
+    }
+
+    /* Hero Section */
+    .hero-section {
       text-align: center;
-      margin: 40px auto;
+      margin: 60px auto 40px;
       padding: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Image wrapper with effects */
+    .hero-image-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 0 auto 25px;
+      display: inline-block;
+    }
+
+    /* Glowing ring */
+    .glow-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(255, 100, 100, 0.4),
+        transparent,
+        rgba(255, 100, 100, 0.4),
+        transparent
+      );
+      animation: rotateGlow 4s linear infinite;
       opacity: 0;
-      transform: translateY(20px);
-      animation: fadeInUp 1s ease-out forwards;
-      animation-delay: 0.2s;
+      animation: rotateGlow 4s linear infinite, fadeInGlow 1s ease-out 0.3s forwards;
     }
 
-    .quote-image {
-      max-width: 30%;
-      height: auto;
-      border-radius: 10px;
-      margin-bottom: 20px;
+    @keyframes rotateGlow {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
-    .quote-text {
-      font-size: 1.2rem;
-      color: #888;
-      padding: 10px 20px;
+    @keyframes fadeInGlow {
+      to { opacity: 1; }
     }
 
-    /* Fade-in and upward movement */
-    @keyframes fadeInUp {
+    /* Orbiting ring */
+    .orbit-ring {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 220px;
+      height: 220px;
+      border: 1px dashed rgba(255, 100, 100, 0.2);
+      border-radius: 50%;
+      opacity: 0;
+      animation: orbitSpin 10s linear infinite, fadeInGlow 1s ease-out 0.5s forwards;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      top: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 8px;
+      height: 8px;
+      background: #ff6464;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #ff6464, 0 0 20px #ff6464;
+    }
+
+    @keyframes orbitSpin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .hero-image {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      z-index: 2;
+      animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards;
+      box-shadow: 0 0 40px rgba(255, 100, 100, 0.3);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-image-wrapper:hover .hero-image {
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+
+    @keyframes popIn {
+      0% {
+        transform: translate(-50%, -50%) scale(0) rotate(-180deg);
+        opacity: 0;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+        opacity: 1;
+      }
+    }
+
+    /* Title with terminal style */
+    .hero-title {
+      font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease-out 0.8s forwards;
+    }
+
+    .hero-title .bracket { color: #64ffda; }
+    .hero-title .name { color: #ff6464; font-weight: bold; }
+    .hero-title .separator { color: #888; }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
-    
-    /* Card-container wrapper just for posts */
+
+    /* Role badge */
+    .hero-role {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(145deg, rgba(30, 30, 50, 0.9), rgba(20, 20, 35, 0.95));
+      border: 1px solid rgba(255, 100, 100, 0.3);
+      border-radius: 30px;
+      padding: 12px 25px;
+      font-size: 1rem;
+      color: #ccc;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease-out 1s forwards;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3),
+                  0 0 50px rgba(255, 100, 100, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .hero-role:hover {
+      transform: translateY(-3px);
+      border-color: rgba(255, 100, 100, 0.5);
+      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.4),
+                  0 0 60px rgba(255, 100, 100, 0.1);
+    }
+
+    .hero-role .status-dot {
+      width: 10px;
+      height: 10px;
+      background: #64ffda;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4); }
+      50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(100, 255, 218, 0); }
+    }
+
+    .hero-role .role-text {
+      color: #aaa;
+    }
+
+    .hero-role .company {
+      color: #ff6464;
+      font-weight: bold;
+    }
+
+    /* Section Title */
+    .section-header {
+      text-align: center;
+      margin: 50px 0 30px;
+      opacity: 0;
+      animation: fadeSlideUp 0.6s ease-out 1.2s forwards;
+    }
+
+    .section-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.9rem;
+      color: #ff6464;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: '';
+      width: 50px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(255, 100, 100, 0.5));
+    }
+
+    .section-title::after {
+      background: linear-gradient(to left, transparent, rgba(255, 100, 100, 0.5));
+    }
+
+    /* Posts wrapper */
     .posts-wrapper {
       display: flex;
       justify-content: center;
       padding: 20px;
       flex-grow: 1;
+      position: relative;
+      z-index: 1;
     }
 
     /* Container to hold post cards */
     .post-cards-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 30px;
       padding: 20px;
-      max-width: 1200px;
+      max-width: 1300px;
       width: 100%;
-      margin-left: auto;
-      margin-right: 0;
     }
-    
+
     /* Card-style layout for each post */
     .post-card {
-      background: var(--content-bg);
+      background: linear-gradient(145deg, 
+        rgba(30, 30, 50, 0.8) 0%, 
+        rgba(20, 20, 35, 0.9) 100%
+      );
       border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3),
+                  0 0 40px rgba(255, 100, 100, 0.03);
       overflow: hidden;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      padding: 0;
+      display: flex;
+      flex-direction: column;
       text-align: left;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
       height: 100%;
-      border: 1px solid #ffcccc;
+      border: 1px solid rgba(255, 100, 100, 0.15);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: cardFadeIn 0.6s ease-out forwards;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .post-card:nth-child(1) { animation-delay: 1.4s; }
+    .post-card:nth-child(2) { animation-delay: 1.5s; }
+    .post-card:nth-child(3) { animation-delay: 1.6s; }
+    .post-card:nth-child(4) { animation-delay: 1.7s; }
+    .post-card:nth-child(5) { animation-delay: 1.8s; }
+    .post-card:nth-child(6) { animation-delay: 1.9s; }
+
+    @keyframes cardFadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* Hover effect for cards */
     .post-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transform: translateY(-8px) scale(1.02);
+      border-color: rgba(255, 100, 100, 0.4);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4),
+                  0 0 60px rgba(255, 100, 100, 0.08);
     }
 
-    /* Adjusted padding inside the text section */
+    /* Image section */
+    .post-card .image-container {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .post-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+
+    .post-card:hover img {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
+
+    /* Image overlay gradient */
+    .post-card .image-container::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(20, 20, 35, 1), transparent);
+      pointer-events: none;
+    }
+
+    /* Text content section */
     .post-card .text-content {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      padding: 20px;
+      padding: 20px 25px 25px;
+      flex-grow: 1;
     }
 
     .post-card h2 {
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 10px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #eee;
+      margin: 0 0 12px 0;
+      line-height: 1.4;
+      transition: color 0.3s ease;
+    }
+
+    .post-card:hover h2 {
+      color: #ff6464;
     }
 
     .post-card .meta {
-      font-size: 1rem;
-      color: #666;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #64ffda;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .post-card .meta::before {
+      content: '▹';
+      color: #ff6464;
     }
 
     .post-card .tags {
       display: flex;
-      justify-content: flex-start;
-      gap: 10px;
-      margin-top: 10px;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: auto;
     }
 
     .post-card .tag {
-      font-size: 0.9rem;
-      padding: 5px 10px;
-      background: #e0e0e0;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      padding: 5px 12px;
+      background: rgba(255, 100, 100, 0.1);
+      border: 1px solid rgba(255, 100, 100, 0.2);
       border-radius: 20px;
-      color: #333;
+      color: #ff6464;
       text-decoration: none;
-      transition: background 0.3s ease;
+      transition: all 0.3s ease;
     }
 
     .post-card .tag:hover {
-      background: #0096FF;
-      color: white;
+      background: rgba(255, 100, 100, 0.2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 100, 100, 0.2);
     }
 
-    /* Right section of the post card (for image) */
-    .post-card img {
-      width: 100%;
-      height: auto;
-      border-radius: 10px;
-      object-fit: cover;
+    /* No image fallback */
+    .post-card.no-image {
+      background: linear-gradient(145deg, 
+        rgba(40, 30, 50, 0.9) 0%, 
+        rgba(25, 20, 40, 0.95) 100%
+      );
+    }
+
+    .post-card.no-image .text-content {
+      padding-top: 30px;
+    }
+
+    .post-card.no-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(to right, #ff6464, #c792ea, #64ffda);
+    }
+
+    /* Empty state */
+    .no-posts {
+      text-align: center;
+      padding: 60px 20px;
+      color: #666;
+      font-size: 1.1rem;
     }
 
     /* Responsive Styles */
     @media (max-width: 768px) {
-      .post-card {
+      .hero-image-wrapper {
+        width: 150px;
+        height: 150px;
+      }
+
+      .hero-image {
+        width: 130px;
+        height: 130px;
+      }
+
+      .glow-ring {
+        width: 165px;
+        height: 165px;
+      }
+
+      .orbit-ring {
+        width: 185px;
+        height: 185px;
+      }
+
+      .hero-title {
+        font-size: 0.95rem;
+      }
+
+      .hero-role {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
+      .post-cards-container {
         grid-template-columns: 1fr;
+        padding: 15px;
+      }
+
+      .post-card h2 {
+        font-size: 1.2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-image-wrapper {
+        width: 120px;
+        height: 120px;
+      }
+
+      .hero-image {
+        width: 100px;
+        height: 100px;
+      }
+
+      .glow-ring {
+        width: 130px;
+        height: 130px;
+      }
+
+      .orbit-ring {
+        width: 150px;
+        height: 150px;
+      }
+
+      .hero-title {
+        font-size: 0.85rem;
+      }
+
+      .hero-role {
+        padding: 8px 15px;
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .section-title {
+        font-size: 0.75rem;
+      }
+
+      .section-title::before,
+      .section-title::after {
+        width: 30px;
       }
     }
   </style>
@@ -164,23 +563,67 @@ layout: home
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
+  <!-- Animated background particles -->
+  <div class="particles-container">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
   {% include navbar.html %}
 
   <div class="wrapper">
     <main class="page-content" aria-label="Content">
 
-      <!-- Quote Section with Image -->
-      <div class="quote-container">
-        <img class="quote-image" src="https://extravenger.github.io/assets/img/ninja.png" alt="Quote Image">
-        <div class="quote-text">
-          Adversarial Tactics Expert @ Sygnia
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="hero-image-wrapper">
+          <div class="glow-ring"></div>
+          <div class="orbit-ring">
+            <div class="orbit-dot"></div>
+          </div>
+          <img class="hero-image" src="https://extravenger.github.io/assets/img/ninja.png" alt="Profile Image">
+        </div>
+        
+        <div class="hero-title">
+          <span class="bracket">[</span>
+          <span class="name">extravenger</span>
+          <span class="bracket">]</span>
+          <span class="separator"> :: </span>
+          <span style="color: #888;">red team operator</span>
+        </div>
+
+        <div class="hero-role">
+          <span class="status-dot"></span>
+          <span class="role-text">Adversarial Tactics Expert @</span>
+          <span class="company">Sygnia</span>
         </div>
       </div>
 
+      <!-- Section Header -->
+      <div class="section-header">
+        <div class="section-title">
+          <span>Latest Posts</span>
+        </div>
+      </div>
+
+      <!-- Posts Grid -->
       <div class="posts-wrapper">
         <div class="post-cards-container">
           {% for post in site.posts %}
-          <div class="post-card" onclick="window.location.href='{{ post.url }}'">
+          <div class="post-card {% unless post.image %}no-image{% endunless %}" onclick="window.location.href='{{ post.url }}'">
+            
+            {% if post.image %}
+            <div class="image-container">
+              <img src="{{ post.image }}" alt="{{ post.title }}">
+            </div>
+            {% endif %}
+
             <div class="text-content">
               <h2>{{ post.title }}</h2>
               <div class="meta">
@@ -189,17 +632,19 @@ layout: home
               {% if post.tags %}
               <div class="tags">
                 {% for tag in post.tags %}
-                <a class="tag" href="/tags/#{{ tag | downcase | slugify }}">{{ tag | upcase }}</a>
+                <a class="tag" href="/tags/#{{ tag | downcase | slugify }}" onclick="event.stopPropagation();">{{ tag | upcase }}</a>
                 {% endfor %}
               </div>
               {% endif %}
             </div>
-
-            {% if post.image %}
-            <img src="{{ post.image }}" alt="{{ post.title }}">
-            {% endif %}
           </div>
           {% endfor %}
+
+          {% if site.posts.size == 0 %}
+          <div class="no-posts">
+            <p>No posts yet. Check back soon!</p>
+          </div>
+          {% endif %}
         </div>
       </div>
     </main>
