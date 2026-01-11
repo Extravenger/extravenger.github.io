@@ -4,19 +4,359 @@ title: Certifications
 permalink: /certs/
 ---
 
+<style>
+/* Makes the entire cards clickable */
+.cert-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Container for the conveyor belt effect */
+.cert-cards-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+/* Dark fade on the right - the "eating" effect */
+.cert-cards-container::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 120px;
+  background: linear-gradient(to right, 
+    transparent 0%,
+    rgba(0, 0, 0, 0.5) 30%,
+    var(--background, #1a1a2e) 100%
+  );
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* Glowing entry portal on the left */
+.cert-cards-container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 80px;
+  background: linear-gradient(to left, 
+    transparent 0%,
+    rgba(255, 100, 100, 0.05) 50%,
+    rgba(255, 100, 100, 0.15) 100%
+  );
+  z-index: 50;
+  pointer-events: none;
+}
+
+/* Wrapper - horizontal conveyor belt */
+.cert-cards-wrapper {
+  display: flex;
+  gap: 50px;
+  padding: 20px 150px 20px 50px;
+  animation: conveyor 45s linear infinite;
+  width: max-content;
+}
+
+@keyframes conveyor {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause animation on hover */
+.cert-cards-wrapper:hover {
+  animation-play-state: paused;
+}
+
+/* Card container */
+.cert-card {
+  display: flex;
+  background: var(--content-bg, #252540);
+  border-radius: 15px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4),
+              0 0 50px rgba(255, 100, 100, 0.08);
+  overflow: hidden;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  width: 420px;
+  height: 320px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  perspective: 1000px;
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+}
+
+.cert-card:hover {
+  transform: scale(1.03) translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5),
+              0 0 80px rgba(255, 100, 100, 0.15);
+  border-color: rgba(255, 100, 100, 0.3);
+}
+
+/* Card inner element for flip effect */
+.cert-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cert-card:hover .cert-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front side of the card */
+.cert-card-image {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  background: #1a1a2e;
+}
+
+.cert-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.cert-card:hover .cert-card-image img {
+  transform: scale(1.1);
+  filter: brightness(1.1);
+}
+
+/* Back side of the card */
+.cert-card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(145deg, 
+    #1a1a2e 0%, 
+    #252545 50%,
+    #1a1a2e 100%
+  );
+  color: #ccc;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  text-align: left;
+  overflow-y: auto;
+  word-wrap: break-word;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 100, 100, 0.15);
+}
+
+.cert-card-back .content {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.cert-card-back h3 {
+  margin: 0 0 12px 0;
+  font-size: 1rem;
+  border-bottom: 2px solid rgba(255, 100, 100, 0.4);
+  padding-bottom: 8px;
+  width: 100%;
+}
+
+.cert-card-back ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.cert-card-back ul li {
+  position: relative;
+  padding-left: 18px;
+  margin-bottom: 6px;
+}
+
+.cert-card-back ul li::before {
+  content: '▹';
+  position: absolute;
+  left: 0;
+  color: lightcoral;
+  font-weight: bold;
+}
+
+/* Title styling */
+h2.certs-title {
+  text-align: center;
+  font-size: 2.8rem;
+  font-weight: bold;
+  color: #fff !important;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: titleReveal 1.2s ease-out forwards;
+  animation-delay: 0.2s;
+  text-shadow: 0 0 40px rgba(255, 100, 100, 0.4),
+               0 4px 20px rgba(0, 0, 0, 0.5);
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+}
+
+@keyframes titleReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.9);
+    letter-spacing: 15px;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    letter-spacing: 3px;
+  }
+}
+
+/* Chronological note style */
+.chronological-note {
+  text-align: center;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  color: #888;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.8s;
+}
+
+/* Scroll hint */
+.scroll-hint {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+  margin-bottom: 10px;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards, subtlePulse 3s ease-in-out infinite;
+  animation-delay: 1.2s, 2.5s;
+}
+
+.scroll-hint span {
+  color: lightcoral;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes subtlePulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+}
+
+/* Scrollbar styling */
+.cert-card-back::-webkit-scrollbar {
+  width: 5px;
+}
+
+.cert-card-back::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.cert-card-back::-webkit-scrollbar-thumb {
+  background: rgba(255, 100, 100, 0.4);
+  border-radius: 3px;
+}
+
+.cert-card-back::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 100, 100, 0.6);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cert-cards-wrapper {
+    gap: 30px;
+    padding: 15px 100px 15px 30px;
+    animation-duration: 35s;
+  }
+
+  .cert-card {
+    width: 300px;
+    height: 260px;
+  }
+
+  .cert-card-back {
+    font-size: 0.8rem;
+    padding: 15px;
+  }
+
+  h2.certs-title {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .cert-cards-container::after {
+    width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cert-card {
+    width: 260px;
+    height: 220px;
+  }
+
+  .cert-card-back {
+    font-size: 0.7rem;
+    padding: 12px;
+  }
+
+  h2.certs-title {
+    font-size: 1.5rem;
+  }
+}
+</style>
+
 <h2 class="certs-title">My Accomplishments</h2>
 
 <p class="chronological-note">
-  Note: The images are arranged in chronological order. Hover over the images to see details of <span style="color: lightcoral;">Skills & Knowledge</span> achieved per certification.
+  Certifications arranged in chronological order. <span style="color: lightcoral;">Hover</span> to reveal skills & knowledge.
+</p>
+
+<p class="scroll-hint">
+  ◀ Cards scroll automatically • <span>Hover to pause</span> • Flip cards to see details ▶
 </p>
 
 <div class="cert-cards-container">
+  <div class="cert-cards-wrapper">
 
-  <a class="cert-card-link">
+    <!-- First set of cards -->
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/ITSAFE.png" alt="Cert 1">
+          <img src="/assets/img/certs/ITSAFE.png" alt="ITSAFE Certification">
         </div>
         <div class="cert-card-back">
           <div class="content">
@@ -30,176 +370,309 @@ permalink: /certs/
         </div>
       </div>
     </div>
-  </a>
 
-  <a class="cert-card-link">
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/THM.png" alt="Cert 2">
+          <img src="/assets/img/certs/THM.png" alt="TryHackMe Certification">
         </div>
         <div class="cert-card-back">
           <div class="content">
             <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
-              <li>Advanced Exploitation including: SQL Injection, Remote File Inlcusion, SSH Tunneling and Privilege Escalation.</li>
-              <li>Buffer Overflow Exploitation.</li>
-              <li>Basic Active Directory Exploitation.</li>
+              <li>Advanced Exploitation: SQL Injection, RFI, SSH Tunneling</li>
+              <li>Buffer Overflow Exploitation</li>
+              <li>Basic Active Directory Exploitation</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </a>
 
-  <a class="cert-card-link">
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/EJPT.png" alt="Cert 3">
+          <img src="/assets/img/certs/EJPT.png" alt="eJPT Certification">
         </div>
         <div class="cert-card-back">
           <div class="content">
             <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
-              <li>Assessment Methodologies.</li>
-              <li>Web Application Penetration Testing.</li>
-              <li>Host & Networking Penetration Testing.</li>
+              <li>Assessment Methodologies</li>
+              <li>Web Application Penetration Testing</li>
+              <li>Host & Networking Penetration Testing</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </a>
 
-  <!-- Repeat for other certifications -->
-  <a class="cert-card-link">
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/OSCP.png" alt="Cert 2">
+          <img src="/assets/img/certs/OSCP.png" alt="OSCP Certification">
         </div>
         <div class="cert-card-back">
           <div class="content">
             <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
-              <li>Client Side Attacks.</li>
-              <li>Web Exploitation.</li>
-              <li>Tunneling.</li>
-              <li>Privilege Escalation.</li>
-              <li>Active Directory Attacks.</li>
+              <li>Client Side Attacks</li>
+              <li>Web Exploitation</li>
+              <li>Tunneling</li>
+              <li>Privilege Escalation</li>
+              <li>Active Directory Attacks</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </a>
 
-  <a class="cert-card-link">
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/CRTP.png" alt="Cert 4">
+          <img src="/assets/img/certs/CRTP.png" alt="CRTP Certification">
         </div>
         <div class="cert-card-back">
           <div class="content">
             <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
-              <li>Active Directory Enumeration.</li>
-              <li>Local Privilege Escalation.</li>
-              <li>Domain Privilege Escalation.</li>
-              <li>Domain Persistence.</li>
-              <li>Forest privilege escalation using cross trust attacks.</li>
-              <li>Inter-forest trust attacks.</li>
+              <li>Active Directory Enumeration</li>
+              <li>Local Privilege Escalation</li>
+              <li>Domain Privilege Escalation</li>
+              <li>Domain Persistence</li>
+              <li>Cross Trust Attacks</li>
+              <li>Inter-forest Trust Attacks</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </a>
 
-  <a class="cert-card-link">
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/HTB-Offshore.png" alt="Cert 5">
+          <img src="/assets/img/certs/HTB-Offshore.png" alt="HTB Offshore Certification">
         </div>
         <div class="cert-card-back">
           <div class="content">
             <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
-              <li>Web Application Attacks.</li>
-              <li>Enumeration.</li>
-              <li>Exploiting Obscure and Real-World Active Directory Flaws.</li>
-              <li>Lateral Movement and Crossing Trust Boundaries.</li>
-              <li>Evading Endpoint Protections.</li>
-              <li>Reverse Engineering.</li>
-              <li>Out-Of-The-Box Thinking.</li>
+              <li>Web Application Attacks</li>
+              <li>Enumeration</li>
+              <li>Real-World Active Directory Flaws</li>
+              <li>Lateral Movement & Trust Boundaries</li>
+              <li>Evading Endpoint Protections</li>
+              <li>Reverse Engineering</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </a>
 
-  <a class="cert-card-link">
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/OSEP.png" alt="Cert 6">
+          <img src="/assets/img/certs/OSEP.png" alt="OSEP Certification">
         </div>
         <div class="cert-card-back">
           <div class="content">
             <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
-              <li>Client-Side Attacks.</li>
-              <li>Process Injection and Migration.</li>
-              <li>Antivirus Evasion.</li>
-              <li>Application Allow-Listing.</li>
-              <li>Bypassing Network Filters.</li>
-              <li>Windows and Linux Lateral Movement.</li>
-              <li>Active Directory Exploitation.</li>
-              <li>Microsoft SQL Attacks.</li>
+              <li>Client-Side Attacks</li>
+              <li>Process Injection & Migration</li>
+              <li>Antivirus Evasion</li>
+              <li>Application Allow-Listing Bypass</li>
+              <li>Network Filter Bypass</li>
+              <li>Lateral Movement (Win/Linux)</li>
+              <li>Microsoft SQL Attacks</li>
             </ul>
           </div>
         </div>
-
-
-        
       </div>
     </div>
-  </a>
 
-<a class="cert-card-link">
     <div class="cert-card">
       <div class="cert-card-inner">
         <div class="cert-card-image">
-          <img src="/assets/img/certs/OSWE.png" alt="Cert 2">
+          <img src="/assets/img/certs/OSWE.png" alt="OSWE Certification">
         </div>
         <div class="cert-card-back">
           <div class="content">
             <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
             <ul>
-              <li>Persistent Cross-Site Scripting</li>
-              <li>Session Hijacking</li>
-              <li>Data Exfiltration</li>
-              <li>Bypassing File Extension Filters</li>
-              <li>Magic Hashes</li>
-              <li>PostgreSQL Extension and User-Defined Functions</li>
-              <li>Bypassing REGEX Restrictions</li>
-              <li>Cross-Site Request Forgery</li>
-              <li>Type Juggling</li>
+              <li>Persistent XSS & Session Hijacking</li>
+              <li>File Upload/Extension Bypasses</li>
+              <li>PostgreSQL Extensions & UDFs</li>
+              <li>Type Juggling & Magic Hashes</li>
               <li>Blind SQL Injection</li>
-              <li>Bypassing File Upload Restrictions</li>
-              <li>Loose Comparisons</li>
-              <li>Bypassing Character Restrictions</li>
-              <li>PostgreSQL Large Objects</li>
-              <li>Debugging .NET Assemblies</li>
+              <li>CSRF & REGEX Bypasses</li>
+              <li>.NET Assembly Debugging</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </a>
-  
+
+    <!-- Duplicate set for seamless infinite scroll -->
+    <div class="cert-card">
+      <div class="cert-card-inner">
+        <div class="cert-card-image">
+          <img src="/assets/img/certs/ITSAFE.png" alt="ITSAFE Certification">
+        </div>
+        <div class="cert-card-back">
+          <div class="content">
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <ul>
+              <li>Active Directory Enumeration & Exploitation</li>
+              <li>Offensive Python</li>
+              <li>Linux & Windows Privilege Escalation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-inner">
+        <div class="cert-card-image">
+          <img src="/assets/img/certs/THM.png" alt="TryHackMe Certification">
+        </div>
+        <div class="cert-card-back">
+          <div class="content">
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <ul>
+              <li>Advanced Exploitation: SQL Injection, RFI, SSH Tunneling</li>
+              <li>Buffer Overflow Exploitation</li>
+              <li>Basic Active Directory Exploitation</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-inner">
+        <div class="cert-card-image">
+          <img src="/assets/img/certs/EJPT.png" alt="eJPT Certification">
+        </div>
+        <div class="cert-card-back">
+          <div class="content">
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <ul>
+              <li>Assessment Methodologies</li>
+              <li>Web Application Penetration Testing</li>
+              <li>Host & Networking Penetration Testing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-inner">
+        <div class="cert-card-image">
+          <img src="/assets/img/certs/OSCP.png" alt="OSCP Certification">
+        </div>
+        <div class="cert-card-back">
+          <div class="content">
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <ul>
+              <li>Client Side Attacks</li>
+              <li>Web Exploitation</li>
+              <li>Tunneling</li>
+              <li>Privilege Escalation</li>
+              <li>Active Directory Attacks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-inner">
+        <div class="cert-card-image">
+          <img src="/assets/img/certs/CRTP.png" alt="CRTP Certification">
+        </div>
+        <div class="cert-card-back">
+          <div class="content">
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <ul>
+              <li>Active Directory Enumeration</li>
+              <li>Local Privilege Escalation</li>
+              <li>Domain Privilege Escalation</li>
+              <li>Domain Persistence</li>
+              <li>Cross Trust Attacks</li>
+              <li>Inter-forest Trust Attacks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-inner">
+        <div class="cert-card-image">
+          <img src="/assets/img/certs/HTB-Offshore.png" alt="HTB Offshore Certification">
+        </div>
+        <div class="cert-card-back">
+          <div class="content">
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <ul>
+              <li>Web Application Attacks</li>
+              <li>Enumeration</li>
+              <li>Real-World Active Directory Flaws</li>
+              <li>Lateral Movement & Trust Boundaries</li>
+              <li>Evading Endpoint Protections</li>
+              <li>Reverse Engineering</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-inner">
+        <div class="cert-card-image">
+          <img src="/assets/img/certs/OSEP.png" alt="OSEP Certification">
+        </div>
+        <div class="cert-card-back">
+          <div class="content">
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <ul>
+              <li>Client-Side Attacks</li>
+              <li>Process Injection & Migration</li>
+              <li>Antivirus Evasion</li>
+              <li>Application Allow-Listing Bypass</li>
+              <li>Network Filter Bypass</li>
+              <li>Lateral Movement (Win/Linux)</li>
+              <li>Microsoft SQL Attacks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-card-inner">
+        <div class="cert-card-image">
+          <img src="/assets/img/certs/OSWE.png" alt="OSWE Certification">
+        </div>
+        <div class="cert-card-back">
+          <div class="content">
+            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <ul>
+              <li>Persistent XSS & Session Hijacking</li>
+              <li>File Upload/Extension Bypasses</li>
+              <li>PostgreSQL Extensions & UDFs</li>
+              <li>Type Juggling & Magic Hashes</li>
+              <li>Blind SQL Injection</li>
+              <li>CSRF & REGEX Bypasses</li>
+              <li>.NET Assembly Debugging</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
