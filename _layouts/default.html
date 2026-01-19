@@ -9,55 +9,6 @@ layout: home
 
 <head>
   <style>
-    /* Animated particles background */
-    .particles-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(255, 100, 100, 0.25);
-      border-radius: 50%;
-      animation: float 20s infinite;
-    }
-
-    .particle:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 25s; }
-    .particle:nth-child(2) { left: 15%; animation-delay: 2s; animation-duration: 20s; }
-    .particle:nth-child(3) { left: 28%; animation-delay: 4s; animation-duration: 28s; }
-    .particle:nth-child(4) { left: 40%; animation-delay: 1s; animation-duration: 22s; }
-    .particle:nth-child(5) { left: 55%; animation-delay: 3s; animation-duration: 26s; }
-    .particle:nth-child(6) { left: 68%; animation-delay: 5s; animation-duration: 24s; }
-    .particle:nth-child(7) { left: 80%; animation-delay: 2.5s; animation-duration: 21s; }
-    .particle:nth-child(8) { left: 92%; animation-delay: 4.5s; animation-duration: 27s; }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(100vh) scale(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-        transform: translateY(90vh) scale(1);
-      }
-      90% {
-        opacity: 1;
-        transform: translateY(10vh) scale(1);
-      }
-      100% {
-        transform: translateY(-10vh) scale(0);
-        opacity: 0;
-      }
-    }
-
     /* Hero Section */
     .hero-section {
       text-align: center;
@@ -67,7 +18,7 @@ layout: home
       z-index: 1;
     }
 
-    /* Image wrapper - simplified without radar */
+    /* Image wrapper - clean, no background */
     .hero-image-wrapper {
       position: relative;
       width: 180px;
@@ -87,13 +38,11 @@ layout: home
       object-fit: cover;
       z-index: 2;
       animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.2s forwards;
-      box-shadow: 0 0 40px rgba(255, 100, 100, 0.3);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.4s ease;
     }
 
     .hero-image-wrapper:hover .hero-image {
       transform: translate(-50%, -50%) scale(1.08);
-      box-shadow: 0 0 60px rgba(255, 100, 100, 0.5);
     }
 
     @keyframes popIn {
@@ -131,59 +80,12 @@ layout: home
       }
     }
 
-    /* Role badge */
-    .hero-role {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: linear-gradient(145deg, rgba(30, 30, 50, 0.9), rgba(20, 20, 35, 0.95));
-      border: 1px solid rgba(255, 100, 100, 0.3);
-      border-radius: 30px;
-      padding: 12px 25px;
-      font-size: 1rem;
-      color: #ccc;
-      opacity: 0;
-      animation: fadeSlideUp 0.6s ease-out 1s forwards;
-      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3),
-                  0 0 50px rgba(255, 100, 100, 0.05);
-      transition: all 0.3s ease;
-    }
-
-    .hero-role:hover {
-      transform: translateY(-3px);
-      border-color: rgba(255, 100, 100, 0.5);
-      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.4),
-                  0 0 60px rgba(255, 100, 100, 0.1);
-    }
-
-    .hero-role .status-dot {
-      width: 10px;
-      height: 10px;
-      background: #64ffda;
-      border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(100, 255, 218, 0.4); }
-      50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(100, 255, 218, 0); }
-    }
-
-    .hero-role .role-text {
-      color: #aaa;
-    }
-
-    .hero-role .company {
-      color: #ff6464;
-      font-weight: bold;
-    }
-
     /* Section Title */
     .section-header {
       text-align: center;
       margin: 50px 0 30px;
       opacity: 0;
-      animation: fadeSlideUp 0.6s ease-out 1.2s forwards;
+      animation: fadeSlideUp 0.6s ease-out 1s forwards;
     }
 
     .section-title {
@@ -283,12 +185,12 @@ layout: home
       opacity: 1;
     }
 
-    .post-card:nth-child(1) { animation-delay: 1.4s; }
-    .post-card:nth-child(2) { animation-delay: 1.5s; }
-    .post-card:nth-child(3) { animation-delay: 1.6s; }
-    .post-card:nth-child(4) { animation-delay: 1.7s; }
-    .post-card:nth-child(5) { animation-delay: 1.8s; }
-    .post-card:nth-child(6) { animation-delay: 1.9s; }
+    .post-card:nth-child(1) { animation-delay: 1.2s; }
+    .post-card:nth-child(2) { animation-delay: 1.3s; }
+    .post-card:nth-child(3) { animation-delay: 1.4s; }
+    .post-card:nth-child(4) { animation-delay: 1.5s; }
+    .post-card:nth-child(5) { animation-delay: 1.6s; }
+    .post-card:nth-child(6) { animation-delay: 1.7s; }
 
     @keyframes cardFadeIn {
       to {
@@ -444,11 +346,6 @@ layout: home
         font-size: 0.95rem;
       }
 
-      .hero-role {
-        padding: 10px 20px;
-        font-size: 0.9rem;
-      }
-
       .post-cards-container {
         grid-template-columns: 1fr;
         padding: 15px;
@@ -472,13 +369,6 @@ layout: home
 
       .hero-title {
         font-size: 0.85rem;
-      }
-
-      .hero-role {
-        padding: 8px 15px;
-        font-size: 0.8rem;
-        flex-direction: column;
-        gap: 5px;
       }
 
       .section-title {
@@ -514,18 +404,6 @@ layout: home
     setTimeout(() => body.classList.remove("notransition"), 75);
   </script>
 
-  <!-- Animated background particles -->
-  <div class="particles-container">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
-
   {% include navbar.html %}
 
   <div class="wrapper">
@@ -543,12 +421,6 @@ layout: home
           <span class="bracket">]</span>
           <span class="separator"> :: </span>
           <span style="color: #888;">red team operator</span>
-        </div>
-
-        <div class="hero-role">
-          <span class="status-dot"></span>
-          <span class="role-text">Adversarial Tactics Expert @</span>
-          <span class="company">Sygnia</span>
         </div>
       </div>
 
