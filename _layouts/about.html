@@ -22,29 +22,13 @@
   </script>
 
   {% include navbar.html %}
-  
-  <!-- Animated background particles -->
-  <div class="particles-container">
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-    <div class="particle"></div>
-  </div>
 
   <div class="wrapper">
     <main aria-label="Content">
       <div class="centered-content">
         
-        <!-- Glowing ring behind image -->
+        <!-- Clean image without background effects -->
         <div class="image-wrapper">
-          <div class="glow-ring"></div>
-          <div class="orbit-ring">
-            <div class="orbit-dot"></div>
-          </div>
           <div class="image-container">
             <img src="https://extravenger.github.io/assets/img/ninja.png" alt="Profile Image" class="profile-image" />
           </div>
@@ -123,7 +107,7 @@
       };
 
       // Start typing after image animation
-      setTimeout(type, 1500);
+      setTimeout(type, 1200);
 
       // Animate skill tags one by one
       setTimeout(() => {
@@ -133,7 +117,7 @@
             tag.classList.add('visible');
           }, i * 150);
         });
-      }, 3000);
+      }, 2500);
     });
   </script>
 
@@ -144,55 +128,6 @@
       margin: 0;
       overflow-x: hidden;
       overflow-y: auto;
-    }
-
-    /* Animated particles background */
-    .particles-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      overflow: hidden;
-    }
-
-    .particle {
-      position: absolute;
-      width: 4px;
-      height: 4px;
-      background: rgba(255, 100, 100, 0.3);
-      border-radius: 50%;
-      animation: float 20s infinite;
-    }
-
-    .particle:nth-child(1) { left: 10%; animation-delay: 0s; animation-duration: 25s; }
-    .particle:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 20s; }
-    .particle:nth-child(3) { left: 35%; animation-delay: 4s; animation-duration: 28s; }
-    .particle:nth-child(4) { left: 50%; animation-delay: 1s; animation-duration: 22s; }
-    .particle:nth-child(5) { left: 65%; animation-delay: 3s; animation-duration: 26s; }
-    .particle:nth-child(6) { left: 75%; animation-delay: 5s; animation-duration: 24s; }
-    .particle:nth-child(7) { left: 85%; animation-delay: 2.5s; animation-duration: 21s; }
-    .particle:nth-child(8) { left: 92%; animation-delay: 4.5s; animation-duration: 27s; }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(100vh) scale(0);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-        transform: translateY(90vh) scale(1);
-      }
-      90% {
-        opacity: 1;
-        transform: translateY(10vh) scale(1);
-      }
-      100% {
-        transform: translateY(-10vh) scale(0);
-        opacity: 0;
-      }
     }
 
     /* Wrapper */
@@ -233,7 +168,7 @@
       padding-bottom: 50px;
     }
 
-    /* Image wrapper with effects */
+    /* Clean image wrapper - no background effects */
     .image-wrapper {
       position: relative;
       width: 220px;
@@ -241,72 +176,9 @@
       margin-bottom: 30px;
     }
 
-    /* Glowing ring */
-    .glow-ring {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      background: conic-gradient(
-        from 0deg,
-        transparent,
-        rgba(255, 100, 100, 0.4),
-        transparent,
-        rgba(255, 100, 100, 0.4),
-        transparent
-      );
-      animation: rotateGlow 4s linear infinite;
-      opacity: 0;
-      animation: rotateGlow 4s linear infinite, fadeInGlow 1s ease-out 0.5s forwards;
-    }
-
-    @keyframes rotateGlow {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-
-    @keyframes fadeInGlow {
-      to { opacity: 1; }
-    }
-
-    /* Orbiting ring */
-    .orbit-ring {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 260px;
-      height: 260px;
-      border: 1px dashed rgba(255, 100, 100, 0.2);
-      border-radius: 50%;
-      animation: orbitSpin 10s linear infinite;
-      opacity: 0;
-      animation: orbitSpin 10s linear infinite, fadeInGlow 1s ease-out 0.8s forwards;
-    }
-
-    .orbit-dot {
-      position: absolute;
-      top: -4px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 8px;
-      height: 8px;
-      background: #ff6464;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #ff6464, 0 0 20px #ff6464;
-    }
-
-    @keyframes orbitSpin {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-
-    /* Image container */
+    /* Image container - clean without glow */
     .image-container {
-      position: relative;
+      position: absolute;
       width: 200px;
       height: 200px;
       border-radius: 50%;
@@ -316,7 +188,6 @@
       left: 50%;
       transform: translate(-50%, -50%) scale(0);
       animation: popIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
-      box-shadow: 0 0 40px rgba(255, 100, 100, 0.3);
     }
 
     @keyframes popIn {
@@ -334,11 +205,11 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.4s ease;
     }
 
     .image-container:hover .profile-image {
-      transform: scale(1.1);
+      transform: scale(1.05);
     }
 
     /* Text container */
@@ -362,10 +233,10 @@
       background: rgba(0, 0, 0, 0.3);
       padding: 15px 25px;
       border-radius: 10px;
-      border: 1px solid rgba(255, 100, 100, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.05);
       width: fit-content;
       opacity: 0;
-      animation: fadeSlideUp 0.6s ease-out 1s forwards;
+      animation: fadeSlideUp 0.6s ease-out 0.8s forwards;
     }
 
     @keyframes fadeSlideUp {
@@ -396,14 +267,13 @@
       50% { opacity: 0; }
     }
 
-    /* Bio card */
+    /* Bio card - seamless with page background */
     .bio-card {
-      background: linear-gradient(145deg, 
-        rgba(30, 30, 50, 0.9) 0%, 
-        rgba(20, 20, 35, 0.95) 100%
+      background: linear-gradient(165deg, 
+        rgba(35, 35, 55, 0.5) 0%, 
+        rgba(22, 22, 38, 0.6) 100%
       );
-      border: 1px solid rgba(255, 100, 100, 0.2);
-      border-radius: 15px;
+      border-radius: 20px;
       padding: 0;
       width: 100%;
       max-width: 600px;
@@ -412,8 +282,41 @@
       opacity: 0;
       transform: translateY(30px) scale(0.95);
       transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3),
-                  0 0 80px rgba(255, 100, 100, 0.05);
+      box-shadow: 
+        0 10px 40px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.03);
+      position: relative;
+    }
+
+    /* Subtle gradient border on hover */
+    .bio-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 20px;
+      padding: 1px;
+      background: linear-gradient(
+        160deg, 
+        rgba(255, 100, 100, 0.15) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(100, 255, 218, 0.1) 100%
+      );
+      -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .bio-card:hover::before {
+      opacity: 1;
     }
 
     .bio-card.visible {
@@ -422,9 +325,10 @@
     }
 
     .bio-card:hover {
-      border-color: rgba(255, 100, 100, 0.4);
-      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4),
-                  0 0 100px rgba(255, 100, 100, 0.1);
+      box-shadow: 
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      transform: translateY(-4px) scale(1);
     }
 
     .bio-header {
@@ -432,8 +336,8 @@
       align-items: center;
       gap: 10px;
       padding: 15px 20px;
-      background: rgba(255, 100, 100, 0.1);
-      border-bottom: 1px solid rgba(255, 100, 100, 0.2);
+      background: rgba(255, 100, 100, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
     }
 
     .bio-icon {
@@ -482,7 +386,7 @@
     }
 
     .label {
-      color: #888;
+      color: #666;
       font-size: 0.8rem;
       font-family: 'JetBrains Mono', monospace;
       margin-right: 8px;
@@ -512,28 +416,29 @@
 
     .bio-divider {
       height: 1px;
-      background: linear-gradient(to right, transparent, rgba(255, 100, 100, 0.3), transparent);
+      background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.06), transparent);
       margin: 20px 0;
     }
 
     .bio-story p {
       margin: 0 0 15px 0;
       font-size: 0.95rem;
-      color: #aaa;
+      color: #999;
       line-height: 1.6;
       padding-left: 15px;
-      border-left: 2px solid rgba(255, 100, 100, 0.3);
+      border-left: 2px solid rgba(255, 100, 100, 0.2);
       transition: all 0.3s ease;
     }
 
     .bio-story p:hover {
-      border-left-color: #ff6464;
+      border-left-color: rgba(255, 100, 100, 0.6);
       padding-left: 20px;
+      color: #bbb;
     }
 
     .year {
       display: inline-block;
-      background: rgba(255, 100, 100, 0.2);
+      background: rgba(255, 100, 100, 0.1);
       color: #ff6464;
       padding: 2px 8px;
       border-radius: 4px;
@@ -549,8 +454,8 @@
 
     .bio-footer {
       padding: 15px 20px;
-      background: rgba(0, 0, 0, 0.2);
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      background: rgba(0, 0, 0, 0.15);
+      border-top: 1px solid rgba(255, 255, 255, 0.02);
     }
 
     .skill-tags {
@@ -560,13 +465,12 @@
     }
 
     .tag {
-      background: rgba(255, 100, 100, 0.1);
-      color: #ff6464;
+      background: rgba(255, 100, 100, 0.08);
+      color: rgba(255, 100, 100, 0.8);
       padding: 5px 12px;
       border-radius: 20px;
       font-size: 0.75rem;
       font-family: 'JetBrains Mono', monospace;
-      border: 1px solid rgba(255, 100, 100, 0.2);
       opacity: 0;
       transform: translateY(10px);
       transition: all 0.3s ease;
@@ -578,9 +482,9 @@
     }
 
     .tag:hover {
-      background: rgba(255, 100, 100, 0.2);
+      background: rgba(255, 100, 100, 0.15);
+      color: #ff6464;
       transform: translateY(-2px);
-      box-shadow: 0 4px 15px rgba(255, 100, 100, 0.2);
     }
 
     /* Responsive */
@@ -593,16 +497,6 @@
       .image-container {
         width: 160px;
         height: 160px;
-      }
-
-      .glow-ring {
-        width: 190px;
-        height: 190px;
-      }
-
-      .orbit-ring {
-        width: 210px;
-        height: 210px;
       }
 
       h1.typing-container {
@@ -632,16 +526,6 @@
       .image-container {
         width: 130px;
         height: 130px;
-      }
-
-      .glow-ring {
-        width: 160px;
-        height: 160px;
-      }
-
-      .orbit-ring {
-        width: 180px;
-        height: 180px;
       }
 
       h1.typing-container {
