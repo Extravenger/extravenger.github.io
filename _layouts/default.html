@@ -133,7 +133,7 @@ layout: home
 
     /* Card-style layout for each post - simple with clean outline */
     .post-card {
-      background: var(--bg-secondary, #1a1a2e);
+      background: transparent;
       border: 1px solid var(--border-color, #333);
       border-radius: 8px;
       overflow: hidden;
@@ -151,7 +151,6 @@ layout: home
     .post-card:hover {
       border-color: var(--accent-color, #ff6464);
       transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
     .post-card:nth-child(1) { animation-delay: 1.2s; }
@@ -196,7 +195,7 @@ layout: home
       left: 0;
       right: 0;
       height: 40%;
-      background: linear-gradient(to top, var(--bg-secondary, #1a1a2e), transparent);
+      background: linear-gradient(to top, var(--background-color, #0d0d0d), transparent);
       pointer-events: none;
     }
 
@@ -257,7 +256,7 @@ layout: home
 
     .post-card .tag:hover {
       background: var(--accent-color, #ff6464);
-      color: var(--bg-secondary, #1a1a2e);
+      color: var(--background-color, #0d0d0d);
     }
 
     /* No image fallback */
