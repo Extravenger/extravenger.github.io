@@ -35,6 +35,8 @@ Before writing a single line of code, I spent considerable time designing the ar
 
 Scorpion follows a classic three-tier architecture:
 
+<div align="center">
+
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                      OPERATOR (UI)                          │
@@ -45,9 +47,9 @@ Scorpion follows a classic three-tier architecture:
 ┌─────────────────────────────────────────────────────────────┐
 │                    TEAM SERVER                              │
 │           Cross-Platform .NET 8.0 Console App               │
-│    ┌───────────┬─────────────┬─────────────┬──────────┐     │
-│    │ Listeners │ Task Queue  │   Profiles  │  SQLite  │     │
-│    └───────────┴─────────────┴─────────────┴──────────┘     │
+│         ┌───────────┬─────────────┬─────────────┐           │
+│         │ Listeners │ Task Queue  │   Profiles  │           │
+│         └───────────┴─────────────┴─────────────┘           │
 └─────────────────────┬───────────────────────────────────────┘
                       │ HTTPS (Encrypted)
                       ▼
@@ -56,6 +58,8 @@ Scorpion follows a classic three-tier architecture:
 │              C++ Implants (Windows)                         │
 └─────────────────────────────────────────────────────────────┘
 ```
+
+</div>
 
 Let me break down each component.
 
@@ -175,6 +179,7 @@ In the next part of this series, I'll dive deep into the agent development, cove
 - Process injection techniques
 - In-process command execution (BOF-style operations)
 - EDR evasion strategies (NTDLL unhooking, BlockDLLs, AMSI bypass)
+- The cat-and-mouse game with security solutions
 
 Building Scorpion has been an incredible learning experience, pushing me to understand Windows internals at a level I never had before. Every feature implemented, every detection bypassed, adds another tool to the arsenal.
 
