@@ -207,11 +207,12 @@ h2.certs-title {
   text-align: center;
   font-size: 2.8rem;
   font-weight: bold;
-  color: #fff !important;
+  color: #c9a96e !important;
   opacity: 0;
   animation: titleReveal 1.2s ease-out 0.2s forwards;
   margin-bottom: 10px;
   letter-spacing: 15px;
+  text-shadow: none;
 }
 
 @keyframes titleReveal {
@@ -346,7 +347,7 @@ h2.certs-title {
 <h2 class="certs-title">My Accomplishments</h2>
 
 <p class="chronological-note">
-  Certifications arranged in chronological order. <span style="color: lightcoral;">Hover</span> to reveal skills & knowledge.
+  Certifications arranged in chronological order. <span style="color: #c9a96e;">Hover</span> to reveal skills & knowledge.
 </p>
 
 <p class="scroll-hint">
@@ -364,7 +365,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Active Directory Enumeration & Exploitation</li>
               <li>Offensive Python</li>
@@ -382,7 +383,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Advanced Exploitation: SQL Injection, RFI, SSH Tunneling</li>
               <li>Buffer Overflow Exploitation</li>
@@ -400,7 +401,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Assessment Methodologies</li>
               <li>Web Application Penetration Testing</li>
@@ -418,7 +419,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Client Side Attacks</li>
               <li>Web Exploitation</li>
@@ -438,7 +439,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Active Directory Enumeration</li>
               <li>Local Privilege Escalation</li>
@@ -459,7 +460,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Web Application Attacks</li>
               <li>Enumeration</li>
@@ -480,7 +481,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Client-Side Attacks</li>
               <li>Process Injection & Migration</li>
@@ -502,7 +503,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Persistent XSS & Session Hijacking</li>
               <li>File Upload/Extension Bypasses</li>
@@ -525,7 +526,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Active Directory Enumeration & Exploitation</li>
               <li>Offensive Python</li>
@@ -543,7 +544,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Advanced Exploitation: SQL Injection, RFI, SSH Tunneling</li>
               <li>Buffer Overflow Exploitation</li>
@@ -561,7 +562,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Assessment Methodologies</li>
               <li>Web Application Penetration Testing</li>
@@ -579,7 +580,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Client Side Attacks</li>
               <li>Web Exploitation</li>
@@ -599,7 +600,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Active Directory Enumeration</li>
               <li>Local Privilege Escalation</li>
@@ -620,7 +621,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Web Application Attacks</li>
               <li>Enumeration</li>
@@ -641,7 +642,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Client-Side Attacks</li>
               <li>Process Injection & Migration</li>
@@ -663,7 +664,7 @@ h2.certs-title {
         </div>
         <div class="cert-card-back">
           <div class="content">
-            <h3><span style="color: lightcoral;">Skills & Knowledge</span></h3>
+            <h3><span style="color: #c9a96e;">Skills & Knowledge</span></h3>
             <ul>
               <li>Persistent XSS & Session Hijacking</li>
               <li>File Upload/Extension Bypasses</li>
