@@ -2,7 +2,7 @@
 layout: post
 title:  "Scorpion C2: Building a Command & Control Framework from Scratch - Part 1"
 date:   2025-02-26 19:00:00 +0000
-image: /assets/img/posts/scorpion-c2/scorpion-logo.png
+image: /assets/img/posts/scorpion-logo.png
 tags: [c2, red-team, development, offensive-security]
 ---
 
