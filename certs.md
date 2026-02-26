@@ -31,14 +31,13 @@ permalink: /certs/
   width: 150px;
   background: linear-gradient(to right, 
     transparent 0%,
-    rgba(0, 0, 0, 0.5) 30%,
-    var(--background, #1a1a2e) 100%
+    var(--background, #0d0d0d) 100%
   );
   z-index: 100;
   pointer-events: none;
 }
 
-/* Glowing entry portal on the left */
+/* Entry fade on the left */
 .cert-cards-container::before {
   content: '';
   position: absolute;
@@ -48,8 +47,7 @@ permalink: /certs/
   width: 100px;
   background: linear-gradient(to left, 
     transparent 0%,
-    rgba(255, 100, 100, 0.05) 50%,
-    rgba(255, 100, 100, 0.15) 100%
+    var(--background, #0d0d0d) 100%
   );
   z-index: 50;
   pointer-events: none;
@@ -81,27 +79,23 @@ permalink: /certs/
 /* Card container */
 .cert-card {
   display: flex;
-  background: var(--content-bg, #252540);
+  background: transparent;
   border-radius: 15px;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4),
-              0 0 50px rgba(255, 100, 100, 0.08);
+  border: 1px solid #8b7355;
   overflow: hidden;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
   width: 480px;
   height: 360px;
   flex-shrink: 0;
   box-sizing: border-box;
   perspective: 1000px;
   position: relative;
-  transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  transition: transform 0.4s ease, border-color 0.4s ease;
 }
 
 .cert-card:hover {
   transform: scale(1.03) translateY(-5px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5),
-              0 0 80px rgba(255, 100, 100, 0.15);
-  border-color: rgba(255, 100, 100, 0.3);
+  border-color: #c9a96e;
 }
 
 /* Card inner element for flip effect */
@@ -130,7 +124,7 @@ permalink: /certs/
   left: 0;
   backface-visibility: hidden;
   border-radius: 8px;
-  background: #1a1a2e;
+  background: transparent;
 }
 
 .cert-card-image img {
@@ -153,11 +147,7 @@ permalink: /certs/
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(145deg, 
-    #1a1a2e 0%, 
-    #252545 50%,
-    #1a1a2e 100%
-  );
+  background: var(--background, #0d0d0d);
   color: #ccc;
   padding: 20px;
   display: flex;
@@ -170,7 +160,7 @@ permalink: /certs/
   overflow-y: auto;
   word-wrap: break-word;
   border-radius: 8px;
-  border: 1px solid rgba(255, 100, 100, 0.15);
+  border: 1px solid #8b7355;
 }
 
 .cert-card-back .content {
@@ -185,7 +175,7 @@ permalink: /certs/
 .cert-card-back h3 {
   margin: 0 0 12px 0;
   font-size: 1rem;
-  border-bottom: 2px solid rgba(255, 100, 100, 0.4);
+  border-bottom: 2px solid #8b7355;
   padding-bottom: 8px;
   width: 100%;
 }
@@ -208,7 +198,7 @@ permalink: /certs/
   content: '▹';
   position: absolute;
   left: 0;
-  color: lightcoral;
+  color: #c9a96e;
   font-weight: bold;
 }
 
@@ -220,8 +210,6 @@ h2.certs-title {
   color: #fff !important;
   opacity: 0;
   animation: titleReveal 1.2s ease-out 0.2s forwards;
-  text-shadow: 0 0 40px rgba(255, 100, 100, 0.4),
-               0 4px 20px rgba(0, 0, 0, 0.5);
   margin-bottom: 10px;
   letter-spacing: 15px;
 }
@@ -262,7 +250,7 @@ h2.certs-title {
 }
 
 .scroll-hint span {
-  color: lightcoral;
+  color: #c9a96e;
 }
 
 @keyframes fadeIn {
@@ -285,12 +273,12 @@ h2.certs-title {
 }
 
 .cert-card-back::-webkit-scrollbar-thumb {
-  background: rgba(255, 100, 100, 0.4);
+  background: #8b7355;
   border-radius: 3px;
 }
 
 .cert-card-back::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 100, 100, 0.6);
+  background: #c9a96e;
 }
 
 /* Responsive */
