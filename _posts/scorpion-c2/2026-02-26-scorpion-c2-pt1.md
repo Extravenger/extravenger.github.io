@@ -2,7 +2,7 @@
 layout: post
 title:  "Scorpion C2: Building a Command & Control Framework from Scratch - Part 1"
 date:   2025-02-26 19:00:00 +0000
-image: /assets/img/posts/scorpion-logo.png
+image: /assets/img/posts/scorpion-c2/scorpion-logo.png
 tags: [c2, red-team, development, offensive-security]
 ---
 
@@ -35,31 +35,30 @@ Before writing a single line of code, I spent considerable time designing the ar
 
 Scorpion follows a classic three-tier architecture:
 
-<div align="center">
-
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                      OPERATOR (UI)                          │
-│              WPF Desktop Application (.NET)                 │
-└─────────────────────┬───────────────────────────────────────┘
-                      │ WebSocket (Secure)
-                      ▼
-┌─────────────────────────────────────────────────────────────┐
-│                    TEAM SERVER                              │
-│           Cross-Platform .NET 8.0 Console App               │
-│         ┌───────────┬─────────────┬─────────────┐           │
-│         │ Listeners │ Task Queue  │   Profiles  │           │
-│         └───────────┴─────────────┴─────────────┘           │
-└─────────────────────┬───────────────────────────────────────┘
-                      │ HTTPS (Encrypted)
-                      ▼
-┌─────────────────────────────────────────────────────────────┐
-│                      AGENTS                                 │
-│              C++ Implants (Windows)                         │
-└─────────────────────────────────────────────────────────────┘
+                    ┌───────────────────────────────┐
+                    │         OPERATOR (UI)         │
+                    │  WPF Desktop Application .NET │
+                    └───────────────┬───────────────┘
+                                    │
+                           WebSocket (Secure)
+                                    │
+                                    ▼
+                    ┌───────────────────────────────┐
+                    │         TEAM SERVER           │
+                    │  Cross-Platform .NET 8.0 App  │
+                    │                               │
+                    │  Listeners | Tasks | Profiles │
+                    └───────────────┬───────────────┘
+                                    │
+                            HTTPS (Encrypted)
+                                    │
+                                    ▼
+                    ┌───────────────────────────────┐
+                    │           AGENTS              │
+                    │    C++ Implants (Windows)     │
+                    └───────────────────────────────┘
 ```
-
-</div>
 
 Let me break down each component.
 
